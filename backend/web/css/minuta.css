@@ -1,0 +1,254 @@
+/* CSS Document */
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+#pos_geral_cotacao{
+position:absolute;
+width:720px;
+height:540px;
+top:1px;
+left:1px;
+border:1px solid dashed;
+}
+#pos_geral_cotacao2{
+position:absolute;
+width:720px;
+height:540px;
+top:542px;
+left:1px;
+border:1px solid dashed;
+}
+#pos_topo{
+display:block;
+position:absolute;
+top:20px;
+left:35px;
+width:720px;
+height:110px;
+border:1px solid #000000;
+}
+#pos_img_logo{
+position:absolute;
+top: 5px;
+width:200;
+}
+#pos_dados_tdc{
+position:absolute;
+top:6px;
+left:290px;
+text-align:center;
+}
+#pos_num_minuta{
+display:block;
+position:absolute;
+right:-1px;
+top:-1px;
+width:100px;
+height:110px;
+border:1px solid #000000;
+text-align:center;
+}
+#pos_tfrete{
+position:absolute;
+display:block;
+top:131px;
+left:35px;
+width:720px;
+height:30px;
+border:1px solid #000000;
+text-align:center;
+}
+#pos_remetente{
+position:absolute;
+top:162px;
+left:35px;
+width:360px;
+height:130px;
+display:block;
+border:1px solid #000000;
+}
+#ddrem{
+position:absolute;
+top:30px;
+left:65px;
+display:block;
+width:274px;
+height:100px;
+border:0px solid #000000;
+}
+.pos_titrd{
+margin-top:5px;
+margin-left:5px;
+}
+#pos_destinatario{
+position:absolute;
+top:162px;
+left:396px;
+width:359px;
+height:130px;
+display:block;
+border:1px solid #000000;
+}
+#ddest{
+position:absolute;
+top:30px;
+left:65px;
+display:block;
+width:274px;
+height:100px;
+border:0px solid #000000;
+}
+#pos_nf{
+position:absolute;
+display:block;
+top:293px;
+left:35px;
+width:720px;
+height:30px;
+border:1px solid #000000;
+text-align:center;
+}
+#pos_coleta{
+position:absolute;
+display:block;
+top:324px;
+left:35px;
+width:240px;
+border:1px solid #000000;
+height:90px;
+}
+#pos_entrega{
+position:absolute;
+display:block;
+top:324px;
+left:276px;
+width:240px;
+border:1px solid #000000;
+height:120px;
+}
+#pos_cfrete{
+position:absolute;
+display:block;
+top:324px;
+left:517px;
+width:238px;
+border:1px solid #000000;
+height:202px;
+}
+#ddcfrete{
+position:absolute;
+top:30px;
+right:10px;
+display:block;
+width:70px;
+height:100px;
+border:0px solid #000000;
+text-align:right;
+}
+#pos_consignatario{
+position:absolute;
+display:block;
+top:415px;
+left:35px;
+width:240px;
+border:1px solid #000000;
+height:29px;
+}
+#pos_preal{
+position:absolute;
+top:445px;
+left:35px;
+width:240px;
+height:60px;
+display:block;
+border:1px solid #000000;
+}
+#pos_dimensoes{
+position:absolute;
+top:445px;
+left:156px;
+width:119px;
+height:60px;
+display:block;
+border:1px solid #000000;
+text-align:center;
+}
+#pos_obs{
+position:absolute;
+display:block;
+top:445px;
+left:276px;
+width:240px;
+border:1px solid #000000;
+height:60px;
+}
+#pos_nat{
+position:absolute;
+display:block;
+top:506px;
+left:35px;
+width:481px;
+height:20px;
+border:1px solid #000000;
+text-align:left;
+}
+#pos_recibos{
+position:absolute;
+display:block;
+top:527px;
+left:35px;
+width:720px;
+height:30px;
+border:1px solid #000000;
+text-align:left;
+font-size:10px;
+}
+.centrotfrete{
+margin-top:9px;
+}
+.tfretecentro1{
+display:inline;
+margin-left:3px;
+}
+.tfretecentro{
+display:inline;
+margin-left:10px;
+}
+.tnf1{
+display:inline;
+margin-left:3px;
+}
+.tnf{
+display:inline;
+margin-left:45px;
+}
+.margintop{
+margin-top:6px;
+}
+.marginleft{
+margin-left:10px;
+}
+.negrito{
+font-weight:bold;
+font-size: 11px;
+}
+.sublinhado{
+text-decoration:underline;
+}
+.fontminuta{
+font-size:16px;
+font-weight:bold;
+}
+.fontnum{
+font-size:18px;
+font-weight:bold;
+}
+.negsub{
+font-weight:bold;
+text-decoration:underline;
+}
+.linha{
+border-top:1px solid #000000;
+}
