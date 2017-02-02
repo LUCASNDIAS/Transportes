@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		        		'print' => function ($url, $model) {
 		        			return Html::a('<span class="glyphicon glyphicon-print"></span>', $url, [
 		        				'title' => Yii::t('app', 'PDF / Impressão'),
-		        				'target' => '_blank'
+		        				'target' => '_blank',
+		        				'data-pjax' => '0'
 							]);
         				},
         				'send' => function ($url, $model) {
