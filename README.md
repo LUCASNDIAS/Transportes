@@ -1,4 +1,9 @@
 <<<<<<< HEAD
+
+
+# Transportes
+Administração de Transportadoras com Yii2 e AdminLTE
+
 Yii 2 Advanced Project Template
 ===============================
 
@@ -53,7 +58,4 @@ environments/            contains environment-based overrides
 tests                    contains various tests for the advanced application
     codeception/         contains tests developed with Codeception PHP Testing Framework
 ```
-=======
-# Transportes
-Administração de Transportadoras com Yii2 e AdminLTE
 >>>>>>> 3e484d67f3f0053650e2bb4589d8f2cf6c063205
