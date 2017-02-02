@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // ['class' => 'yii\grid\SerialColumn'],
         	// ['class' => 'yii\grid\ActionColumn'],
        		['class' => 'yii\grid\ActionColumn',
-        		'template'=>'{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
+        		'template'=>'{view}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
         		'buttons'=>[
 		        		'print' => function ($url, $model) {
-		        			return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+		        			return Html::a('<span class="glyphicon glyphicon-print"></span>', $url, [
 		        				'title' => Yii::t('app', 'PDF / Impressão'),
 		        				'target' => '_blank'
 							]);
