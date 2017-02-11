@@ -6,6 +6,7 @@ use backend\assets\MinutasAsset;
 use backend\models\Clientes;
 use yii\web\JsExpression;
 use yii\jui\AutoComplete;
+use backend\commands\Basicos;
 //use Yii;
 
 
@@ -21,6 +22,15 @@ $tabela = array(
 
 // Asset
 MinutasAsset::register($this);
+
+// Funções Basicas
+$basico = new Basicos();
+
+// Datas
+if ( !$model->isNewRecord ) {
+	$model->coletadata = ($model->coletadata == null) ? '' : $basico->formataData('db',$model->coletadata);
+	$model->entregadata = ($model->entregadata == null) ? '' : $basico->formataData('db',$model->entregadata);
+}
 
 //Busca de Clientes ------ PASSAR PARA O MODEL E TROCAR SOURCE -------
 $data = Clientes::find()
@@ -166,13 +176,38 @@ $data = Clientes::find()
                 			'DESTINATARIO' => 'Destinatário',
                 			'CONSIGNATARIO' => 'Consignatário',
                 		],
-                		['options' => [$model->tipofrete => ['Selected'=>($model->isNewRecord) ? '' : 'selected']], 
+                		['options' => [$model->pagadorenvolvido => ['Selected'=>($model->isNewRecord) ? '' : 'selected']], 
                 		'prompt' => ' -- Selecione --']
                 ) ?>
                 </td>
-                <td><?= $form->field($model, 'formapagamento')->textInput(['maxlength' => true, 'value' => ($model->isNewRecord) ? 'FATURADO' : $model->tipofrete]) ?></td>
+                <td><?= $form->field($model, 'formapagamento')->textInput(['maxlength' => true, 'value' => ($model->isNewRecord) ? 'FATURADO' : $model->formapagamento]) ?></td>
             </tr>
          </table>
+         
+         <?php 
+         	if (!$model->isNewRecord) {
+         		
+	         	$notasnumero = explode('|', $model->notasnumero);
+	         	$notasvalor = explode('|', $model->notasvalor);
+	         	$notasaltura = explode('|', $model->notasaltura);
+	         	$notaslargura = explode('|', $model->notaslargura);
+	         	$notascomprimento = explode('|', $model->notascomprimento);
+	         	$notaspeso = explode('|', $model->notaspeso);
+	         	$notasvolumes = explode('|', $model->notasvolumes);
+	         	
+         	} else {
+         		
+         		$notasnumero = ['',''];
+         		$notasaltura = ['',''];
+         		$notaslargura = ['',''];
+         		$notascomprimento = ['',''];
+         		
+         	}
+	         	
+         	for ( $i=1; $i <= count($notasnumero)-1; $i++) {
+         		
+      			$j = $i - 1;
+	         ?>
     	 
          <div class="linhas 0">
 			 <table class="table table-hover">
@@ -180,49 +215,49 @@ $data = Clientes::find()
 						<td width="20%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notasnumero">Nota</label>
-								<?= Html::input('text','notasnumerox[]',null,['class' => 'form-control', 'id' => 'minutas-notasnumerox0']);?>
+								<?= Html::input('text','notasnumerox[]',(($model->isNewRecord) ? '' : $notasnumero[$i]),['class' => 'form-control', 'id' => 'minutas-notasnumerox' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="15%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notasvalor">Valor</label>
-								<?= Html::input('text','notasvalorx[]',null,['class' => 'form-control dinheiro', 'id' => 'minutas-notasvalorx0']);?>
+								<?= Html::input('text','notasvalorx[]',(($model->isNewRecord) ? '' : $notasvalor[$i]),['class' => 'form-control dinheiro', 'id' => 'minutas-notasvalorx' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="15%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notasaltura">Altura</label>
-								<?= Html::input('text','notasalturax[]',null,['class' => 'form-control dimensao', 'id' => 'minutas-notasalturax0']);?>
+								<?= Html::input('text','notasalturax[]',(($model->isNewRecord) ? '' : $notasaltura[$i]),['class' => 'form-control dimensao', 'id' => 'minutas-notasalturax' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="15%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notaslargura">Largura</label>
-								<?= Html::input('text','notaslargurax[]',null,['class' => 'form-control dimensao', 'id' => 'minutas-notaslargurax0']);?>
+								<?= Html::input('text','notaslargurax[]',(($model->isNewRecord) ? '' : $notaslargura[$i]),['class' => 'form-control dimensao', 'id' => 'minutas-notaslargurax' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="15%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notascomprimento">Comprimento</label>
-								<?= Html::input('text','notascomprimentox[]',null,['class' => 'form-control dimensao', 'id' => 'minutas-notascomprimentox0']);?>
+								<?= Html::input('text','notascomprimentox[]',(($model->isNewRecord) ? '' : $notascomprimento[$i]),['class' => 'form-control dimensao', 'id' => 'minutas-notascomprimentox' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="9%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notaspeso">Peso</label>
-								<?= Html::input('text','notaspesox[]',null,['class' => 'form-control peso', 'id' => 'minutas-notaspesox0']);?>
+								<?= Html::input('text','notaspesox[]',(($model->isNewRecord) ? '' : $notaspeso[$i]),['class' => 'form-control peso', 'id' => 'minutas-notaspesox' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
 						<td width="9%">
 							<div class="form-group">
 								<label class="control-label" for="minutas-notasvolumes">Volumes</label>
-								<?= Html::input('text','notasvolumesx[]',null,['class' => 'form-control', 'id' => 'minutas-notasvolumesx0']);?>
+								<?= Html::input('text','notasvolumesx[]',(($model->isNewRecord) ? '' : $notasvolumes[$i]),['class' => 'form-control', 'id' => 'minutas-notasvolumesx' . $j]);?>
 								<p class="help-block help-block-error"></p>
 							</div>
 						</td>
@@ -232,6 +267,10 @@ $data = Clientes::find()
 					</tr>
 				</table>
 			</div>
+			
+			<?php
+         		}
+			?>
 			
 			<span class="label label-success adicionarCampo" id="linhas">Adicionar outra nota</span>
 			<p>
@@ -268,8 +307,6 @@ $data = Clientes::find()
 				           	<td><?= $form->field($model, 'observacoes')->textInput(['maxlength' => true]) ?></td>
 				       </tr>
 				</table>
-			</p>
-			
 			
 	         <table class="table table-hover">
 		            <tr>
@@ -278,7 +315,7 @@ $data = Clientes::find()
 		     </table>
 			<table class="table table-hover">
 		            <tr>
-		            	<td><?= $form->field($model, 'coletadata')->textInput(['class' => 'form-control data']) ?></td>
+		            	<td><?= $form->field($model, 'coletadata')->textInput(['maxlength' => true, 'class' => 'form-control data']) ?></td>
 		            	<td><?= $form->field($model, 'coletahora')->textInput(['maxlength' => true, 'class' => 'form-control hora']) ?></td>
 		                <td><?= $form->field($model, 'coletanome')->textInput(['maxlength' => true]) ?></td>
 		                <td><?= $form->field($model, 'coletaplaca')->textInput(['maxlength' => true, 'class' => 'form-control placa']) ?></td>
@@ -292,7 +329,7 @@ $data = Clientes::find()
 		     </table>
 			<table class="table table-hover">
 		            <tr>
-		            	<td><?= $form->field($model, 'entregadata')->textInput(['class' => 'form-control data']) ?></td>
+		            	<td><?= $form->field($model, 'entregadata')->textInput(['maxlength' => true, 'class' => 'form-control data']) ?></td>
 		            	<td><?= $form->field($model, 'entregahora')->textInput(['maxlength' => true, 'class' => 'form-control hora']) ?></td>
 		                <td><?= $form->field($model, 'entreganome')->textInput(['maxlength' => true]) ?></td>
 		                <td><?= $form->field($model, 'entregadoc')->textInput(['maxlength' => true]) ?></td>

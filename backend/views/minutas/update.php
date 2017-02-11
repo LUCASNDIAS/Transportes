@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model backend\models\Minutas */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Minutas',
-]) . $model->id;
+    'modelClass' => 'Minuta',
+]) . str_pad($model->numero, 6, '0', STR_PAD_LEFT);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Minutas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');

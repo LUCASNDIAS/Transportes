@@ -47,7 +47,8 @@ class Basicos
 	 * @param unknownst string
 	 */
 	public function formataData ($para = 'db', $data)
-	{
+	{	
+			
 		if( $para == 'db' ){
 			$sep_antes = '/';
 			$sep_novo = '-';
@@ -59,7 +60,6 @@ class Basicos
 		$exp = explode($sep_antes, $data);
 		$nova_data = $exp[2] . $sep_novo . $exp[1] . $sep_novo . $exp[0];
 		return $nova_data;
-		
 	}
 	
 }

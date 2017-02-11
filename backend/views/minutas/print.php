@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 MinutasPrintAsset::register ( $this );
 
+$this->title = Yii::t('app', 'Minutas');
+
 ?>
 
 <div id="pos_topo">

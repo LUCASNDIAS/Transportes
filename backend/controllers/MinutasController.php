@@ -34,7 +34,7 @@ class MinutasController extends Controller
         				'rules' => [
         						[
         								'actions' => [
-        										'index'
+        										'index','create','update'
         								],
         								'allow' => true,
         								'roles' => [
@@ -127,7 +127,7 @@ class MinutasController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-        	
+        	// var_dump($model->getErrors());
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -195,7 +195,20 @@ class MinutasController extends Controller
     	->convert($conteudoPDF)
     	->saveAs($path);
     	
-    	return $conteudoPDF;
+    	// Set up PDF headers
+    	header('Content-type: application/pdf');
+    	header('Content-Disposition: inline; filename="' . '/LNDSistemas-M' . $id .'.pdf' . '"');
+    	header('Content-Transfer-Encoding: binary');
+    	header('Content-Length: ' . filesize($path));
+    	header('Accept-Ranges: bytes');
+    	
+    	if ( is_file($path) ) {
+    		// Retorna arquivo PDF
+    		return readfile($path);
+    	} else {
+    		// Retorna arquivo PHP
+    		return $conteudoPDF;
+    	}
     	
     }
 

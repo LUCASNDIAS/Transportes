@@ -88,12 +88,13 @@ class Minutas extends \yii\db\ActiveRecord
             [['cridt', 'criusu', 'dono', 'tipofrete', 'pagadorenvolvido',
               'formapagamento', 'remetente', 'destinatario','notasnumero', 
               'notasvalor', 'notaspeso', 'notasvolumes', 'notasdimensoes',
-              'pesoreal', 'pesocubado', 'tabela', 'pagadorcnpj'], 'required'],
+              'notasaltura', 'notaslargura', 'notascomprimento', 'tabela', 
+              'pesoreal', 'pesocubado', 'pagadorcnpj'], 'required'],
             [['cridt', 'coletadata', 'entregadata', 'pagamentodata'], 'safe'],
             [['baixamanifesto', 'baixacoleta', 'baixaentrega', 'baixafatura', 'baixapagamento'], 'integer'],
             [['criusu', 'naturezacarga', 'status', 'coletanome', 'entreganome'], 'string', 'max' => 50],
             [['dono', 'pagadorcnpj', 'remetente', 'destinatario', 'consignatario', 'pesoreal', 'pesocubado', 'fretevalor', 'fretepeso', 'taxacoleta', 'taxaentrega', 'taxaseguro', 'taxagris', 'taxadespacho', 'taxaitr', 'taxaextra', 'taxaseccat', 'taxapedagio', 'taxaoutros', 'taxafretevalor', 'desconto', 'fretetotal'], 'string', 'max' => 15],
-            [['numero', 'manifesto', 'coletaplaca', 'fatura', 'tabela'], 'string', 'max' => 10],
+            [['manifesto', 'coletaplaca', 'fatura', 'tabela'], 'string', 'max' => 10],
             [['tipofrete', 'pagadorenvolvido', 'formapagamento', 'entregadoc'], 'string', 'max' => 20],
             [['entregalocal', 'notasnumero', 'notasvalor', 'notaspeso', 'notasvolumes', 'notasdimensoes'], 'string', 'max' => 100],
             [['coletahora', 'entregahora'], 'string', 'max' => 5],
@@ -110,17 +111,18 @@ class Minutas extends \yii\db\ActiveRecord
     	 
     	if (parent::beforeSave($insert)) {
     		
-    		// Número da minuta
-    		$ultima = self::find()
-			->select(['numero'])
-			->where([
-					'dono' => \Yii::$app->user->identity['cnpj']
-					])
-			->orderBy('numero DESC')
-			->one();
-			
-			$this->numero = ($ultima === null) ? 1 : $ultima->numero + 1;
-			
+    		if ($this->isNewRecord) {
+    			// Número da minuta
+    			$ultima = self::find()
+    			->select(['numero'])
+    			->where([
+    					'dono' => \Yii::$app->user->identity['cnpj']
+    			])
+    			->orderBy('numero DESC')
+    			->one();
+    				
+    			$this->numero = ($ultima === null) ? 1 : $ultima->numero + 1;
+    		}			
     		
     		// Baixa Coleta / Entrega
     		$baixacoleta = ($this->coletadata == '') ? 0 : 1;
@@ -143,8 +145,8 @@ class Minutas extends \yii\db\ActiveRecord
     		$this->status = $status;
     		
     		// Transforma as datas de entrega e coleta
-    		$this->entregadata = $basicos->formataData('db',($this->entregadata=='') ? '00/00/0000' : $this->entregadata);
-    		$this->coletadata = $basicos->formataData('db',($this->coletadata == '') ? '00/00/0000' : $this->coletadata);
+    		//$this->entregadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->entregadata));
+    		//$this->coletadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->coletadata));
     		
     		// Cálculo do FRETE
     		$arrayCalculo = [
@@ -161,6 +163,19 @@ class Minutas extends \yii\db\ActiveRecord
     		$calculos = new Calculos();
     		$calculaFrete = $calculos->calculaFrete('db',$arrayCalculo);
     		
+    		/*
+    		$this->taxacoleta = '';
+    		$this->taxaentrega = '';
+    		$this->taxaseguro = '';
+    		$this->baixamanifesto = 0;
+    		$this->manifesto = '';
+    		$this->baixafatura = 0;
+    		$this->fatura = '';
+    		$this->baixapagamento = 0;
+    		$this->pagamentorecibo = '';
+    		$this->pagamentodata = null;
+    		*/
+    		
     		// Se não deu erro nos calculos, define as variáveis da minuta!
     		$this->fretevalor = (isset($calculaFrete['valorminimo'])) ? $calculaFrete['valorminimo'] : '0.00';
     		$this->fretepeso = (isset($calculaFrete['valorexcedente'])) ? $calculaFrete['valorexcedente'] : '0.00';
@@ -176,23 +191,24 @@ class Minutas extends \yii\db\ActiveRecord
     		
     		// Dimensões da carga
    			// As dimensões estão no formato string => |alt x larg x comp|alt x larg x comp
-    		$altura = array();
-   			$largura = array();
-   			$comprimento = array();
+    		//$altura = array();
+   			//$largura = array();
+   			//$comprimento = array();
    			
-    		$dimensoes = explode('|',$this->notasdimensoes);
-    		foreach ( $dimensoes as $dimensao ){
-    			if($dimensao != ''){
-	    			$divisao = explode('x', $dimensao);
-	    			$altura[] = $divisao[0];
-	    			$largura[] = $divisao[1];
-	    			$comprimento[] = $divisao[2];
-    			}
-    		}
+    		//$dimensoes = explode('|',$this->notasdimensoes);
+    		//foreach ( $dimensoes as $dimensao ){
+    		//	if($dimensao != ''){
+	    	//		$divisao = explode('x', $dimensao);
+	    	//		$altura[] = $divisao[0];
+	    	//		$largura[] = $divisao[1];
+	    	//		$comprimento[] = $divisao[2];
+	    	//		
+    		//	}
+    		//}
     		
-    		$this->notasaltura = '|' . implode('|', $altura);
-    		$this->notaslargura = '|' . implode('|', $largura);
-    		$this->notascomprimento = '|' . implode('|', $comprimento);    		
+    		//$this->notasaltura = '|' . implode('|', $altura);
+    		//$this->notaslargura = '|' . implode('|', $largura);
+    		//$this->notascomprimento = '|' . implode('|', $comprimento);
     		
     		return true;
     		
