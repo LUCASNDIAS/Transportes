@@ -28,74 +28,68 @@ use app\components\ClienteValidator;
  * @property string $tabelas
  * @property string $status
  */
-class Clientes extends ActiveRecord
-{
+class Clientes extends ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'clientes';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['cridt', 'criusu', 'dono', 'nome', 'ie', 'cnpj', 'endrua', 'endnro', 'endbairro', 'endcid', 'enduf', 'endcep', 'status'], 'required'],
-        	[['cridt', 'criusu', 'dono', 'nome', 'ie', 'cnpj', 'endrua', 'endnro', 'endbairro', 'endcid', 'enduf', 'endcep', 'status', 'telefones'], 'trim'],
+            [['cridt', 'criusu', 'dono', 'nome', 'ie', 'cnpj', 'endrua', 'endnro', 'endbairro', 'endcid', 'enduf', 'endcep', 'status', 'telefones'], 'trim'],
             [['cridt'], 'safe'],
-        	//['cnpj', 'unique', 'message' => 'Já existente'],
+            //['cnpj', 'unique', 'message' => 'Já existente'],
             [['criusu'], 'string', 'max' => 30],
             [['dono', 'ie'], 'string', 'max' => 20],
-        	[['cnpj'], 'string', 'max' => 14],
+            [['cnpj'], 'string', 'max' => 14],
             [['nome', 'endrua'], 'string', 'max' => 100],
             [['endnro', 'endcep', 'status'], 'string', 'max' => 10],
             [['endbairro'], 'string', 'max' => 50],
             [['endcid'], 'string', 'max' => 80],
-       		[['endcep'], 'string', 'max' => 9],
+            [['endcep'], 'string', 'max' => 9],
             [['enduf'], 'string', 'max' => 2],
             [['responsaveis', 'telefones', 'tabelas'], 'string', 'max' => 500],
             [['emails'], 'string', 'max' => 700],
-        	['cnpj', 'match', 'pattern' => '/^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/'],
-        	[['nome','endnro','endbairro','endrua','endcid'], 'match', 'pattern' => '/^([!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1})$/' ],
-        	['ie', 'match', 'pattern' => '/^(ISENTO|[0-9]{0,14})$/'],
-        	//['endcep', 'match', 'pattern' => '/^([0-9]{8})$/'],
-        	['cnpj', ClienteValidator::className(), 
-        		'when' => function ($model) {
-        			return $model->isNewRecord;  
-        		}
-		   	],
-        	//['tabelas', 'required', 'when' => function ($model) {
-        	//	return $model->dono == 'asdfasdfsdaf';
-        	//}, 'whenClient' => "function (attribute, value) {
-        	//	return $('#dono').val() == 'asdfasdfsdaf';
-    		//}"],
-    		//['tabelas', CountryValidator::className()],
-        	//['telefones', 'match', 'pattern' => '/^([(]?[0-9]{2}[)]?[0-9]{4,5}[-]?[0-9]{4,5})$/'],
-        	//['emails', 'email'],
+            ['cnpj', 'match', 'pattern' => '/^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/'],
+            [['nome', 'endnro', 'endbairro', 'endrua', 'endcid'], 'match', 'pattern' => '/^([!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1})$/'],
+            ['ie', 'match', 'pattern' => '/^(ISENTO|[0-9]{0,14})$/'],
+            //['endcep', 'match', 'pattern' => '/^([0-9]{8})$/'],
+            ['cnpj', ClienteValidator::className(),
+                'when' => function ($model) {
+                    return $model->isNewRecord;
+                }
+            ],
+                //['tabelas', 'required', 'when' => function ($model) {
+                //	return $model->dono == 'asdfasdfsdaf';
+                //}, 'whenClient' => "function (attribute, value) {
+                //	return $('#dono').val() == 'asdfasdfsdaf';
+                //}"],
+                //['tabelas', CountryValidator::className()],
+                //['telefones', 'match', 'pattern' => '/^([(]?[0-9]{2}[)]?[0-9]{4,5}[-]?[0-9]{4,5})$/'],
+                //['emails', 'email'],
         ];
     }
-    
-    public function retornaCliente($cnpj)
-    {
-    	$query = self::find()
-    	->where(['dono' => Yii::$app->user->identity['cnpj']])
-    	->andWhere(['cnpj' => $cnpj])
-    	->one();
-    	
-    	return $query;
-    	
+
+    public function retornaCliente($cnpj) {
+        $query = self::find()
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->andWhere(['cnpj' => $cnpj])
+                ->one();
+
+        return $query;
     }
 
-    
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'cridt' => 'Data de Criação',
@@ -117,51 +111,65 @@ class Clientes extends ActiveRecord
             'status' => 'Status',
         ];
     }
-    
+
+    public function Tabelas($cnpj) {
+        $tabelas = self::find()
+        ->select('tabelas')
+        ->where([
+        'cnpj' => $cnpj
+        ])
+        ->asArray()
+        ->one();
+        
+        //$array = explode('|', $tabelas['tabelas']);
+        $array = array_unique(preg_split('/\|/', $tabelas['tabelas'], -1, PREG_SPLIT_NO_EMPTY));
+        
+        return $array;
+    }
+
     /**
      * Função para retornar strings para as GRIDS
      * @param string $tipo
      * @return string
      */
-    public function stringDataGrid($tipo = 'telefone')
-    {
-    	// Endereço Completo
-    	$Endcompleto = $this->endrua . ', ' . $this->endnro . ', ' . $this->endbairro .
-    	' - ' . $this->endcid . ' / ' . $this-> enduf . "  CEP: " . $this->endcep;
-		
-    	// Retorna o Primeiro telefone informado
-    	$separatel = explode('|', $this->telefones);
-    	$telefone = ($separatel[0]=='') ? '---' : $separatel[0];
-    	
-    	// Separa os Dados por contato
-    	$telefones = explode('|', $this->telefones);
-    	$responsaveis = explode('|', $this->responsaveis);
-    	$emails = explode('|', $this->emails);
-    	
-    	$i = 0;
-    	$contatoLinha = '';
-    	foreach ($responsaveis as $responsavel) {
-    		if($responsavel!=''){
-    			$contatoLinha .= $responsavel . ' => ' . $telefones[$i] . ' => ' . $emails[$i] . " \n\n "; 
-    		}
-    		$i++;
-    	}
-    	
-    	$contato = ($contatoLinha!='') ? $contatoLinha : 'Nenhum contato informado.'; 
-    	
-    	switch ($tipo){
-    		case 'telefone':
-    			return $telefone;
-    			break;
-    		case 'endereco':
-    			return $Endcompleto;
-    			break;
-    		case 'contato':
-    			return $contato;
-    			break;
-    		default:
-    			return $telefone;
-    	}
-    	
+    public function stringDataGrid($tipo = 'telefone') {
+        // Endereço Completo
+        $Endcompleto = $this->endrua . ', ' . $this->endnro . ', ' . $this->endbairro .
+                ' - ' . $this->endcid . ' / ' . $this->enduf . "  CEP: " . $this->endcep;
+
+        // Retorna o Primeiro telefone informado
+        $separatel = explode('|', $this->telefones);
+        $telefone = ($separatel[0] == '') ? '---' : $separatel[0];
+
+        // Separa os Dados por contato
+        $telefones = explode('|', $this->telefones);
+        $responsaveis = explode('|', $this->responsaveis);
+        $emails = explode('|', $this->emails);
+
+        $i = 0;
+        $contatoLinha = '';
+        foreach ($responsaveis as $responsavel) {
+            if ($responsavel != '') {
+                $contatoLinha .= $responsavel . ' => ' . $telefones[$i] . ' => ' . $emails[$i] . " \n\n ";
+            }
+            $i++;
+        }
+
+        $contato = ($contatoLinha != '') ? $contatoLinha : 'Nenhum contato informado.';
+
+        switch ($tipo) {
+            case 'telefone':
+                return $telefone;
+                break;
+            case 'endereco':
+                return $Endcompleto;
+                break;
+            case 'contato':
+                return $contato;
+                break;
+            default:
+                return $telefone;
+        }
     }
+
 }

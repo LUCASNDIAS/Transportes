@@ -145,8 +145,8 @@ class Minutas extends \yii\db\ActiveRecord
     		$this->status = $status;
     		
     		// Transforma as datas de entrega e coleta
-    		//$this->entregadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->entregadata));
-    		//$this->coletadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->coletadata));
+    		$this->entregadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->entregadata));
+    		$this->coletadata = ($this->coletadata == '') ? null : $basicos->formataData('db',($this->coletadata));
     		
     		// Cálculo do FRETE
     		$arrayCalculo = [

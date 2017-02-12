@@ -15,10 +15,10 @@ use backend\commands\Basicos;
 /* @var $form yii\widgets\ActiveForm */
 
 // Variável Temporária para modelo de tabelas do cliente!
-$tabela = array(
-		'1' => 'TABELA 01',
-		'2' => 'TABELA 02'
-);
+//$tabela = array(
+//    '1' => 'TABELA 01',
+//    '2' => 'TABELA 02'
+//);
 
 // Asset
 MinutasAsset::register($this);
@@ -28,8 +28,8 @@ $basico = new Basicos();
 
 // Datas
 if ( !$model->isNewRecord ) {
-	$model->coletadata = ($model->coletadata == null) ? '' : $basico->formataData('db',$model->coletadata);
-	$model->entregadata = ($model->entregadata == null) ? '' : $basico->formataData('db',$model->entregadata);
+	$model->coletadata = ($model->coletadata == '0000-00-00') ? '' : $basico->formataData('ver',$model->coletadata);
+	$model->entregadata = ($model->entregadata == '0000-00-00') ? '' : $basico->formataData('ver',$model->entregadata);
 }
 
 //Busca de Clientes ------ PASSAR PARA O MODEL E TROCAR SOURCE -------
@@ -285,7 +285,7 @@ $data = Clientes::find()
 			
 				<table class="table table-hover">
 		            <tr>
-		            	<td><?= $form->field($model, 'tabela')->dropDownList($tabela,['prompt' => '-- Selecione --']) ?></td>
+                                <td><?= $form->field($model, 'tabela')->dropDownList(($model->isNewRecord ? [] : $tabela),['id' => 'tabelaAjax','prompt' => '-- Selecione --']) ?></td>
 		            	<td><?= $form->field($model, 'taxaextra')->textInput(['maxlength' => true, 'class' => 'form-control dinheiro']) ?></td>
 		                <td><?= $form->field($model, 'desconto')->textInput(['maxlength' => true, 'class' => 'form-control dinheiro']) ?></td>
 		            </tr>
@@ -336,7 +336,7 @@ $data = Clientes::find()
 		            </tr>
 		     </table>
 		     
-		     <div class="hided">
+		     <div class="hide">
 				<table class="table table-hover">
 		            <tr>
 		                <td>Notas - Campos Reais</td>

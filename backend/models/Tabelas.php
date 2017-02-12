@@ -26,21 +26,19 @@ use yii\db\Expression;
  * @property string $pesominimo
  * @property string $excedente
  */
-class Tabelas extends \yii\db\ActiveRecord
-{
+class Tabelas extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'tabelas';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['cridt', 'criusu', 'dono', 'nome', 'descricao', 'valorminimo', 'pesominimo', 'excedente'], 'required'],
             [['cridt'], 'safe'],
@@ -53,8 +51,7 @@ class Tabelas extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'cridt' => Yii::t('app', 'Data de criação'),
@@ -74,56 +71,73 @@ class Tabelas extends \yii\db\ActiveRecord
             'excedente' => Yii::t('app', 'Excedente (R$)'),
         ];
     }
-    
+
     /**
      * listarNomes
      * Retorna array com nome e id da tabela para selecionar nos clientes
      * @return Ambigous <multitype:, multitype:NULL >
      */
-    public function listarNomes(){
-    	//if ($termo != '') {
-    		$pesquisa = self::find()
-    		->select([new \yii\db\Expression("CONCAT( `id`,' | ',`nome`) as nome")])
-    		->asArray()
-    		->all();
-    		
-    		$value_tabelas = ArrayHelper::getColumn($pesquisa, 'nome', false);
-    		
-    		return $value_tabelas;
-    	//}
+    public function listarNomes() {
+        //if ($termo != '') {
+        $pesquisa = self::find()
+                ->select([new \yii\db\Expression("CONCAT( `id`,' | ',`nome`) as nome")])
+                ->asArray()
+                ->all();
+
+        $value_tabelas = ArrayHelper::getColumn($pesquisa, 'nome', false);
+
+        return $value_tabelas;
+        //}
     }
-    
-    public function testeAjax()
-    {
-    	$pesquisa = self::find()
-    	->select(['id', 'nome'])
-    	->asArray()
-    	->all();
-    	
-    	return $pesquisa;
+
+    public function listarTabelas($idTab, $json = true) {
+        $pesquisa = self::find()
+                ->select([
+                    'id' => 'id',
+                    'nome' => 'nome'
+                ])
+                ->where([
+                    'in', 'id', $idTab
+                ])
+                ->asArray()
+                ->all();
+
+        if ($json) {
+            // retorna o Json
+            Yii::$app->response->format = 'json';
+            return $pesquisa;            
+        } else {
+            $array = ArrayHelper::map($pesquisa, 'id', 'nome');
+            return $array;
+        }
     }
-    
-    
-    public function nomeTabelas($tabelasBD)
-    {
-    	if (!empty($tabelasBD)){
-    		// Busca os dados das tabelas e retorna um array
-    		$idNomes = self::find()
-    		->select([new \yii\db\Expression("CONCAT( `id`,' | ',`nome`) as nome")])
-    		->where(['in','id', $tabelasBD])
-    		->asArray()
-    		->all();
-    		
-    		$value_tabelas = ArrayHelper::getColumn($idNomes, 'nome', false);
-    		
-    		return $value_tabelas;
-    	}
+
+    public function testeAjax() {
+        $pesquisa = self::find()
+                ->select(['id', 'nome'])
+                ->asArray()
+                ->all();
+
+        return $pesquisa;
     }
-    
-    public function nomeTabela($id)
-    {
-    	return self::findOne($id);
+
+    public function nomeTabelas($tabelasBD) {
+        if (!empty($tabelasBD)) {
+            // Busca os dados das tabelas e retorna um array
+            $idNomes = self::find()
+                    ->select([new \yii\db\Expression("CONCAT( `id`,' | ',`nome`) as nome")])
+                    ->where(['in', 'id', $tabelasBD])
+                    ->asArray()
+                    ->all();
+
+            $value_tabelas = ArrayHelper::getColumn($idNomes, 'nome', false);
+
+            return $value_tabelas;
+        }
     }
-    
-    
+
+    public function nomeTabela($id) {
+        return self::findOne($id);
+    }
+
 }

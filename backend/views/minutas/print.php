@@ -1,10 +1,12 @@
 <?php
 use backend\assets\MinutasPrintAsset;
 use yii\helpers\Html;
+use backend\commands\Basicos;
 
 MinutasPrintAsset::register ( $this );
 
 $this->title = Yii::t('app', 'Minutas');
+$basicos = new Basicos();
 
 ?>
 
@@ -170,7 +172,7 @@ $this->title = Yii::t('app', 'Minutas');
 			<div class="margintop">
 				<span class="negrito">Data:</span> <span id="coldt">
 				<?php
-				$coletadata = ($model->baixacoleta) ? $model->coletadata : '';
+				$coletadata = ($model->baixacoleta) ? $basicos->formataData('var',$model->coletadata) : '';
 				echo $coletadata;
 				?>
 			</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
@@ -200,7 +202,7 @@ $this->title = Yii::t('app', 'Minutas');
 			<div class="margintop">
 				<span class="negrito">Data:</span> <span id="entdt">
 			<?php
-			$entregadata = ($model->baixaentrega) ? $model->entregadata : '';
+			$entregadata = ($model->baixaentrega) ? $basicos->formataData('var',$model->entregadata) : '';
 			echo $entregadata;
 			?>
 			</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span

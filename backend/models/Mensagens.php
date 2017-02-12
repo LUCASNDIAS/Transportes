@@ -14,24 +14,21 @@ use Yii;
  * @property string $mensagem
  * @property string $status
  */
-class Mensagens extends \yii\db\ActiveRecord
-{
-	
-	public $para;
-	
+class Mensagens extends \yii\db\ActiveRecord {
+
+    public $para;
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'mensagens';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['data', 'para', 'titulo', 'mensagem', 'status'], 'required'],
             [['data'], 'safe'],
@@ -44,8 +41,7 @@ class Mensagens extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'data' => 'Data',
@@ -55,59 +51,54 @@ class Mensagens extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
-    
-    public function __construct()
-    {
-    	$this->para = Yii::$app->user->identity['cnpj'];
+
+    public function __construct() {
+        $this->para = Yii::$app->user->identity['cnpj'];
     }
-    
-    
+
     /**
      * Verifica novas mensagens para o usuário
      * e retorna a quantidade apenas.
      * 
      * @return int quantidade de mensagens.
      */
-    public function verificaNovas()
-    {    	
-    	$novas = self::find()
-    	->where(['status' => 0])
-    	->andWhere(['>', 'databaixa', date('Y-m-d')])
-    	->andWhere(['in', 'para', [$this->para,'TODOS']])
-    	->count();
+    public function verificaNovas() {
+        $novas = self::find()
+                ->where(['status' => 0])
+                ->andWhere(['>', 'databaixa', date('Y-m-d')])
+                ->andWhere(['in', 'para', [$this->para, 'TODOS']])
+                ->count();
 
-    	return $novas;
+        return $novas;
     }
-    
-    public function listarNovas()
-    {
-		$novas = self::find()
-		->where(['status' => 0])
-    	->andWhere(['>', 'databaixa', date('Y-m-d')])
-    	->andWhere(['in', 'para', [$this->para,'TODOS']])
-    	->limit(self::verificaNovas())
-    	->all();
-		
-		//echo '<pre>';
-		//print_r($novas);
-		
-		$retorno = array();
-		
-		foreach ($novas as $listar=>$nova){
-			$retorno[] = [
-					'id' => $nova['id'],
-					'data' => $nova['data'],
-					'para' => $nova['para'],
-					'titulo' => $nova['titulo'],
-					'mensagem' => $nova['mensagem'],
-					'status' => $nova['status'],
-					'dataleitura' => $nova['dataleitura'],
-					'databaixa' => $nova['databaixa']					
-			];
-		}
-		Yii::$app->response->format = 'json';
-		return $retorno;
+
+    public function listarNovas() {
+        $novas = self::find()
+                ->where(['status' => 0])
+                ->andWhere(['>', 'databaixa', date('Y-m-d')])
+                ->andWhere(['in', 'para', [$this->para, 'TODOS']])
+                ->limit(self::verificaNovas())
+                ->all();
+
+        //echo '<pre>';
+        //print_r($novas);
+
+        $retorno = array();
+
+        foreach ($novas as $listar => $nova) {
+            $retorno[] = [
+                'id' => $nova['id'],
+                'data' => $nova['data'],
+                'para' => $nova['para'],
+                'titulo' => $nova['titulo'],
+                'mensagem' => $nova['mensagem'],
+                'status' => $nova['status'],
+                'dataleitura' => $nova['dataleitura'],
+                'databaixa' => $nova['databaixa']
+            ];
+        }
+        Yii::$app->response->format = 'json';
+        return $retorno;
     }
-    
-    
+
 }

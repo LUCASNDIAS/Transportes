@@ -31,3 +31,13 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+/backend/web/pdfs/
+/vagrant/
+/tests/
+/frontend/
+/environments/
+/console/
+/common/
+/backend/web/assets/
+/backend/web/backend/
+/backend/runtime/
