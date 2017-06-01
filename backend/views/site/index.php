@@ -5,8 +5,6 @@ use yii\db\Query;
 /* @var $this yii\web\View */
 
 $this->title = 'LND Sistemas';
-// var_dump(Yii::$app->user->identity->attributes['nome']);
-
 ?>
 <div class="site-index">
 
@@ -29,8 +27,8 @@ entre em contato pelo e-mail: <?= Yii::$app->params['supportEmail']; ?> ou pelo 
                 <p>Emita e Conhecimentos de Transporte Eletr&ocirc;nico.</p>
 
                 <p>
-                <?= Html::a('Buscar', '@web/cte/listar', array('class'=>'btn btn-default'));?>
-                <?= Html::a('Emitir', '@web/cte/novo', array('class'=>'btn btn-default'));?>
+                <?= Html::a('Buscar', '@web/cte', array('class'=>'btn btn-default'));?>
+                <?= Html::a('Emitir', '@web/cte/create', array('class'=>'btn btn-default'));?>
                 </p>
             </div>
             <div class="col-lg-4" align="center">
@@ -49,8 +47,8 @@ entre em contato pelo e-mail: <?= Yii::$app->params['supportEmail']; ?> ou pelo 
                 <p>Gere faturas e emita boletos.</p>
 
                 <p>
-                <?= Html::a('Minuta', '@web/fatura/novo/minuta', array('class'=>'btn btn-default'));?>
-                <?= Html::a('CT-e', '@web/minuta/novo/cte', array('class'=>'btn btn-default'));?>
+                <?= Html::a('Minuta', '@web/fatura/create/minuta', array('class'=>'btn btn-default'));?>
+                <?= Html::a('CT-e', '@web/minuta/create/cte', array('class'=>'btn btn-default'));?>
                 </p>
             </div>
         </div>

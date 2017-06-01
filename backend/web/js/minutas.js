@@ -203,7 +203,7 @@ $(document).ready(function () {
                     .done(function (data) {
 
                         var lista = '<option value=""> -- Selecione -- </option>';
-                        
+
                         if (data == '') {
                             lista += '<option value=""> Cliente sem tabelas cadastradas </option>';
                         }
@@ -215,7 +215,7 @@ $(document).ready(function () {
                         });
 
                         $("#tabelaAjax").html(lista);
-                        
+
                     });
 
         } else {
@@ -302,9 +302,84 @@ $(document).ready(function () {
     $("input, select").on('change', function () {
         calculaFrete();
     });
-    
+
     // Calcula o Frete automaticamente ao acessar a página
     calculaFrete();
+
+    // 
+    $("#aguarde").hide();
+
+    // Envia Email
+    $("#enviar-email").on('click', function () {
+
+        $("#aguarde").show();
+        var formulario = $('form[name="form-envio"]');
+        var remetente = $('#remetente').val();
+        var destinatario = $('#destinatario').val();
+        var consignatario = $('#consignatario').val();
+        var outros = $('#outros').val();
+
+        if (remetente == '' && destinatario == '' && consignatario == '' && outros == '') {
+            alert('Informe pelo menos um endereço de email para o envio');
+        } else {
+
+            var emails = '';
+
+            if (remetente != '') {
+                emails += remetente;
+            }
+
+            if (destinatario != '') {
+
+                if (emails == '') {
+                    emails += destinatario;
+                } else {
+                    emails += ',' + destinatario;
+                }
+            }
+
+            if (consignatario != '') {
+
+                if (emails == '') {
+                    emails += consignatario;
+                } else {
+                    emails += ',' + consignatario;
+                }
+            }
+
+            if (outros != '') {
+
+                if (emails == '') {
+                    emails += outros;
+                } else {
+                    emails += ',' + outros;
+                }
+            }
+
+            $.ajax({
+                url: "/Transportes/backend/web/minutas/send?id=" + formulario.attr('id'),
+                data: {
+                    'emails': emails
+                },
+                dataType: "json",
+                type: "GET"
+            }).done(function (data) {
+                $("#aguarde").hide();
+                // status msg class icone
+                $("#retornoEnvio").addClass(data.class);
+                $("#retornoEnvio i").addClass(data.icone);
+                $("#retornoEnvio h4").append(data.msg);
+            }).fail(function (jqXHR, textStatus) {
+                $("#aguarde").hide();
+                $("#retornoEnvio").addClass('alert alert-danger');
+                $("#retornoEnvio i").addClass('icon fa fa-warning');
+                $("#retornoEnvio h4").append('Houve um erro. Tente novamente mais tarde');
+            });
+            ;
+
+
+        }
+    });
 
     // Submit
     /*

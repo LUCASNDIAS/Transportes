@@ -89,6 +89,13 @@ class AjaxController extends Controller {
         return Json::encode($listagem);
     }
 
+    public function actionTabelascomp() {
+        $tabelas = new Tabelas();
+        $listagem = $tabelas->autoComplete();
+
+        return Json::encode($listagem);
+    }
+
     public function actionTabcli($cnpj) {
         $cliente = new \backend\models\Clientes;
         $tabcli = $cliente->Tabelas($cnpj);
@@ -97,6 +104,28 @@ class AjaxController extends Controller {
         $tab = $tabelas->listarTabelas($tabcli);
 
         return $tab;
+    }
+    
+    public function actionCidades($envolvidos) {
+        
+        // Array com envolvidos
+        $clientes = preg_split('/,/', $envolvidos, -1, PREG_SPLIT_NO_EMPTY);
+        
+        $cliente = new \backend\models\Clientes;
+        $munCli = $cliente->Cidades($clientes);
+        
+        $ibge = new \backend\models\Municipios;
+        $municipio = $ibge->listarNomes($munCli);
+      
+        return $municipio;
+    }
+    
+    public function actionCfop($interestadual) {
+        
+        $cfop = new \backend\models\Cfop;
+        $lista = $cfop->listarNomes($interestadual);
+              
+        return $lista;
     }
 
     public function actionTeste() {

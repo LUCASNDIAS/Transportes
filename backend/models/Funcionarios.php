@@ -61,7 +61,7 @@ class Funcionarios extends \yii\db\ActiveRecord
             [['tel1', 'tel2'], 'string', 'max' => 15],
             [['radio', 'cnhnum', 'pis'], 'string', 'max' => 30],
             [['cnhcat'], 'string', 'max' => 5],
-        	[['img'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+        	[['img'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
         	[['cpf'], 'string', 'max'=>11],
         	['cpf', 'match', 'pattern' => '/^([0-9]{11})$/'],
         	[['email'], 'email', 'skipOnEmpty' => true],

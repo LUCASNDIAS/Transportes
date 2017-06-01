@@ -57,7 +57,7 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verClientes'),
                         'items' => [
-                            ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/clientes/create'], 'visible' => Yii::$app->user->can('addClientes')],
+                            ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/clientes/default/create'], 'visible' => Yii::$app->user->can('addClientes')],
                             ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/clientes'],'visible' => Yii::$app->user->can('verClientes')],
                         ],
                     ],

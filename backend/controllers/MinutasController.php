@@ -9,9 +9,9 @@ use backend\models\MinutasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\models\Calculos;
 use backend\models\Clientes;
 use backend\models\Tabelas;
+use backend\models\EnviaEmail;
 
 /**
  * MinutasController implements the CRUD actions for Minutas model.
@@ -121,7 +121,7 @@ class MinutasController extends Controller {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            
+
             // Tabelas do pagador
             $cnpj = $model->pagadorcnpj;
 
@@ -132,7 +132,6 @@ class MinutasController extends Controller {
             $tab = $tabelas->listarTabelas($tabcli, false);
 
             //var_dump($tab);
-
             // var_dump($model->getErrors());
             return $this->render('update', [
                         'model' => $model,
@@ -158,7 +157,7 @@ class MinutasController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionPrint($id) {
+    public function actionPrint($id, $retorno = true) {
         // Modelo da Minuta
         $model = $this->findModel($id);
 
@@ -194,25 +193,79 @@ class MinutasController extends Controller {
         ]);
 
         // Local para se salvar as Minutas em PDF
-        $path = 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $id . '.pdf';
+        $path = 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $model->numero . '.pdf';
 
         Yii::$app->html2pdf
                 ->convert($conteudoPDF)
                 ->saveAs($path);
 
-        // Set up PDF headers
-        header('Content-type: application/pdf');
-        header('Content-Disposition: inline; filename="' . '/LNDSistemas-M' . $id . '.pdf' . '"');
-        header('Content-Transfer-Encoding: binary');
-        header('Content-Length: ' . filesize($path));
-        header('Accept-Ranges: bytes');
+        if (!$retorno) {
+            return $path;
+        }
 
         if (is_file($path)) {
+
+            // Set up PDF headers
+            header('Content-type: application/pdf');
+            header('Content-Disposition: inline; filename="' . '/LNDSistemas-M' . $model->numero . '.pdf' . '"');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Length: ' . filesize($path));
+            header('Accept-Ranges: bytes');
+
             // Retorna arquivo PDF
             return readfile($path);
         } else {
             // Retorna arquivo PHP
             return $conteudoPDF;
+        }
+    }
+
+    public function actionSend($id) {
+
+        // Modelo da Minuta
+        $model = $this->findModel($id);
+
+        if (!\Yii::$app->request->isAjax) {
+
+            // Email dos envolvidos
+            $envolvidos = new Clientes();
+            $remetente = $envolvidos->getEmail($model->remetente);
+            $destinatario = $envolvidos->getEmail($model->destinatario);
+            $consignatario = $envolvidos->getEmail($model->consignatario);
+
+            return $this->render('send', [
+                        'model' => $model,
+                        'remetente' => $remetente,
+                        'destinatario' => $destinatario,
+                        'consignatario' => $consignatario
+            ]);
+        } else {
+
+            // Cria o arquivo PDF para anexo
+            $anexoPDF = $this->actionPrint($id, false);
+
+            // Verifica se o arquivo existe
+            if (!is_file($anexoPDF)) {
+                return 'Anexo não encontrado!';
+            } else {
+
+                // Parametros passados por POST (ajax)
+                $EmailDestinatario = explode(',', Yii::$app->request->get('emails'));
+                
+                // Título do Email
+                $titulo = 'LND Sistemas | ' . \Yii::$app->user->identity['empresa'] . ' - Minuta ' . $model->numero;
+
+                $dados['remetente'] = $model->remetente;
+                $dados['destinatario'] = $model->destinatario;
+                $dados['consignatario'] = $model->consignatario;
+                $dados['numero'] = $model->numero;
+                
+                $EnviaEmail = new EnviaEmail();
+                $Envia = $EnviaEmail->Enviar($EmailDestinatario, $titulo, $anexoPDF, $dados);
+                
+                return $Envia;
+                
+            }
         }
     }
 

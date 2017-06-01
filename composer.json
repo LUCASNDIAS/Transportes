@@ -23,7 +23,10 @@
         "fedemotta/yii2-widget-datatables": "*",
         "2amigos/yii2-multi-select-widget": "*",
         "kartik-v/yii2-mpdf": "*",
-        "yii2tech/html2pdf": "^1.0"
+        "yii2tech/html2pdf": "^1.0",
+        "2amigos/yii2-ckeditor-widget": "^2.0",
+        "nfephp-org/sped-cte": "^1.2",
+        "wbraganca/yii2-dynamicform": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

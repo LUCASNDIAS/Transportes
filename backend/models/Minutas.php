@@ -69,27 +69,25 @@ use backend\models\Calculos;
  * @property string $tabela
  * @property string $observacoes
  */
-class Minutas extends \yii\db\ActiveRecord
-{
+class Minutas extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'minutas';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['cridt', 'criusu', 'dono', 'tipofrete', 'pagadorenvolvido',
-              'formapagamento', 'remetente', 'destinatario','notasnumero', 
-              'notasvalor', 'notaspeso', 'notasvolumes', 'notasdimensoes',
-              'notasaltura', 'notaslargura', 'notascomprimento', 'tabela', 
-              'pesoreal', 'pesocubado', 'pagadorcnpj'], 'required'],
+            'formapagamento', 'remetente', 'destinatario', 'notasnumero',
+            'notasvalor', 'notaspeso', 'notasvolumes', 'notasdimensoes',
+            'notasaltura', 'notaslargura', 'notascomprimento', 'tabela',
+            'pesoreal', 'pesocubado', 'pagadorcnpj'], 'required'],
             [['cridt', 'coletadata', 'entregadata', 'pagamentodata'], 'safe'],
             [['baixamanifesto', 'baixacoleta', 'baixaentrega', 'baixafatura', 'baixapagamento'], 'integer'],
             [['criusu', 'naturezacarga', 'status', 'coletanome', 'entreganome'], 'string', 'max' => 50],
@@ -100,130 +98,124 @@ class Minutas extends \yii\db\ActiveRecord
             [['coletahora', 'entregahora'], 'string', 'max' => 5],
             [['pagamentorecibo'], 'string', 'max' => 40],
             [['observacoes'], 'string', 'max' => 300],
-        	[['entregadata', 'coletadata'], 'match', 'pattern' => '/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/'],
-        	[['coletahora', 'entregahora'], 'match', 'pattern' => '/^([0-1][0-9]|[2][0-3]):[0-5][0-9]$/'],
+            [['entregadata', 'coletadata'], 'match', 'pattern' => '/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/'],
+            [['coletahora', 'entregahora'], 'match', 'pattern' => '/^([0-1][0-9]|[2][0-3]):[0-5][0-9]$/'],
         ];
     }
-    
-    public function beforeSave($insert)
-    {
-    	$basicos = new Basicos();
-    	 
-    	if (parent::beforeSave($insert)) {
-    		
-    		if ($this->isNewRecord) {
-    			// Número da minuta
-    			$ultima = self::find()
-    			->select(['numero'])
-    			->where([
-    					'dono' => \Yii::$app->user->identity['cnpj']
-    			])
-    			->orderBy('numero DESC')
-    			->one();
-    				
-    			$this->numero = ($ultima === null) ? 1 : $ultima->numero + 1;
-    		}			
-    		
-    		// Baixa Coleta / Entrega
-    		$baixacoleta = ($this->coletadata == '') ? 0 : 1;
-    		$baixaentrega = ($this->entregadata == '') ? 0 : 1;
 
-    		$this->baixacoleta = $baixacoleta;
-    		$this->baixaentrega = $baixaentrega;
-    		
-    		// Status da Emissão
-    		if ( $baixacoleta == 0 ) {
-    			$status = 'EMITIDA';
-    		} else {
-    			
-    			$status = 'COLETADA';
-    			
-    			if ( $baixaentrega == 1 ) {
-    				$status = 'ENTREGUE';
-    			}
-    		}
-    		$this->status = $status;
-    		
-    		// Transforma as datas de entrega e coleta
-    		$this->entregadata = ($this->entregadata == '') ? null : $basicos->formataData('db',($this->entregadata));
-    		$this->coletadata = ($this->coletadata == '') ? null : $basicos->formataData('db',($this->coletadata));
-    		
-    		// Cálculo do FRETE
-    		$arrayCalculo = [
-    				'tabela' => $this->tabela,
-    				'pesoreal' => $this->pesoreal,
-    				'pesocubado' => $this->pesocubado,
-    				'taxaextra' => $this->taxaextra,
-    				'desconto' => $this->desconto,
-    				'notasvalor' => $this->notasvalor,
-    				'notasvolumes' => $this->notasvolumes
-    		];
-    		
-    		// Modelo de calculo
-    		$calculos = new Calculos();
-    		$calculaFrete = $calculos->calculaFrete('db',$arrayCalculo);
-    		
-    		/*
-    		$this->taxacoleta = '';
-    		$this->taxaentrega = '';
-    		$this->taxaseguro = '';
-    		$this->baixamanifesto = 0;
-    		$this->manifesto = '';
-    		$this->baixafatura = 0;
-    		$this->fatura = '';
-    		$this->baixapagamento = 0;
-    		$this->pagamentorecibo = '';
-    		$this->pagamentodata = null;
-    		*/
-    		
-    		// Se não deu erro nos calculos, define as variáveis da minuta!
-    		$this->fretevalor = (isset($calculaFrete['valorminimo'])) ? $calculaFrete['valorminimo'] : '0.00';
-    		$this->fretepeso = (isset($calculaFrete['valorexcedente'])) ? $calculaFrete['valorexcedente'] : '0.00';
-    		$this->taxafretevalor = (isset($calculaFrete['tabela_fretevalor'])) ? $calculaFrete['tabela_fretevalor'] : '0.00';
-    		$this->taxadespacho = (isset($calculaFrete['tabela_despacho'])) ? $calculaFrete['tabela_despacho'] : '0.00';
-    		$this->taxaseccat = (isset($calculaFrete['tabela_seccat'])) ? $calculaFrete['tabela_seccat'] : '0.00';
-    		$this->taxaitr = (isset($calculaFrete['tabela_itr'])) ? $calculaFrete['tabela_itr'] : '0.00';
-    		$this->taxagris = (isset($calculaFrete['tabela_gris'])) ? $calculaFrete['tabela_gris'] : '0.00';
-    		$this->taxapedagio = (isset($calculaFrete['tabela_pedagio'])) ? $calculaFrete['tabela_pedagio'] : '0.00';
-    		$this->taxaoutros = (isset($calculaFrete['tabela_outros'])) ? $calculaFrete['tabela_outros'] : '0.00';
-    		$this->fretetotal = (isset($calculaFrete['fretetotal'])) ? $calculaFrete['fretetotal'] : '0.00';
-    		
-    		
-    		// Dimensões da carga
-   			// As dimensões estão no formato string => |alt x larg x comp|alt x larg x comp
-    		//$altura = array();
-   			//$largura = array();
-   			//$comprimento = array();
-   			
-    		//$dimensoes = explode('|',$this->notasdimensoes);
-    		//foreach ( $dimensoes as $dimensao ){
-    		//	if($dimensao != ''){
-	    	//		$divisao = explode('x', $dimensao);
-	    	//		$altura[] = $divisao[0];
-	    	//		$largura[] = $divisao[1];
-	    	//		$comprimento[] = $divisao[2];
-	    	//		
-    		//	}
-    		//}
-    		
-    		//$this->notasaltura = '|' . implode('|', $altura);
-    		//$this->notaslargura = '|' . implode('|', $largura);
-    		//$this->notascomprimento = '|' . implode('|', $comprimento);
-    		
-    		return true;
-    		
-    	} else {
-    		
-    		return false;
-    		
-    	}
+    public function beforeSave($insert) {
+        $basicos = new Basicos();
+
+        if (parent::beforeSave($insert)) {
+
+            if ($this->isNewRecord) {
+                // Número da minuta
+                $ultima = self::find()
+                        ->select(['numero'])
+                        ->where([
+                            'dono' => \Yii::$app->user->identity['cnpj']
+                        ])
+                        ->orderBy('numero DESC')
+                        ->one();
+
+                $this->numero = ($ultima === null) ? 1 : $ultima->numero + 1;
+            }
+
+            // Baixa Coleta / Entrega
+            $baixacoleta = ($this->coletadata == '') ? 0 : 1;
+            $baixaentrega = ($this->entregadata == '') ? 0 : 1;
+
+            $this->baixacoleta = $baixacoleta;
+            $this->baixaentrega = $baixaentrega;
+
+            // Status da Emissão
+            if ($baixacoleta == 0) {
+                $status = 'EMITIDA';
+            } else {
+
+                $status = 'COLETADA';
+
+                if ($baixaentrega == 1) {
+                    $status = 'ENTREGUE';
+                }
+            }
+            $this->status = $status;
+
+            // Transforma as datas de entrega e coleta
+            $this->entregadata = ($this->entregadata == '') ? null : $basicos->formataData('db', ($this->entregadata));
+            $this->coletadata = ($this->coletadata == '') ? null : $basicos->formataData('db', ($this->coletadata));
+
+            // Cálculo do FRETE
+            $arrayCalculo = [
+                'tabela' => $this->tabela,
+                'pesoreal' => $this->pesoreal,
+                'pesocubado' => $this->pesocubado,
+                'taxaextra' => $this->taxaextra,
+                'desconto' => $this->desconto,
+                'notasvalor' => $this->notasvalor,
+                'notasvolumes' => $this->notasvolumes
+            ];
+
+            // Modelo de calculo
+            $calculos = new Calculos();
+            $calculaFrete = $calculos->calculaFrete('db', $arrayCalculo);
+
+            /*
+              $this->taxacoleta = '';
+              $this->taxaentrega = '';
+              $this->taxaseguro = '';
+              $this->baixamanifesto = 0;
+              $this->manifesto = '';
+              $this->baixafatura = 0;
+              $this->fatura = '';
+              $this->baixapagamento = 0;
+              $this->pagamentorecibo = '';
+              $this->pagamentodata = null;
+             */
+
+            // Se não deu erro nos calculos, define as variáveis da minuta!
+            $this->fretevalor = (isset($calculaFrete['valorminimo'])) ? $calculaFrete['valorminimo'] : '0.00';
+            $this->fretepeso = (isset($calculaFrete['valorexcedente'])) ? $calculaFrete['valorexcedente'] : '0.00';
+            $this->taxafretevalor = (isset($calculaFrete['tabela_fretevalor'])) ? $calculaFrete['tabela_fretevalor'] : '0.00';
+            $this->taxadespacho = (isset($calculaFrete['tabela_despacho'])) ? $calculaFrete['tabela_despacho'] : '0.00';
+            $this->taxaseccat = (isset($calculaFrete['tabela_seccat'])) ? $calculaFrete['tabela_seccat'] : '0.00';
+            $this->taxaitr = (isset($calculaFrete['tabela_itr'])) ? $calculaFrete['tabela_itr'] : '0.00';
+            $this->taxagris = (isset($calculaFrete['tabela_gris'])) ? $calculaFrete['tabela_gris'] : '0.00';
+            $this->taxapedagio = (isset($calculaFrete['tabela_pedagio'])) ? $calculaFrete['tabela_pedagio'] : '0.00';
+            $this->taxaoutros = (isset($calculaFrete['tabela_outros'])) ? $calculaFrete['tabela_outros'] : '0.00';
+            $this->fretetotal = (isset($calculaFrete['fretetotal'])) ? $calculaFrete['fretetotal'] : '0.00';
+
+
+            // Dimensões da carga
+            // As dimensões estão no formato string => |alt x larg x comp|alt x larg x comp
+            //$altura = array();
+            //$largura = array();
+            //$comprimento = array();
+            //$dimensoes = explode('|',$this->notasdimensoes);
+            //foreach ( $dimensoes as $dimensao ){
+            //	if($dimensao != ''){
+            //		$divisao = explode('x', $dimensao);
+            //		$altura[] = $divisao[0];
+            //		$largura[] = $divisao[1];
+            //		$comprimento[] = $divisao[2];
+            //		
+            //	}
+            //}
+            //$this->notasaltura = '|' . implode('|', $altura);
+            //$this->notaslargura = '|' . implode('|', $largura);
+            //$this->notascomprimento = '|' . implode('|', $comprimento);
+
+            return true;
+        } else {
+
+            return false;
+        }
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'cridt' => Yii::t('app', 'Data de criação'),
@@ -242,9 +234,9 @@ class Minutas extends \yii\db\ActiveRecord
             'notasvalor' => Yii::t('app', 'Valor'),
             'notaspeso' => Yii::t('app', 'Peso'),
             'notasvolumes' => Yii::t('app', 'Volumes'),
-        	'notasaltura' => Yii::t('app', 'Altura'),
-        	'notaslargura' => Yii::t('app', 'Largura'),
-        	'notascomprimento' => Yii::t('app', 'Comprimento'),
+            'notasaltura' => Yii::t('app', 'Altura'),
+            'notaslargura' => Yii::t('app', 'Largura'),
+            'notascomprimento' => Yii::t('app', 'Comprimento'),
             'notasdimensoes' => Yii::t('app', 'Dimensões'),
             'pesoreal' => Yii::t('app', 'Peso real'),
             'pesocubado' => Yii::t('app', 'Peso cubado'),
@@ -286,33 +278,31 @@ class Minutas extends \yii\db\ActiveRecord
             'observacoes' => Yii::t('app', 'Observações'),
         ];
     }
-    
-    public function stringDataGrid($tipo = 'cliente', $parametros)
-    {
-    	if ($parametros['cnpj'] == '') {
-    		return '---';
-    	}
-    	
-    	$model = new Clientes();
-    	$cliente = $model->find()
-    	->select(['nome'])
-    	->where(['cnpj' => $parametros['cnpj']])
-    	->one();
-    	
-    	if ($cliente !== null) {
-    		return $cliente->nome;
-    	} else {
-    		return 'Erro na consulta';
-    	}
-    	
+
+    public function stringDataGrid($tipo = 'cliente', $parametros) {
+        if ($parametros['cnpj'] == '') {
+            return '---';
+        }
+
+        $model = new Clientes();
+        $cliente = $model->find()
+                ->select(['nome'])
+                ->where(['cnpj' => $parametros['cnpj']])
+                ->one();
+
+        if ($cliente !== null) {
+            return $cliente->nome;
+        } else {
+            return 'Erro na consulta';
+        }
     }
 
     /**
      * @inheritdoc
      * @return MinutasQuery the active query used by this AR class.
      */
-    public static function find()
-    {
+    public static function find() {
         return new MinutasQuery(get_called_class());
     }
+
 }

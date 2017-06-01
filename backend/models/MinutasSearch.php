@@ -117,6 +117,8 @@ class MinutasSearch extends Minutas
             ->andFilterWhere(['like', 'pagamentorecibo', $this->pagamentorecibo])
             ->andFilterWhere(['like', 'tabela', $this->tabela])
             ->andFilterWhere(['like', 'observacoes', $this->observacoes]);
+        
+        $query->orderBy('id DESC');
 
         return $dataProvider;
     }

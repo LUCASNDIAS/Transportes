@@ -140,4 +140,15 @@ class Tabelas extends \yii\db\ActiveRecord {
         return self::findOne($id);
     }
 
+    public function autoComplete() {
+
+        $data = self::find()
+                ->select([new \yii\db\Expression("nome as value, CONCAT( `nome`,' | ',`descricao`) as label, id")])
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->asArray()
+                ->all();
+
+        return $data;
+    }
+
 }

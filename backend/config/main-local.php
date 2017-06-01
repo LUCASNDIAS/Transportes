@@ -2,27 +2,38 @@
 
 // Cor do tema rotativa
 /*
-$cor = rand(1,3);
+  $cor = rand(1,3);
 
-switch ($cor)
-{
-	case 1:
-		$tema = 'skin-red';
-		break;
-	case 2:
-		$tema = 'skin-blue';
-		break;
-	case 3:
-		$tema = 'skin-purple';
-		break;
-	default:
-		$tema = 'skin-purple';
-} 
-*/
+  switch ($cor)
+  {
+  case 1:
+  $tema = 'skin-red';
+  break;
+  case 2:
+  $tema = 'skin-blue';
+  break;
+  case 3:
+  $tema = 'skin-purple';
+  break;
+  default:
+  $tema = 'skin-purple';
+  }
+ */
 
 $config = [
-	'language' => 'pt-BR',
-	'timezone' => 'America/Sao_Paulo',
+    'language' => 'pt-BR',
+    'timezone' => 'America/Sao_Paulo',
+    'modules' => [
+        'mdfe' => [
+            'class' => 'backend\modules\mdfe\Module',
+        ],
+        'funcionarios' => [
+            'class' => 'backend\modules\funcionarios\Module',
+        ],
+        'clientes' => [
+            'class' => 'backend\modules\clientes\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -33,37 +44,37 @@ $config = [
             'enableAutoLogin' => false,
         ],
         'urlManager' => [
-		    'class' => 'yii\web\UrlManager',
-		    'baseUrl' => '/Transportes/backend/web',
-		    'enablePrettyUrl' => true,
-		    'showScriptName' => false,
-		],
-		'urlManagerFrontend' => [
-		    'class' => 'yii\web\UrlManager',
-		    'baseUrl' => '/Transportes/frontend/web',
-		    'enablePrettyUrl' => true,
-		    'showScriptName' => false,
-		],
-    	'authManager' => [
-    		'class' => 'yii\rbac\DbManager',
-    	],
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '/Transportes/backend/web',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '/Transportes/frontend/web',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'assetManager' => [
             'bundles' => [
                 'dmstr\web\AdminLteAsset' => [
-                    'skin' => $tema ? $tema : 'skin-purple',
+                    'skin' => isset($tema) ? $tema : 'skin-purple',
                 ],
             ],
         ],
-    	'html2pdf' => [
-    		'class' => 'yii2tech\html2pdf\Manager',
-    		'viewPath' => '@app/views',
-    		'converter' => [
+        'html2pdf' => [
+            'class' => 'yii2tech\html2pdf\Manager',
+            'viewPath' => '@app/views',
+            'converter' => [
                 'class' => 'yii2tech\html2pdf\converters\Mpdf',
                 'defaultOptions' => [
                     'pageSize' => 'A4'
                 ],
             ]
-    	],
+        ],
     ],
 ];
 
