@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Cte;
 use backend\models\CteSearch;
+use backend\modules\clientes\models\Clientes;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,7 +66,7 @@ class CteController extends Controller
     {
         $model = new Cte();
         
-        $autocomplete = new \backend\models\Clientes;
+        $autocomplete = new Clientes;
         $data = $autocomplete->autoComplete();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

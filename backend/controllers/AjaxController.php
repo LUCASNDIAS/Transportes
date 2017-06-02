@@ -10,6 +10,7 @@ use backend\models\Mensagens;
 use backend\models\Tabelas;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
+use backend\modules\clientes\models\Clientes;
 use backend\models\Calculos;
 use backend\models\Minutas;
 
@@ -97,7 +98,7 @@ class AjaxController extends Controller {
     }
 
     public function actionTabcli($cnpj) {
-        $cliente = new \backend\models\Clientes;
+        $cliente = new Clientes();
         $tabcli = $cliente->Tabelas($cnpj);
 
         $tabelas = new Tabelas();
@@ -111,7 +112,7 @@ class AjaxController extends Controller {
         // Array com envolvidos
         $clientes = preg_split('/,/', $envolvidos, -1, PREG_SPLIT_NO_EMPTY);
         
-        $cliente = new \backend\models\Clientes;
+        $cliente = new Clientes();
         $munCli = $cliente->Cidades($clientes);
         
         $ibge = new \backend\models\Municipios;

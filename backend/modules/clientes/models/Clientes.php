@@ -173,4 +173,15 @@ class Clientes extends \yii\db\ActiveRecord
     {
         return new ClientesQuery(get_called_class());
     }
+
+    public function autoComplete() {
+
+        $data = self::find()
+                ->select([new \yii\db\Expression("`cnpj`, CONCAT( `nome`,' | ',`cnpj`) as label, id")])
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->asArray()
+                ->all();
+
+        return $data;
+    }
 }
