@@ -184,4 +184,29 @@ class Clientes extends \yii\db\ActiveRecord
 
         return $data;
     }
+
+    public function getCidades($clientes) {
+
+        $data = self::find()
+                ->select('enduf,endcid')
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->andWhere(['in','cnpj',$clientes])
+                ->asArray()
+                ->all();
+
+        return $data;
+    }
+
+    public function getIdClientes($cnpj) {
+
+        $data = self::find()
+                ->select('id')
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+//                ->where(['dono' => '11095658000140'])
+                ->andWhere(['cnpj' => $cnpj])
+                ->asArray()
+                ->one();
+
+        return $data;
+    }
 }

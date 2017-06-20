@@ -14,9 +14,11 @@ use backend\modules\clientes\models\Clientes;
 use backend\models\Calculos;
 use backend\models\Minutas;
 
-class AjaxController extends Controller {
+class AjaxController extends Controller
+{
 
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -47,7 +49,8 @@ class AjaxController extends Controller {
         ];
     }
 
-    public function actions() {
+    public function actions()
+    {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction'
@@ -59,7 +62,8 @@ class AjaxController extends Controller {
         ];
     }
 
-    public function actionMsgQtde() {
+    public function actionMsgQtde()
+    {
         // Verifica se foi solicitado por Ajax
         if (Yii::$app->request->isAjax) {
 
@@ -71,7 +75,8 @@ class AjaxController extends Controller {
         }
     }
 
-    public function actionMensagens($tipo = '') {
+    public function actionMensagens($tipo = '')
+    {
         // Verifica se foi solicitado por Ajax
         if (Yii::$app->request->isAjax) {
 
@@ -83,53 +88,65 @@ class AjaxController extends Controller {
         }
     }
 
-    public function actionTabelas() {
-        $tabelas = new Tabelas();
+    public function actionTabelas()
+    {
+        $tabelas  = new Tabelas();
         $listagem = $tabelas->listarNomes();
 
         return Json::encode($listagem);
     }
 
-    public function actionTabelascomp() {
-        $tabelas = new Tabelas();
+    public function actionTabelascomp()
+    {
+        $tabelas  = new Tabelas();
         $listagem = $tabelas->autoComplete();
 
         return Json::encode($listagem);
     }
 
-    public function actionTabcli($cnpj) {
-        $cliente = new Clientes();
-        $tabcli = $cliente->Tabelas($cnpj);
+    public function actionTabcli($cnpj)
+    {
+
+        Yii::$app->response->format = 'json';
+        $cliente                    = new Clientes();
+        $idcliente                  = $cliente->getIdClientes($cnpj);
+
+        $tbcli = new \backend\models\TabelasClientes();
+        $idtab = $tbcli->getTabelasClientes($idcliente);
+        $ids = ArrayHelper::getColumn($idtab, 'tabela_id');
 
         $tabelas = new Tabelas();
-        $tab = $tabelas->listarTabelas($tabcli);
+        $tab     = $tabelas->listarTabelas($ids);
 
         return $tab;
     }
-    
-    public function actionCidades($envolvidos) {
-        
+
+    public function actionCidades($envolvidos)
+    {
+
         // Array com envolvidos
         $clientes = preg_split('/,/', $envolvidos, -1, PREG_SPLIT_NO_EMPTY);
-        
+
         $cliente = new Clientes();
-        $munCli = $cliente->Cidades($clientes);
-        
-        $ibge = new \backend\models\Municipios;
+        $munCli  = $cliente->getCidades($clientes);
+
+        $ibge      = new \backend\models\Municipios;
         $municipio = $ibge->listarNomes($munCli);
-      
+
         return $municipio;
     }
-    
-    public function actionCfop($interestadual) {
-        
-        $cfop = new \backend\models\Cfop;
+
+    public function actionCfop($interestadual)
+    {
+
+        $cfop  = new \backend\models\Cfop;
         $lista = $cfop->listarNomes($interestadual);
-              
+
         return $lista;
     }
 
-    public function actionTeste() {
+    public function actionTeste()
+    {
 ////        $tabelas = new Tabelas();
 ////        $listagem = $tabelas->testeAjax();
 //
@@ -142,12 +159,13 @@ class AjaxController extends Controller {
         return $basicos->formataData('db', '28/01/2017');
     }
 
-    public function actionCalculos() {
+    public function actionCalculos()
+    {
         //$dados = explode('&', $_POST['test']);
         $dados = $_POST['test'];
-        $tipo = $_POST['tipo'];
+        $tipo  = $_POST['tipo'];
 
-        $calculos = new Calculos();
+        $calculos     = new Calculos();
         // Tem que enviar o array com as variaveis
         $calculaFrete = $calculos->calculaFrete($tipo, $dados);
         //return Json::encode($calculaFrete);
@@ -161,19 +179,19 @@ class AjaxController extends Controller {
         return Json::encode($calculaFrete);
     }
 
-    public function actionSql() {
+    public function actionSql()
+    {
 
         $minutas = new Minutas();
 
         $ultima = $minutas->find()
-                ->select(['numero'])
-                ->where([
-                    'dono' => \Yii::$app->user->identity['cnpj']
-                ])
-                ->orderBy('numero DESC')
-                ->one();
+            ->select(['numero'])
+            ->where([
+                'dono' => \Yii::$app->user->identity['cnpj']
+            ])
+            ->orderBy('numero DESC')
+            ->one();
 
         return var_dump($ultima);
     }
-
 }

@@ -92,6 +92,33 @@ CteAsset::register($this);
         </table>
     </div>
 
+      <table class="table table-hover">
+        <tr>
+            <td><?=
+                $form->field($model, 'ide_modal')->dropDownList(
+                        [
+                            '01' => 'Rodoviário',
+                            '02' => 'Aéreo',
+                            '03' => 'Aquaviário'
+                ])
+                ?></td>
+            <td>
+                <?=
+                $form->field($model, 'ide_tpServ')->dropDownList(
+                        [
+                            '0' => 'Normal',
+                            '1' => 'Subcontratação',
+                            '2' => 'Redespacho',
+                            '3' => 'Redespacho Intermediário',
+                            '4' => 'Serviço Multimodal'
+                ])
+                ?>
+            </td>
+            <td><?= $form->field($model, 'ide_mod')->textInput(['value' => $model->isNewRecord ? '57' : $model->ide_mod, 'maxlength' => true]) ?></td>
+            <td><?= $form->field($model, 'ide_serie')->textInput(['value' => $model->isNewRecord ? '001' : $model->ide_serie, 'maxlength' => true]) ?></td>
+        </tr>
+    </table>
+
     <table class="table table-hover">
         <tr>
             <td>Envolvidos</td>
@@ -113,6 +140,7 @@ CteAsset::register($this);
                             'select' => new JsExpression("function( event, ui ) {
 								 $('#cte-remetente').val(ui.item.cnpj); // Campo real do remetente
                                                                  $('#cte-remetente').focus();
+                                                                 $('#cte-remetente').trigger('change');
 								 $('#destinatario-nome').focus();										 
 									}")
                         ],
@@ -139,6 +167,7 @@ CteAsset::register($this);
                             'select' => new JsExpression("function( event, ui ) {
 									    $('#cte-destinatario').val(ui.item.cnpj); // Campo real do remetente
 								            $('#cte-destinatario').focus();
+                                                                            $('#cte-destinatario').trigger('change');
 								            $('#expedidor-nome').focus();
 									}")
                         ],
@@ -170,6 +199,7 @@ CteAsset::register($this);
                             'select' => new JsExpression("function( event, ui ) {
 								 $('#cte-expedidor').val(ui.item.cnpj); // Campo real do remetente
                                                                  $('#cte-expedidor').focus();
+                                                                 $('#cte-expedidor').trigger('change');
 								 $('#recebedor-nome').focus();										 
 									}")
                         ],
@@ -196,6 +226,7 @@ CteAsset::register($this);
                             'select' => new JsExpression("function( event, ui ) {
 									    $('#cte-recebedor').val(ui.item.cnpj); // Campo real do remetente
 								            $('#cte-recebedor').focus();
+                                                                            $('#cte-recebedor').trigger('change');
 								            $('#cte-toma').focus();
 									}")
                         ],
@@ -241,6 +272,7 @@ CteAsset::register($this);
                             'select' => new JsExpression("function( event, ui ) {
 									    $('#cte-tomador').val(ui.item.cnpj); // Campo real do remetente
 								            $('#cte-tomador').focus();
+                                                                            $('#cte-tomador').trigger('change');
                                                                             $('#cte-origem').focus();
 									}")
                         ],
@@ -346,38 +378,6 @@ CteAsset::register($this);
                     '2' => 'Faturado / Outros', '0' => 'Pago', '1' => 'A pagar'
                 ])
                 ?></td>
-            <td><?= $form->field($model, 'ide_mod')->textInput(['value' => $model->isNewRecord ? '57' : $model->ide_mod, 'maxlength' => true]) ?></td>
-            <td><?= $form->field($model, 'ide_serie')->textInput(['value' => $model->isNewRecord ? '001' : $model->ide_serie, 'maxlength' => true]) ?></td>
-        </tr>
-    </table>
-
-    <table class="table table-hover">
-        <tr>
-            <td><?=
-                $form->field($model, 'ide_modal')->dropDownList(
-                        [
-                            '01' => 'Rodoviário',
-                            '02' => 'Aéreo',
-                            '03' => 'Aquaviário'
-                ])
-                ?></td>
-            <td>
-                <?=
-                $form->field($model, 'ide_tpServ')->dropDownList(
-                        [
-                            '0' => 'Normal',
-                            '1' => 'Subcontratação',
-                            '2' => 'Redespacho',
-                            '3' => 'Redespacho Intermediário',
-                            '4' => 'Serviço Multimodal'
-                ])
-                ?>
-            </td>
-        </tr>
-    </table>
-
-    <table class="table table-hover">
-        <tr>
             <td>
                 <?=
                 $form->field($model, 'ide_retira')->dropDownList(
@@ -389,8 +389,7 @@ CteAsset::register($this);
             </td>
             <td>
 <?= $form->field($model, 'ide_xDetRetira')->textInput(['maxlength' => true]) ?>
-            </td>
-        </tr>
+            </td></tr>
     </table>
 
     <table class="table table-hover">

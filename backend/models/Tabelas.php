@@ -150,5 +150,5 @@ class Tabelas extends \yii\db\ActiveRecord {
 
         return $data;
     }
-
+    
 }

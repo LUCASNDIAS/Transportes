@@ -14,13 +14,14 @@ class CteAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
+        'js/jquery1.8.js',
     	'assets/535b4e4/jquery.mask.min.js',
     	'assets/df01b1b/src/jquery.maskMoney.js',
     	'js/formularios.js',
     	'js/cte.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\web\YiiAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

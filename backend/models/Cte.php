@@ -97,7 +97,17 @@ class Cte extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cridt', 'criusu', 'dono', 'infCTe_chave', 'infCTe_versao', 'ide_cUF', 'ide_cCT', 'ide_CFOP', 'ide_natOp', 'ide_forPag', 'ide_mod', 'ide_serie', 'ide_nCT', 'ide_dhEmi', 'ide_tpImp', 'ide_tpEmis', 'ide_cDV', 'ide_tpAmb', 'ide_tpCTe', 'ide_procEmi', 'ide_verProc', 'ide_refCTe', 'ide_cMunEnv', 'ide_xMunEnv', 'ide_UFEnv', 'ide_modal', 'ide_tpServ', 'ide_cMunIni', 'ide_xMunIni', 'ide_UFIni', 'ide_cMunFim', 'ide_xMunFim', 'ide_UFFim', 'ide_retira', 'ide_xDetRetira', 'ide_dhCont', 'ide_xJust', 'toma', 'tomador', 'emitente', 'remetente', 'destinatario', 'expedidor', 'recebedor', 'vPrest_vTPrest', 'vPrest_vRec', 'comp_xNome', 'comp_vComp', 'tabela', 'taxaextra', 'desconto', 'icms', 'infCarga', 'infQ_cUnid', 'infQ_tpMed', 'infQ_qCarga', 'infNFe', 'infNF', 'seguro', 'infModal_versaoModal', 'rodo', 'veiculo', 'motorista', 'pathXML', 'pathPDF', 'entrega_data', 'entrega_hora', 'entrega_nome', 'entrega_doc', 'status'], 'required'],
+            [['cridt', 'criusu', 'dono', 'ide_cUF', 'ide_cCT', 'ide_CFOP', 'ide_natOp', 
+              'ide_forPag', 'ide_mod', 'ide_serie', 'ide_nCT', 'ide_dhEmi', 'ide_tpImp',
+              'ide_tpEmis', 'ide_cDV', 'ide_tpAmb', 'ide_tpCTe', 'ide_procEmi', 'ide_verProc',
+              'ide_refCTe', 'ide_cMunEnv', 'ide_xMunEnv', 'ide_UFEnv', 'ide_modal', 'ide_tpServ',
+              'ide_cMunIni', 'ide_xMunIni', 'ide_UFIni', 'ide_cMunFim', 'ide_xMunFim', 'ide_UFFim',
+              'ide_retira', 'ide_xDetRetira', 'ide_dhCont', 'ide_xJust', 'toma', 'tomador', 'emitente',
+              'remetente', 'destinatario', 'vPrest_vTPrest', 'vPrest_vRec',
+              'tabela', 'taxaextra', 'desconto', 'icms', 'infCarga',
+              'infQ_cUnid', 'infQ_tpMed', 'infQ_qCarga', 'infNFe', 'infNF', 'seguro', 'infModal_versaoModal',
+              'rodo', 'veiculo', 'motorista', 'pathXML', 'pathPDF', 'entrega_data', 'entrega_hora',
+              'entrega_nome', 'entrega_doc', 'status'], 'required'],
             [['cridt', 'ide_dhEmi', 'ide_dhCont', 'entrega_data'], 'safe'],
             [['infCTe_chave', 'infCTe_versao', 'ide_cDV', 'ide_tpAmb', 'ide_refCTe', 'ide_cMunIni', 'tabela', 'infNFe'], 'integer'],
             [['vPrest_vTPrest', 'vPrest_vRec', 'comp_vComp', 'infCarga', 'infQ_qCarga'], 'number'],

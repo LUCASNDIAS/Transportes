@@ -6475,3 +6475,133 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1493843624.776
     'REQUEST_TIME' => 1493843624
 ]
+2017-06-02 23:50:52 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-06-02 23:50:52 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+2017-06-02 23:50:52 [192.168.25.6][-][-][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'lndsistemas.net'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.net Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.net'
+    'SERVER_ADDR' => '192.168.25.6'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.25.6'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '52512'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1496447452.453
+    'REQUEST_TIME' => 1496447452
+]
+2017-06-02 23:51:16 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-06-02 23:51:16 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+2017-06-02 23:51:16 [192.168.25.6][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'qap7iimk3fetoafqvrlm1petc0'
+    '_csrf' => '41d3108d9451881a44af91d11532a6c477d0ca2b2930c5f3ed2d5c44463ccd44a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PjhT5c43VPEpJUE3xqpfHJS-v3QvrJkS\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'lndsistemas.net'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => 'PHPSESSID=qap7iimk3fetoafqvrlm1petc0; _csrf=41d3108d9451881a44af91d11532a6c477d0ca2b2930c5f3ed2d5c44463ccd44a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PjhT5c43VPEpJUE3xqpfHJS-v3QvrJkS%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.net Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.net'
+    'SERVER_ADDR' => '192.168.25.6'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.25.6'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '52582'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1496447476.677
+    'REQUEST_TIME' => 1496447476
+]
+2017-06-03 13:29:20 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-06-03 13:29:20 [192.168.25.6][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.25.6
+2017-06-03 13:29:19 [192.168.25.6][-][-][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'lndsistemas.net'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.net Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.net'
+    'SERVER_ADDR' => '192.168.25.6'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.25.6'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '57736'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1496496558.669
+    'REQUEST_TIME' => 1496496558
+]

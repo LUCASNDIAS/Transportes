@@ -503,43 +503,42 @@ $(document).ready(function () {
         }
     });
 
-//    // Tabelas
-//    // Trigger de change
+    // Tabelas
+    // Trigger de change
 //    $("#cte-toma, input[id$='-nome']").on('blur', function () {
 //        $('#cte-tomador, #cte-remetente, #cte-destinatario, #cte-expedidor, #cte-recebedor, #cte-toma').trigger('change');
 //    });
-//
-//    // Executa tabela Ajax
-//    $("#cte-tomador, #cte-toma, #cte-remetente, #cte-destinatario, #cte-expedidor, #cte-recebedor").on("change", function () {
-//
-//        var pagadorCNPJ = $("#cte-tomador").val();
-//
-//        if (pagadorCNPJ != '') {
-//
-//            // Cria o select com as tabelas do cliente
-//            $.get("/Transportes/backend/web/ajax/tabcli", {cnpj: pagadorCNPJ})
-//                    .done(function (data) {
-//
-//                        var lista = '<option value=""> -- Selecione -- </option>';
-//
-//                        if (data == '') {
-//                            lista += '<option value=""> Cliente sem tabelas cadastradas </option>';
-//                        }
-//
-//                        $.each(data, function (key, value) {
-//
-//                            lista += '<option value="' + value.id + '">' + value.nome + '</option>';
-//
-//                        });
-//
-//                        $("#tabelaAjax").html(lista);
-//
-//                    });
-//
-//        }
-//
-//
-//    });
+
+    // Executa tabela Ajax
+    $("#cte-tomador, #cte-toma, #cte-remetente, #cte-destinatario, #cte-expedidor, #cte-recebedor").on("change", function () {
+
+        var pagadorCNPJ = $("#cte-tomador").val();
+
+        if (pagadorCNPJ != '') {
+
+            // Cria o select com as tabelas do cliente
+            $.get("/Transportes/backend/web/ajax/tabcli", {cnpj: pagadorCNPJ})
+                    .done(function (data) {
+
+                        var lista = '<option value=""> -- Selecione -- </option>';
+
+                        if (data == '') {
+                            lista += '<option value=""> Cliente sem tabelas cadastradas </option>';
+                        }
+
+                        $.each(data, function (key, value) {
+
+                            lista += '<option value="' + value.id + '">' + value.nome + '</option>';
+
+                        });
+
+                        $("#tabelaAjax").html(lista);
+
+                    });
+
+        }
+       
+    });
 
     // Submit
     /*
