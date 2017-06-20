@@ -171,4 +171,17 @@ class Funcionarios extends \yii\db\ActiveRecord
     	}
     	 
     }
+
+    public function autoComplete() {
+
+        $data = self::find()
+                ->select([new \yii\db\Expression("nome as value, CONCAT( `nome`,' | ',`cpf`) as label, cpf as id")])
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->andWhere(['cargo' => 'MOTORISTA'])
+                ->asArray()
+                ->all();
+
+        return $data;
+    }
+
 }

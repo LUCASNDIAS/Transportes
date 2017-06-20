@@ -11,6 +11,8 @@ use backend\modules\mdfe\models\MdfeCondutor as Condutor;
 use backend\modules\mdfe\models\MdfeDescarregamento as Descarregamento;
 use backend\modules\mdfe\models\MdfeDocumentos as Documentos;
 use backend\modules\mdfe\models\MdfePercurso as Percurso;
+use backend\models\Municipios;
+use backend\models\Funcionarios;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -76,6 +78,12 @@ class DefaultController extends Controller
         $modelsDocumentos = [new Documentos];
         $modelsPercurso = [new Percurso];
 
+        $modelMunicipios = new Municipios();
+        $municipios = $modelMunicipios->autoComplete();
+
+        $modelPCondutores = new Funcionarios();
+        $condutores = $modelPCondutores->autoComplete();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -86,6 +94,8 @@ class DefaultController extends Controller
                 'modelsDescarregamento' => (empty($modelsDescarregamento)) ? [new Descarregamento] : $modelsDescarregamento,
                 'modelsDocumentos' => (empty($modelsDocumentos)) ? [new Documentos] : $modelsDocumentos,
                 'modelsPercurso' => (empty($modelsPercurso)) ? [new Percurso] : $modelsPercurso,
+                'municipios' => $municipios,
+                'condutores' => $condutores,
             ]);
         }
     }

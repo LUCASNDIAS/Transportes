@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\web\JsExpression;
 
 /**
  * This is the model class for table "municipios_ibge".
@@ -62,6 +63,17 @@ class Municipios extends \yii\db\ActiveRecord {
         
         \Yii::$app->response->format = 'json';
         return $municipios;
+    }
+
+    public function autoComplete() {
+
+        $data = self::find()
+                ->select([new \yii\db\Expression("municipio as value, CONCAT( `municipio`,' | ',`uf`) as label, codigo as id")])
+//                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->asArray()
+                ->all();
+
+        return $data;
     }
 
     /**
