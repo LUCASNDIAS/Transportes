@@ -9,7 +9,7 @@ return [
 	    'class' => 'yii\db\Connection',
 	    'dsn' => 'mysql:host=localhost;dbname=yiiplus',
 	    'username' => 'root',
-	    'password' => 'tligwww15',
+	    'password' => '',
 	    'charset' => 'utf8',
 	],
     ],
