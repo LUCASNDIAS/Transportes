@@ -8,7 +8,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=lndsi581_geral',
             'username' => 'root',
-            'password' => 'tligwww15',
+            'password' => '',
             'charset' => 'utf8',
         ],
         'i18n' => [
@@ -36,7 +36,7 @@ return [
 //                'encryption' => 'ssl',
                 'host' => 'smtp.gmail.com',
                 'username' => 'lndsistemas.mail@gmail.com',
-                'password' => 'Tlimp15*=', //'llqyulcgidhezbgo*=',
+                'password' => '', //'llqyulcgidhezbgo*=',
                 'port' => '587',
                 'encryption' => 'tls',
             ],
