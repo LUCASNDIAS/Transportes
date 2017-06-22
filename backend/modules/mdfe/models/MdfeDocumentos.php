@@ -17,6 +17,7 @@ use Yii;
  * @property string $pin
  * @property string $serie
  * @property double $valor
+ * @property double $tipo
  *
  * @property Mdfe $mdfe
  */
@@ -36,8 +37,9 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mdfe_id', 'chave', 'emitente', 'numero', 'dtemissao', 'uf', 'pin', 'serie', 'valor'], 'required'],
+            [['mdfe_id', 'chave', 'tipo'], 'required'],
             [['mdfe_id'], 'integer'],
+            [['tipo'], 'string', 'max' => 3],
             [['dtemissao'], 'safe'],
             [['valor'], 'number'],
             [['chave'], 'string', 'max' => 44],
@@ -58,9 +60,10 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'mdfe_id' => Yii::t('app', 'Mdfe ID'),
-            'chave' => Yii::t('app', 'Chave'),
+            'tipo' => Yii::t('app', 'Tipo de Documento'),
+            'chave' => Yii::t('app', 'Chave de acesso'),
             'emitente' => Yii::t('app', 'Emitente'),
-            'numero' => Yii::t('app', 'Numero'),
+            'numero' => Yii::t('app', 'Número'),
             'dtemissao' => Yii::t('app', 'Dtemissao'),
             'uf' => Yii::t('app', 'Uf'),
             'pin' => Yii::t('app', 'Pin'),

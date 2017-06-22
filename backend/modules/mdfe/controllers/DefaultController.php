@@ -80,9 +80,12 @@ class DefaultController extends Controller
 
         $modelMunicipios = new Municipios();
         $municipios = $modelMunicipios->autoComplete();
+        $ufs = $modelMunicipios->listarUF();
 
         $modelPCondutores = new Funcionarios();
         $condutores = $modelPCondutores->autoComplete();
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -95,6 +98,7 @@ class DefaultController extends Controller
                 'modelsDocumentos' => (empty($modelsDocumentos)) ? [new Documentos] : $modelsDocumentos,
                 'modelsPercurso' => (empty($modelsPercurso)) ? [new Percurso] : $modelsPercurso,
                 'municipios' => $municipios,
+                'ufs' => $ufs,
                 'condutores' => $condutores,
             ]);
         }

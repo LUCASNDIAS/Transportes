@@ -15,6 +15,78 @@ $(document).ready(function () {
             });
         });
     });
+    
+    jQuery(".dynamicform_wrapper_car").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper_car .panel-title-carregamento").each(function (index) {
+            jQuery(this).html("Município: " + (index + 1));
+            var filtro = $("#mdfe-ufcarga").val();
+            // Get com as municipios disponíveis
+            $.get("/Transportes/backend/web/ajax/municipios?filtro="+filtro, function (data) {
+                var municipios = $.parseJSON(data);
+                jQuery('#carregamento-' + index + '-nome').autocomplete({"source": municipios, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+                        $('#mdfecarregamento-' + index + '-cmun').val(ui.item.id); 
+                        $('#mdfecarregamento-' + index + '-xmun').val(ui.item.value); 
+                        $('#mdfecarregamento-' + index + '-xmun').focus();
+                    }});
+            });
+        });
+    });
+    
+    jQuery(".dynamicform_wrapper_des").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper_des .panel-title-descarregamento").each(function (index) {
+            jQuery(this).html("Município: " + (index + 1));
+            var filtro = $("#mdfe-ufdescarga").val();
+            // Get com os municipios disponíveis
+            $.get("/Transportes/backend/web/ajax/municipios?filtro="+filtro, function (data) {
+                var municipios = $.parseJSON(data);
+                jQuery('#descarregamento-' + index + '-nome').autocomplete({"source": municipios, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+                        $('#mdfedescarregamento-' + index + '-cmun').val(ui.item.id); 
+                        $('#mdfedescarregamento-' + index + '-xmun').val(ui.item.value); 
+                        $('#mdfedescarregamento-' + index + '-xmun').focus();
+                    }});
+            });
+        });
+    });
+    
+    jQuery(".dynamicform_wrapper_con").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper_con .panel-title-condutor").each(function (index) {
+            jQuery(this).html("Motorista: " + (index + 1));
+            // Get com as funcionarios disponíveis
+            $.get("/Transportes/backend/web/ajax/motoristas", function (data) {
+                var condutores = $.parseJSON(data);
+                jQuery('#condutor-' + index + '-nome').autocomplete({"source": condutores, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+                        $('#mdfecondutor-' + index + '-condutor').val(ui.item.id);
+                        $('#mdfecondutor-' + index + '-condutor').focus();
+                    }});
+            });
+        });
+    });
+    
+    $("#mdfe-ufcarga").on('change', function(){
+       var filtro = $(this).val();
+       $.get("/Transportes/backend/web/ajax/municipios?filtro="+filtro, function (data) {
+            var municipios = $.parseJSON(data);
+            jQuery('#carregamento-0-nome').autocomplete({"source": municipios, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+                $('#mdfecarregamento-0-cmun').val(ui.item.id); 
+                $('#mdfecarregamento-0-xmun').val(ui.item.value); 
+                $('#mdfecarregamento-0-xmun').focus();
+            }});
+        });
+    });
+    
+    $("#mdfe-ufdescarga").on('change', function(){
+       var filtro = $(this).val();
+       $.get("/Transportes/backend/web/ajax/municipios?filtro="+filtro, function (data) {
+            var municipios = $.parseJSON(data);
+            jQuery('#descarregamento-0-nome').autocomplete({"source": municipios, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+                $('#mdfedescarregamento-0-cmun').val(ui.item.id); 
+                $('#mdfedescarregamento-0-xmun').val(ui.item.value); 
+                $('#mdfedescarregamento-0-xmun').focus();
+            }});
+        });
+    });
+    
+    
 
     // Função que remove acentos e caps formulario
     function rm_acentos_caps(campo) {

@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'modelsDocumentos' => $modelsDocumentos,
         'modelsPercurso' => $modelsPercurso,
         'municipios' => $municipios,
+        'ufs' => $ufs,
         'condutores' => $condutores,
     ]) ?>
 

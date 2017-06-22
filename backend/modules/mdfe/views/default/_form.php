@@ -71,12 +71,8 @@ MdfeAsset::register($this);
                 ],['prompt'=>'-- Selecione --']) ?></div>
             </div>
             <div class="row">
-                <div class="col-sm-6"><?= $form->field($model, 'ufcarga')->dropDownList([
-                    'MG' => 'MG'
-                ],['prompt'=>'-- Selecione --']) ?></div>
-                <div class="col-sm-6"><?= $form->field($model, 'ufdescarga')->dropDownList([
-                    'MG' => 'MG'
-                ],['prompt'=>'-- Selecione --']) ?></div>
+                <div class="col-sm-6"><?= $form->field($model, 'ufcarga')->dropDownList($ufs,['prompt'=>'-- Selecione --']) ?></div>
+                <div class="col-sm-6"><?= $form->field($model, 'ufdescarga')->dropDownList($ufs,['prompt'=>'-- Selecione --']) ?></div>
             </div>
         </div>
     </div>
@@ -133,10 +129,7 @@ DynamicFormWidget::begin([
 
                             <div class="col-sm-12">
     <?=
-    $form->field($modelPercurso, "[{$index}]uf")->dropDownList([
-        'MG' => 'Minas Gerais',
-        'SP' => 'São Paulo'
-    ],[
+    $form->field($modelPercurso, "[{$index}]uf")->dropDownList($ufs,[
         'prompt' => '-- Selecione --'
     ])
     ?>
@@ -162,12 +155,12 @@ DynamicFormWidget::begin([
              <?php
         DynamicFormWidget::begin([
             'widgetContainer' => 'dynamicform_wrapper_car', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
-            'widgetBody' => '.container-items', // required: css class selector
-            'widgetItem' => '.item', // required: css class
+            'widgetBody' => '.container-items-car', // required: css class selector
+            'widgetItem' => '.item-car', // required: css class
             'limit' => 50, // the maximum times, an element can be cloned (default 999)
             'min' => 1, // 0 or 1 (default 1)
-            'insertButton' => '.add-item', // css class
-            'deleteButton' => '.remove-item', // css class
+            'insertButton' => '.add-item-car', // css class
+            'deleteButton' => '.remove-item-car', // css class
             'model' => $modelsCarregamento[0],
             'formId' => 'dynamic-form',
             'formFields' => [
@@ -181,19 +174,19 @@ DynamicFormWidget::begin([
 
                 <div class="panel-heading">
                     <i class="fa fa-cubes"></i> Local Carga
-                    <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Município</button>
+                    <button type="button" class="pull-right add-item-car btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Município</button>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="panel-body container-items"><!-- widgetContainer -->
+                <div class="panel-body container-items-car"><!-- widgetContainer -->
 
                             <?php foreach ($modelsCarregamento as $index => $modelCarregamento): ?>
 
-                        <div class="item panel panel-default"><!-- widgetBody -->
+                        <div class="item-car panel panel-default"><!-- widgetBody -->
 
                             <div class="panel-heading">
-                                <span class="panel-title-contato">Município: <?= ($index + 1) ?></span>
-                                <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
+                                <span class="panel-title-carregamento">Município: <?= ($index + 1) ?></span>
+                                <button type="button" class="pull-right remove-item-car btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
                                 <div class="clearfix"></div>
                             </div>
 
@@ -272,14 +265,14 @@ DynamicFormWidget::begin([
         <div class="col-sm-6">
              <?php
         DynamicFormWidget::begin([
-            'widgetContainer' => 'dynamicform_wrapper_car', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
-            'widgetBody' => '.container-items', // required: css class selector
-            'widgetItem' => '.item', // required: css class
+            'widgetContainer' => 'dynamicform_wrapper_des', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
+            'widgetBody' => '.container-items-des', // required: css class selector
+            'widgetItem' => '.item-des', // required: css class
             'limit' => 100, // the maximum times, an element can be cloned (default 999)
             'min' => 1, // 0 or 1 (default 1)
-            'insertButton' => '.add-item', // css class
-            'deleteButton' => '.remove-item', // css class
-            'model' => $modelsCarregamento[0],
+            'insertButton' => '.add-item-des', // css class
+            'deleteButton' => '.remove-item-des', // css class
+            'model' => $modelsDescarregamento[0],
             'formId' => 'dynamic-form',
             'formFields' => [
                 'cMun',
@@ -292,19 +285,19 @@ DynamicFormWidget::begin([
 
                 <div class="panel-heading">
                     <i class="fa fa-dropbox"></i> Local Descarga
-                    <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Município</button>
+                    <button type="button" class="pull-right add-item-des btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Município</button>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="panel-body container-items"><!-- widgetContainer -->
+                <div class="panel-body container-items-des"><!-- widgetContainer -->
 
                             <?php foreach ($modelsDescarregamento as $index => $modelDescarregamento): ?>
 
-                        <div class="item panel panel-default"><!-- widgetBody -->
+                        <div class="item-des panel panel-default"><!-- widgetBody -->
 
                             <div class="panel-heading">
-                                <span class="panel-title-contato">Município: <?= ($index + 1) ?></span>
-                                <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
+                                <span class="panel-title-descarregamento">Município: <?= ($index + 1) ?></span>
+                                <button type="button" class="pull-right remove-item-des btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
                                 <div class="clearfix"></div>
                             </div>
 
@@ -313,7 +306,7 @@ DynamicFormWidget::begin([
             <?php
             // necessary for update action.
 
-            if (!$modelCarregamento->isNewRecord) {
+            if (!$modelDescarregamento->isNewRecord) {
 
                 echo Html::activeHiddenInput($modelDescarregamento, "[{$index}]id");
             }
@@ -385,12 +378,12 @@ DynamicFormWidget::begin([
     <?php
         DynamicFormWidget::begin([
             'widgetContainer' => 'dynamicform_wrapper_con', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
-            'widgetBody' => '.container-items', // required: css class selector
-            'widgetItem' => '.item', // required: css class
+            'widgetBody' => '.container-items-con', // required: css class selector
+            'widgetItem' => '.item-con', // required: css class
             'limit' => 10, // the maximum times, an element can be cloned (default 999)
             'min' => 1, // 0 or 1 (default 1)
-            'insertButton' => '.add-item', // css class
-            'deleteButton' => '.remove-item', // css class
+            'insertButton' => '.add-item-con', // css class
+            'deleteButton' => '.remove-item-con', // css class
             'model' => $modelsCondutor[0],
             'formId' => 'dynamic-form',
             'formFields' => [
@@ -403,19 +396,19 @@ DynamicFormWidget::begin([
 
                 <div class="panel-heading">
                     <i class="fa fa-truck"></i> Motoristas
-                    <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Motorista</button>
+                    <button type="button" class="pull-right add-item-con btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Motorista</button>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="panel-body container-items"><!-- widgetContainer -->
+                <div class="panel-body container-items-con"><!-- widgetContainer -->
 
                             <?php foreach ($modelsCondutor as $index => $modelCondutor): ?>
 
-                        <div class="item panel panel-default"><!-- widgetBody -->
+                        <div class="item-con panel panel-default"><!-- widgetBody -->
 
                             <div class="panel-heading">
-                                <span class="panel-title-contato">Motorista: <?= ($index + 1) ?></span>
-                                <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
+                                <span class="panel-title-condutor">Motorista: <?= ($index + 1) ?></span>
+                                <button type="button" class="pull-right remove-item-con btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
                                 <div class="clearfix"></div>
                             </div>
 
@@ -496,6 +489,96 @@ DynamicFormWidget::begin([
             </div>
         </div>
     </div>
+
+    <?php
+DynamicFormWidget::begin([
+    'widgetContainer' => 'dynamicform_wrapper_doc', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
+    'widgetBody' => '.container-items-doc', // required: css class selector
+    'widgetItem' => '.item-doc', // required: css class
+    'limit' => 2000, // the maximum times, an element can be cloned (default 999)
+    'min' => 1, // 0 or 1 (default 1)
+    'insertButton' => '.add-item-doc', // css class
+    'deleteButton' => '.remove-item-doc', // css class
+    'model' => $modelsDocumentos[0],
+    'formId' => 'dynamic-form',
+    'formFields' => [
+        'tipo',
+        'chave',
+    ],
+]);
+?>
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <i class="fa fa-folder-open"></i> Documentos
+            <button type="button" class="pull-right add-item-doc btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Documento</button>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body container-items-doc"><!-- widgetContainer -->
+
+                    <?php foreach ($modelsDocumentos as $index => $modelDocumentos): ?>
+
+                <div class="item-doc panel panel-default"><!-- widgetBody -->
+
+                    <div class="panel-heading">
+                        <span class="panel-title-documentos">Documento: <?= ($index + 1) ?></span>
+                        <button type="button" class="pull-right remove-item-doc btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <?php
+                        // necessary for update action.
+
+                        if (!$modelDocumentos->isNewRecord) {
+
+                            echo Html::activeHiddenInput($modelDocumentos, "[{$index}]id");
+                        }
+                        ?>
+
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <?= $form->field($modelDocumentos, "[{$index}]tipo")->dropDownList([
+                                    'CTE' => 'Conhecimento de Transporte (CTe)',
+                                    'NFE' => 'Nota Fiscal Eletrônica (NFe)',
+                                    //'NF' => 'Nota Fiscal (NF mod 1 e A1)'
+                                ],[
+                                    'prompt' => '-- Selecione --'
+                                ]) ?>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="tabela-nome">Pesquisa Documento</label>
+                                    <?= Html::input('text', 'documento-0-busca', null, ['id' => 'documento-0-busca', 'class' => 'form-control']); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]chave")->textInput([
+                                    'maxlength' => true,
+                                    'readonly' => false])
+                                ?>
+                            </div>
+
+                        </div><!-- end:row -->
+
+                    </div>
+
+                </div>
+
+    <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+    <?php DynamicFormWidget::end(); ?>
 
     <div class="panel panel-default">
 

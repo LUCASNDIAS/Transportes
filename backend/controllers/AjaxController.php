@@ -13,6 +13,8 @@ use yii\helpers\ArrayHelper;
 use backend\modules\clientes\models\Clientes;
 use backend\models\Calculos;
 use backend\models\Minutas;
+use backend\models\Municipios;
+use backend\models\Funcionarios;
 
 class AjaxController extends Controller
 {
@@ -100,6 +102,22 @@ class AjaxController extends Controller
     {
         $tabelas  = new Tabelas();
         $listagem = $tabelas->autoComplete();
+
+        return Json::encode($listagem);
+    }
+
+    public function actionMunicipios($filtro = '')
+    {
+        $municipios  = new Municipios();
+        $listagem = $municipios->autoComplete($filtro);
+
+        return Json::encode($listagem);
+    }
+
+    public function actionMotoristas()
+    {
+        $modelPCondutores = new Funcionarios();
+        $listagem = $modelPCondutores->autoComplete();
 
         return Json::encode($listagem);
     }
