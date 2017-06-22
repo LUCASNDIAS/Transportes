@@ -22,6 +22,7 @@ use yii\filters\VerbFilter;
  */
 class DefaultController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -43,12 +44,13 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MdfeSearch();
+        $searchModel  = new MdfeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        return $this->render('index',
+                [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -59,8 +61,9 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        return $this->render('view',
+                [
+                'model' => $this->findModel($id),
         ]);
     }
 
@@ -71,35 +74,41 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Mdfe();
-        $modelsCarregamento = [new Carregamento];
-        $modelsCondutor = [new Condutor];
+        $model                 = new Mdfe();
+        $modelsCarregamento    = [new Carregamento];
+        $modelsCondutor        = [new Condutor];
         $modelsDescarregamento = [new Descarregamento];
-        $modelsDocumentos = [new Documentos];
-        $modelsPercurso = [new Percurso];
+        $modelsDocumentos      = [new Documentos];
+        $modelsPercurso        = [new Percurso];
 
         $modelMunicipios = new Municipios();
-        $municipios = $modelMunicipios->autoComplete();
-        $ufs = $modelMunicipios->listarUF();
+        $municipios      = $modelMunicipios->autoComplete();
+        $ufs             = $modelMunicipios->listarUF();
 
         $modelPCondutores = new Funcionarios();
-        $condutores = $modelPCondutores->autoComplete();
+        $condutores       = $modelPCondutores->autoComplete();
 
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-                'modelsCarregamento' => (empty($modelsCarregamento)) ? [new Carregamento] : $modelsCarregamento,
-                'modelsCondutor' => (empty($modelsCondutor)) ? [new Condutor] : $modelsCondutor,
-                'modelsDescarregamento' => (empty($modelsDescarregamento)) ? [new Descarregamento] : $modelsDescarregamento,
-                'modelsDocumentos' => (empty($modelsDocumentos)) ? [new Documentos] : $modelsDocumentos,
-                'modelsPercurso' => (empty($modelsPercurso)) ? [new Percurso] : $modelsPercurso,
-                'municipios' => $municipios,
-                'ufs' => $ufs,
-                'condutores' => $condutores,
+            return $this->render('create',
+                    [
+                    'model' => $model,
+                    'modelsCarregamento' => (empty($modelsCarregamento)) ? [new Carregamento]
+                        : $modelsCarregamento,
+                    'modelsCondutor' => (empty($modelsCondutor)) ? [new Condutor]
+                        : $modelsCondutor,
+                    'modelsDescarregamento' => (empty($modelsDescarregamento)) ? [
+                    new Descarregamento] : $modelsDescarregamento,
+                    'modelsDocumentos' => (empty($modelsDocumentos)) ? [new Documentos]
+                        : $modelsDocumentos,
+                    'modelsPercurso' => (empty($modelsPercurso)) ? [new Percurso]
+                        : $modelsPercurso,
+                    'municipios' => $municipios,
+                    'ufs' => $ufs,
+                    'condutores' => $condutores,
             ]);
         }
     }
@@ -117,8 +126,9 @@ class DefaultController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
+            return $this->render('update',
+                    [
+                    'model' => $model,
             ]);
         }
     }
@@ -150,5 +160,15 @@ class DefaultController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionStatus()
+    {
+        return $this->render('status');
+    }
+
+    public function actionValida()
+    {
+        return $this->render('valida');
     }
 }

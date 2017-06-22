@@ -541,7 +541,7 @@ DynamicFormWidget::begin([
 
                         <div class="row">
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <?= $form->field($modelDocumentos, "[{$index}]tipo")->dropDownList([
                                     'CTE' => 'Conhecimento de Transporte (CTe)',
                                     'NFE' => 'Nota Fiscal Eletrônica (NFe)',
@@ -551,6 +551,7 @@ DynamicFormWidget::begin([
                                 ]) ?>
                             </div>
 
+                            <!--
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label class="control-label" for="tabela-nome">Pesquisa Documento</label>
@@ -558,7 +559,13 @@ DynamicFormWidget::begin([
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
+                                <?= Html::a('<i class="fa fa-search"></i> Buscar',
+                                '#!', ['class' => 'btn btn-app', 'id' => 'documentos-0-click']); ?>
+                            </div>
+                            -->
+
+                            <div class="col-sm-8">
                                 <?=
                                 $form->field($modelDocumentos, "[{$index}]chave")->textInput([
                                     'maxlength' => true,

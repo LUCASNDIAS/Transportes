@@ -140,7 +140,7 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verMdfe'),
                         'items' => [
-                            ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/mdfe/create'], 'visible' => Yii::$app->user->can('addMdfe')],
+                            ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/mdfe/default/create'], 'visible' => Yii::$app->user->can('addMdfe')],
                             ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mdfe'],'visible' => Yii::$app->user->can('verMdfe')],
                         ],
                     ],

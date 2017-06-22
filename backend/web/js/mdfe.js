@@ -62,6 +62,20 @@ $(document).ready(function () {
         });
     });
     
+    jQuery(".dynamicform_wrapper_doc").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper_doc .panel-title-documentos").each(function (index) {
+            jQuery(this).html("Documento: " + (index + 1));
+            // Get com os CTEs disponíveis
+//            $.get("http://www.lndsistemas.com.br/Loggica/cte_Rest.php", function (data) {
+//                var condutores = $.parseJSON(data);
+//                jQuery('#condutor-' + index + '-nome').autocomplete({"source": condutores, "autoFill": true, "minLength": 2, "select": function (event, ui) {
+//                        $('#mdfecondutor-' + index + '-condutor').val(ui.item.id);
+//                        $('#mdfecondutor-' + index + '-condutor').focus();
+//                    }});
+//            });
+        });
+    });
+    
     $("#mdfe-ufcarga").on('change', function(){
        var filtro = $(this).val();
        $.get("/Transportes/backend/web/ajax/municipios?filtro="+filtro, function (data) {
