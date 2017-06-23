@@ -171,4 +171,24 @@ class DefaultController extends Controller
     {
         return $this->render('valida');
     }
+
+    public function actionCriarxml()
+    {
+        return $this->render('criarxml');
+    }
+
+    public function actionEncerrar()
+    {
+        return $this->render('encerrar');
+    }
+
+    public function actionConsultachave()
+    {
+        return $this->render('consultachave');
+    }
+
+    public function actionCancelar()
+    {
+        return $this->render('cancelar');
+    }
 }

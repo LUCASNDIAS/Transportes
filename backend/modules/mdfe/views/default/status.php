@@ -19,4 +19,6 @@ $retorno = $cteTools->sefazStatus($siglaUF, $tpAmb, $aResposta);
 echo '<pre>';
 //echo htmlspecialchars($cteTools->soapDebug);
 print_r($aResposta);
+//print_r($retorno);
+//echo htmlspecialchars($cteTools->soapDebug);
 echo "</pre>";
