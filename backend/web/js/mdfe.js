@@ -56,6 +56,7 @@ $(document).ready(function () {
                 var condutores = $.parseJSON(data);
                 jQuery('#condutor-' + index + '-nome').autocomplete({"source": condutores, "autoFill": true, "minLength": 2, "select": function (event, ui) {
                         $('#mdfecondutor-' + index + '-condutor').val(ui.item.id);
+                        $('#mdfecondutor-' + index + '-xnome').val(ui.item.value);
                         $('#mdfecondutor-' + index + '-condutor').focus();
                     }});
             });
@@ -65,7 +66,10 @@ $(document).ready(function () {
     jQuery(".dynamicform_wrapper_doc").on("afterInsert afterDelete", function (e, item) {
         jQuery(".dynamicform_wrapper_doc .panel-title-documentos").each(function (index) {
             jQuery(this).html("Documento: " + (index + 1));
+            var novoValor = index + 1;
+            $("#mdfe-qtdecte").val(novoValor);
             // Get com os CTEs disponíveis
+            // Ainda tem que implementar
 //            $.get("http://www.lndsistemas.com.br/Loggica/cte_Rest.php", function (data) {
 //                var condutores = $.parseJSON(data);
 //                jQuery('#condutor-' + index + '-nome').autocomplete({"source": condutores, "autoFill": true, "minLength": 2, "select": function (event, ui) {
@@ -100,8 +104,10 @@ $(document).ready(function () {
         });
     });
     
+    // Focus no primeiro campo
+    $("#mdfe-numero").focus();
     
-
+    
     // Função que remove acentos e caps formulario
     function rm_acentos_caps(campo) {
         var valor = campo.val().replace(/[áàâãÁÀÂÃ]/g, 'a').replace(/[éèêẽÉÈÊẼ]/g, 'e').replace(/[íìîĩÍÌÎĨ]/g, 'i').replace(/[óòôõÓÒÔÕ]/g, 'o').replace(/[úùûũüÚÙÛŨÜ]/g, 'u').replace(/[çÇ]/g, 'c').toUpperCase();

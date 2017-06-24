@@ -108,8 +108,8 @@ class AjaxController extends Controller
 
     public function actionMunicipios($filtro = '')
     {
-        $municipios  = new Municipios();
-        $listagem = $municipios->autoComplete($filtro);
+        $municipios = new Municipios();
+        $listagem   = $municipios->autoComplete($filtro);
 
         return Json::encode($listagem);
     }
@@ -117,7 +117,7 @@ class AjaxController extends Controller
     public function actionMotoristas()
     {
         $modelPCondutores = new Funcionarios();
-        $listagem = $modelPCondutores->autoComplete();
+        $listagem         = $modelPCondutores->autoComplete();
 
         return Json::encode($listagem);
     }
@@ -131,7 +131,7 @@ class AjaxController extends Controller
 
         $tbcli = new \backend\models\TabelasClientes();
         $idtab = $tbcli->getTabelasClientes($idcliente);
-        $ids = ArrayHelper::getColumn($idtab, 'tabela_id');
+        $ids   = ArrayHelper::getColumn($idtab, 'tabela_id');
 
         $tabelas = new Tabelas();
         $tab     = $tabelas->listarTabelas($ids);

@@ -64,10 +64,10 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
             'chave' => Yii::t('app', 'Chave de acesso'),
             'emitente' => Yii::t('app', 'Emitente'),
             'numero' => Yii::t('app', 'Número'),
-            'dtemissao' => Yii::t('app', 'Dtemissao'),
-            'uf' => Yii::t('app', 'Uf'),
-            'pin' => Yii::t('app', 'Pin'),
-            'serie' => Yii::t('app', 'Serie'),
+            'dtemissao' => Yii::t('app', 'Data Emissão'),
+            'uf' => Yii::t('app', 'UF'),
+            'pin' => Yii::t('app', 'PIN'),
+            'serie' => Yii::t('app', 'Série'),
             'valor' => Yii::t('app', 'Valor'),
         ];
     }

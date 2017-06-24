@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRetRecepcaoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><retConsReciCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>1</tpAmb>
+  <verAplic>1.0.4</verAplic>
+  <nRec>311000216155074</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt>
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007181191002146</chCTe>
+      <dhRecbto>2016-10-19T10:04:18</dhRecbto>
+      <digVal>vHDlBt1JC15qsQ36Ip4u6L3ZOws=</digVal>
+      <cStat>519</cStat>
+      <xMotivo>Rejeicao: CFOP invalido para operacao</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsReciCTe></cteRetRecepcaoResult></soap:Body></soap:Envelope>

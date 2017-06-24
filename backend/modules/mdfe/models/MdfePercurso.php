@@ -44,7 +44,7 @@ class MdfePercurso extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'mdfe_id' => Yii::t('app', 'Mdfe ID'),
-            'uf' => Yii::t('app', 'Uf'),
+            'uf' => Yii::t('app', 'UF'),
         ];
     }
 

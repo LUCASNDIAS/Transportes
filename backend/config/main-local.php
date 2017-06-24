@@ -23,6 +23,16 @@
 $config = [
     'language' => 'pt-BR',
     'timezone' => 'America/Sao_Paulo',
+    'aliases' => [
+        '@nfephp' => '@vendor/nfephp-org',
+        '@nfephp/common' => '@nfephp/sped-common',
+        '@nfephp/cte' => '@nfephp/sped-cte',
+        '@nfephp/mdfe' => '@nfephp/sped-mdfe',
+        '@sped' => '@backend/sped',
+        '@cte' => '@sped/cte',
+        '@mdfe' => '@sped/mdfe',
+        '@certs' => '@sped/certs',
+    ],
     'modules' => [
         'mdfe' => [
             'class' => 'backend\modules\mdfe\Module',

@@ -46,8 +46,8 @@ class MdfeDescarregamento extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'mdfe_id' => Yii::t('app', 'Mdfe ID'),
-            'cMun' => Yii::t('app', 'C Mun'),
-            'xMun' => Yii::t('app', 'X Mun'),
+            'cMun' => Yii::t('app', 'Código'),
+            'xMun' => Yii::t('app', 'Município'),
         ];
     }
 

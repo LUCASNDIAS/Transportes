@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRetRecepcaoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><retConsReciCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>1</tpAmb>
+  <verAplic>1.0.4</verAplic>
+  <nRec>311000216660922</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263407">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007261210718360</chCTe>
+      <dhRecbto>2016-10-21T08:52:02</dhRecbto>
+      <nProt>131160171263407</nProt>
+      <digVal>uoVHkBh6mnYHNKTff0q9QtveQRg=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263253">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007221201540563</chCTe>
+      <dhRecbto>2016-10-21T08:50:46</dhRecbto>
+      <nProt>131160171263253</nProt>
+      <digVal>2syLTgHg48voVOM7l2/32ryKsaU=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263383">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007251210715097</chCTe>
+      <dhRecbto>2016-10-21T08:52:02</dhRecbto>
+      <nProt>131160171263383</nProt>
+      <digVal>2qvp+K/s1FiIbjwFYPy1FE2NvO8=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263152">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007211201515391</chCTe>
+      <dhRecbto>2016-10-21T08:49:18</dhRecbto>
+      <nProt>131160171263152</nProt>
+      <digVal>0kImkIbuFTxDRAN1Xwf9gXEolRM=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263270">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007231201651451</chCTe>
+      <dhRecbto>2016-10-21T08:51:13</dhRecbto>
+      <nProt>131160171263270</nProt>
+      <digVal>CRMfTP7K2i1+lbp/rwHHhP1HgaA=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160171263332">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007241210711027</chCTe>
+      <dhRecbto>2016-10-21T08:51:13</dhRecbto>
+      <nProt>131160171263332</nProt>
+      <digVal>RqVw1LUl3FtWmbv1rc13R4J3Ih8=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsReciCTe></cteRetRecepcaoResult></soap:Body></soap:Envelope>

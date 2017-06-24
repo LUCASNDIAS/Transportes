@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRetRecepcaoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><retConsReciCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>1</tpAmb>
+  <verAplic>1.0.4</verAplic>
+  <nRec>311000213871363</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt Id="ID131160169835969">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.0.4</verAplic>
+      <chCTe>31161009204054000143570010000007091111004490</chCTe>
+      <dhRecbto>2016-10-11T10:22:15</dhRecbto>
+      <nProt>131160169835969</nProt>
+      <digVal>PSUqmlO6K3sNUcg7fXrNw4Q6asQ=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsReciCTe></cteRetRecepcaoResult></soap:Body></soap:Envelope>

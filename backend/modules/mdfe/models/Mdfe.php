@@ -11,6 +11,7 @@ use Yii;
  * @property string $dono
  * @property string $cridt
  * @property string $criusu
+ * @property string $ambiente
  * @property string $chave
  * @property string $modelo
  * @property string $serie
@@ -44,6 +45,7 @@ use Yii;
  */
 class Mdfe extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -58,7 +60,10 @@ class Mdfe extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'numero', 'dtemissao', 'dtinicio', 'uf', 'tipoemitente', 'modalidade', 'formaemissao', 'ufcarga', 'ufdescarga', 'rntrc', 'ciot', 'placa', 'qtdecte', 'qtdenfe', 'qtdenf', 'valormercadoria', 'unidademedida', 'pesomercadoria', 'inffisco', 'infcontribuinte', 'status'], 'required'],
+            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'dtemissao',
+                'uf', 'tipoemitente', 'modalidade', 'formaemissao', 'ufcarga', 'ufdescarga',
+                'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria'],
+                'required'],
             [['cridt', 'dtemissao', 'dtinicio'], 'safe'],
             [['qtdecte', 'qtdenfe', 'qtdenf'], 'integer'],
             [['valormercadoria', 'pesomercadoria'], 'number'],
@@ -66,7 +71,6 @@ class Mdfe extends \yii\db\ActiveRecord
             [['chave'], 'string', 'max' => 44],
             [['modelo', 'uf', 'ufcarga', 'ufdescarga'], 'string', 'max' => 2],
             [['serie', 'unidademedida'], 'string', 'max' => 3],
-            [['numero'], 'string', 'max' => 9],
             [['tipoemitente'], 'string', 'max' => 50],
             [['modalidade', 'formaemissao', 'rntrc', 'ciot'], 'string', 'max' => 20],
             [['placa'], 'string', 'max' => 8],
@@ -83,31 +87,32 @@ class Mdfe extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'dono' => Yii::t('app', 'Dono'),
-            'cridt' => Yii::t('app', 'Cridt'),
-            'criusu' => Yii::t('app', 'Criusu'),
+            'cridt' => Yii::t('app', 'Data Criação'),
+            'criusu' => Yii::t('app', 'Usuário Criador'),
+            'ambiente' => Yii::t('app', 'Ambiente'),
             'chave' => Yii::t('app', 'Chave'),
             'modelo' => Yii::t('app', 'Modelo'),
-            'serie' => Yii::t('app', 'Serie'),
-            'numero' => Yii::t('app', 'Numero'),
-            'dtemissao' => Yii::t('app', 'Dtemissao'),
-            'dtinicio' => Yii::t('app', 'Dtinicio'),
-            'uf' => Yii::t('app', 'Uf'),
-            'tipoemitente' => Yii::t('app', 'Tipoemitente'),
+            'serie' => Yii::t('app', 'Série'),
+            'numero' => Yii::t('app', 'Número'),
+            'dtemissao' => Yii::t('app', 'Data Emissão'),
+            'dtinicio' => Yii::t('app', 'Inicio Viagem'),
+            'uf' => Yii::t('app', 'UF'),
+            'tipoemitente' => Yii::t('app', 'Tipo de Emitente'),
             'modalidade' => Yii::t('app', 'Modalidade'),
-            'formaemissao' => Yii::t('app', 'Formaemissao'),
-            'ufcarga' => Yii::t('app', 'Ufcarga'),
-            'ufdescarga' => Yii::t('app', 'Ufdescarga'),
-            'rntrc' => Yii::t('app', 'Rntrc'),
-            'ciot' => Yii::t('app', 'Ciot'),
+            'formaemissao' => Yii::t('app', 'Forma de emissão'),
+            'ufcarga' => Yii::t('app', 'UF de Carga'),
+            'ufdescarga' => Yii::t('app', 'UF de Descarga'),
+            'rntrc' => Yii::t('app', 'RNTRC'),
+            'ciot' => Yii::t('app', 'CIOT'),
             'placa' => Yii::t('app', 'Placa'),
-            'qtdecte' => Yii::t('app', 'Qtdecte'),
-            'qtdenfe' => Yii::t('app', 'Qtdenfe'),
-            'qtdenf' => Yii::t('app', 'Qtdenf'),
-            'valormercadoria' => Yii::t('app', 'Valormercadoria'),
-            'unidademedida' => Yii::t('app', 'Unidademedida'),
-            'pesomercadoria' => Yii::t('app', 'Pesomercadoria'),
-            'inffisco' => Yii::t('app', 'Inffisco'),
-            'infcontribuinte' => Yii::t('app', 'Infcontribuinte'),
+            'qtdecte' => Yii::t('app', 'Qtde CT-e'),
+            'qtdenfe' => Yii::t('app', 'Qtde NF-e'),
+            'qtdenf' => Yii::t('app', 'Qtde NF'),
+            'valormercadoria' => Yii::t('app', 'Valor mercadoria'),
+            'unidademedida' => Yii::t('app', 'Unidade de medida'),
+            'pesomercadoria' => Yii::t('app', 'Peso'),
+            'inffisco' => Yii::t('app', 'Informações ao Fisco'),
+            'infcontribuinte' => Yii::t('app', 'Informações do Contribuinte'),
             'status' => Yii::t('app', 'Status'),
         ];
     }
@@ -133,7 +138,8 @@ class Mdfe extends \yii\db\ActiveRecord
      */
     public function getMdfeDescarregamentos()
     {
-        return $this->hasMany(MdfeDescarregamento::className(), ['mdfe_id' => 'id']);
+        return $this->hasMany(MdfeDescarregamento::className(),
+                ['mdfe_id' => 'id']);
     }
 
     /**
@@ -150,6 +156,19 @@ class Mdfe extends \yii\db\ActiveRecord
     public function getMdfePercursos()
     {
         return $this->hasMany(MdfePercurso::className(), ['mdfe_id' => 'id']);
+    }
+
+    public function getLastId($tpAmb)
+    {
+        $last = self::find()
+            ->select(['numero'])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['ambiente' => $tpAmb])
+            ->orderBy('numero DESC')
+            ->asArray()
+            ->one();
+
+        return (is_null($last)) ? 1 : $last['numero'] + 1;
     }
 
     /**

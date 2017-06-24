@@ -3898,3 +3898,161 @@ Stack trace:
     ]
     'argc' => 3
 ]
+2017-06-23 23:50:13 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request: rbac/ in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php:127
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#5 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#6 {main}
+
+Next yii\console\UnknownCommandException: Unknown command "rbac". in /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php:183
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#3 {main}
+2017-06-23 23:50:13 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2078'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1498260221.291252-2083638974'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'WINDOWID' => '75497478'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'DESKTOP_AUTOSTART_ID' => '1091bdbf7518710005149826022262499700000019830001'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/1983,unix/lucas-note2:/tmp/.ICE-unix/1983'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-oewXoTwLuk,guid=225e331faf3918bed1735e0d594da2fe'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    'OLDPWD' => '/home/lucas'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1498261813.8758
+    'REQUEST_TIME' => 1498261813
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac'
+    ]
+    'argc' => 2
+]
+2017-06-23 23:51:12 [-][-][-][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Funçao inexistenteD: "". in /var/www/html/Transportes/console/controllers/RbacController.php:148
+Stack trace:
+#0 [internal function]: console\controllers\RbacController->actionAssign(NULL, 'ALEXANDRE')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#9 {main}
+2017-06-23 23:51:12 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2078'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1498260221.291252-2083638974'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'WINDOWID' => '75497478'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'DESKTOP_AUTOSTART_ID' => '1091bdbf7518710005149826022262499700000019830001'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/1983,unix/lucas-note2:/tmp/.ICE-unix/1983'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-oewXoTwLuk,guid=225e331faf3918bed1735e0d594da2fe'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    'OLDPWD' => '/home/lucas'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1498261872.4578
+    'REQUEST_TIME' => 1498261872
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/assign'
+        2 => 'admLND'
+        3 => 'ALEXANDRE'
+    ]
+    'argc' => 4
+]

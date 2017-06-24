@@ -1,24 +1,37 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
 use NFePHP\MDFe\Tools;
 
-$cteTools = new Tools('D:\ambiente_desenvolvedor_php\www\Transportes\backend\config\config.json');
+// Arquivo de Configuração
+$json = Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json';
 
-//if(is_file('D:\ambiente_desenvolvedor_php\www\Transportes\backend\config\config.json')) {
-//    echo "ok";
-//} else {
-//    echo 'erro';
-//}
+// Instancia de Tools
+$mdfeTools = new Tools($json);
 
+// Variável com retorno da consulta
 $aResposta = array();
-$siglaUF = 'MG';
-$tpAmb = '2';
-$retorno = $cteTools->sefazStatus($siglaUF, $tpAmb, $aResposta);
-echo '<pre>';
-//echo htmlspecialchars($cteTools->soapDebug);
-print_r($aResposta);
-//print_r($retorno);
-//echo htmlspecialchars($cteTools->soapDebug);
-echo "</pre>";
+
+// Sigla para pesquisa do Status
+$siglaUF = $mdfeTools->aConfig['siglaUF'];
+
+// Tipos de ambiente para verificar o status
+$tpsAmb = [
+    '1' => 'Produção',
+    '2' => 'Homologação'
+];
+
+$status = array();
+
+foreach ($tpsAmb as $tpAmb => $xtpAmb) {
+    // Faz a consulta do Status
+    $retorno = $mdfeTools->sefazStatus($siglaUF, $tpAmb, $aResposta);
+
+    $status[$tpAmb] = [
+            'Ambiente' => ($tpAmb == 1) ? 'Produção' : 'Homologação',
+            'cStat' => $aResposta['cStat'],
+            'xMotivo' => $aResposta['xMotivo'],
+            'UF' => $siglaUF
+        ];
+}
+
+return $status;

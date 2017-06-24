@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $mdfe_id
  * @property string $condutor
+ * @property string $xnome
  *
  * @property Mdfe $mdfe
  */
@@ -29,7 +30,7 @@ class MdfeCondutor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mdfe_id', 'condutor'], 'required'],
+            [['mdfe_id', 'condutor', 'xnome'], 'required'],
             [['mdfe_id'], 'integer'],
             [['condutor'], 'string', 'max' => 11],
             [['mdfe_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mdfe::className(), 'targetAttribute' => ['mdfe_id' => 'id']],
@@ -44,7 +45,8 @@ class MdfeCondutor extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'mdfe_id' => Yii::t('app', 'Mdfe ID'),
-            'condutor' => Yii::t('app', 'Condutor'),
+            'condutor' => Yii::t('app', 'CPF'),
+            'xnome' => Yii::t('app', 'Nome'),
         ];
     }
 
