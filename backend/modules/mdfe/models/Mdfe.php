@@ -60,7 +60,7 @@ class Mdfe extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'dtemissao',
+            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'dtemissao', 'ambiente',
                 'uf', 'tipoemitente', 'modalidade', 'formaemissao', 'ufcarga', 'ufdescarga',
                 'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria'],
                 'required'],

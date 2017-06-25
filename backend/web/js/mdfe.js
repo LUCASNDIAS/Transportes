@@ -133,13 +133,14 @@ $(document).ready(function () {
         rm_acentos_caps($(this));
     });
 
-    // Submit
-    $("#submitCreate, #submitUpdate").click(function (e) {
-        e.preventDefault();
-        var urlAtual = window.location.href;
-        var Formulario = $("#dynamic-form").serialize();
-        var Confirma = Formulario + '&salvar=sim';
-        $.post(urlAtual, Confirma);
-    });
+//    // Não precisa pois não faço validação no servidor
+//    // Submit
+//    $("#submitCreate, #submitUpdate").click(function (e) {
+//        e.preventDefault();
+//        var urlAtual = window.location.href;
+//        var Formulario = $("#dynamic-form").serialize();
+//        var Confirma = Formulario + '&salvar=sim';
+//        $.post(urlAtual, Confirma);
+//    });
 
 });
