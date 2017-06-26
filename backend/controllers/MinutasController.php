@@ -9,7 +9,7 @@ use backend\models\MinutasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\models\Clientes;
+use backend\modules\clientes\models\Clientes;
 use backend\models\Tabelas;
 use backend\models\EnviaEmail;
 

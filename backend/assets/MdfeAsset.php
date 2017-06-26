@@ -15,6 +15,7 @@ class MdfeAsset extends AssetBundle
     ];
     public $js = [
     	'assets/535b4e4/jquery.mask.min.js',
+        'assets/df01b1b/src/jquery.maskMoney.js',
     	'js/formularios.js',
     	'js/mdfe.js',
     ];

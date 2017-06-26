@@ -209,4 +209,13 @@ class Clientes extends \yii\db\ActiveRecord
 
         return $data;
     }
+
+    public function retornaCliente($cnpj) {
+        $query = self::find()
+                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+                ->andWhere(['cnpj' => $cnpj])
+                ->one();
+
+        return $query;
+    }
 }

@@ -646,10 +646,14 @@ DynamicFormWidget::begin([
             </div>
             <div class="row">
                 <div class="col-sm-4"><?= $form->field($model,
-    'valormercadoria')->textInput() ?></div>
-                <div class="col-sm-4"><?= $form->field($model, 'unidademedida')->textInput([
-    'maxlength' => true]) ?></div>
-                <div class="col-sm-4"><?= $form->field($model, 'pesomercadoria')->textInput() ?></div>
+    'valormercadoria')->textInput(['class' => 'form-control obrig-din']) ?></div>
+                <div class="col-sm-4"><?= $form->field($model, 'unidademedida')->dropDownList([
+                    '01' => 'Kg',
+                    '02' => 'Ton'
+                ]) ?></div>
+                <div class="col-sm-4"><?= $form->field($model, 'pesomercadoria')->textInput([
+                    'class' => 'form-control obrig-peso'
+                ]) ?></div>
             </div>
 
         </div>

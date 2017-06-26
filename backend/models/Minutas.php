@@ -284,7 +284,7 @@ class Minutas extends \yii\db\ActiveRecord {
             return '---';
         }
 
-        $model = new Clientes();
+        $model = new \backend\modules\clientes\models\Clientes();
         $cliente = $model->find()
                 ->select(['nome'])
                 ->where(['cnpj' => $parametros['cnpj']])

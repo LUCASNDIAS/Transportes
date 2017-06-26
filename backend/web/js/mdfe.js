@@ -132,7 +132,29 @@ $(document).ready(function () {
         //$(this).val(strMaiuscula);
         rm_acentos_caps($(this));
     });
-
+    
+    // Mascaras para formulários
+	$('.dinheiro').maskMoney({
+		thousands:'',
+		decimal:'.',
+		allowZero:true,
+		affixesStay: false,
+		prefix: 'R$ '
+	});
+	$('.obrig-din').maskMoney({
+		thousands:'',
+		decimal:'.',
+		allowZero:false,
+		affixesStay: false,
+		prefix: 'R$ '
+	});
+	$('.obrig-peso').maskMoney({
+		thousands:'',
+		decimal:'.',
+		precision: 2,
+		allowZero:false
+	});
+    
 //    // Não precisa pois não faço validação no servidor
 //    // Submit
 //    $("#submitCreate, #submitUpdate").click(function (e) {

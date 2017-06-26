@@ -216,6 +216,12 @@ class DefaultController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        // Somente altoriza a edição se não estiver enviado
+        if ($model->status !== 'SALVO') {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
         $modelsCarregamento = $model->mdfeCarregamentos;
         $modelsCondutor = $model->mdfeCondutors;
         $modelsDescarregamento = $model->mdfeDescarregamentos;
@@ -372,6 +378,65 @@ class DefaultController extends Controller
                 'condutores' => $condutores,
         ]);
 
+    }
+
+    /**
+     * Cria o arquivo PDF do MDFe
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionPrint($id, $retorno = true) {
+        // Modelo do Manifesto
+        $model = $this->findModel($id);
+
+        // Verifica se o Usuario atual eh dono do Manifesto
+        if ($model->dono != \Yii::$app->user->identity['cnpj']) {
+            $exception = 'Permissão negada.';
+            return $this->redirect('site/error');
+        }
+
+        $this->layout = '@backend/views/layouts/print';
+
+        return $this->render('print');        
+
+//        // Define o layout para impressão
+//        $this->layout = 'minutas-print';
+//
+//        $conteudoPDF = $this->render('print', [
+//            'model' => $model,
+//            'empresa' => $empresa,
+//            'remetente' => $remetente,
+//            'destinatario' => $destinatario,
+//            'consignatario' => $consignatario,
+//            'tabela' => $tabela,
+//        ]);
+//
+//        // Local para se salvar as Minutas em PDF
+//        $path = 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $model->numero . '.pdf';
+//
+//        Yii::$app->html2pdf
+//                ->convert($conteudoPDF)
+//                ->saveAs($path);
+//
+//        if (!$retorno) {
+//            return $path;
+//        }
+//
+//        if (is_file($path)) {
+//
+//            // Set up PDF headers
+//            header('Content-type: application/pdf');
+//            header('Content-Disposition: inline; filename="' . '/LNDSistemas-M' . $model->numero . '.pdf' . '"');
+//            header('Content-Transfer-Encoding: binary');
+//            header('Content-Length: ' . filesize($path));
+//            header('Accept-Ranges: bytes');
+//
+//            // Retorna arquivo PDF
+//            return readfile($path);
+//        } else {
+//            // Retorna arquivo PHP
+//            return $conteudoPDF;
+//        }
     }
 
     /**

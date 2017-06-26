@@ -1,0 +1,168 @@
+/* CSS Document */
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+}
+#pos_geral{
+    position:absolute;
+    width:700px;
+    height:940px;
+    top:1px;
+    left:1px;
+    border:#000000 2px solid;
+}
+#pos_topo{
+    position: absolute;
+    display: inline;
+    width: 680px;
+    height: 170px;
+    top: 1px;
+    left: 1px;
+    border: #000000 1px solid;
+}
+#pos_topo .titulo{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+#pos_logo{
+    position: absolute;
+    width: 150px;
+    margin-top: 30px;
+    vertical-align: middle;
+}
+/*#pos_logo img{
+    width: 145px;
+}*/
+
+#pos_cabecalho{
+    position: absolute;
+    width: 530px;
+    left: 165px;
+    display: block;
+    float: right;
+}
+
+#pos_damdfe{
+    position: absolute;
+    width: 680px;
+    height: 30px;
+    top: 175px;
+    left: 1px;
+    border: #000000 1px solid;
+    vertical-align: middle;
+}
+
+#pos_barras{
+    position: absolute;
+    width: 680px;
+    height: 100px;
+    top: 209px;
+    left: 1px;
+    border: #000000 1px solid;
+}
+
+#pos_chave{
+    position: absolute;
+    width: 680px;
+    height: 35px;
+    top: 310px;
+    left: 1px;
+    border: #000000 1px solid;
+}
+
+#pos_protocolo{
+    position: absolute;
+    width: 680px;
+    height: 35px;
+    top: 346px;
+    left: 1px;
+    border: #000000 1px solid;
+}
+
+#pos_dados_mdfe{
+    position: absolute;
+    width: 680px;
+    height: 30px;
+    top: 422px;
+    left: 1px;
+    border: #000000 1px solid;
+    font-size: 11px;
+}
+
+#pos_modelo{
+    position: absolute;
+    width: 680px;
+    height: 30px;
+    top: 0px;
+    left: 0px;
+    border: #000000 1px solid;
+}
+
+
+
+.center{
+    text-align: center;
+}
+.t{
+    font-weight: bold;
+}
+.mlp{
+    margin-left: 10px;
+}
+.mlg{
+    margin-left: 60px;
+}
+.titulo{
+    font-size: 20px;
+    font-weight: bold;
+}
+.centrotfrete{
+    margin-top:9px;
+}
+.tfretecentro1{
+    display:inline;
+    margin-left:3px;
+}
+.tfretecentro{
+    display:inline;
+    margin-left:10px;
+}
+.tnf1{
+    display:inline;
+    margin-left:3px;
+}
+.tnf{
+    display:inline;
+    margin-left:45px;
+}
+.margintop{
+    margin-top:6px;
+}
+.marginleft{
+    margin-left:10px;
+}
+.negrito{
+    font-weight:bold;
+    font-size: 11px;
+}
+.sublinhado{
+    text-decoration:underline;
+}
+.fontminuta{
+    font-size:16px;
+    font-weight:bold;
+}
+.fontnum{
+    font-size:18px;
+    font-weight:bold;
+}
+.negsub{
+    font-weight:bold;
+    text-decoration:underline;
+}
+.linha{
+    border-top:1px solid #000000;
+}
