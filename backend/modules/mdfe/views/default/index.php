@@ -24,27 +24,47 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'dono',
-            'cridt',
-            'criusu',
-            'chave',
+            //['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
+                'buttons' => [
+                    'print' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-print"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'PDF / Impressão'),
+                                'target' => '_blank',
+                                'data-pjax' => '0'
+                        ]);
+                    },
+                    'send' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-send"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'Enviar'),
+                        ]);
+                    },
+                ]
+            ],
+            //'id',
+            //'dono',
+            //'cridt',
+            //'criusu',
+            //'chave',
             // 'modelo',
             // 'serie',
-            // 'numero',
-            // 'dtemissao',
+            'numero',
+            'dtemissao',
             // 'dtinicio',
             // 'uf',
             // 'tipoemitente',
             // 'modalidade',
             // 'formaemissao',
-            // 'ufcarga',
-            // 'ufdescarga',
+            'ufcarga',
+            'ufdescarga',
             // 'rntrc',
             // 'ciot',
-            // 'placa',
+            'placa',
             // 'qtdecte',
             // 'qtdenfe',
             // 'qtdenf',
@@ -55,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'infcontribuinte',
             // 'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

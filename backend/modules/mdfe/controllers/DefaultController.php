@@ -13,6 +13,7 @@ use backend\modules\mdfe\models\MdfeDocumentos as Documentos;
 use backend\modules\mdfe\models\MdfePercurso as Percurso;
 use backend\models\Municipios;
 use backend\models\Funcionarios;
+use backend\modules\clientes\models\Clientes;
 use NFePHP\MDFe\Make;
 use NFePHP\MDFe\Tools;
 use yii\web\Controller;
@@ -380,6 +381,27 @@ class DefaultController extends Controller
 
     }
 
+    public function actionSend($id)
+    {
+        $model = $this->findModel($id);
+        $emitente = Clientes::findOne(['cnpj' => Yii::$app->user->identity['cnpj']]);
+        $condutores = Condutor::findAll(['mdfe_id' => $id]);
+        $munCarga = Carregamento::findAll(['mdfe_id' => $id]);
+        $munDescarga = Descarregamento::findAll(['mdfe_id' => $id]);
+        $documentos = Documentos::findAll(['mdfe_id' => $id]);
+        $munPercurso = Percurso::findAll(['mdfe_id' => $id]);
+
+        return $this->render('enviaXML',[
+           'model' => $model ,
+           'munCarga' => $munCarga,
+           'munDescarga' => $munDescarga,
+           'munPercurso' => $munPercurso,
+           'condutores' => $condutores,
+           'documentos' => $documentos,
+           'emitente' => $emitente
+        ]);
+    }
+
     /**
      * Cria o arquivo PDF do MDFe
      * @param integer $id
@@ -388,6 +410,7 @@ class DefaultController extends Controller
     public function actionPrint($id, $retorno = true) {
         // Modelo do Manifesto
         $model = $this->findModel($id);
+        $condutores = Condutor::findAll(['mdfe_id' => $id]);
 
         // Verifica se o Usuario atual eh dono do Manifesto
         if ($model->dono != \Yii::$app->user->identity['cnpj']) {
@@ -397,23 +420,26 @@ class DefaultController extends Controller
 
         $this->layout = '@backend/views/layouts/print';
 
-        return $this->render('print');        
+        return $this->render('print',[
+            'model' => $model,
+            'condutores' => $condutores,
+        ]);
 
 //        // Define o layout para impressão
 //        $this->layout = 'minutas-print';
-//
-//        $conteudoPDF = $this->render('print', [
-//            'model' => $model,
-//            'empresa' => $empresa,
-//            'remetente' => $remetente,
-//            'destinatario' => $destinatario,
-//            'consignatario' => $consignatario,
-//            'tabela' => $tabela,
-//        ]);
-//
+////
+//        $conteudoPDF = $this->render('print');
+////            'model' => $model,
+////            'empresa' => $empresa,
+////            'remetente' => $remetente,
+////            'destinatario' => $destinatario,
+////            'consignatario' => $consignatario,
+////            'tabela' => $tabela,
+////        ]);
+////
 //        // Local para se salvar as Minutas em PDF
-//        $path = 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $model->numero . '.pdf';
-//
+//        $path = 'pdfs/LNDSistemas-Mdfe' . $model->numero . '.pdf';
+////
 //        Yii::$app->html2pdf
 //                ->convert($conteudoPDF)
 //                ->saveAs($path);
