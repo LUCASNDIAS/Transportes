@@ -65,14 +65,14 @@ class Mdfe extends \yii\db\ActiveRecord
                 'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria'],
                 'required'],
             [['cridt', 'dtemissao', 'dtinicio'], 'safe'],
-            [['qtdecte', 'qtdenfe', 'qtdenf'], 'integer'],
+            [['qtdecte', 'qtdenfe', 'qtdenf', 'numero'], 'integer'],
             [['valormercadoria', 'pesomercadoria'], 'number'],
             [['dono', 'criusu'], 'string', 'max' => 14],
             [['chave'], 'string', 'max' => 44],
             [['modelo', 'uf', 'ufcarga', 'ufdescarga'], 'string', 'max' => 2],
             [['serie', 'unidademedida'], 'string', 'max' => 3],
             [['tipoemitente'], 'string', 'max' => 50],
-            [['modalidade', 'formaemissao', 'rntrc', 'ciot'], 'string', 'max' => 20],
+            [['modalidade', 'formaemissao', 'rntrc', 'ciot', 'protocolo'], 'string', 'max' => 20],
             [['placa'], 'string', 'max' => 8],
             [['inffisco', 'infcontribuinte'], 'string', 'max' => 100],
             [['status'], 'string', 'max' => 30],
@@ -114,6 +114,7 @@ class Mdfe extends \yii\db\ActiveRecord
             'inffisco' => Yii::t('app', 'Informações ao Fisco'),
             'infcontribuinte' => Yii::t('app', 'Informações do Contribuinte'),
             'status' => Yii::t('app', 'Status'),
+            'protocolo' => Yii::t('app', 'Protocolo'),
         ];
     }
 
@@ -164,6 +165,7 @@ class Mdfe extends \yii\db\ActiveRecord
             ->select(['numero'])
             ->where(['dono' => Yii::$app->user->identity['cnpj']])
             ->andWhere(['ambiente' => $tpAmb])
+            ->andWhere(['NOT LIKE', 'status', 'DELETADO'])
             ->orderBy('numero DESC')
             ->asArray()
             ->one();

@@ -25,6 +25,8 @@ return [
     'Create Minutas' => 'Emitir Minutas',
     'Create Funcionarios' => 'Adicionar Funcionários',
     'Create Cte' => 'Emitir Conhecimento',
+    'Create Mdfe' => 'Emitir Manifesto',
+    'Mdves' => 'Manifestos',
     'Delete' => 'Excluir',
     'Reset' => 'Resetar',
     'Search' => 'Procurar',

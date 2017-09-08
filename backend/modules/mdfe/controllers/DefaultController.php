@@ -93,9 +93,10 @@ class DefaultController extends Controller
         $condutores       = $modelPCondutores->autoComplete();
 
 
-        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') === null) {
+        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())
+            && Yii::$app->request->post('salvar') === null) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-                    return ActiveForm::validate($model);
+            return ActiveForm::validate($model);
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -107,7 +108,8 @@ class DefaultController extends Controller
             Model::loadMultiple($modelsCondutor, Yii::$app->request->post());
 
             $modelsDescarregamento = Model::createMultiple(Descarregamento::classname());
-            Model::loadMultiple($modelsDescarregamento, Yii::$app->request->post());
+            Model::loadMultiple($modelsDescarregamento,
+                Yii::$app->request->post());
 
             $modelsDocumentos = Model::createMultiple(Documentos::classname());
             Model::loadMultiple($modelsDocumentos, Yii::$app->request->post());
@@ -115,8 +117,10 @@ class DefaultController extends Controller
             $modelsPercurso = Model::createMultiple(Percurso::classname());
             Model::loadMultiple($modelsPercurso, Yii::$app->request->post());
 
-            $model->numero = (empty($model->numero)) ? $this->getNumero($model->ambiente) : $model->numero;
-            $model->chave = $this->montaChave($model->numero, $model->formaemissao);
+            $model->numero = (empty($model->numero)) ? $this->getNumero($model->ambiente)
+                    : $model->numero;
+            $model->chave  = $this->montaChave($model->numero,
+                $model->formaemissao);
             $model->status = 'SALVO';
 
             // validate all models
@@ -182,7 +186,8 @@ class DefaultController extends Controller
 
                     if ($flag && $flag2 && $flag3 && $flag4) {
                         $transaction->commit();
-                        return $this->redirect(['view', 'id' => $model->id]);
+                        return $this->redirect(['index']);
+//                        return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } catch (Exception $e) {
 
@@ -220,14 +225,14 @@ class DefaultController extends Controller
 
         // Somente altoriza a edição se não estiver enviado
         if ($model->status !== 'SALVO') {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
-        $modelsCarregamento = $model->mdfeCarregamentos;
-        $modelsCondutor = $model->mdfeCondutors;
+        $modelsCarregamento    = $model->mdfeCarregamentos;
+        $modelsCondutor        = $model->mdfeCondutors;
         $modelsDescarregamento = $model->mdfeDescarregamentos;
-        $modelsDocumentos = $model->mdfeDocumentos;
-        $modelsPercurso = $model->mdfePercursos;
+        $modelsDocumentos      = $model->mdfeDocumentos;
+        $modelsPercurso        = $model->mdfePercursos;
 
         $modelMunicipios = new Municipios();
         $municipios      = $modelMunicipios->autoComplete();
@@ -236,37 +241,54 @@ class DefaultController extends Controller
         $modelPCondutores = new Funcionarios();
         $condutores       = $modelPCondutores->autoComplete();
 
-        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') === null) {
+        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())
+            && Yii::$app->request->post('salvar') === null) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-                    return ActiveForm::validate($model);
+            return ActiveForm::validate($model);
         }
 
-        if ($model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') !== null) {
+        if ($model->load(Yii::$app->request->post())) {
 
-            $oldIDs = ArrayHelper::map($modelsCarregamento, 'id', 'id');
-            $modelsCarregamento = Model::createMultiple(Carregamento::classname(), $modelsCarregamento);
+            $oldIDs             = ArrayHelper::map($modelsCarregamento, 'id',
+                    'id');
+            $modelsCarregamento = Model::createMultiple(Carregamento::classname(),
+                    $modelsCarregamento);
             Model::loadMultiple($modelsCarregamento, Yii::$app->request->post());
-            $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsCarregamento, 'id', 'id')));
+            $deletedIDs         = array_diff($oldIDs,
+                array_filter(ArrayHelper::map($modelsCarregamento, 'id', 'id')));
 
-            $oldIDscon = ArrayHelper::map($modelsCondutor, 'id', 'id');
-            $modelsCondutor = Model::createMultiple(Condutor::classname(), $modelsCondutor);
+            $oldIDscon      = ArrayHelper::map($modelsCondutor, 'id', 'id');
+            $modelsCondutor = Model::createMultiple(Condutor::classname(),
+                    $modelsCondutor);
             Model::loadMultiple($modelsCondutor, Yii::$app->request->post());
-            $deletedIDscon = array_diff($oldIDscon, array_filter(ArrayHelper::map($modelsCondutor, 'id', 'id')));
+            $deletedIDscon  = array_diff($oldIDscon,
+                array_filter(ArrayHelper::map($modelsCondutor, 'id', 'id')));
 
-            $oldIDsdes = ArrayHelper::map($modelsDescarregamento, 'id', 'id');
-            $modelsDescarregamento = Model::createMultiple(Descarregamento::classname(), $modelsDescarregamento);
-            Model::loadMultiple($modelsDescarregamento, Yii::$app->request->post());
-            $deletedIDsdes = array_diff($oldIDsdes, array_filter(ArrayHelper::map($modelsDescarregamento, 'id', 'id')));
+            $oldIDsdes             = ArrayHelper::map($modelsDescarregamento,
+                    'id', 'id');
+            $modelsDescarregamento = Model::createMultiple(Descarregamento::classname(),
+                    $modelsDescarregamento);
+            Model::loadMultiple($modelsDescarregamento,
+                Yii::$app->request->post());
+            $deletedIDsdes         = array_diff($oldIDsdes,
+                array_filter(ArrayHelper::map($modelsDescarregamento, 'id', 'id')));
 
-            $oldIDsdoc = ArrayHelper::map($modelsDocumentos, 'id', 'id');
-            $modelsDocumentos = Model::createMultiple(Documentos::classname(), $modelsDocumentos);
+            $oldIDsdoc        = ArrayHelper::map($modelsDocumentos, 'id', 'id');
+            $modelsDocumentos = Model::createMultiple(Documentos::classname(),
+                    $modelsDocumentos);
             Model::loadMultiple($modelsDocumentos, Yii::$app->request->post());
-            $deletedIDsdoc = array_diff($oldIDsdoc, array_filter(ArrayHelper::map($modelsDocumentos, 'id', 'id')));
+            $deletedIDsdoc    = array_diff($oldIDsdoc,
+                array_filter(ArrayHelper::map($modelsDocumentos, 'id', 'id')));
 
-            $oldIDsper = ArrayHelper::map($modelsPercurso, 'id', 'id');
-            $modelsPercurso = Model::createMultiple(Percurso::classname(), $modelsPercurso);
+            $oldIDsper      = ArrayHelper::map($modelsPercurso, 'id', 'id');
+            $modelsPercurso = Model::createMultiple(Percurso::classname(),
+                    $modelsPercurso);
             Model::loadMultiple($modelsPercurso, Yii::$app->request->post());
-            $deletedIDsper = array_diff($oldIDsper, array_filter(ArrayHelper::map($modelsPercurso, 'id', 'id')));
+            $deletedIDsper  = array_diff($oldIDsper,
+                array_filter(ArrayHelper::map($modelsPercurso, 'id', 'id')));
+
+            $model->chave = $this->montaChave($model->numero,
+                $model->formaemissao);
 
             // validate all models
             $valid = $model->validate();
@@ -345,20 +367,17 @@ class DefaultController extends Controller
                                 break;
                             }
                         }
-
                     }
 
                     if ($flag && $flag2 && $flag3 && $flag4) {
 
                         $transaction->commit();
-                        return $this->redirect(['view', 'id' => $model->id]);
-
+                        return $this->redirect(['index']);
+//                        return $this->redirect(['view', 'id' => $model->id]);
                     }
-
                 } catch (Exception $e) {
 
                     $transaction->rollBack();
-
                 }
             }
         }
@@ -378,28 +397,38 @@ class DefaultController extends Controller
                 'ufs' => $ufs,
                 'condutores' => $condutores,
         ]);
-
     }
 
     public function actionSend($id)
     {
-        $model = $this->findModel($id);
-        $emitente = Clientes::findOne(['cnpj' => Yii::$app->user->identity['cnpj']]);
-        $condutores = Condutor::findAll(['mdfe_id' => $id]);
-        $munCarga = Carregamento::findAll(['mdfe_id' => $id]);
+        $model       = $this->findModel($id);
+        $emitente    = Clientes::findOne(['cnpj' => Yii::$app->user->identity['cnpj']]);
+        $condutores  = Condutor::findAll(['mdfe_id' => $id]);
+        $munCarga    = Carregamento::findAll(['mdfe_id' => $id]);
         $munDescarga = Descarregamento::findAll(['mdfe_id' => $id]);
-        $documentos = Documentos::findAll(['mdfe_id' => $id]);
+        $documentos  = Documentos::findAll(['mdfe_id' => $id]);
         $munPercurso = Percurso::findAll(['mdfe_id' => $id]);
 
-        return $this->render('enviaXML',[
-           'model' => $model ,
-           'munCarga' => $munCarga,
-           'munDescarga' => $munDescarga,
-           'munPercurso' => $munPercurso,
-           'condutores' => $condutores,
-           'documentos' => $documentos,
-           'emitente' => $emitente
+        return $this->render('enviaXML',
+                [
+                'model' => $model,
+                'munCarga' => $munCarga,
+                'munDescarga' => $munDescarga,
+                'munPercurso' => $munPercurso,
+                'condutores' => $condutores,
+                'documentos' => $documentos,
+                'emitente' => $emitente
         ]);
+    }
+
+    public function actionCte()
+    {
+        return $this->render('cte');
+    }
+
+    public function actionCteprot()
+    {
+        return $this->render('cteprot');
     }
 
     /**
@@ -407,9 +436,10 @@ class DefaultController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionPrint($id, $retorno = true) {
+    public function actionPrint($id, $retorno = true)
+    {
         // Modelo do Manifesto
-        $model = $this->findModel($id);
+        $model      = $this->findModel($id);
         $condutores = Condutor::findAll(['mdfe_id' => $id]);
 
         // Verifica se o Usuario atual eh dono do Manifesto
@@ -420,9 +450,10 @@ class DefaultController extends Controller
 
         $this->layout = '@backend/views/layouts/print';
 
-        return $this->render('print',[
-            'model' => $model,
-            'condutores' => $condutores,
+        return $this->render('print',
+                [
+                'model' => $model,
+                'condutores' => $condutores,
         ]);
 
 //        // Define o layout para impressão
@@ -473,7 +504,9 @@ class DefaultController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model         = $this->findModel($id);
+        $model->status = 'DELETADO';
+        $model->save();
 
         return $this->redirect(['index']);
     }
@@ -497,15 +530,17 @@ class DefaultController extends Controller
     protected function montaChave($numero, $tpEmis)
     {
         //$mdfeTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
-        $mdfe = new Make();
-        $chave = $mdfe->montaChave('31', date('y'), date('m'), Yii::$app->user->identity['cnpj'], '58', '1', $numero, $tpEmis, '09835783');
+        $mdfe  = new Make();
+        $chave = $mdfe->montaChave('31', date('y'), date('m'),
+            Yii::$app->user->identity['cnpj'], '58', '1', $numero, $tpEmis,
+            '09835783');
         return $chave;
     }
 
     protected function getNumero($tpAmb)
     {
         $model = new Mdfe();
-        $last = $model->getLastId($tpAmb);
+        $last  = $model->getLastId($tpAmb);
 
         return $last;
     }
@@ -535,8 +570,53 @@ class DefaultController extends Controller
         return $this->render('consultachave');
     }
 
-    public function actionCancelar()
+    public function actionCancel()
     {
         return $this->render('cancelar');
+    }
+
+    public function actionPrepara($id)
+    {
+        $model     = $this->findModel($id);
+        $modelXml  = new \backend\modules\mdfe\models\MontaXml;
+        $assinado  = $modelXml->montarXml($id);
+        $xAmbiente = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+        $novo      = \Yii::getAlias('@mdfe').'/'.$xAmbiente.'/validadas/'.$model->chave.'-mdfe.xml';
+
+        if (is_file($assinado)) {
+            $valida = $modelXml->validaXml($assinado);
+            if (!is_array($valida)) {
+                rename($assinado, $novo);
+                return [
+                    'status' => 'OK',
+                    'xml' => $novo
+                ];
+            } else {
+                return ['status' => 'ERRO', 'ERROS' => $valida];
+            }
+        }
+    }
+
+    public function actionEnvia($id, $xml)
+    {
+        $model      = $this->findModel($id);
+        $tpAmb      = $model->ambiente;
+        $modelEnvia = new \backend\modules\mdfe\models\MontaXml();
+        $envia = $modelEnvia->enviaXml($xml, $tpAmb);
+
+        var_dump($envia);
+    }
+
+    public function actionVai($id)
+    {
+        $prepara = $this->actionPrepara($id);
+
+        if($prepara['status'] == 'OK') {
+            $retorno = $this->actionEnvia($id, $prepara['xml']);
+            var_dump($retorno);
+        } else {
+            var_dump($prepara);
+        }
+        
     }
 }

@@ -42,7 +42,10 @@ class MdfeSearch extends Mdfe
      */
     public function search($params)
     {
-        $query = Mdfe::find();
+        $query = Mdfe::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            //->andWhere(['ambiente' => '1'])
+            ->andWhere(['NOT LIKE', 'status', 'DELETADO']);
 
         // add conditions that should always apply here
 
@@ -62,6 +65,7 @@ class MdfeSearch extends Mdfe
         $query->andFilterWhere([
             'id' => $this->id,
             'cridt' => $this->cridt,
+            'ambiente' => $this->ambiente,
             'dtemissao' => $this->dtemissao,
             'dtinicio' => $this->dtinicio,
             'qtdecte' => $this->qtdecte,
@@ -90,6 +94,8 @@ class MdfeSearch extends Mdfe
             ->andFilterWhere(['like', 'inffisco', $this->inffisco])
             ->andFilterWhere(['like', 'infcontribuinte', $this->infcontribuinte])
             ->andFilterWhere(['like', 'status', $this->status]);
+
+        $query->orderBy('numero DESC');
 
         return $dataProvider;
     }

@@ -43,6 +43,12 @@ $config = [
         'clientes' => [
             'class' => 'backend\modules\clientes\Module',
         ],
+        'cte' => [
+            'class' => 'backend\modules\cte\Module',
+        ],
+        'veiculos' => [
+            'class' => 'backend\modules\veiculos\Module',
+        ],
     ],
     'components' => [
         'request' => [

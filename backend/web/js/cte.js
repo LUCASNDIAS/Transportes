@@ -4,10 +4,46 @@
  */
 
 $(document).ready(function () {
+    
+    //  Mascaras
+    function mascara() {
+        $(".dinheiro").maskMoney({
+            thousands: '',
+            decimal: '.',
+            allowZero: true,
+            affixesStay: false,
+            prefix: 'R$ '
+        });
+        
+        $(".imposto").maskMoney({
+            thousands: '',
+            decimal: '.',
+            allowZero: true,
+        });
 
-    $("#btn-testar").on('click', function () {
-        alert($('form').serialize());
-    });
+        $('.dimensao').maskMoney({
+            thousands: '',
+            decimal: '.',
+            allowZero: true
+        });
+
+        $('.peso').maskMoney({
+            thousands: '',
+            decimal: '.',
+            precision: 3,
+            allowZero: true
+        });
+
+        // Datas
+        $('.data').mask('00/00/0000');
+
+        // Hora
+        $('.hora').mask('00:00');
+
+        // Placa
+        $('.placa').mask('AAA0000');
+    }
+    mascara();
     
     // Função peso cubado
     function calculoGeral() {
@@ -27,38 +63,28 @@ $(document).ready(function () {
         var realVolumes = '';
         var realDimensoes = '';
 
-        $("input[name^='notasnumerox']").each(function (i) {
-            
+        $(".nfechave").each(function (i) {
+
             // Variáveis das notas
             var numero = $(this).val();
-            var valor = $("input[id$='-notasvalorx" + i + "']").val().replace(/[R$ ]/g, '');
+            var valor = $("input[id='ctedocumentos-" + i + "-vnf']").val().replace(/[R$ ]/g, '');
 
             // Variáveis de alt, larg e comp para calcular o peso subado
-            var altura = $("input[id$='-notasalturax" + i + "']").val();
-            var largura = $("input[id$='-notaslargurax" + i + "']").val();
-            var comprimento = $("input[id$='-notascomprimentox" + i + "']").val();
-            var volumes = ($("input[id$='-notasvolumesx" + i + "']").val() == '') ? 1 : $("input[id$='-notasvolumesx" + i + "']").val();
+            var altura = $("input[id='ctedocumentos-" + i + "-altura']").val();
+            var largura = $("input[id='ctedocumentos-" + i + "-largura']").val();
+            var comprimento = $("input[id='ctedocumentos-" + i + "-comprimento']").val();
+            var volumes = ($("input[id='ctedocumentos-" + i + "-volumes']").val() == '') ? 1 : $("input[id='ctedocumentos-" + i + "-volumes']").val();
             // Soma do peso cubado
             cubado += altura * largura * comprimento * multiplicador * volumes;
 
             // Variável de peso real
-            var peso = $("input[id$='-notaspesox" + i + "']").val();
+            var peso = $("input[id='ctedocumentos-" + i + "-peso']").val();
             // Soma do peso real
             pesoreal += peso * 1;
 
-            // Campos Reais
-            realNumero += '|' + numero;
-            realValor += '|' + valor;
-            realAltura += '|' + altura;
-            realLargura += '|' + largura;
-            realComprimento += '|' + comprimento;
-            realPeso += '|' + peso;
-            realVolumes += '|' + volumes;
-            realDimensoes += '|' + altura + 'x' + largura + 'x' + comprimento;
-
         });
-        
-        //alert('Real: ' + pesoreal + ' | Cubado: ' + cubado);
+
+//        alert('Real: ' + pesoreal + ' | Cubado: ' + cubado);
 
         // Preenchimento do peso cubado e real
 //        $("#minutas-pesocubado").val(cubado.toFixed(2));
@@ -75,14 +101,90 @@ $(document).ready(function () {
 //        $("#minutas-notasdimensoes").val(realDimensoes);
     }
     
-    $("div .linhas input, div .linhas select").on('blur', function(){
+    // Função que remove acentos e caps formulario
+    function rm_acentos_caps(campo) {
+        var valor = campo.val().replace(/[áàâãÁÀÂÃ]/g, 'a').replace(/[éèêẽÉÈÊẼ]/g, 'e').replace(/[íìîĩÍÌÎĨ]/g, 'i').replace(/[óòôõÓÒÔÕ]/g, 'o').replace(/[úùûũüÚÙÛŨÜ]/g, 'u').replace(/[çÇ]/g, 'c').toUpperCase();
+        campo.val(valor);
+    }
+
+    // Controle dos campos dinâmicos de contatos e tabelas
+    jQuery(".dynamicform_wrapper").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper .panel-title-contato").each(function (index) {
+            jQuery(this).html("Nota: " + (index + 1));
+            // Passa todos os valores de input para maiusculo removendo acentos
+            $('input, select, textarea').on('blur', function () {
+                calculoGeral();
+                rm_acentos_caps($(this));
+            });
+            $('.notnfe').hide();
+            mascara();
+        });
+    });
+    
+    // Passa todos os valores de input para maiusculo removendo acentos
+    $('input, select, textarea').on('blur', function () {
+        //var strMaiuscula = $(this).val().toUpperCase();
+        //$(this).val(strMaiuscula);
+        rm_acentos_caps($(this));
+    });
+    
+    function calculaFrete() {
+        var formulario = $("#dynamic-form").serialize();
+        alert(formulario);
+
+        $.ajax({
+            url: '/Transportes/backend/web/ajax/calculos',
+            type: 'POST',
+            data: {
+                tipo: 'ajax',
+                test: formulario
+            },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+//                if (data == 'Tabela não informada' || data == 'Peso não definido' || typeof data.fretetotal === 'undefined') {
+//                    var erros = '<td colspan="5"><span class="text-red text-bold">' + data + '</span></td>'
+//                    $(".retornoFinal").html(erros);
+//                } else {
+//
+//                    var tabela = '<td>Frete mínimo: <span class="text-bold text-blue">R$' + data.valorminimo + '</span></td>';
+//                    tabela += '<td>Frete peso: <span class="text-bold text-blue">R$' + data.valorexcedente + '</span></td>';
+//                    tabela += '<td>Taxa extra: <span class="text-bold text-blue">R$' + data.taxaextra + '</span></td>';
+//                    tabela += '<td>Desconto: <span class="text-bold text-red">-R$' + data.desconto + '</span></td>';
+//                    tabela += '<td>Valor total: <span class="text-bold text-blue">R$' + data.fretetotal + '</span></td>';
+//
+//                    $(".retornoFinal").html(tabela);
+//                }
+            }
+        });
+    }
+    
+    $("#tabelaAjax").on('change',function(){
+       $('.retornoFinal').load('/Transportes/backend/web/ajax/sql');
+    });
+    
+    $("#btn-testar").on('click', function () {
+        alert($('form').serialize());
+    });
+
+    $(".container-items input, .container-items select").on('blur', function () {
         calculoGeral();
+    });
+
+    $(".ctetipo").on('change', function () {
+        var tipo = $(this).val();
+
+        if (tipo == 'NFE') {
+            $(".notnfe").hide('slow');
+        } else {
+            $('.notnfe').show('slow');
+        }
     });
 
     // Inicia com focus na pesquisa do remetente
     $("#remetente-nome").focus();
 
-    $("#icms, #contingencia, #tpcte, .nf_notasfiscais, .nf_notasoutros").hide();
+    $("#icms, #contingencia, #tpcte, .notnfe, .nf_notasfiscais, .nf_notasoutros, .lotacao").hide();
 
     // Campos de Notas com "disabled"
     var camposNFe = ["input[name^='nf_nromax']", "input[name^='nf_nmodx']", "input[name^='nf_nseriex']"];
@@ -133,46 +235,6 @@ $(document).ready(function () {
             disabled(camposNF);
             disabled(camposOutros);
         }
-    });
-
-
-    // Validar dados		
-    // Adiciona nova linha com dados de fomulário
-    $(".adicionarCampo").click(function (e) {
-
-        e.preventDefault();
-
-        var duplicarPrimeiro = 'div.' + $(this).attr('id') + ':first';
-        var contarTodos = $('div.' + $(this).attr('id')).length;
-        var verificarUltimo = 'div.' + $(this).attr('id') + ':last';
-
-        novoCampo = $(duplicarPrimeiro).clone(true);
-        novoCampo.attr("id", contarTodos);
-        novoCampo.insertAfter(verificarUltimo);
-        novoCampo.find("#0").attr("id", contarTodos);
-
-        $("div .linhas:first input, div .linhas:first select").each(function (index) {
-            var idInicial = '#' + $(this).attr('id');
-            var novaID = $(this).attr('id').replace('0', contarTodos);
-            novoCampo.find(idInicial).attr("id", novaID);
-            $('#' + novaID).val('');
-        });
-
-//        mascara();
-        calculoGeral();
-    });
-
-    $(".remover, .adicionarCampo").on("mouseenter", function () {
-        $(this).css('cursor', "pointer");
-    });
-
-    //Remove uma linha do formulário
-    $('.remover').click(function () {
-        var removerDiv = '#' + $(this).attr('id');
-        if ($(this).attr('id') != 0) {
-            $(removerDiv).remove();
-        }
-        calculoGeral();
     });
 
     // Calcula peso cubado
@@ -252,16 +314,20 @@ $(document).ready(function () {
 
     });
 
+    $("#cte-lota").on('change', function () {
+        $('.lotacao').toggle('slow');
+    });
+
     // Envio do CTe (Local)
-    var emitente = $("#cte-emitente").val();
+    var emitente = $("#dono").val();
     $.get("/Transportes/backend/web/ajax/cidades", {envolvidos: emitente})
             .done(function (data) {
 
                 $.each(data, function (key, value) {
 
-                    $("#cte-ide_cmunenv").val(value.codigo);
-                    $("#cte-ide_xmunenv").val(value.municipio);
-                    $("#cte-ide_ufenv").val(value.uf);
+                    $("#cte-cmunenv").val(value.codigo);
+                    $("#cte-xmunenv").val(value.municipio);
+                    $("#cte-ufenv").val(value.uf);
 
                 });
 
@@ -284,15 +350,15 @@ $(document).ready(function () {
 
         if (local == 'cte-origem') {
 
-            Tagcmun = '#cte-ide_cmunini';
-            Tagxmun = '#cte-ide_xmunini';
-            Taguf = '#cte-ide_ufini';
+            Tagcmun = '#cte-cmunini';
+            Tagxmun = '#cte-xmunini';
+            Taguf = '#cte-ufini';
 
         } else {
 
-            Tagcmun = '#cte-ide_cmunfim';
-            Tagxmun = '#cte-ide_xmunfim';
-            Taguf = '#cte-ide_uffim';
+            Tagcmun = '#cte-cmunfim';
+            Tagxmun = '#cte-xmunfim';
+            Taguf = '#cte-uffim';
 
         }
 
@@ -308,13 +374,13 @@ $(document).ready(function () {
 
         OrigemDestino(local, valor);
 
-        $('#cte-ide_uffim, #cte-ide_ufini').trigger('change');
+        $('#cte-uffim, #cte-ufini').trigger('change');
 
     });
 
-    $('#cte-ide_uffim, #cte-ide_ufini').on('change', function () {
-        var uffim = $("#cte-ide_uffim").val();
-        var ufini = $("#cte-ide_ufini").val();
+    $('#cte-uffim, #cte-ufini').on('change', function () {
+        var uffim = $("#cte-uffim").val();
+        var ufini = $("#cte-ufini").val();
 
         if (uffim != '' && ufini != '') {
             if (uffim == ufini) {
@@ -340,7 +406,7 @@ $(document).ready(function () {
 
                         });
 
-                        $("#cte-ide_cfop").html(lista);
+                        $("#cte-cfop").html(lista);
 
                     });
 
@@ -348,11 +414,11 @@ $(document).ready(function () {
 
     });
 
-    $('#cte-ide_cfop').on('change', function () {
-        var texto = $('#cte-ide_cfop option:selected').text();
+    $('#cte-cfop').on('change', function () {
+        var texto = $('#cte-cfop option:selected').text();
         var separa = texto.split(' - ');
 
-        $("#cte-ide_natop").val(separa[1]);
+        $("#cte-natop").val(separa[1]);
     });
 
     // Tomador
@@ -404,7 +470,7 @@ $(document).ready(function () {
 
         $('#cte-icms').val(icms);
     }
-    $("input[name^='icms-']").on('change', function () {
+    $("input[id^='icms-']").on('change', function () {
         icms();
     });
 
@@ -438,8 +504,8 @@ $(document).ready(function () {
     }
 
     $("#tributo-icms").on('change', function () {
-        $("input[name^='icms-']").attr('readonly', 'readonly');
-        $("input[name^='icms-']").val('');
+        $("input[id^='icms-']").attr('readonly', 'readonly');
+        $("input[id^='icms-']").val('');
         $("#cte-icms").val('');
         var tributo = $(this).val();
         var tipo = '';
@@ -486,7 +552,7 @@ $(document).ready(function () {
     });
 
     // Tipo de Emissão
-    $('#cte-ide_tpemis').on('change', function () {
+    $('#cte-tpemis').on('change', function () {
         if ($(this).val() == '5') {
             $("#contingencia").show('slow');
         } else {
@@ -495,7 +561,7 @@ $(document).ready(function () {
     });
 
     // Tipo de Cte
-    $('#cte-ide_tpcte').on('change', function () {
+    $('#cte-tpcte').on('change', function () {
         if ($(this).val() != '0') {
             $("#tpcte").show('slow');
         } else {
@@ -537,7 +603,7 @@ $(document).ready(function () {
                     });
 
         }
-       
+
     });
 
     // Submit

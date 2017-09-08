@@ -6605,3 +6605,226 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1496496558.669
     'REQUEST_TIME' => 1496496558
 ]
+2017-08-14 15:37:34 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-08-14 15:37:34 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+2017-08-14 15:37:33 [10.20.235.9][-][-][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'minorityreport.48bpm'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at minorityreport.48bpm Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'minorityreport.48bpm'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.20.235.9'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '57110'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1502725053.169
+    'REQUEST_TIME' => 1502725053
+]
+2017-08-14 16:02:31 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-08-14 16:02:31 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+2017-08-14 16:02:31 [10.20.235.9][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '0lm2ju179e1g414h2k5fi297j0'
+    '_csrf' => '225a2f70a1054b493cacaf0b9ce67898f87e87bdc68d32a69848192c01c40990a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"MmIz06IOyYifHwW3WwGr6sxmQieAuKMX\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'minorityreport.48bpm'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => 'PHPSESSID=0lm2ju179e1g414h2k5fi297j0; _csrf=225a2f70a1054b493cacaf0b9ce67898f87e87bdc68d32a69848192c01c40990a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MmIz06IOyYifHwW3WwGr6sxmQieAuKMX%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at minorityreport.48bpm Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'minorityreport.48bpm'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.20.235.9'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '57540'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1502726551.352
+    'REQUEST_TIME' => 1502726551
+]
+2017-08-14 16:10:02 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-08-14 16:10:02 [10.20.235.9][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.20.235.9
+2017-08-14 16:10:02 [10.20.235.9][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '0lm2ju179e1g414h2k5fi297j0'
+    '_csrf' => '225a2f70a1054b493cacaf0b9ce67898f87e87bdc68d32a69848192c01c40990a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"MmIz06IOyYifHwW3WwGr6sxmQieAuKMX\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'minorityreport.48bpm'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => 'PHPSESSID=0lm2ju179e1g414h2k5fi297j0; _csrf=225a2f70a1054b493cacaf0b9ce67898f87e87bdc68d32a69848192c01c40990a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MmIz06IOyYifHwW3WwGr6sxmQieAuKMX%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at minorityreport.48bpm Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'minorityreport.48bpm'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.20.235.9'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '57630'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1502727002.909
+    'REQUEST_TIME' => 1502727002
+]
+2017-08-23 14:53:22 [10.100.122.181][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.181
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-08-23 14:53:22 [10.100.122.181][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.181
+2017-08-23 14:53:22 [10.100.122.181][-][-][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => '10.20.235.9'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:49.0) Gecko/20100101 Firefox/49.0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_X_FORWARDED_FOR' => '10.20.235.48'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_VIA' => '1.1 10.100.122.181 (McAfee Web Gateway 7.6.2.5.0.22222)'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at 10.20.235.9 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => '10.20.235.9'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.100.122.181'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '43157'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1503500002.246
+    'REQUEST_TIME' => 1503500002
+]
+2017-08-23 14:59:11 [10.100.122.180][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.180
+    in /var/www/html/Transportes/frontend/views/layouts/main.php:81
+    in /var/www/html/Transportes/frontend/controllers/SiteController.php:75
+2017-08-23 14:59:11 [10.100.122.180][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.180
+2017-08-23 14:59:11 [10.100.122.180][-][-][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => '10.20.235.9'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:49.0) Gecko/20100101 Firefox/49.0'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_X_FORWARDED_FOR' => '10.20.235.48'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_VIA' => '1.1 10.100.122.180 (McAfee Web Gateway 7.6.2.5.0.22222)'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at 10.20.235.9 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => '10.20.235.9'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.100.122.180'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '29431'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1503500351.219
+    'REQUEST_TIME' => 1503500351
+]

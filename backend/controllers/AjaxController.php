@@ -15,6 +15,7 @@ use backend\models\Calculos;
 use backend\models\Minutas;
 use backend\models\Municipios;
 use backend\models\Funcionarios;
+use backend\modules\veiculos\models\Veiculos;
 
 class AjaxController extends Controller
 {
@@ -152,6 +153,13 @@ class AjaxController extends Controller
         $municipio = $ibge->listarNomes($munCli);
 
         return $municipio;
+    }
+
+    public function actionVeiculos(){
+        $veiculos = new Veiculos();
+        $dados = $veiculos->getVeiculos();
+
+        return Json::encode($dados);
     }
 
     public function actionCfop($interestadual)
