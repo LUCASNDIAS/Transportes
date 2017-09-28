@@ -35,9 +35,11 @@ use Yii;
  * @property double $volumes
  *
  * @property Cte $cte
+ * @property Cte $cteDimensoes
  */
 class CteDocumentos extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -52,16 +54,20 @@ class CteDocumentos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cte_id', 'tipo', 'chave', 'vbc', 'vicms', 'vbcst', 'vst', 'vprod', 'vnf', 'npeso', 'pin', 'altura', 'largura', 'comprimento', 'peso', 'cubado'], 'required'],
-            [['cte_id','volumes'], 'integer'],
+            [['cte_id', 'tipo', 'chave', 'vbc', 'vicms', 'vbcst', 'vst', 'vprod',
+                'vnf', 'npeso', 'pin', 'altura', 'largura', 'comprimento', 'peso',
+                'cubado'], 'required'],
+            [['cte_id', 'volumes'], 'integer'],
             [['demi', 'dprev'], 'safe'],
-            [['vbc', 'vicms', 'vbcst', 'vst', 'vprod', 'vnf', 'npeso', 'altura', 'largura', 'comprimento', 'peso', 'cubado'], 'number'],
+            [['vbc', 'vicms', 'vbcst', 'vst', 'vprod', 'vnf', 'npeso', 'altura',
+                'largura', 'comprimento', 'peso', 'cubado'], 'number'],
             [['tipo', 'nroma', 'nped', 'ndoc'], 'string', 'max' => 10],
             [['chave'], 'string', 'max' => 44],
             [['modelo', 'serie'], 'string', 'max' => 3],
             [['ncfop'], 'string', 'max' => 5],
             [['pin'], 'string', 'max' => 20],
-            [['cte_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cte::className(), 'targetAttribute' => ['cte_id' => 'id']],
+            [['cte_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cte::className(),
+                'targetAttribute' => ['cte_id' => 'id']],
         ];
     }
 
@@ -106,6 +112,15 @@ class CteDocumentos extends \yii\db\ActiveRecord
     public function getCte()
     {
         return $this->hasOne(Cte::className(), ['id' => 'cte_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCteDimensoes()
+    {
+        return $this->hasMany(CteDimensoes::className(),
+                ['documento_id' => 'id']);
     }
 
     /**

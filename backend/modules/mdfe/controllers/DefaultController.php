@@ -223,7 +223,7 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
 
-        // Somente altoriza a edição se não estiver enviado
+        // Somente autoriza a edição se não estiver enviado
         if ($model->status !== 'SALVO') {
             return $this->redirect(['index']);
         }

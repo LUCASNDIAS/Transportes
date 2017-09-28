@@ -22,21 +22,21 @@ $basicos = new Basicos();
         <td>
             <div class="form-group">
                 <label class="control-label" for="remetente">Remetente: </label>
-                <?= Html::input('text', 'email[]', isset($remetente[0]) ? strtolower($remetente[0]) : '', ['id' => 'remetente', 'class' => 'form-control']); ?>
+                <?= Html::input('text', 'email[]', isset($remetente['email']) ? strtolower($remetente['email']) : '', ['id' => 'remetente', 'class' => 'form-control']); ?>
                 <p class="help-block help-block-error"></p>
             </div>
         </td>
         <td>
             <div class="form-group">
                 <label class="control-label" for="destinatario">Destinatário: </label>
-                <?= Html::input('text', 'email[]', isset($destinatario[0]) ? strtolower($destinatario[0]) : '', ['id' => 'destinatario', 'class' => 'form-control']); ?>
+                <?= Html::input('text', 'email[]', isset($destinatario['email']) ? strtolower($destinatario['email']) : '', ['id' => 'destinatario', 'class' => 'form-control']); ?>
                 <p class="help-block help-block-error"></p>
             </div>
         </td>
         <td>
             <div class="form-group">
                 <label class="control-label" for="consignatario">Consignatario: </label>
-                <?= Html::input('text', 'email[]', isset($consignatario[0]) ? strtolower($consignatario[0]) : '', ['id' => 'consignatario', 'class' => 'form-control']); ?>
+                <?= Html::input('text', 'email[]', isset($consignatario['email']) ? strtolower($consignatario['email']) : '', ['id' => 'consignatario', 'class' => 'form-control']); ?>
                 <p class="help-block help-block-error"></p>
             </div>
         </td>

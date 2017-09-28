@@ -5,6 +5,8 @@
 
 $(document).ready(function () {
     
+    var pagina =  $("#pagina").val();
+
     //  Mascaras
     function mascara() {
         $(".dinheiro").maskMoney({
@@ -14,7 +16,7 @@ $(document).ready(function () {
             affixesStay: false,
             prefix: 'R$ '
         });
-        
+
         $(".imposto").maskMoney({
             thousands: '',
             decimal: '.',
@@ -44,7 +46,7 @@ $(document).ready(function () {
         $('.placa').mask('AAA0000');
     }
     mascara();
-    
+
     // Função peso cubado
     function calculoGeral() {
 
@@ -55,12 +57,12 @@ $(document).ready(function () {
 
         // Campos Reais
         var realNumero = '';
-        var realValor = '';
+        var realValor = 0;
         var realAltura = '';
         var realLargura = '';
         var realComprimento = '';
         var realPeso = '';
-        var realVolumes = '';
+        var realVolumes = 0;
         var realDimensoes = '';
 
         $(".nfechave").each(function (i) {
@@ -69,38 +71,65 @@ $(document).ready(function () {
             var numero = $(this).val();
             var valor = $("input[id='ctedocumentos-" + i + "-vnf']").val().replace(/[R$ ]/g, '');
 
-            // Variáveis de alt, larg e comp para calcular o peso subado
-            var altura = $("input[id='ctedocumentos-" + i + "-altura']").val();
-            var largura = $("input[id='ctedocumentos-" + i + "-largura']").val();
-            var comprimento = $("input[id='ctedocumentos-" + i + "-comprimento']").val();
-            var volumes = ($("input[id='ctedocumentos-" + i + "-volumes']").val() == '') ? 1 : $("input[id='ctedocumentos-" + i + "-volumes']").val();
-            // Soma do peso cubado
-            cubado += altura * largura * comprimento * multiplicador * volumes;
-
             // Variável de peso real
             var peso = $("input[id='ctedocumentos-" + i + "-peso']").val();
             // Soma do peso real
             pesoreal += peso * 1;
+
+            // Valor da nota fiscal
+            realValor += valor * 1;
+
+            // Mais um each para pegar cada dimensão / volumes
+            $(".nfvol").each(function (j) {
+
+                // Variáveis de alt, larg e comp para calcular o peso subado
+                var altura = $("input[id='ctedimensoes-" + i + "-" + j + "-altura']").val();
+                var largura = $("input[id='ctedimensoes-" + i + "-" + j + "-largura']").val();
+                var comprimento = $("input[id='ctedimensoes-" + i + "-" + j + "-comprimento']").val();
+                var volumes = ($("input[id='ctedimensoes-" + i + "-" + j + "-volumes']").val() == '') ? 0 : $("input[id='ctedimensoes-" + i + "-" + j + "-volumes']").val();
+
+                if (typeof altura !== "undefined") {
+
+                    // Soma do peso cubado
+                    cubado += altura * largura * comprimento * multiplicador * volumes;
+
+                    // Volumes
+                    realVolumes += volumes * 1;
+                }
+
+            });
 
         });
 
 //        alert('Real: ' + pesoreal + ' | Cubado: ' + cubado);
 
         // Preenchimento do peso cubado e real
-//        $("#minutas-pesocubado").val(cubado.toFixed(2));
-//        $("#minutas-pesoreal").val(pesoreal.toFixed(2));
+        $("#cte-pesocubado").val(cubado.toFixed(2));
+        $("#cte-pesoreal").val(pesoreal.toFixed(2));
 
         // Preenchimento dos campos reais
-//        $("#minutas-notasnumero").val(realNumero);
-//        $("#minutas-notasvalor").val(realValor);
-//        $("#minutas-notasaltura").val(realAltura);
-//        $("#minutas-notaslargura").val(realLargura);
-//        $("#minutas-notascomprimento").val(realComprimento);
-//        $("#minutas-notaspeso").val(realPeso);
-//        $("#minutas-notasvolumes").val(realVolumes);
-//        $("#minutas-notasdimensoes").val(realDimensoes);
+        $("#cte-notasvalor").val(realValor.toFixed(2));
+        $("#cte-vcarga").val(realValor.toFixed(2));
+        $("#cte-notasvolumes").val(realVolumes);
     }
-    
+
+    // Função para mover cursor com "enter"
+    function mover() {
+        $('input:text, select').keypress(function (e) {
+            if (e.which == 13) {
+                textboxes = $("input,select");
+                currentBoxNumber = textboxes.index(this);
+                if (textboxes[currentBoxNumber + 1] != null) {
+                    nextBox = textboxes[currentBoxNumber + 1]
+                    nextBox.focus();
+                    e.preventDefault();
+                }
+            } else {
+                return true;
+            }
+        });
+    }
+
     // Função que remove acentos e caps formulario
     function rm_acentos_caps(campo) {
         var valor = campo.val().replace(/[áàâãÁÀÂÃ]/g, 'a').replace(/[éèêẽÉÈÊẼ]/g, 'e').replace(/[íìîĩÍÌÎĨ]/g, 'i').replace(/[óòôõÓÒÔÕ]/g, 'o').replace(/[úùûũüÚÙÛŨÜ]/g, 'u').replace(/[çÇ]/g, 'c').toUpperCase();
@@ -118,51 +147,131 @@ $(document).ready(function () {
             });
             $('.notnfe').hide();
             mascara();
+            calculoGeral();
+            mover();
         });
     });
-    
+
+    // Controle dos campos dinâmicos de contatos e tabelas
+    jQuery(".dynamicform_inner").on("afterInsert afterDelete", function (e, item) {
+        // Passa todos os valores de input para maiusculo removendo acentos
+        $('input, select, textarea').on('blur', function () {
+            calculoGeral();
+            rm_acentos_caps($(this));
+        });
+        $('.notnfe').hide();
+        mascara();
+        calculoGeral();
+        mover();
+    });
+
+    jQuery(".dynamicform_wrapper_con").on("afterInsert afterDelete", function (e, item) {
+        jQuery(".dynamicform_wrapper_con .panel-title-condutor").each(function (index) {
+            jQuery(this).html("Componente: " + (index + 1));
+            // Passa todos os valores de input para maiusculo removendo acentos
+            $('input, select, textarea').on('blur', function () {
+                calculoGeral();
+                rm_acentos_caps($(this));
+            });
+            $('.notnfe').hide();
+            mascara();
+            calculoGeral();
+            mover();
+        });
+    });
+
     // Passa todos os valores de input para maiusculo removendo acentos
     $('input, select, textarea').on('blur', function () {
         //var strMaiuscula = $(this).val().toUpperCase();
         //$(this).val(strMaiuscula);
         rm_acentos_caps($(this));
     });
-    
+
     function calculaFrete() {
-        var formulario = $("#dynamic-form").serialize();
-        alert(formulario);
+        var tabela_id = $("#tabelaAjax").val();
+        var pesoreal = $("#cte-pesoreal").val();
+        var pesocubado = $("#cte-pesocubado").val();
+        var taxaextra = $("#cte-taxaextra").val();
+        var desconto = $("#cte-desconto").val();
+        var notasvalor = $("#cte-notasvalor").val();
+        var notasvolumes = $("#cte-notasvolumes").val();
 
         $.ajax({
-            url: '/Transportes/backend/web/ajax/calculos',
-            type: 'POST',
+            url: '/Transportes/backend/web/ajax/calculoscte',
+            type: 'GET',
             data: {
                 tipo: 'ajax',
-                test: formulario
+                tabela: tabela_id,
+                pesoreal: pesoreal,
+                pesocubado: pesocubado,
+                taxaextra: taxaextra,
+                desconto: desconto,
+                notasvalor: notasvalor,
+                notasvolumes: notasvolumes,
+
             },
             dataType: 'json',
             success: function (data) {
-                console.log(data);
-//                if (data == 'Tabela não informada' || data == 'Peso não definido' || typeof data.fretetotal === 'undefined') {
-//                    var erros = '<td colspan="5"><span class="text-red text-bold">' + data + '</span></td>'
-//                    $(".retornoFinal").html(erros);
-//                } else {
-//
-//                    var tabela = '<td>Frete mínimo: <span class="text-bold text-blue">R$' + data.valorminimo + '</span></td>';
-//                    tabela += '<td>Frete peso: <span class="text-bold text-blue">R$' + data.valorexcedente + '</span></td>';
-//                    tabela += '<td>Taxa extra: <span class="text-bold text-blue">R$' + data.taxaextra + '</span></td>';
-//                    tabela += '<td>Desconto: <span class="text-bold text-red">-R$' + data.desconto + '</span></td>';
-//                    tabela += '<td>Valor total: <span class="text-bold text-blue">R$' + data.fretetotal + '</span></td>';
-//
-//                    $(".retornoFinal").html(tabela);
-//                }
+
+                if (data == 'Tabela não informada' || data == 'Peso não definido' || typeof data.fretetotal === 'undefined') {
+                    var erros = '<td colspan="5"><span class="text-red text-bold">' + data + '</span></td>'
+                    $(".retornoFinal").html(erros);
+                } else {
+
+                    var componentes = {
+                        desconto: {nome: 'DESCONTO', valor: data.desconto},
+                        tabela_despacho: {nome: 'DESPACHO', valor: data.tabela_despacho},
+                        tabela_fretevalor: {nome: 'FRETE VALOR', valor: data.tabela_fretevalor},
+                        tabela_gris: {nome: 'GRIS', valor: data.tabela_gris},
+                        tabela_itr: {nome: 'ITR', valor: data.tabela_itr},
+                        tabela_outros: {nome: 'OUTROS', valor: data.tabela_outros},
+                        tabela_pedagio: {nome: 'PEDAGIO', valor: data.tabela_pedagio},
+                        tabela_seccat: {nome: 'SECCAT', valor: data.tabela_seccat},
+                        taxaextra: {nome: 'TAXA EXTRA', valor: data.taxaextra},
+                        valorexcedente: {nome: 'FRETE PESO', valor: data.valorexcedente},
+                        valorminimo: {nome: 'FRETE MINIMO', valor: data.valorminimo}
+                    };
+
+                    var tamanho = Object.keys(componentes).length;
+                    
+                    for (tamanho; tamanho>0; tamanho--){
+                        $('.remove-item-con').trigger('click');
+                    }
+                    
+                    var c = 0;
+                    $.each(componentes, function (key, value) {
+                        if (value.valor != '0.00') {
+                            $('.add-item-con').trigger('click');
+                            $('#ctecomponentes-' + c + '-nome').val(value.nome);
+                            $('#ctecomponentes-' + c + '-valor').val(value.valor);
+                            c++;
+                        }
+                    });
+
+//                    for (tamanho; tamanho > 0; tamanho--) {
+//                        $('.add-item-con').trigger('click');
+//                    }
+
+                    var tabela = '<td>Frete mínimo: <span class="text-bold text-blue">R$' + data.valorminimo + '</span></td>';
+                    tabela += '<td>Frete peso: <span class="text-bold text-blue">R$' + data.valorexcedente + '</span></td>';
+                    tabela += '<td>Taxa extra: <span class="text-bold text-blue">R$' + data.taxaextra + '</span></td>';
+                    tabela += '<td>Desconto: <span class="text-bold text-red">-R$' + data.desconto + '</span></td>';
+                    tabela += '<td>Valor total: <span class="text-bold text-blue">R$' + data.fretetotal + '</span></td>';
+
+                    $(".retornoFinal").html(tabela);
+
+                    // Valor total e valor a receber
+                    $("#cte-vtprest").val(data.fretetotal);
+                    $("#cte-vrec").val(data.fretetotal);
+                }
             }
         });
     }
-    
-    $("#tabelaAjax").on('change',function(){
-       $('.retornoFinal').load('/Transportes/backend/web/ajax/sql');
+
+    $("#tabelaAjax").on('change', function () {
+        calculaFrete();
     });
-    
+
     $("#btn-testar").on('click', function () {
         alert($('form').serialize());
     });
@@ -277,6 +386,39 @@ $(document).ready(function () {
         }
 
     });
+    
+    function getOrigem() {
+        var remetente = $("#cte-remetente").val();
+        var expedidor = $("#cte-expedidor").val();
+        var envolvidos = remetente + ',' + expedidor;
+
+        if (remetente != '') {
+
+            // Cria o select com as tabelas do cliente
+            $.get("/Transportes/backend/web/ajax/cidades", {envolvidos: envolvidos})
+                    .done(function (data) {
+
+                        var lista = '<option value=""> -- Selecione -- </option>';
+
+                        if (data == '' || data == null) {
+                            lista += '<option value=""> Endereço não cadastrado. </option>';
+                        }
+
+                        $.each(data, function (key, value) {
+
+                            var valor = value.codigo + '|' + value.uf + '|' + value.municipio;
+
+                            lista += '<option value="' + valor + '">' + value.codigo + ' - ' + value.municipio +
+                                    ' / ' + value.uf + '</option>';
+
+                        });
+
+                        $("#cte-origem").html(lista);
+
+                    });
+
+        }
+    }
 
     // Destino
     $("#cte-destinatario, #cte-recebedor").on("blur", function () {
@@ -313,6 +455,41 @@ $(document).ready(function () {
         }
 
     });
+    
+    function getDestino() {
+        
+        var destinatario = $("#cte-destinatario").val();
+        var recebedor = $("#cte-recebedor").val();
+        var envolvidos = destinatario + ',' + recebedor;
+
+        if (destinatario != '' || recebedor != '') {
+
+            // Cria o select com os municipios do cliente
+            $.get("/Transportes/backend/web/ajax/cidades", {envolvidos: envolvidos})
+                    .done(function (data) {
+
+                        var lista = '<option value=""> -- Selecione -- </option>';
+
+                        if (data == '' || data == null) {
+                            lista += '<option value=""> Endereço não cadastrado. </option>';
+                        }
+
+                        $.each(data, function (key, value) {
+
+                            var valor = value.codigo + '|' + value.uf + '|' + value.municipio;
+
+                            lista += '<option value="' + valor + '">' + value.codigo + ' - ' + value.municipio +
+                                    ' / ' + value.uf + '</option>';
+
+                        });
+
+                        $("#cte-destino").html(lista);
+
+                    });
+
+        }
+        
+    }
 
     $("#cte-lota").on('change', function () {
         $('.lotacao').toggle('slow');
@@ -377,6 +554,42 @@ $(document).ready(function () {
         $('#cte-uffim, #cte-ufini').trigger('change');
 
     });
+    
+    function getCfop() {
+        
+        var uffim = $("#cte-uffim").val();
+        var ufini = $("#cte-ufini").val();
+
+        if (uffim != '' && ufini != '') {
+            if (uffim == ufini) {
+                var interestadual = 0;
+            } else {
+                var interestadual = 1;
+            }
+
+            $.get("/Transportes/backend/web/ajax/cfop", {interestadual: interestadual})
+                    .done(function (data) {
+
+                        var lista = '<option value=""> -- Selecione -- </option>';
+
+                        if (data == '' || data == null) {
+                            lista += '<option value=""> CFOP não encontrado. </option>';
+                        }
+
+                        $.each(data, function (key, value) {
+
+                            var valor = value.cfop + ' - ' + value.nat;
+
+                            lista += '<option value="' + value.cfop + '">' + valor + '</option>';
+
+                        });
+
+                        $("#cte-cfop").html(lista);
+
+                    });
+
+        }
+    }
 
     $('#cte-uffim, #cte-ufini').on('change', function () {
         var uffim = $("#cte-uffim").val();
@@ -505,7 +718,7 @@ $(document).ready(function () {
 
     $("#tributo-icms").on('change', function () {
         $("input[id^='icms-']").attr('readonly', 'readonly');
-        $("input[id^='icms-']").val('');
+//        $("input[id^='icms-']").val('');
         $("#cte-icms").val('');
         var tributo = $(this).val();
         var tipo = '';
@@ -545,7 +758,15 @@ $(document).ready(function () {
         }
 
         readonly(tipo);
-
+        
+        // Base e Cálculo
+        var vbc = $('#cte-vtprest').val();
+        var aliq = $('#icms-picms').val();
+        var vicms = vbc * aliq / 100;
+//        
+        $("#icms-vbc").val(vbc);
+        $("#icms-vicms").val(vicms.toFixed(2));
+        $("#icms-vtottrib").val(vicms.toFixed(2));
         $("#icms-cst").val(vcst);
         $("#icms").show();
 
@@ -605,7 +826,81 @@ $(document).ready(function () {
         }
 
     });
+    
+    function getTabela() {
+        var pagadorCNPJ = $("#cte-tomador").val();
 
+        if (pagadorCNPJ != '') {
+
+            // Cria o select com as tabelas do cliente
+            $.get("/Transportes/backend/web/ajax/tabcli", {cnpj: pagadorCNPJ})
+                    .done(function (data) {
+
+                        var lista = '<option value=""> -- Selecione -- </option>';
+
+                        if (data == '') {
+                            lista += '<option value=""> Cliente sem tabelas cadastradas </option>';
+                        }
+
+                        $.each(data, function (key, value) {
+
+                            lista += '<option value="' + value.id + '">' + value.nome + '</option>';
+
+                        });
+
+                        $("#tabelaAjax").html(lista);
+
+                    });
+
+        }
+    }
+    
+    // Parte do UPDATE
+    if (pagina == 'UPDATE') {
+        
+        // Calculo do frete
+        calculaFrete();        
+        
+        // Lotação
+        if ($('#cte-lota').val() == '1') {
+            $('.lotacao').show();
+        }
+             
+        // Nota Fiscal
+        if ($('#ctedocumentos-0-tipo').val() != 'NFE') {
+            $('.notnfe').show();
+        }
+        
+        // Origem e Destino 
+        $('#select-od').hide();
+        $('#up-od').on('click', function(){
+           $(this).hide();
+           getOrigem();
+           getDestino();
+           $('#select-od').show('slow');
+        });
+        
+        // Cfop
+        $('#up-cfop').on('click', function() {
+            $('#cte-natop').val('');
+            getCfop();
+        });
+        
+        // Tabelas
+        $('#up-tabela').on('click', function() {
+            getTabela();
+        });
+        
+        // ICMS
+        $('#icms').show();
+        
+        // Calculo de frete.
+        $('input').on('blur', function() {
+           calculaFrete(); 
+        });
+        
+    }
+    
     // Submit
     /*
      $("#submitCreate, #submitUpdate").click(function(e){

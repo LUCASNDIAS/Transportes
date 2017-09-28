@@ -27,8 +27,8 @@ $basicos     = new Basicos();
                 <b><?= $empresa->nome; ?></b><BR />
                 <?= ucwords(strtolower($empresa->endrua)).', '.$empresa->endnro.' - '.ucwords(strtolower($empresa->endbairro)); ?><br />
                 Cep: <?= $empresa->endcep; ?> - <?= ucwords(strtolower($empresa->endcid)); ?><br />
-<?= str_replace('|', ' / ', $empresa->telefones); ?>
-                <BR /> <?= str_replace('|', '', $empresa->emails); ?><br />
+<?php // echo str_replace('|', ' / ', $empresa->telefones); ?>
+                <BR /> <?php // echo str_replace('|', '', $empresa->emails); ?><br />
                 Insc. Estadual: <?= $empresa->ie; ?><br /> CNPJ: <?= $empresa->cnpj; ?>
             </td>
             <td width="24%" style="text-align:right">
@@ -83,8 +83,8 @@ $basicos     = new Basicos();
             <span class="negrito">Bairro: </span><?= $remetente->endbairro; ?>
             &nbsp;&nbsp;&nbsp;&nbsp; <span class="negrito">Fone: </span>
             <?php
-            $remetenteTel      = explode('|', $remetente->telefones);
-            echo $remetenteTel [0];
+//            $remetenteTel      = explode('|', $remetente->telefones);
+//            echo $remetenteTel [0];
             ?>
         </div>
         <div class="margintop">
@@ -122,8 +122,8 @@ $basicos     = new Basicos();
             <span class="negrito">Bairro: </span><?= $destinatario->endbairro; ?>
             &nbsp;&nbsp;&nbsp;&nbsp; <span class="negrito">Fone: </span>
             <?php
-            $destinatarioTel   = explode('|', $destinatario->telefones);
-            echo $destinatarioTel [0];
+//            $destinatarioTel   = explode('|', $destinatario->telefones);
+//            echo $destinatarioTel [0];
             ?>
         </div>
         <div class="margintop">

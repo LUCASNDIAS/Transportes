@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tabelas_clientes".
@@ -76,6 +77,15 @@ class TabelasClientes extends \yii\db\ActiveRecord
                 ->asArray()
                 ->all();
 
-        return $data;
+        $data2 = self::find()
+            ->select('id as tabela_id')
+            ->from('tabelas')
+            ->where(['dono' => '09835783624'])
+            ->asArray()
+            ->all();
+
+        $result = ArrayHelper::merge($data, $data2);
+
+        return $result;
     }
 }

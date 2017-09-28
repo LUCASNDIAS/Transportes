@@ -3,6 +3,7 @@
 namespace backend\modules\cte\models;
 
 use Yii;
+use backend\modules\clientes\models\Clientes;
 
 /**
  * This is the model class for table "cte".
@@ -15,7 +16,7 @@ use Yii;
  * @property string $chave
  * @property string $modelo
  * @property string $serie
- * @property string $numero
+ * @property int $numero
  * @property string $dtemissao
  * @property string $cct
  * @property string $cfop
@@ -68,6 +69,12 @@ use Yii;
  * @property string $dprev
  * @property int $lota
  * @property int $tabela_id
+ * @property double $pesoreal
+ * @property double $pesocubado
+ * @property double $taxaextra
+ * @property double $desconto
+ * @property double $notasvalor
+ * @property int $notasvolumes
  * @property string $status
  *
  * @property CteComponentes[] $cteComponentes
@@ -75,9 +82,11 @@ use Yii;
  * @property CteProtocolo[] $cteProtocolos
  * @property CteQtag[] $cteQtags
  * @property CteVeiculo[] $cteVeiculos
+ * @property CteVeiculo[] $cteMotoristas
  */
 class Cte extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -92,22 +101,38 @@ class Cte extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dono', 'cridt', 'criusu', 'ambiente', 'chave', 'modelo', 'serie', 'dtemissao', 'cct', 'cfop', 'natop', 'forpag', 'tpemis', 'tpcte', 'refcte', 'cmunenv', 'xmunenv', 'ufenv', 'modal', 'tpserv', 'cmunini', 'xmunini', 'ufini', 'cmunfim', 'xmunfim', 'uffim', 'retira', 'toma', 'tomador', 'remetente', 'destinatario', 'recebedor', 'expedidor', 'vtprest', 'vrec', 'cst', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'vcarga', 'respseg', 'rntrc', 'lota', 'tabela_id', 'status'], 'required'],
+            [['dono', 'cridt', 'criusu', 'ambiente', 'chave', 'modelo', 'serie',
+                'dtemissao', 'cfop', 'natop', 'forpag', 'tpemis', 'tpcte',
+                'cmunenv', 'xmunenv', 'ufenv', 'modal', 'tpserv', 'cmunini',
+                'xmunini', 'ufini', 'cmunfim', 'xmunfim', 'uffim', 'retira', 'toma',
+                'tomador', 'remetente', 'vtprest', 'vrec', 'dprev', 'prodpred',
+                //'cst', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret',
+                //'vicmsret', 'picmsret', 'vcred', 'vtottrib',
+                'vcarga', 'respseg',
+                'rntrc', 'lota', 'tabela_id', 'status'], 'required'],
             [['cridt', 'dtemissao', 'dhcont', 'dprev'], 'safe'],
-            [['ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma', 'outrauf', 'respseg', 'lota', 'tabela_id'], 'integer'],
-            [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'vcarga'], 'number'],
-            [['dono', 'criusu', 'tomador', 'remetente', 'destinatario', 'recebedor', 'expedidor'], 'string', 'max' => 14],
+            [['ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma',
+                'numero',
+                'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes'], 'integer'],
+            [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret',
+                'picmsret', 'vcred', 'vtottrib', 'vcarga', 'pesoreal', 'pesocubado',
+                'taxaextra', 'desconto', 'notasvalor'], 'number'],
+            [['dono', 'criusu', 'tomador', 'remetente', 'destinatario', 'recebedor',
+                'expedidor'], 'string', 'max' => 14],
             [['chave', 'refcte'], 'string', 'max' => 44],
             [['modelo', 'ufenv', 'modal', 'ufini', 'uffim', 'cst'], 'string', 'max' => 2],
             [['serie'], 'string', 'max' => 3],
-            [['numero'], 'string', 'max' => 9],
             [['cct'], 'string', 'max' => 8],
             [['cfop'], 'string', 'max' => 4],
-            [['natop', 'xmunenv', 'xmunini', 'xmunfim', 'xdetretira', 'xjust', 'prodpred', 'xoutcat', 'xseg'], 'string', 'max' => 60],
+            [['natop', 'xmunenv', 'xmunini', 'xmunfim', 'xdetretira', 'xjust', 'prodpred',
+                'xoutcat', 'xseg'], 'string', 'max' => 60],
             [['cmunenv', 'cmunini', 'cmunfim'], 'string', 'max' => 7],
             [['napol'], 'string', 'max' => 20],
             [['rntrc'], 'string', 'max' => 10],
             [['status'], 'string', 'max' => 50],
+            [['dprev'], 'match', 'pattern' => '/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})|([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]))$/'],
+            [['prodpred', 'xoutcat'], 'match', 'pattern' => '/^[!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1}$/'],
+            [['rntrc'], 'match', 'pattern' => '/^[0-9]{8}|ISENTO$/'],
         ];
     }
 
@@ -156,7 +181,7 @@ class Cte extends \yii\db\ActiveRecord
             'recebedor' => Yii::t('app', 'Recebedor'),
             'expedidor' => Yii::t('app', 'Expedidor'),
             'vtprest' => Yii::t('app', 'Total'),
-            'vrec' => Yii::t('app', 'Recebido'),
+            'vrec' => Yii::t('app', 'Valor a Receber'),
             'cst' => Yii::t('app', 'Classificação'),
             'predbc' => Yii::t('app', '% Redução'),
             'vbc' => Yii::t('app', 'R$ Base calc.'),
@@ -178,7 +203,14 @@ class Cte extends \yii\db\ActiveRecord
             'dprev' => Yii::t('app', 'Data prevista'),
             'lota' => Yii::t('app', 'Lotação?'),
             'tabela_id' => Yii::t('app', 'Tabela'),
+            'pesoreal' => Yii::t('app', 'Peso'),
+            'pesocubado' => Yii::t('app', 'Cubado'),
+            'taxaextra' => Yii::t('app', 'Taxa extra'),
+            'desconto' => Yii::t('app', 'Desconto'),
+            'notasvalor' => Yii::t('app', 'R$ Notas'),
+            'notasvolumes' => Yii::t('app', 'Volumes'),
             'status' => Yii::t('app', 'Status'),
+            'notaChave' => Yii::t('app', 'Nota fiscal'),
         ];
     }
 
@@ -196,6 +228,48 @@ class Cte extends \yii\db\ActiveRecord
     public function getCteDocumentos()
     {
         return $this->hasMany(CteDocumentos::className(), ['cte_id' => 'id']);
+        //->from(CteDocumentos::tableName().' documentos');
+    }
+
+    public function getNotaChave()
+    {
+        if ($this->cteDocumentos) {
+
+            $retorno = '';
+
+            // Varre todos os campos
+            foreach ($this->cteDocumentos as $i => $nf) {
+
+                if ($i != 0) {
+                    $retorno .= '/';
+                } 
+
+                if (isset($nf->chave[43])) {
+                    $retorno .= substr($nf->chave, 25, 9).'';
+                } else {
+                    $retorno .= $nf->chave.'';
+                }
+            }
+
+            return $retorno;
+        } else {
+            return null;
+        }
+    }
+
+    public function getCteRemetente()
+    {
+        return $this->hasOne(Clientes::className(), ['cnpj' => 'remetente']);
+    }
+
+    public function getCteDestinatario()
+    {
+        return $this->hasOne(Clientes::className(), ['cnpj' => 'destinatario']);
+    }
+
+    public function getCteTomador()
+    {
+        return $this->hasOne(Clientes::className(), ['cnpj' => 'tomador']);
     }
 
     /**
@@ -220,6 +294,36 @@ class Cte extends \yii\db\ActiveRecord
     public function getCteVeiculos()
     {
         return $this->hasMany(CteVeiculo::className(), ['cte_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTabela()
+    {
+        return $this->hasOne(Tabelas::className(), ['id' => 'tabela_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCteMotoristas()
+    {
+        return $this->hasMany(CteMotorista::className(), ['cte_id' => 'id']);
+    }
+
+    public function getLastId($tpAmb)
+    {
+        $last = self::find()
+            ->select(['numero'])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['ambiente' => $tpAmb])
+            ->andWhere(['NOT LIKE', 'status', 'DELETADO'])
+            ->orderBy('numero DESC')
+            ->asArray()
+            ->one();
+
+        return (is_null($last)) ? 1 : $last['numero'] + 1;
     }
 
     /**

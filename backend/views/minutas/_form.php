@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\assets\MinutasAsset;
-use backend\models\Clientes;
+use backend\modules\clientes\models\Clientes;
 use yii\web\JsExpression;
 use yii\jui\AutoComplete;
 use backend\commands\Basicos;
@@ -286,7 +286,7 @@ $data = Clientes::find()
 
     <table class="table table-hover">
         <tr>
-            <td><?= $form->field($model, 'tabela')->dropDownList(($model->isNewRecord ? [] : $tabela), ['id' => 'tabelaAjax', 'prompt' => '-- Selecione --']) ?></td>
+            <td><?= $form->field($model, 'tabela')->dropDownList(($model->isNewRecord) ? [] : [$model->tabela => $model->tabela], ['id' => 'tabelaAjax', 'prompt' => '-- Selecione --']) ?></td>
             <td><?= $form->field($model, 'taxaextra')->textInput(['maxlength' => true, 'class' => 'form-control dinheiro']) ?></td>
             <td><?= $form->field($model, 'desconto')->textInput(['maxlength' => true, 'class' => 'form-control dinheiro']) ?></td>
         </tr>

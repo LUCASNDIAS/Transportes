@@ -30,7 +30,7 @@ class CteMotorista extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cte_id', 'motorista_id'], 'required'],
+            [['cte_id'], 'required'],
             [['cte_id', 'motorista_id'], 'integer'],
             [['cte_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cte::className(), 'targetAttribute' => ['cte_id' => 'id']],
             [['motorista_id'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionarios::className(), 'targetAttribute' => ['motorista_id' => 'id']],

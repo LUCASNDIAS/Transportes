@@ -3,25 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/Transportes/backend/config/main-local.php</file>
-            <file>file:/var/www/html/Transportes/backend/views/cte/_form.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/cteprot.php</file>
-            <file>file:/var/www/html/Transportes/backend/web/js/mdfe.js</file>
-            <file>file:/var/www/html/Transportes/backend/controllers/CteController.php</file>
-            <file>file:/var/www/html/Transportes/backend/web/js/cte.js</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/_form.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/cte.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/CteMotorista.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/CteDocumentos.php</file>
-            <file>file:/var/www/html/Transportes/backend/models/Funcionarios.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/cte/controllers/DefaultController.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/veiculos/models/Veiculos.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/Cte.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/FuncionariosSearch.php</file>
+            <file>file:/var/www/html/Transportes/backend/assets/CteAsset.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/cte/views/default/_form.php</file>
-            <file>file:/var/www/html/Transportes/backend/controllers/AjaxController.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/views/default/create.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/Funcionarios.php</file>
+            <file>file:/var/www/html/Transportes/backend/web/js/cte.js</file>
         </group>
     </open-files>
 </project-private>

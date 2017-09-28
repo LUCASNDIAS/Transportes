@@ -18,7 +18,7 @@ use NFePHP\CTe\Tools;
 
 $cte = new Make();
 
-$filename = '/var/www/html/Transportes/backend/sped/cte/31170911095658000140570010000002801072018270.xml';
+$filename = '/var/www/html/Transportes/backend/sped/cte/31170911095658000140570010000003031211922180.xml';
 
 //return var_dump(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRetRecepcaoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><retConsReciCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>2</tpAmb>
+  <verAplic>1.2.22</verAplic>
+  <nRec>311000002631237</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt>
+      <tpAmb>2</tpAmb>
+      <verAplic>1.2.22</verAplic>
+      <chCTe>31170911095658000140570010000000031098357838</chCTe>
+      <dhRecbto>2017-09-12T23:34:45</dhRecbto>
+      <digVal>tn96ERFXnyoXB6qn6/HM60hGs8w=</digVal>
+      <cStat>539</cStat>
+      <xMotivo>Rejeicao: Duplicidade de CT-e, com diferenca na Chave de Acesso[chCTe:31130711095658000140570010000000031000000001][nRec:311000001280028]</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsReciCTe></cteRetRecepcaoResult></soap:Body></soap:Envelope>

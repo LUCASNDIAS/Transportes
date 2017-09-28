@@ -77,7 +77,7 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verCte'),
                         'items' => [
-                            ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/cte/create'], 'visible' => Yii::$app->user->can('addCte')],
+                            ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/cte/default/create'], 'visible' => Yii::$app->user->can('addCte')],
                             ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cte'],'visible' => Yii::$app->user->can('verCte')],
                         ],
                     ],

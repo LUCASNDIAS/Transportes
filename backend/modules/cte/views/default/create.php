@@ -19,6 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'modelCteMotorista' => $modelCteMotorista,
         'data' => $data,
         'modelsDocumentos' => $modelsDocumentos,
+        'modelsDimensoes' => $modelsDimensoes,
+        'modelsComponentes' => $modelsComponentes,
         'veiculos' => $veiculos,
         'motoristas' => $motoristas,
     ])

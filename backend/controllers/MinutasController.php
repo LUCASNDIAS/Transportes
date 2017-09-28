@@ -125,7 +125,7 @@ class MinutasController extends Controller {
             // Tabelas do pagador
             $cnpj = $model->pagadorcnpj;
 
-            $cliente = new \backend\models\Clientes;
+            $cliente = new Clientes;
             $tabcli = $cliente->Tabelas($cnpj);
 
             $tabelas = new Tabelas();

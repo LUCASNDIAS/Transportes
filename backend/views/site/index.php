@@ -28,7 +28,7 @@ entre em contato pelo e-mail: <?= Yii::$app->params['supportEmail']; ?> ou pelo 
 
                 <p>
                 <?= Html::a('Buscar', '@web/cte', array('class'=>'btn btn-default'));?>
-                <?= Html::a('Emitir', '@web/cte/create', array('class'=>'btn btn-default'));?>
+                <?= Html::a('Emitir', '@web/cte/default/create', array('class'=>'btn btn-default'));?>
                 </p>
             </div>
             <div class="col-lg-4" align="center">

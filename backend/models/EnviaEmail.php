@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use Yii;
-use backend\models\Clientes;
+use backend\modules\clientes\models\Clientes;
 
 class EnviaEmail extends \yii\db\ActiveRecord {
 

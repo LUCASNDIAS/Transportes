@@ -20,22 +20,27 @@ use NFePHP\CTe\Tools;
 $cte = new Make();
 
 $files = [
-    '31170911095658000140570010000002801072018270'
-    ];
+    '31170911095658000140570010000002981211849073',
+    '31170911095658000140570010000002991211902486',
+    '31170911095658000140570010000003001211906557',
+    '31170911095658000140570010000003011211914085',
+    '31170911095658000140570010000003021211916573',
+    '31170911095658000140570010000003031211922180'
+];
 
 foreach ($files as $file) {
 
-    $filename = '/var/www/html/Transportes/backend/sped/cte/' . $file . '.xml';
-    $novo = '/var/www/html/Transportes/backend/sped/cte/CTe' . $file . '-prot.xml';
+    $filename = '/var/www/html/Transportes/backend/sped/cte/'.$file.'.xml';
+    $novo     = '/var/www/html/Transportes/backend/sped/cte/CTe'.$file.'.xml';
 
     $cteTools = new Tools(Yii::getAlias('@backend/sped/').'config/'.Yii::$app->user->identity['cnpj'].'.json');
 
     $xml = file_get_contents($filename);
-    
-    $aRetorno = array();
-    $retorno   = $cteTools->sefazConsultaChave($file, '1', $aRetorno);
 
-    $protocolo = '/var/www/html/Transportes/backend/sped/cte/producao/temporarias/201709/'. $file . '-retConsSitCTe.xml';
+    $aRetorno = array();
+    $retorno  = $cteTools->sefazConsultaChave($file, '1', $aRetorno);
+
+    $protocolo = '/var/www/html/Transportes/backend/sped/cte/11095658000140/producao/temporarias/201709/'.$file.'-retConsSitCTe.xml';
 
     $salvar = $cteTools->addProtocolo($filename, $protocolo);
 

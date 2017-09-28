@@ -3,6 +3,7 @@
 namespace backend\modules\cte\models;
 
 use Yii;
+use backend\modules\veiculos\models\Veiculos;
 
 /**
  * This is the model class for table "cte_veiculo".
@@ -15,6 +16,7 @@ use Yii;
  */
 class CteVeiculo extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -29,10 +31,11 @@ class CteVeiculo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cte_id', 'placa'], 'required'],
+            [['cte_id'], 'required'],
             [['cte_id'], 'integer'],
             [['placa'], 'string', 'max' => 10],
-            [['cte_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cte::className(), 'targetAttribute' => ['cte_id' => 'id']],
+            [['cte_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cte::className(),
+                'targetAttribute' => ['cte_id' => 'id']],
         ];
     }
 
@@ -54,6 +57,14 @@ class CteVeiculo extends \yii\db\ActiveRecord
     public function getCte()
     {
         return $this->hasOne(Cte::className(), ['id' => 'cte_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVeiculos()
+    {
+        return $this->hasOne(Veiculos::className(), ['placa' => 'placa']);
     }
 
     /**

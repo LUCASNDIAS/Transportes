@@ -24,20 +24,25 @@ CteAsset::register($this);
 
     <!-- Dados internos -->
     <div class="row hide">
-        <div class="col-sm-4"><?=
+        <div class="col-sm-3"><?=
             $form->field($model, 'cridt')->textInput(['readonly' => true,
                 'value' => ($model->isNewRecord) ? date('Y-m-d') : $model['cridt']]);
             ?></div>
-        <div class="col-sm-4"><?=
+        <div class="col-sm-3"><?=
             $form->field($model, 'criusu')->textInput(['maxlength' => true,
                 'readonly' => true, 'value' => ($model->isNewRecord) ? Yii::$app->user->identity['apelido']
                         : $model['criusu']]);
             ?></div>
-        <div class="col-sm-4"><?=
+        <div class="col-sm-3"><?=
             $form->field($model, 'dono')->textInput(['maxlength' => true,
                 'readonly' => true, 'id' => 'dono', 'value' => ($model->isNewRecord)
                         ? Yii::$app->user->identity['cnpj'] : $model['dono']]);
             ?></div>
+        <div class="col-sm-3">
+            <?= Html::input('text', 'pagina',
+                ($model->isNewRecord) ? 'CREATE' : 'UPDATE',
+                ['class' => 'form-control', 'id' => 'pagina']); ?>
+        </div>
     </div>
 
     <div class="row hide">
@@ -117,10 +122,13 @@ CteAsset::register($this);
                 </div>
                 <div class="col-sm-2">
                     <?=
-                    $form->field($model, 'numero')->textInput([
-                        'maxlength' => true])
-                    ?>
-                </div>
+                    $form->field($model, 'forpag')->dropDownList([
+                        '2' => 'Faturado / Outros',
+                        '0' => 'Pago',
+                        '1' => 'A pagar',
+                    ])
+                    ?> <!-- Deixar como 2 (Outros) -->
+                </div>                
             </div>
             <div class="row" id="tpcte">
                 <div class="col-sm-12">
@@ -150,6 +158,12 @@ CteAsset::register($this);
                     $form->field($model, 'xdetretira')->textInput([
                         'maxlength' => true])
                     ?></div>
+                <div class="col-sm-12">
+                    <?=
+                    $form->field($model, 'numero')->textInput([
+                        'maxlength' => true])
+                    ?>
+                </div>
             </div>
 
         </div>
@@ -342,13 +356,7 @@ CteAsset::register($this);
                     ?>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <?= $form->field($model, 'tabela_id')->dropDownList([
-                        ], ['prompt' => '-- Selecione --', 'id' => 'tabelaAjax'])
-                    ?>
-                </div>
-            </div>
+
 
         </div>
     </div>
@@ -361,29 +369,54 @@ CteAsset::register($this);
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            <div class="col-sm-6">
-                <div class="form-group field-cte-origem required">
-                    <label class="control-label" for="cte-origem">Origem</label>
-                    <?=
-                    Html::dropDownList('cte-origem', null, [],
-                        ['id' => 'cte-origem', 'class' => 'form-control', 'prompt' => '-- Selecione --']);
-                    ?>
+            <?php
+                if (!$model->isNewRecord) {
+            ?>
+            <div class ="col-sm-12"><?= Html::input('button', 'up-od', 'Alterar Origem / Destino', ['id' => 'up-od', 'class' => 'form-control btn-primary']); ?></div>
+            <?php } ?>
+            <div id="select-od">
+                <div class="col-sm-6">
+                    <div class="form-group field-cte-origem required">
+                        <label class="control-label" for="cte-origem">Origem</label>
+                        <?=
+                        Html::dropDownList('cte-origem', null, [],
+                            ['id' => 'cte-origem', 'class' => 'form-control', 'prompt' => '-- Selecione --']);
+                        ?>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group field-cte-destino required">
+                        <label class="control-label" for="cte-destino">Destino</label>
+                        <?=
+                        Html::dropDownList('cte-destino', null, [],
+                            ['id' => 'cte-destino', 'class' => 'form-control', 'prompt' => '-- Selecione --']);
+                        ?>
+                        <div class="help-block"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="form-group field-cte-destino required">
-                    <label class="control-label" for="cte-destino">Destino</label>
-                    <?=
-                    Html::dropDownList('cte-destino', null, [],
-                        ['id' => 'cte-destino', 'class' => 'form-control', 'prompt' => '-- Selecione --']);
-                    ?>
-                    <div class="help-block"></div>
-                </div>
+            <div class="od">
+                <div class="col-sm-2"><?= $form->field($model, 'cmunini')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
+                <div class="col-sm-3"><?= $form->field($model, 'xmunini')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
+                <div class="col-sm-1"><?= $form->field($model, 'ufini')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
+
+                <div class="col-sm-2"><?= $form->field($model, 'cmunfim')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
+                <div class="col-sm-3"><?= $form->field($model, 'xmunfim')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
+                <div class="col-sm-1"><?= $form->field($model, 'uffim')->textInput(['maxlength' => true, 'readonly' => true]) ?></div>
             </div>
 
             <div class="row">
-                <div class="col-sm-6"><?=
-                    $form->field($model, 'cfop')->dropDownList([
+                 <?php
+                    if (!$model->isNewRecord) {
+                        $classe = "col-sm-3";
+                ?>
+                <div class ="col-sm-3">
+                    <br><?= Html::input('button', 'up-cfop', 'Alterar CFOP', ['id' => 'up-cfop', 'class' => 'form-control btn-primary']); ?>
+                </div>
+                <?php } ?>
+                <div class="<?= (isset($classe)) ? $classe : 'col-sm-6'; ?>"><?=
+                    $form->field($model, 'cfop')->dropDownList( ($model->isNewRecord) ? [] : [
+                        $model->cfop => $model->cfop
                         ], ['prompt' => '-- Selecione --'])
                     ?></div>
                 <div class="col-sm-6"><?=
@@ -393,10 +426,14 @@ CteAsset::register($this);
             </div>
 
             <div class="row">
-                <div class="col-sm-4"><?= $form->field($model, 'rntrc')->textInput([
+                <div class="col-sm-4"><?=
+                    $form->field($model, 'rntrc')->textInput([
                         'maxlength' => true])
                     ?></div>
-                <div class="col-sm-4"><?= $form->field($model, 'dprev')->textInput(['class' => 'form-control data']) ?></div>
+                <div class="col-sm-4"><?=
+                    $form->field($model, 'dprev')->textInput([
+                        'class' => 'form-control data'])
+                    ?></div>
                 <div class="col-sm-4"><?=
                     $form->field($model, 'lota')->dropDownList([
                         '0' => 'Não',
@@ -407,46 +444,31 @@ CteAsset::register($this);
 
             <div class="row lotacao">
                 <div class="col-sm-6"><?=
-                    $form->field($modelCteVeiculo, 'placa')->dropDownList($veiculos,[
+                    $form->field($modelCteVeiculo, 'placa')->dropDownList($veiculos,
+                        [
                         'prompt' => ' -- Selecione -- '
                     ])
                     ?></div>
                 <div class="col-sm-6"><?=
-                    $form->field($modelCteMotorista, 'motorista_id')->dropDownList($motoristas,[
+                    $form->field($modelCteMotorista, 'motorista_id')->dropDownList($motoristas,
+                        [
                         'prompt' => ' -- Selecione -- '
                     ])
                     ?></div>
             </div>
 
             <div class="row">
-                <div class="col-sm-6"><?= $form->field($model, 'prodpred')->textInput([
+                <div class="col-sm-6"><?=
+                    $form->field($model, 'prodpred')->textInput([
                         'maxlength' => true])
                     ?></div>
-                <div class="col-sm-6"><?= $form->field($model, 'xoutcat')->textInput([
+                <div class="col-sm-6"><?=
+                    $form->field($model, 'xoutcat')->textInput([
                         'maxlength' => true])
                     ?></div>
             </div>
 
         </div>
-    </div>
-
-
-    <div class="hide">
-        <table class="table table-hover">
-            <tr>
-                <td><?= $form->field($model, 'cmunini')->textInput() ?></td>
-                <td><?= $form->field($model, 'xmunini')->textInput(['maxlength' => true]) ?></td>
-                <td><?= $form->field($model, 'ufini')->textInput(['maxlength' => true]) ?></td>
-            </tr>
-        </table>
-
-        <table class="table table-hover">
-            <tr>
-                <td><?= $form->field($model, 'cmunfim')->textInput(['maxlength' => true]) ?></td>
-                <td><?= $form->field($model, 'xmunfim')->textInput(['maxlength' => true]) ?></td>
-                <td><?= $form->field($model, 'uffim')->textInput(['maxlength' => true]) ?></td>
-            </tr>
-        </table>
     </div>
 
     <?php
@@ -482,7 +504,7 @@ CteAsset::register($this);
 
         <div class="panel-heading">
             <i class="fa fa-road"></i> Documentos
-            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Percurso</button>
+            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> Adicionar Nota</button>
             <div class="clearfix"></div>
         </div>
 
@@ -512,75 +534,243 @@ CteAsset::register($this);
 
                         <div class="row">
 
-                            <div class="col-sm-12">
-                                <?= $form->field($modelDocumentos, "[{$index}]tipo")->dropDownList([
+                            <div class="col-sm-3">
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]tipo")->dropDownList([
                                     'NFE' => 'Nota Fiscal Eletrônica',
                                     'NF' => 'Nota Fiscal',
                                     'OUTROS' => 'Declaração / Outros',
-                                ],[
+                                    ],
+                                    [
                                     'prompt' => ' -- Selecione --',
                                     'class' => 'form-control ctetipo',
-                                ]) ?>
+                                ])
+                                ?>
                             </div>
 
-                            <div class="col-sm-4">
-                                <?= $form->field($modelDocumentos, "[{$index}]chave")->textInput(['class' => 'form-control nfechave']) ?>
+                            <div class="col-sm-5">
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]chave")->textInput([
+                                    'class' => 'form-control nfechave'])
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]vnf")->textInput(['class' => 'form-control dinheiro']) ?>
-                            </div>
-                            <div class="col-sm-1">
-                                <?= $form->field($modelDocumentos, "[{$index}]altura")->textInput(['class' => 'form-control dimensao']) ?>
-                            </div>
-                            <div class="col-sm-1">
-                                <?= $form->field($modelDocumentos, "[{$index}]largura")->textInput(['class' => 'form-control dimensao']) ?>
-                            </div>
-                            <div class="col-sm-1">
-                                <?= $form->field($modelDocumentos, "[{$index}]comprimento")->textInput(['class' => 'form-control dimensao']) ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]vnf")->textInput([
+                                    'class' => 'form-control dinheiro'])
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]peso")->textInput(['class' => 'form-control peso']) ?>
-                            </div>
-                            <div class="col-sm-1">
-                                <?= $form->field($modelDocumentos, "[{$index}]volumes") ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]peso")->textInput([
+                                    'class' => 'form-control peso'])
+                                ?>
                             </div>
 
                         </div>
 
                         <div class="row notnfe">
                             <div class="col-sm-3">
-                                <?= $form->field($modelDocumentos, "[{$index}]nroma") ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]nroma")
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]nped") ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]nped")
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]modelo") ?>
+                                <?=
+                                $form->field($modelDocumentos,
+                                    "[{$index}]modelo")->dropDownList([
+                                    '01' => '01',
+                                    '04' => '04'
+                                ])
+                                ?>
                             </div>
                             <div class="col-sm-1">
-                                <?= $form->field($modelDocumentos, "[{$index}]serie") ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]serie")
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]demi")->textInput(['class' => 'form-control data']) ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]demi")->textInput([
+                                    'class' => 'form-control data'])
+                                ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($modelDocumentos, "[{$index}]ncfop") ?>
+                                <?=
+                                $form->field($modelDocumentos, "[{$index}]ncfop")
+                                ?>
                             </div>
                         </div>
 
                         <!-- end:row -->
 
+                        <!-- Teste aki -->
+
+                        <?php
+                        echo
+                        $this->render('_form-dimensoes',
+                            [
+                            'form' => $form,
+                            'index' => $index,
+                            'modelsDimensoes' => $modelsDimensoes[$index],
+                        ])
+                        ?>
+
+                        <!-- Até aki -->
                     </div>
+
+
 
                 </div>
 
-    <?php endforeach; ?>
+<?php endforeach; ?>
 
         </div>
 
     </div>
 
-    <div class="retornoFinal">aki</div>
+<?php DynamicFormWidget::end(); ?>
+
+    <div class="panel panel-default">
+
+        <!-- Dados Gerais -->
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i> Cálculos / Taxas
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-3"><?= $form->field($model, 'pesoreal') ?></div>
+                <div class="col-sm-3"><?= $form->field($model, 'pesocubado') ?></div>
+                <div class="col-sm-3"><?= $form->field($model, 'notasvalor') ?></div>
+                <div class="col-sm-3"><?= $form->field($model, 'notasvolumes') ?></div>
+            </div>
+
+            <div class="row">
+                <div class="<?= (isset($classe)) ? $classe : 'col-sm-4'; ?>">
+                    <?=
+                    $form->field($model, 'taxaextra')->textInput([
+                        'class' => 'form-control dinheiro'])
+                    ?>
+                </div>
+                <div class="<?= (isset($classe)) ? $classe : 'col-sm-4'; ?>">
+                    <?=
+                    $form->field($model, 'desconto')->textInput([
+                        'class' => 'form-control dinheiro'])
+                    ?>
+                </div>
+                <?php
+                    if (isset($classe)) {
+                ?>
+                <div class ="col-sm-3">
+                    <br><?= Html::input('button', 'up-tabela', 'Alterar Tabela', ['id' => 'up-tabela', 'class' => 'form-control btn-primary']); ?>
+                </div>
+                <?php
+                    }
+                ?>
+                <div class="<?= (isset($classe)) ? $classe : 'col-sm-4'; ?>">
+                    <?=
+                    $form->field($model, 'tabela_id')->dropDownList(($model->isNewRecord) ? [] : [
+                        $model->tabela_id => $model->tabela_id
+                    ], ['prompt' => '-- Selecione --', 'id' => 'tabelaAjax'])
+                    ?>
+                </div>
+                
+                <div class="col-sm-12">
+<?= $form->field($model, 'vtprest')->textInput(['readonly' => true]) ?>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="retornoFinal"></div>
+
+    <?php
+    DynamicFormWidget::begin([
+        'widgetContainer' => 'dynamicform_wrapper_con', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
+        'widgetBody' => '.container-items-con', // required: css class selector
+        'widgetItem' => '.item-con', // required: css class
+        'limit' => 11, // the maximum times, an element can be cloned (default 999)
+        'min' => 0, // 0 or 1 (default 1)
+        'insertButton' => '.add-item-con', // css class
+        'deleteButton' => '.remove-item-con', // css class
+        'model' => $modelsComponentes[0],
+        'formId' => 'dynamic-form',
+        'formFields' => [
+            'nome',
+            'valor',
+        ],
+    ]);
+    ?>
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <i class="fa fa-truck"></i> Componentes do frete
+            <button type="button" class="pull-right add-item-con btn btn-success btn-xs hide"><i class="fa fa-plus"></i> Adicionar Componente</button>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body container-items-con"><!-- widgetContainer -->
+
+<?php foreach ($modelsComponentes as $index => $modelComponentes): ?>
+
+                <div class="item-con panel panel-default"><!-- widgetBody -->
+
+                    <div class="panel-heading">
+                        <span class="panel-title-condutor">Componente: <?= ($index + 1) ?></span>
+                        <button type="button" class="pull-right remove-item-con btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <?php
+                        // necessary for update action.
+
+                        if (!$modelComponentes->isNewRecord) {
+
+                            echo Html::activeHiddenInput($modelComponentes,
+                                "[{$index}]id");
+                        }
+                        ?>
+
+                        <div class="row">
+
+                            <div class='col-sm-6'>
+                                <?=
+                                $form->field($modelComponentes, "[{$index}]nome")->textInput([
+                                    'maxlength' => true,
+                                    'readonly' => true])
+                                ?>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <?=
+                                $form->field($modelComponentes,
+                                    "[{$index}]valor")->textInput([
+                                    'maxlength' => true,
+                                    'readonly' => true])
+                                ?>
+                            </div>
+
+                        </div><!-- end:row -->
+
+                    </div>
+
+                </div>
+
+<?php endforeach; ?>
+
+        </div>
+
+    </div>
 
 <?php DynamicFormWidget::end(); ?>
 
@@ -595,11 +785,11 @@ CteAsset::register($this);
 
             <div class="row">
                 <div class="col-sm-4"><?=
-$form->field($model, 'respseg')->dropDownList([
-    '4' => 'Emitente',
-    '5' => 'Tomador'
-])
-?></div>
+                    $form->field($model, 'respseg')->dropDownList([
+                        '5' => 'Tomador',
+                        '4' => 'Emitente'
+                    ])
+                    ?></div>
                 <div class="col-sm-4"><?=
                     $form->field($model, 'xseg')->textInput([
                         'maxlength' => true])
@@ -646,59 +836,76 @@ $form->field($model, 'respseg')->dropDownList([
                     <div class="col-sm-2">
                         <?=
                         $form->field($model, 'vbc')->textInput([
-                            'id' => 'icms-vbc', 'class' => 'form-control imposto', 'readonly' => true])
+                            'id' => 'icms-vbc', 'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['vbc']])
                         ?>
                     </div>
                     <div class="col-sm-2">
                         <?=
-                        $form->field($model, 'picms')->textInput(['id' => 'icms-picms', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'picms')->textInput(['id' => 'icms-picms',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '5.25' : $model['picms']])
                         ?>
                     </div>
                     <div class="col-sm-2">
                         <?=
-                        $form->field($model, 'vicms')->textInput(['id' => 'icms-vicms', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'vicms')->textInput(['id' => 'icms-vicms',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['vicms']])
                         ?>
                     </div>
                     <div class="col-sm-3">
-<?=
-$form->field($model, 'predbc')->textInput(['id' => 'icms-predbc', 'class' => 'form-control imposto',
-    'readonly' => true])
-?>
+                        <?=
+                        $form->field($model, 'predbc')->textInput(['id' => 'icms-predbc',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['predbc']])
+                        ?>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-3">
                         <?=
-                        $form->field($model, 'vbcstret')->textInput(['id' => 'icms-vbcstret', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'vbcstret')->textInput(['id' => 'icms-vbcstret',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['vbcstret']])
                         ?>
                     </div>
                     <div class="col-sm-2">
                         <?=
-                        $form->field($model, 'vicmsret')->textInput(['id' => 'icms-vicmsstret', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'vicmsret')->textInput(['id' => 'icms-vicmsstret',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['vicmsret']])
                         ?>
                     </div>
                     <div class="col-sm-2">
                         <?=
-                        $form->field($model, 'picmsret')->textInput(['id' => 'icms-picmsstret', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'picmsret')->textInput(['id' => 'icms-picmsstret',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['picmsret']])
                         ?>
                     </div>
                     <div class="col-sm-2">
                         <?=
-                        $form->field($model, 'vcred')->textInput(['id' => 'icms-vcred', 'class' => 'form-control imposto',
-                            'readonly' => true])
+                        $form->field($model, 'vcred')->textInput(['id' => 'icms-vcred',
+                            'class' => 'form-control imposto',
+                            'readonly' => true, 'value' => ($model->isNewRecord)
+                                    ? '0.00' : $model['vcred']])
                         ?>
                     </div>
                     <div class="col-sm-3">
-<?=
-$form->field($model, 'vtottrib')->textInput(['id' => 'icms-vtottrib', 'class' => 'form-control imposto',
-    'readonly' => true])
-?>
+                        <?=
+                        $form->field($model, 'vtottrib')->textInput(['id' => 'icms-vtottrib',
+                            'class' => 'form-control imposto',
+                            'readonly' => true])
+                        ?>
                     </div>
                 </div>
             </div>
@@ -706,24 +913,15 @@ $form->field($model, 'vtottrib')->textInput(['id' => 'icms-vtottrib', 'class' =>
     </div>
 </div>
 
-
-
-<?= $form->field($model, 'vtprest')->textInput() ?>
-
-<?= $form->field($model, 'vrec')->textInput() ?>
-
-<?= $form->field($model, 'vcarga')->textInput() ?>
-
-<?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?> <!-- Salvo -->
-
-<?= $form->field($model, 'chave')->textInput(['maxlength' => true]) ?> <!-- Na Model -->
-
-    <?= $form->field($model, 'cct')->textInput(['maxlength' => true]) ?> <!-- ultimos digitos do cnpj -->
-
-<?= $form->field($model, 'forpag')->textInput() ?> <!-- Deixar como 2 (Outros) -->
+<div class="row hide">
+    <div class="col-sm-6"><?= $form->field($model, 'vrec')->textInput() ?></div>
+    <div class="col-sm-6"><?= $form->field($model, 'vcarga')->textInput() ?></div>
+</div>
 
 <div class="form-group">
-<?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success'])
+<?= Html::submitButton(Yii::t('app',
+        ($model->isNewRecord) ? 'Emitir' : 'Atualizar'),
+    ['class' => ($model->isNewRecord) ? 'btn btn-success' : 'btn btn-primary'])
 ?>
 </div>
 

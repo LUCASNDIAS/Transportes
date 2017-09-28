@@ -34,6 +34,7 @@ use app\components\ClienteValidator;
  */
 class Clientes extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -48,8 +49,10 @@ class Clientes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cridt', 'criusu', 'dono', 'nome', 'cnpj', 'ie', 'endrua', 'endnro', 'endbairro', 'endcid', 'enduf', 'endcep', 'status'], 'required'],
-            [['cridt', 'criusu', 'dono', 'nome', 'ie', 'cnpj', 'endrua', 'endnro', 'endbairro', 'endcid', 'enduf', 'endcep', 'status'], 'trim'],
+            [['cridt', 'criusu', 'dono', 'nome', 'cnpj', 'ie', 'endrua', 'endnro',
+                'endbairro', 'endcid', 'enduf', 'endcep', 'status'], 'required'],
+            [['cridt', 'criusu', 'dono', 'nome', 'ie', 'cnpj', 'endrua', 'endnro',
+                'endbairro', 'endcid', 'enduf', 'endcep', 'status'], 'trim'],
             [['cridt'], 'safe'],
             [['criusu'], 'string', 'max' => 30],
             [['dono', 'ie'], 'string', 'max' => 20],
@@ -98,7 +101,8 @@ class Clientes extends \yii\db\ActiveRecord
      */
     public function getClientesContatos()
     {
-        return $this->hasMany(ClientesContatos::className(), ['clientes_id' => 'id']);
+        return $this->hasMany(ClientesContatos::className(),
+                ['clientes_id' => 'id']);
     }
 
     /**
@@ -106,7 +110,8 @@ class Clientes extends \yii\db\ActiveRecord
      */
     public function getClientesContato()
     {
-        return $this->hasOne(ClientesContatos::className(), ['clientes_id' => 'id']);
+        return $this->hasOne(ClientesContatos::className(),
+                ['clientes_id' => 'id']);
     }
 
     /**
@@ -162,7 +167,8 @@ class Clientes extends \yii\db\ActiveRecord
      */
     public function getTabelasClientes()
     {
-        return $this->hasMany(TabelasClientes::className(), ['cliente_id' => 'id']);
+        return $this->hasMany(TabelasClientes::className(),
+                ['cliente_id' => 'id']);
     }
 
     /**
@@ -174,48 +180,116 @@ class Clientes extends \yii\db\ActiveRecord
         return new ClientesQuery(get_called_class());
     }
 
-    public function autoComplete() {
+    public function autoComplete()
+    {
 
         $data = self::find()
-                ->select([new \yii\db\Expression("`cnpj`, CONCAT( `nome`,' | ',`cnpj`) as label, id")])
-                ->where(['dono' => Yii::$app->user->identity['cnpj']])
-                ->asArray()
-                ->all();
+            ->select([new \yii\db\Expression("`cnpj`, CONCAT( `nome`,' | ',`cnpj`) as label, id")])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->asArray()
+            ->all();
 
         return $data;
     }
 
-    public function getCidades($clientes) {
+    public function autoComplete2()
+    {
 
         $data = self::find()
-                ->select('enduf,endcid')
-                ->where(['dono' => Yii::$app->user->identity['cnpj']])
-                ->andWhere(['in','cnpj',$clientes])
-                ->asArray()
-                ->all();
+            ->select([new \yii\db\Expression("`cnpj` as value, CONCAT( `nome`,' | ',`cnpj`) as label, id")])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->asArray()
+            ->all();
 
         return $data;
     }
 
-    public function getIdClientes($cnpj) {
+    public function getCidades($clientes)
+    {
 
         $data = self::find()
-                ->select('id')
-                ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->select('enduf,endcid')
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['in', 'cnpj', $clientes])
+            ->asArray()
+            ->all();
+
+        return $data;
+    }
+
+    public function getIdClientes($cnpj)
+    {
+
+        $data = self::find()
+            ->select('id')
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
 //                ->where(['dono' => '11095658000140'])
-                ->andWhere(['cnpj' => $cnpj])
-                ->asArray()
-                ->one();
+            ->andWhere(['cnpj' => $cnpj])
+            ->asArray()
+            ->one();
 
         return $data;
     }
 
-    public function retornaCliente($cnpj) {
+    public function retornaCliente($cnpj)
+    {
         $query = self::find()
-                ->where(['dono' => Yii::$app->user->identity['cnpj']])
-                ->andWhere(['cnpj' => $cnpj])
-                ->one();
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['cnpj' => $cnpj])
+            ->one();
 
         return $query;
+    }
+
+    public function Tabelas($cnpj)
+    {
+
+        $cliente    = $this->retornaCliente($cnpj);
+        $id_cliente = $cliente->id;
+
+        $tabelas = self::find()
+            ->select('tabela_id')
+            ->from('tabelas_clientes')
+            ->where([
+                'cliente_id' => $id_cliente
+            ])
+            ->asArray()
+            ->all();
+
+        // $array = explode('|', $tabelas['tabelas']);
+        // $array = array_unique(preg_split('/\|/', $tabelas['tabelas'], -1, PREG_SPLIT_NO_EMPTY));
+
+        return $tabelas;
+    }
+
+    public function getEmail($cnpj)
+    {
+        $cnpj1 = ($cnpj == '') ? '09835783624' : $cnpj;
+        
+        $cliente    = $this->retornaCliente($cnpj1);
+        $id_cliente = $cliente->id;
+
+        $email = self::find()
+            ->select('email')
+            ->from('clientes_contatos')
+            ->where(['clientes_id' => $id_cliente])
+            ->asArray()
+            ->one();
+
+//        $array = array_unique(preg_split('/\|/', $email['emails'], -1,
+//                PREG_SPLIT_NO_EMPTY));
+
+        return $email;
+    }
+
+    public function getNome($cnpj)
+    {
+        $nome = self::find()
+            ->select('nome')
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['cnpj' => $cnpj])
+            ->one();
+
+        return $nome['nome'];
     }
 }

@@ -205,6 +205,26 @@ class AjaxController extends Controller
         return Json::encode($calculaFrete);
     }
 
+    public function actionCalculoscte()
+    {
+        //$dados = explode('&', $_POST['test']);
+        $dados = $_GET;
+        $tipo  = $_GET['tipo'];
+
+        $calculos     = new Calculos();
+        // Tem que enviar o array com as variaveis
+        $calculaFrete = $calculos->calculaFretecte($tipo, $dados);
+        //return Json::encode($calculaFrete);
+        //return Json::encode($dados);
+        //if(isset($_POST['test'])){
+        //$test = explode('&', $_POST['test']);
+//		}else{
+        //		$test = "Ajax failed";
+        //}
+
+        return Json::encode($calculaFrete);
+    }
+
     public function actionSql()
     {
 

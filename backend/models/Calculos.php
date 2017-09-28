@@ -159,29 +159,30 @@ class Calculos extends \yii\db\ActiveRecord
             return $this->msg;
         }
 
-        if ($tipo == 'ajax') {
+        $p = $dados;
 
-            $novo = [];
-
-            $divide = explode('&', $dados);
-            foreach ($divide as $separa) {
-                $campos     = explode('=', $separa);
-                $key        = str_replace('Cte', '', $campos[0]);
-                $key        = str_replace('%5B', '', $key);
-                $key        = str_replace('%5D', '', $key);
-                $novo[$key] = $campos[1];
-            }
-
-            $p = $novo;
-            return $p;
-        } else {
-
-            // Array com os dados: seja modelo ou formulário!
-            $p = (!isset($dados['Cte'])) ? $dados : $dados['Cte'];
-        }
+//        if ($tipo == 'ajax') {
+//
+//            $novo = [];
+//
+//            $divide = explode('&', $dados);
+//            foreach ($divide as $separa) {
+//                $campos     = explode('=', $separa);
+//                $key        = str_replace('Cte', '', $campos[0]);
+//                $key        = str_replace('%5B', '', $key);
+//                $key        = str_replace('%5D', '', $key);
+//                $novo[$key] = $campos[1];
+//            }
+//
+//            $p = $novo;
+//        } else {
+//
+//            // Array com os dados: seja modelo ou formulário!
+//            $p = (!isset($dados['Cte'])) ? $dados : $dados['Cte'];
+//        }
 
         // Retorna erro se nenhuma tabela foi informada.
-        if ($p['tabela_id'] == '') {
+        if ($p['tabela'] == '') {
             $this->msg[] = 'Tabela não informada';
             return $this->msg;
         }
@@ -240,6 +241,11 @@ class Calculos extends \yii\db\ActiveRecord
             $tabela_fretevalor + $tabela_despacho + $tabela_seccat + $tabela_itr
             +
             $tabela_gris + $tabela_pedagio + $tabela_outros;
+
+        // Calculo de imposto com aliquota de 5.25%
+        $aliq = 5.25;
+        $fretetotal = $fretetotal / (100 - $aliq) * 100;
+        $taxaextra += $fretetotal * $aliq / 100;
 
         // Insere as variáveis uteis no array de retorno
         $this->calculo['peso']              = ($peso == '') ? '0.00' : number_format($peso,

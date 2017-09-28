@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\cte\models\Cte */
 
-$this->title = $model->id;
+$this->title = $model->numero;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ctes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Enviar'), ['send', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -70,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'vrec',
             'cst',
             'predbc',
-            'vbv',
+            'vbc',
             'picms',
             'vicms',
             'vbcstret',
@@ -80,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'vtottrib',
             'outrauf',
             'vcarga',
-            'predpred',
+            'prodpred',
             'xoutcat',
             'respseg',
             'xseg',

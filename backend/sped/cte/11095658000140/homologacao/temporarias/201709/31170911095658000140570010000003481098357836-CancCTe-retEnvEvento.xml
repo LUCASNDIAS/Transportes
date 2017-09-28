@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRecepcaoEventoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento"><retEventoCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <infEvento>
+    <tpAmb>2</tpAmb>
+    <verAplic>1.2.24</verAplic>
+    <cOrgao>31</cOrgao>
+    <cStat>135</cStat>
+    <xMotivo>Recebido pelo Sistema de Registro de Eventos com vinculacao do evento no respectivo CTe</xMotivo>
+    <chCTe>31170911095658000140570010000003481098357836</chCTe>
+    <tpEvento>110111</tpEvento>
+    <xEvento>Cancelamento</xEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <dhRegEvento>2017-09-20T13:03:06</dhRegEvento>
+    <nProt>131170001228691</nProt>
+  </infEvento>
+</retEventoCTe></cteRecepcaoEventoResult></soap:Body></soap:Envelope>

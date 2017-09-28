@@ -12,15 +12,26 @@ use backend\modules\cte\models\Cte;
  */
 class CteSearch extends Cte
 {
+    // Regra pra pegar nota na busca
+    public $notaChave;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma', 'outrauf', 'respseg', 'lota'], 'integer'],
-            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'numero', 'dtemissao', 'cct', 'cfop', 'natop', 'refcte', 'cmunenv', 'xmunenv', 'ufenv', 'modal', 'cmunini', 'xmunini', 'ufini', 'cmunfim', 'xmunfim', 'uffim', 'xdetretira', 'dhcont', 'xjust', 'tomador', 'remetente', 'destinatario', 'recebedor', 'expedidor', 'cst', 'prodpred', 'xoutcat', 'xseg', 'napol', 'rntrc', 'dprev', 'status'], 'safe'],
-            [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'vcarga'], 'number'],
+            [['id', 'ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira',
+                'toma', 'outrauf', 'respseg', 'lota'], 'integer'],
+            [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'numero', 'dtemissao',
+                'cct', 'cfop', 'natop', 'refcte', 'cmunenv', 'xmunenv', 'ufenv',
+                'modal', 'cmunini', 'xmunini', 'ufini', 'cmunfim', 'xmunfim', 'uffim',
+                'xdetretira', 'dhcont', 'xjust', 'tomador', 'remetente', 'destinatario',
+                'recebedor', 'expedidor', 'cst', 'prodpred', 'xoutcat', 'xseg', 'napol',
+                'rntrc', 'dprev', 'status'], 'safe'],
+            [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret',
+                'picmsret', 'vcred', 'vtottrib', 'vcarga'], 'number'],
+            [['notaChave'], 'safe'],
         ];
     }
 
@@ -50,11 +61,23 @@ class CteSearch extends Cte
             'query' => $query,
         ]);
 
+//        $dataProvider->setSort([
+//            'attributes' => [
+//                'id',
+//                'notaChave' => [
+//                    'asc' => ['cte_documentos.chave' => SORT_ASC],
+//                    'desc' => ['cte_documentos.chave' => SORT_DESC],
+//                    'label' => 'Nota'
+//                ]
+//            ]
+//        ]);
+
         $this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
+            $query->joinWith(['cteDocumentos']);
             return $dataProvider;
         }
 
@@ -123,6 +146,13 @@ class CteSearch extends Cte
             ->andFilterWhere(['like', 'napol', $this->napol])
             ->andFilterWhere(['like', 'rntrc', $this->rntrc])
             ->andFilterWhere(['like', 'status', $this->status]);
+
+        $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']]);
+        $query->andFilterWhere(['!=', 'status', 'DELETADO']);
+        $query->joinWith(['cteDocumentos' => function ($q) {
+                $q->where('cte_documentos.chave LIKE "%'.$this->notaChave.'%"');
+            }]);
+        $query->orderBy('numero DESC');
 
         return $dataProvider;
     }

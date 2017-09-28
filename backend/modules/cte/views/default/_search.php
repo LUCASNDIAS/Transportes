@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\AutoComplete;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\cte\models\CteSearch */
@@ -10,23 +12,106 @@ use yii\widgets\ActiveForm;
 
 <div class="cte-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
+    <?php
+    $form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+            'options' => [
+                'data-pjax' => false
+            ],
+    ]);
+    ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
+        <div class="col-sm-3">
+            <?= $form->field($model, 'numero'); ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'dtemissao'); ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'notaChave'); ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'status')->dropDownList([
+                '' => 'TODOS',
+                'AUTORIZADO' => 'AUTORIZADO',
+                'CANCELADO' => 'CANCELADO',
+                'FATURADO' => 'FATURADO',
+                'SALVO' => 'SALVO',                
+            ]); ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'remetente')->widget(AutoComplete::classname(),[
+                'clientOptions' => [
+                    'source' => $data,
+                    'autoFill' => true,
+                    'minLength' => 4
+                ],
+                'options' => [
+                    'class' => 'form-control'
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'destinatario')->widget(AutoComplete::classname(),[
+                'clientOptions' => [
+                    'source' => $data,
+                    'autoFill' => true,
+                    'minLength' => 4
+                ],
+                'options' => [
+                    'class' => 'form-control'
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'expedidor')->widget(AutoComplete::classname(),[
+                'clientOptions' => [
+                    'source' => $data,
+                    'autoFill' => true,
+                    'minLength' => 4
+                ],
+                'options' => [
+                    'class' => 'form-control'
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'recebedor')->widget(AutoComplete::classname(),[
+                'clientOptions' => [
+                    'source' => $data,
+                    'autoFill' => true,
+                    'minLength' => 4
+                ],
+                'options' => [
+                    'class' => 'form-control'
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-12">
+            <?= $form->field($model, 'tomador')->widget(AutoComplete::classname(),[
+                'clientOptions' => [
+                    'source' => $data,
+                    'autoFill' => true,
+                    'minLength' => 4
+                ],
+                'options' => [
+                    'class' => 'form-control'
+                ],
+            ]); ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'dono') ?>
+    <?php // echo $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'cridt') ?>
+    <?php // echo $form->field($model, 'dono') ?>
 
-    <?= $form->field($model, 'criusu') ?>
+    <?php // echo $form->field($model, 'cridt') ?>
 
-    <?= $form->field($model, 'ambiente') ?>
+    <?php // echo $form->field($model, 'criusu') ?>
+
+    <?php // echo $form->field($model, 'ambiente') ?>
 
     <?php // echo $form->field($model, 'chave') ?>
 
@@ -138,13 +223,18 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'lota') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'status')  ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?=
+        Html::submitButton(Yii::t('app', 'Search'),
+            ['class' => 'btn btn-primary'])
+        ?>
+        <?=
+        Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default'])
+        ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
 </div>
