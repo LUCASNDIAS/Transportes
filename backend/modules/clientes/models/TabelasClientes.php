@@ -31,7 +31,7 @@ class TabelasClientes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cliente_id', 'tabela_id'], 'required'],
+            [['cliente_id'], 'required'],
             [['cliente_id', 'tabela_id'], 'integer'],
             [['tabela_id'], 'unique'],
             [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['cliente_id' => 'id']],
