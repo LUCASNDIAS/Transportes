@@ -153,7 +153,8 @@ class DefaultController extends Controller
             }
         }
 
-        $data = Tab::autoComplete();
+        $auto = new Tab();
+        $data = $auto->autoComplete();
 
         return $this->render('create',
                 [
