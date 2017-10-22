@@ -20,12 +20,9 @@ use NFePHP\CTe\Tools;
 $cte = new Make();
 
 $files = [
-    '31170911095658000140570010000002981211849073',
-    '31170911095658000140570010000002991211902486',
-    '31170911095658000140570010000003001211906557',
-    '31170911095658000140570010000003011211914085',
-    '31170911095658000140570010000003021211916573',
-    '31170911095658000140570010000003031211922180'
+    '31171011095658000140570010000003051032041485',
+    '31171011095658000140570010000003061032048363',
+    '31171011095658000140570010000003071098357833'
 ];
 
 foreach ($files as $file) {
@@ -40,7 +37,7 @@ foreach ($files as $file) {
     $aRetorno = array();
     $retorno  = $cteTools->sefazConsultaChave($file, '1', $aRetorno);
 
-    $protocolo = '/var/www/html/Transportes/backend/sped/cte/11095658000140/producao/temporarias/201709/'.$file.'-retConsSitCTe.xml';
+    $protocolo = '/var/www/html/Transportes/backend/sped/cte/11095658000140/producao/temporarias/201710/'.$file.'-retConsSitCTe.xml';
 
     $salvar = $cteTools->addProtocolo($filename, $protocolo);
 

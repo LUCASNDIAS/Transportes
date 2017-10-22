@@ -193,7 +193,7 @@ class CteGeral
             $nro     = $remetente->endnro, // Numero
             $xCpl    = '', // COmplemento
             $xBairro = $remetente->endbairro, // Bairro
-            $cMun    = $munremetente->codigo, // Codigo do municipio do IBEGE Informar 9999999 para operações com o exterior.
+            $cMun    = (isset($munremetente->codigo)) ? $munremetente->codigo : '9999999', // Codigo do municipio do IBEGE Informar 9999999 para operações com o exterior.
             $xMun    = $remetente->endcid, // Nome do município (Informar EXTERIOR para operações com o exterior.
             $CEP     = str_replace($invalidos, '', $remetente->endcep), // CEP
             $UF      = $remetente->enduf, // Sigla UF (Informar EX para operações com o exterior.)
@@ -587,7 +587,7 @@ class CteGeral
             return $retorno;
         }
 
-        chmod($validado, 0777);
+        //chmod($validado, 0777);
         $xml = file_get_contents($validado);
 
         // Define as variáveis para envio
@@ -706,6 +706,12 @@ class CteGeral
             if (!is_file($autorizado)) {
                 $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/geradas/'.$model->chave.'-cte.xml';
             }
+
+            $enviado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+
+            if (is_file($enviado)) {
+                $autorizado = $enviado;
+            }
         }
 
         // Gera o xml
@@ -766,8 +772,11 @@ class CteGeral
         // Retorno do cancelamento
         $aRetorno = array();
 
-        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
-            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
+//        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
+//            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
+
+        $cancela = $cteTools->sefazCancela('31171009204054000143570010000015391051809182', '1',
+            $motivo, '131170226888289', $aRetorno);
 
         // Verifica se foi cancelado e vinculado
         if ($aRetorno['cStat'] == '135') {

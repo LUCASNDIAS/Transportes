@@ -49,6 +49,18 @@ $config = [
         'veiculos' => [
             'class' => 'backend\modules\veiculos\Module',
         ],
+        'cotacao' => [
+            'class' => 'backend\modules\cotacao\Module',
+        ],
+        'ordemcoleta' => [
+            'class' => 'backend\modules\ordemcoleta\Module',
+        ],
+        'financeiro' => [
+            'class' => 'backend\modules\financeiro\Module',
+        ],
+        'fatura' => [
+            'class' => 'backend\modules\fatura\Module',
+        ],
     ],
     'components' => [
         'request' => [

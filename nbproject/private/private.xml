@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/views/default/_form.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/cte/controllers/DefaultController.php</file>
-            <file>file:/var/www/html/Transportes/backend/assets/CteAsset.php</file>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/views/default/index.php</file>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/controllers/DefaultController.php</file>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/views/default/_documentos.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/cte/views/default/_form.php</file>
-            <file>file:/var/www/html/Transportes/backend/web/js/cte.js</file>
+            <file>file:/var/www/html/Transportes/backend/web/js/fatura.js</file>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/models/Fatura.php</file>
+            <file>file:/var/www/html/Transportes/backend/models/MinutasSearch.php</file>
+            <file>file:/var/www/html/Transportes/backend/controllers/AjaxController.php</file>
+            <file>file:/var/www/html/Transportes/backend/modules/fatura/views/default/create.php</file>
         </group>
     </open-files>
 </project-private>

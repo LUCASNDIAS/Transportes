@@ -67,7 +67,7 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verCotacao'),
                         'items' => [
-                            ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/cotacao/create'], 'visible' => Yii::$app->user->can('addCotacao')],
+                            ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/cotacao/default/create'], 'visible' => Yii::$app->user->can('addCotacao')],
                             ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cotacao'],'visible' => Yii::$app->user->can('verCotacao')],
                         ],
                     ],
@@ -81,49 +81,70 @@
                             ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cte'],'visible' => Yii::$app->user->can('verCte')],
                         ],
                     ],
-                    [
-                        'label' => 'Faturas',
-                        'icon' => 'fa fa-money',
-                        'url' => '#',
-                        'visible' => Yii::$app->user->can('verContas'),
-                        'items' => [
-                            ['label' => 'Gerar (CTe)', 'icon' => 'fa fa-plus-square-o', 'url' => ['/fatura/create', 'tipo' => 'cte'], 'visible' => Yii::$app->user->can('addContas')],
-                            ['label' => 'Gerar (Minuta)', 'icon' => 'fa fa-plus-square', 'url' => ['/fatura/create', 'tipo' => 'minuta'], 'visible' => Yii::$app->user->can('addContas')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/fatura'], 'visible' => Yii::$app->user->can('verContas')],
-                        ],
-                    ],
+//                    [
+//                        'label' => 'Faturas',
+//                        'icon' => 'fa fa-money',
+//                        'url' => '#',
+//                        'visible' => Yii::$app->user->can('verContas'),
+//                        'items' => [
+//                            ['label' => 'Gerar (CTe)', 'icon' => 'fa fa-plus-square-o', 'url' => ['/fatura/create', 'tipo' => 'cte'], 'visible' => Yii::$app->user->can('addContas')],
+//                            ['label' => 'Gerar (Minuta)', 'icon' => 'fa fa-plus-square', 'url' => ['/fatura/create', 'tipo' => 'minuta'], 'visible' => Yii::$app->user->can('addContas')],
+//                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/fatura'], 'visible' => Yii::$app->user->can('verContas')],
+//                        ],
+//                    ],
                     [
                         'label' => 'Financeiro',
                         'icon' => 'fa fa-usd',
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verContas'),
                         'items' => [
-                            ['label' => 'Pagar', 'icon' => 'fa fa-hand-o-down', 'url' => '#', 'visible' => true, 'items' => [
-                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/financeiro/create', 'tipo' => 'pagar'], 'visible' => Yii::$app->user->can('addContas')],
-                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/financeiro', 'tipo' => 'pagar'], 'visible' => Yii::$app->user->can('verContas')],
-                                ],
-                            ],
-                            ['label' => 'Receber', 'icon' => 'fa fa-hand-o-up', 'url' => '#', 'visible' => true, 'items' => [
-                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/financeiro/create', 'tipo' => 'receber'], 'visible' => Yii::$app->user->can('addContas')],
-                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/financeiro', 'tipo' => 'receber'], 'visible' => Yii::$app->user->can('verContas')],
-                                ],
-                            ],
+                            ['label' => 'Despesas', 'icon' => 'fa fa-credit-card', 'url' => ['/financeiro', 't' => 'D'], 'visible' => Yii::$app->user->can('addContas')],
+                            ['label' => 'Receitas', 'icon' => 'fa fa-euro', 'url' => ['/financeiro', 't' => 'R'], 'visible' => Yii::$app->user->can('addContas')],
+                            ['label' => 'Faturas', 'icon' => 'fa fa-money', 'url' => ['/fatura'], 'visible' => Yii::$app->user->can('verContas')],
                         ],
                     ],
+//                    [
+//                        'label' => 'Financeiro',
+//                        'icon' => 'fa fa-usd',
+//                        'url' => '#',
+//                        'visible' => Yii::$app->user->can('verContas'),
+//                        'items' => [
+//                            ['label' => 'Pagar', 'icon' => 'fa fa-hand-o-down', 'url' => '#', 'visible' => true, 'items' => [
+//                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/financeiro/create', 'tipo' => 'pagar'], 'visible' => Yii::$app->user->can('addContas')],
+//                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/financeiro', 'tipo' => 'pagar'], 'visible' => Yii::$app->user->can('verContas')],
+//                                ],
+//                            ],
+//                            ['label' => 'Receber', 'icon' => 'fa fa-hand-o-up', 'url' => '#', 'visible' => true, 'items' => [
+//                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/financeiro/create', 'tipo' => 'receber'], 'visible' => Yii::$app->user->can('addContas')],
+//                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/financeiro', 'tipo' => 'receber'], 'visible' => Yii::$app->user->can('verContas')],
+//                                ],
+//                            ],
+//                        ],
+//                    ],
+//                    [
+//                        'label' => 'Frota',
+//                        'icon' => 'fa fa-truck',
+//                        'url' => '#',
+//                        'visible' => Yii::$app->user->can('verFrota'),
+//                        'items' => [
+//                            ['label' => 'Veiculos', 'icon' => 'fa fa-car', 'url' => '#', 'visible' => true, 'items' => [
+//                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus', 'url' => ['/frota/create', 'tipo' => 'veiculo'], 'visible' => Yii::$app->user->can('addFrota')],
+//                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/frota', 'tipo' => 'veiculo'], 'visible' => Yii::$app->user->can('verFrota')],
+//                                ],
+//                            ],
+//                            ['label' => 'Manutencao', 'icon' => 'fa fa-wrench', 'url' => ['/frota/manutencao'], 'visible' => Yii::$app->user->can('verFrota'),],
+//                        ],
+//                    ],
                     [
-                        'label' => 'Frota',
-                        'icon' => 'fa fa-truck',
-                        'url' => '#',
-                        'visible' => Yii::$app->user->can('verFrota'),
-                        'items' => [
-                            ['label' => 'Veiculos', 'icon' => 'fa fa-car', 'url' => '#', 'visible' => true, 'items' => [
-                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus', 'url' => ['/frota/create', 'tipo' => 'veiculo'], 'visible' => Yii::$app->user->can('addFrota')],
-                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/frota', 'tipo' => 'veiculo'], 'visible' => Yii::$app->user->can('verFrota')],
-                                ],
-                            ],
-                            ['label' => 'Manutencao', 'icon' => 'fa fa-wrench', 'url' => ['/frota/manutencao'], 'visible' => Yii::$app->user->can('verFrota'),],
-                        ],
-                    ],
+                		'label' => 'Frota',
+                		'icon' => 'fa fa-truck',
+                		'url' => '#',
+                		'visible' => Yii::$app->user->can('verFrota'),
+                		'items' => [
+                			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/veiculos/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
+                			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/veiculos'],'visible' => Yii::$app->user->can('verFuncionarios')],
+                		]
+                   	],
                 	[
                 		'label' => 'Funcionários',
                 		'icon' => 'fa fa-user',
@@ -131,7 +152,7 @@
                 		'visible' => Yii::$app->user->can('addFuncionarios'),
                 		'items' => [
                 			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/funcionarios/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
-                			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/funcionarios'],'visible' => Yii::$app->user->can('verFuncionarios')],		
+                			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/funcionarios'],'visible' => Yii::$app->user->can('verFuncionarios')],
                 		]
                    	],
                     [
@@ -160,8 +181,8 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('verOC'),
                         'items' => [
-                            ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/ordem/create'], 'visible' => Yii::$app->user->can('addOC')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/ordem'],'visible' => Yii::$app->user->can('verOC')],
+                            ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/ordemcoleta/default/create'], 'visible' => Yii::$app->user->can('addOC')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/ordemcoleta'],'visible' => Yii::$app->user->can('verOC')],
                         ],
                     ],
                     [

@@ -421,6 +421,11 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function actionSenda()
+    {
+        return $this->render('enviaXML2');
+    }
+
     public function actionCte()
     {
         return $this->render('cte');

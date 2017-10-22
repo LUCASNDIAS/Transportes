@@ -54,8 +54,7 @@ class Funcionarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'datanascimento', 'cpf', 'cnhnum', 'cnhcat', 'cnhval', 'cargo',
-                'criusu', 'cridt', 'dono'], 'required'],
+            [['nome', 'cpf', 'cargo'], 'required'],
             [['datanascimento', 'cnhval', 'dtentrada', 'cridt'], 'safe'],
             [['nome', 'endrua', 'pai', 'mae', 'email'], 'string', 'max' => 200],
             [['endbairro', 'endcid', 'naturalidade', 'cargo', 'criusu'], 'string',

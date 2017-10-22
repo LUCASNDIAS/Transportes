@@ -21,6 +21,8 @@ return [
     'Clientes' => 'Clientes',
     'Create' => 'Adicionar',
     'Create Clientes' => 'Adicionar Clientes',
+    'Create Fatura' => 'Gerar Fatura',
+    'Create Veiculos' => 'Adicionar Veículo',
     'Create Tabelas' => 'Adicionar Tabelas',
     'Create Minutas' => 'Emitir Minutas',
     'Create Funcionarios' => 'Adicionar Funcionários',
@@ -31,5 +33,7 @@ return [
     'Reset' => 'Resetar',
     'Search' => 'Procurar',
     'Update' => 'Atualizar',
+    'Save' => 'Salvar',
     'Update {modelClass}: ' => 'Atualizar {modelClass}: ',
+    'Create {modelClass}: ' => 'Adicionar {modelClass}: ',
 ];

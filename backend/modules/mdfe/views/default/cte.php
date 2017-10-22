@@ -18,16 +18,16 @@ use NFePHP\CTe\Tools;
 
 $cte = new Make();
 
-$filename = '/var/www/html/Transportes/backend/sped/cte/31170911095658000140570010000003031211922180.xml';
+$filename = '/var/www/html/Transportes/backend/sped/cte/31171011095658000140570010000003071098357833.xml';
 
 //return var_dump(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
 $cteTools = new Tools(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
 $xml = file_get_contents($filename);
-//$xml = $cteTools->assina($xml);
-//
-//file_put_contents($filename, $xml);
+$xml = $cteTools->assina($xml);
+
+file_put_contents($filename, $xml);
 
 $retorno = $cteTools->sefazEnvia(
         $xml,

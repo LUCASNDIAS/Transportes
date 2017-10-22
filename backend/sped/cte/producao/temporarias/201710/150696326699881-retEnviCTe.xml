@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRecepcaoLoteResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao"><retEnviCte xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>1</tpAmb>
+  <cUF>31</cUF>
+  <verAplic>1.2.22</verAplic>
+  <cStat>103</cStat>
+  <xMotivo>Lote recebido com sucesso</xMotivo>
+  <infRec>
+    <nRec>311000277429471</nRec>
+    <dhRecbto>2017-10-02T13:54:27</dhRecbto>
+    <tMed>1</tMed>
+  </infRec>
+</retEnviCte></cteRecepcaoLoteResult></soap:Body></soap:Envelope>

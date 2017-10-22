@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns:ns2="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao" xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteConsultaCTResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta" xmlns:ns2="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao"><retConsSitCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>1</tpAmb>
+  <verAplic>1.2.22</verAplic>
+  <cStat>100</cStat>
+  <xMotivo>Autorizado o uso do CT-e</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt Id="ID131170227250495">
+      <tpAmb>1</tpAmb>
+      <verAplic>1.2.22</verAplic>
+      <chCTe>31171011095658000140570010000003051032041485</chCTe>
+      <dhRecbto>2017-10-07T12:38:21</dhRecbto>
+      <nProt>131170227250495</nProt>
+      <digVal>i/fhN+Zuvw7cJJqVl4gBnZZPHBk=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsSitCTe></cteConsultaCTResult></soap:Body></soap:Envelope>

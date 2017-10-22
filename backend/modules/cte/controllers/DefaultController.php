@@ -678,11 +678,11 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
 
-        // Somente acessa se estiver autorizado
-        if ($model->status !== 'AUTORIZADO') {
-            $msg = 'Não é possível cancelar CT-e com status "' . $model->status . '".';
-            return $this->redirect(['index', 'msg' => $msg]);
-        }
+//        // Somente acessa se estiver autorizado
+//        if ($model->status !== 'AUTORIZADO') {
+//            $msg = 'Não é possível cancelar CT-e com status "' . $model->status . '".';
+//            return $this->redirect(['index', 'msg' => $msg]);
+//        }
 
         $formulario = Yii::$app->request->post();
 

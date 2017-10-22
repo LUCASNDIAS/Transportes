@@ -7,6 +7,7 @@ use backend\modules\clientes\models\Clientes;
 use yii\web\JsExpression;
 use yii\jui\AutoComplete;
 use backend\commands\Basicos;
+use yii\helpers\Url;
 
 //use Yii;
 
@@ -64,6 +65,8 @@ $data = Clientes::find()
     <table class="table table-hover">
         <tr>
             <td>Envolvidos</td>
+            <td><?= Html::a('Cliente não cadastrado? Cadastre aqui.', Url::to(['clientes/default/create']), ['target' => '_blank']) ?></td>
+            <td><span class="rm-cons">Remover consignatário</span></td>
         </tr>
     </table>
     <table class="table table-hover">
@@ -76,7 +79,8 @@ $data = Clientes::find()
                         'name' => 'remetente-nome',
                         'id' => 'remetente-nome',
                         'clientOptions' => [
-                            'source' => $data,
+//                            'source' => $data,
+                            'source' => Url::to(['ajax/retorna-clientes']),
                             'autoFill' => true,
                             'minLength' => 4,
                             'select' => new JsExpression("function( event, ui ) {
@@ -102,7 +106,7 @@ $data = Clientes::find()
                         'name' => 'destinatario-nome',
                         'id' => 'destinatario-nome',
                         'clientOptions' => [
-                            'source' => $data,
+                            'source' => Url::to(['ajax/retorna-clientes']),
                             'autoFill' => true,
                             'minLength' => 4,
                             'select' => new JsExpression("function( event, ui ) {
@@ -129,7 +133,7 @@ $data = Clientes::find()
                         'name' => 'consignatario-nome',
                         'id' => 'consignatario-nome',
                         'clientOptions' => [
-                            'source' => $data,
+                            'source' => Url::to(['ajax/retorna-clientes']),
                             'autoFill' => true,
                             'minLength' => 4,
                             'select' => new JsExpression("function( event, ui ) {

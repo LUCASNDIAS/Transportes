@@ -66,6 +66,7 @@ class DefaultController extends Controller
         $model = new Veiculos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->tpprop = 'P';
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

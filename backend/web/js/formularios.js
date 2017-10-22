@@ -22,6 +22,12 @@ $(document).ready(function () {
             return true;
         }
     });
+    
+    // Função que remove acentos e caps formulario
+    function rm_acentos_caps(campo) {
+        var valor = campo.val().replace(/[áàâãÁÀÂÃ]/g, 'a').replace(/[éèêẽÉÈÊẼ]/g, 'e').replace(/[íìîĩÍÌÎĨ]/g, 'i').replace(/[óòôõÓÒÔÕ]/g, 'o').replace(/[úùûũüÚÙÛŨÜ]/g, 'u').replace(/[çÇ]/g, 'c').toUpperCase();
+        campo.val(valor);
+    }
 
     //  Mascaras
     function mascara() {

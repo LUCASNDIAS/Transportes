@@ -6,6 +6,7 @@ use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use backend\assets\CteAsset;
 use wbraganca\dynamicform\DynamicFormWidget;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\cte\models\Cte */
@@ -174,6 +175,7 @@ CteAsset::register($this);
         <!-- Dados Gerais -->
         <div class="panel-heading">
             <i class="fa fa-info-circle"></i> Envolvidos / Tabela
+            <?= Html::a('Cadastrar cliente', yii\helpers\Url::to(['/clientes/default/create']), ['target' => '_blank', 'class' => 'btn btn-primary']); ?>
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
@@ -186,7 +188,7 @@ CteAsset::register($this);
                             'name' => 'remetente-nome',
                             'id' => 'remetente-nome',
                             'clientOptions' => [
-                                'source' => $data,
+                                'source' => Url::to(['/ajax/retorna-clientes']),
                                 'autoFill' => true,
                                 'minLength' => 4,
                                 'select' => new JsExpression("function( event, ui ) {
@@ -218,7 +220,7 @@ CteAsset::register($this);
                             'name' => 'destinatario-nome',
                             'id' => 'destinatario-nome',
                             'clientOptions' => [
-                                'source' => $data,
+                                'source' => Url::to(['/ajax/retorna-clientes']),
                                 'autoFill' => true,
                                 'minLength' => 4,
                                 'select' => new JsExpression("function( event, ui ) {
@@ -251,7 +253,7 @@ CteAsset::register($this);
                             'name' => 'expedidor-nome',
                             'id' => 'expedidor-nome',
                             'clientOptions' => [
-                                'source' => $data,
+                                'source' => Url::to(['/ajax/retorna-clientes']),
                                 'autoFill' => true,
                                 'minLength' => 4,
                                 'select' => new JsExpression("function( event, ui ) {
@@ -283,7 +285,7 @@ CteAsset::register($this);
                             'name' => 'recebedor-nome',
                             'id' => 'recebedor-nome',
                             'clientOptions' => [
-                                'source' => $data,
+                                'source' => Url::to(['/ajax/retorna-clientes']),
                                 'autoFill' => true,
                                 'minLength' => 4,
                                 'select' => new JsExpression("function( event, ui ) {
@@ -331,7 +333,7 @@ CteAsset::register($this);
                             'name' => 'tomador-nome',
                             'id' => 'tomador-nome',
                             'clientOptions' => [
-                                'source' => $data,
+                                'source' => Url::to(['/ajax/retorna-clientes']),
                                 'autoFill' => true,
                                 'minLength' => 4,
                                 'select' => new JsExpression("function( event, ui ) {
@@ -428,7 +430,8 @@ CteAsset::register($this);
             <div class="row">
                 <div class="col-sm-4"><?=
                     $form->field($model, 'rntrc')->textInput([
-                        'maxlength' => true])
+                        'maxlength' => true,
+                        'value' => ($model->isNewRecord) ? Yii::$app->user->identity['rntrc'] : $model->rntrc]);
                     ?></div>
                 <div class="col-sm-4"><?=
                     $form->field($model, 'dprev')->textInput([

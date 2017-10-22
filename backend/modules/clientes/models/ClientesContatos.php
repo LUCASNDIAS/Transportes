@@ -31,7 +31,7 @@ class ClientesContatos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['clientes_id', 'nome', 'email', 'telefone'], 'required'],
+            [['clientes_id', 'telefone'], 'required'],
             [['clientes_id'], 'integer'],
             [['nome'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 100],

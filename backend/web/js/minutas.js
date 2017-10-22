@@ -7,6 +7,11 @@ $(document).ready(function () {
 
     // Inicia com focus na pesquisa do remetente
     $("#remetente-nome").focus();
+    
+    // Remover consignatario
+    $('.rm-cons').on('click', function() {
+        $('#minutas-consignatario, #consignatario-nome').val('');
+    });
 
     // Função que remove acentos e caps formulario
     function rm_acentos_caps(campo) {

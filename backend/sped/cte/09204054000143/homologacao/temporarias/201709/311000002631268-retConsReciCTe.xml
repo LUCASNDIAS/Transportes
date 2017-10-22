@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><cteCabecMsg xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><cUF>31</cUF><versaoDados>2.00</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteRetRecepcaoResult xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao"><retConsReciCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="2.00">
+  <tpAmb>2</tpAmb>
+  <verAplic>1.2.22</verAplic>
+  <nRec>311000002631268</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <cUF>31</cUF>
+  <protCTe versao="2.00">
+    <infProt>
+      <tpAmb>2</tpAmb>
+      <verAplic>1.2.22</verAplic>
+      <chCTe>31170911095658000140570010000003331098357833</chCTe>
+      <dhRecbto>2017-09-13T01:15:07</dhRecbto>
+      <digVal>+ImmRrdYEx88mDM/vH9zrwWdjt4=</digVal>
+      <cStat>204</cStat>
+      <xMotivo>Rejeicao: Existe CT-e ja autorizado com a mesma serie e numero [nRec:311000002630981]</xMotivo>
+    </infProt>
+  </protCTe>
+</retConsReciCTe></cteRetRecepcaoResult></soap:Body></soap:Envelope>
