@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
+                'template' => '{update}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{download}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
                 'buttons' => [
                     'print' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-print"></span>',
@@ -61,6 +61,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $url,
                                 [
                                 'title' => Yii::t('app', 'Transmitir para SEFAZ'),
+                        ]);
+                    },
+                    'download' => function ($url, $model) {
+                        return Html::a('<span class="fa fa-file-code-o"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'Download XML'),
+//                                'target' => '_blank',
+                                'data-pjax' => '0'
                         ]);
                     },
                     'cancel' => function ($url, $model) {

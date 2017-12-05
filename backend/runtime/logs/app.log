@@ -60278,3 +60278,132 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1512467712.251
     'REQUEST_TIME' => 1512467712
 ]
+2017-12-05 11:11:00 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: cte/default/download in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php:127
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('download', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('cte/default/dow...', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/html/Transportes/backend/web/index.php(18): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/backend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2017-12-05 11:10:59 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '23'
+    '_pjax' => '#p0'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'bn7rjl4q6r2fjtn0c0o4at0dl3'
+    '_csrf' => '7a46e9f7caf4aeaaaf7fd70fb976d493d29fb8861db3cc862fc8c6f1c7280b7ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lF3L3MmlIazN776_b-CpS16PaBJZEcYq\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'lndsistemas.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://lndsistemas.com/Transportes/backend/web/cte'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_X_PJAX' => 'true'
+    'HTTP_X_PJAX_CONTAINER' => '#p0'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_COOKIE' => 'PHPSESSID=bn7rjl4q6r2fjtn0c0o4at0dl3; _csrf=7a46e9f7caf4aeaaaf7fd70fb976d493d29fb8861db3cc862fc8c6f1c7280b7ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lF3L3MmlIazN776_b-CpS16PaBJZEcYq%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.com Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.com'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/backend/web/index.php'
+    'REMOTE_PORT' => '51764'
+    'REDIRECT_URL' => '/Transportes/backend/web/cte/default/download'
+    'REDIRECT_QUERY_STRING' => 'id=23&_pjax=%23p0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=23&_pjax=%23p0'
+    'REQUEST_URI' => '/Transportes/backend/web/cte/default/download?id=23&_pjax=%23p0'
+    'SCRIPT_NAME' => '/Transportes/backend/web/index.php'
+    'PHP_SELF' => '/Transportes/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1512479458.556
+    'REQUEST_TIME' => 1512479458
+]
+2017-12-05 11:11:00 [127.0.0.1][1][bn7rjl4q6r2fjtn0c0o4at0dl3][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: cte/default/download in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php:127
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('download', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('cte/default/dow...', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/html/Transportes/backend/web/index.php(18): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/backend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2017-12-05 11:10:59 [127.0.0.1][1][bn7rjl4q6r2fjtn0c0o4at0dl3][info][application] $_GET = [
+    'id' => '23'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'bn7rjl4q6r2fjtn0c0o4at0dl3'
+    '_csrf' => '7a46e9f7caf4aeaaaf7fd70fb976d493d29fb8861db3cc862fc8c6f1c7280b7ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lF3L3MmlIazN776_b-CpS16PaBJZEcYq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'lndsistemas.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://lndsistemas.com/Transportes/backend/web/cte'
+    'HTTP_COOKIE' => 'PHPSESSID=bn7rjl4q6r2fjtn0c0o4at0dl3; _csrf=7a46e9f7caf4aeaaaf7fd70fb976d493d29fb8861db3cc862fc8c6f1c7280b7ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lF3L3MmlIazN776_b-CpS16PaBJZEcYq%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.com Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.com'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/backend/web/index.php'
+    'REMOTE_PORT' => '51766'
+    'REDIRECT_URL' => '/Transportes/backend/web/cte/default/download'
+    'REDIRECT_QUERY_STRING' => 'id=23'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=23'
+    'REQUEST_URI' => '/Transportes/backend/web/cte/default/download?id=23'
+    'SCRIPT_NAME' => '/Transportes/backend/web/index.php'
+    'PHP_SELF' => '/Transportes/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1512479459.612
+    'REQUEST_TIME' => 1512479459
+]

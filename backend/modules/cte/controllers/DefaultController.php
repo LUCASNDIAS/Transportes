@@ -275,7 +275,7 @@ class DefaultController extends Controller
 
         // Somente autoriza a edição se não estiver enviado
         if ($model->status !== 'SALVO') {
-            $msg = 'Não é possível editar CT-e com status "' . $model->status . '".';
+            $msg = 'Não é possível editar CT-e com status "'.$model->status.'".';
             return $this->redirect(['index', 'msg' => $msg]);
         }
 
@@ -335,10 +335,13 @@ class DefaultController extends Controller
 
             if (isset($_POST['CteDimensoes'][0][0])) {
                 foreach ($_POST['CteDimensoes'] as $indexDocumentos => $dimensoes) {
-                    $dimensoesIDs = ArrayHelper::merge($dimensoesIDs, array_filter(ArrayHelper::getColumn($dimensoes, 'id')));
+                    $dimensoesIDs = ArrayHelper::merge($dimensoesIDs,
+                            array_filter(ArrayHelper::getColumn($dimensoes, 'id')));
                     foreach ($dimensoes as $indexDimensao => $dimensao) {
-                        $data['CteDimensoes'] = $dimensao;
-                        $modelDimensao = (isset($dimensao['id']) && isset($oldDimensoes[$dimensao['id']])) ? $oldDimensoes[$dimensao['id']] : new Dimensoes;
+                        $data['CteDimensoes']                              = $dimensao;
+                        $modelDimensao                                     = (isset($dimensao['id'])
+                            && isset($oldDimensoes[$dimensao['id']])) ? $oldDimensoes[$dimensao['id']]
+                                : new Dimensoes;
                         $modelDimensao->load($data);
                         $modelsDimensoes[$indexDocumentos][$indexDimensao] = $modelDimensao;
 //                        $valid = $modelDimensao->validate();
@@ -346,7 +349,7 @@ class DefaultController extends Controller
                 }
             }
 
-            $oldDimensoesIDs = ArrayHelper::getColumn($oldDimensoes, 'id');
+            $oldDimensoesIDs     = ArrayHelper::getColumn($oldDimensoes, 'id');
             $deletedDimensoesIDs = array_diff($oldDimensoesIDs, $dimensoesIDs);
 
             // Parte antiga de salvar quando se em create
@@ -434,7 +437,7 @@ class DefaultController extends Controller
 
                         foreach ($modelsDocumentos as $indexDocumentos => $modelDocumentos) {
                             $modelDocumentos->cte_id = $last_id;
-                            $modelDocumentos->demi = date('Y-m-d');
+                            $modelDocumentos->demi   = date('Y-m-d');
 
                             if (!($flag2 = $modelDocumentos->save(false))) {
                                 $transaction->rollBack();
@@ -522,7 +525,7 @@ class DefaultController extends Controller
         //$this->findModel($id)->delete();
         $model = $this->findModel($id);
 
-        $msg = "Registro com status \"" . $model->status . "\" não pode ser deletado.";
+        $msg = "Registro com status \"".$model->status."\" não pode ser deletado.";
 
         if ($model->status == 'SALVO') {
             $model->status = 'DELETADO';
@@ -631,6 +634,36 @@ class DefaultController extends Controller
 //        return var_dump($url);
 
         return $this->redirect($url);
+    }
+
+    public function actionDownload($id)
+    {
+        $model = $this->findModel($id);
+
+        $chave = $model->chave;
+        
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $status = $model->status;
+
+        // Arquivo Autorizado
+        $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+
+        // Arquivo Cancelado
+        $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
+
+        $xml = (is_file($cancelado)) ? $cancelado : $autorizado;
+
+        if (is_file($xml)) {
+
+            return \Yii::$app->response->sendFile($xml);
+
+        } else {
+            echo 'nao';
+            var_dump($xml);
+        }
+
     }
 
     public function actionSend($id)
