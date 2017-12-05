@@ -471,6 +471,24 @@ CteAsset::register($this);
                     ?></div>
             </div>
 
+            <div class="row">
+                <div class="col-sm-6"><?=
+                    $form->field($model, 'xcaracad')->textInput([
+                        'maxlength' => true])
+                    ?></div>
+                <div class="col-sm-6"><?=
+                    $form->field($model, 'xcaracser')->textInput([
+                        'maxlength' => true])
+                    ?></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12"><?=
+                    $form->field($model, 'xobs')->textInput([
+                        'maxlength' => true])
+                    ?></div>
+            </div>
+
         </div>
     </div>
 
@@ -781,12 +799,12 @@ CteAsset::register($this);
 
         <!-- Dados Gerais -->
         <div class="panel-heading">
-            <i class="fa fa-info-circle"></i> Seguro / Tributação
+            <i class="fa fa-info-circle"></i>Tributação
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
 
-            <div class="row">
+            <div class="row hide">
                 <div class="col-sm-4"><?=
                     $form->field($model, 'respseg')->dropDownList([
                         '5' => 'Tomador',
@@ -849,7 +867,7 @@ CteAsset::register($this);
                         $form->field($model, 'picms')->textInput(['id' => 'icms-picms',
                             'class' => 'form-control imposto',
                             'readonly' => true, 'value' => ($model->isNewRecord)
-                                    ? '5.25' : $model['picms']])
+                                    ? Yii::$app->user->identity['aliquota'] : $model['picms']])
                         ?>
                     </div>
                     <div class="col-sm-2">

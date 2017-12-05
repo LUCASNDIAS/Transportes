@@ -86,7 +86,8 @@ class MinutasController extends Controller {
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+//            return $this->redirect(['view', 'id' => $model->id]);
 
             /* Var_dump do calculo com os dados do formulário 
               $formulario = Yii::$app->request->post();

@@ -23,10 +23,9 @@ $cte = new Make();
 
 $cteTools = new Tools(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$chave = '31171009204054000143580010000000971714018558';
+$chave = '31171109204054000143580010000000991098357834';
 
-
-$filename = "/var/www/html/Transportes/backend/sped/mdfe/{$chave}-mdfe.xml";
+$filename = "/var/www/html/Transportes/backend/sped/mdfe/producao/assinadas/{$chave}-mdfe.xml";
 //
 //$xml = file_get_contents($filename);
 //$xml = $cteTools->assina($xml);
@@ -75,10 +74,10 @@ $filename = "/var/www/html/Transportes/backend/sped/mdfe/{$chave}-mdfe.xml";
 //var_dump($aRetorno);
 //var_dump($chave);
 //echo '</pre>';
-//
-//
 
-// Xml file
+//
+//
+//// Xml file
         $xmlfile = file_get_contents($filename);
 
         // PDF
@@ -92,4 +91,4 @@ $filename = "/var/www/html/Transportes/backend/sped/mdfe/{$chave}-mdfe.xml";
         $dacte = new Damdfe($xmlfile, 'P', 'A4', $logo);
         $id    = $dacte->buildMDFe();
         $salva = $dacte->printMDFe($pdf, 'F');
-
+//

@@ -94,9 +94,10 @@ class DefaultController extends Controller
         $modelsContatos = [new Contatos];
         $modelsTabelas  = [new Tabelas];
 
-        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') === null) {
+        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())
+            && Yii::$app->request->post('salvar') === null) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-                    return ActiveForm::validate($model);
+            return ActiveForm::validate($model);
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -132,15 +133,19 @@ class DefaultController extends Controller
                         }
 
                         foreach ($modelsTabelas as $modelTabelas) {
-                            $modelTabelas->cliente_id = $last_id;
-
-                            if (!($flag2 = $modelTabelas->save(false))) {
-                                $transaction->rollBack();
-                                break;
+                            $modelTabelas->cliente_id = $last_id;                            
+                            if ($modelTabelas->tabela_id != '') {
+                                if (!($flag2 = $modelTabelas->save(false))) {
+                                    $transaction->rollBack();
+                                    break;
+                                }
                             }
                         }
                     }
 
+                    if (!isset($flag2)) {
+                        $flag2 = true;
+                    }
 
                     if ($flag && $flag2) {
                         $transaction->commit();
@@ -173,26 +178,32 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model          = $this->findModel($id);
         $modelsContatos = $model->clientesContatos;
-        $modelsTabelas = $model->tabelasClientes;
+        $modelsTabelas  = $model->tabelasClientes;
 
-        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') === null) {
+        if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())
+            && Yii::$app->request->post('salvar') === null) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-                    return ActiveForm::validate($model);
+            return ActiveForm::validate($model);
         }
 
-        if ($model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar') !== null) {
+        if ($model->load(Yii::$app->request->post()) && Yii::$app->request->post('salvar')
+            !== null) {
 
-            $oldIDs = ArrayHelper::map($modelsContatos, 'id', 'id');
-            $modelsContatos = Model::createMultiple(Contatos::classname(), $modelsContatos);
+            $oldIDs         = ArrayHelper::map($modelsContatos, 'id', 'id');
+            $modelsContatos = Model::createMultiple(Contatos::classname(),
+                    $modelsContatos);
             Model::loadMultiple($modelsContatos, Yii::$app->request->post());
-            $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsContatos, 'id', 'id')));
+            $deletedIDs     = array_diff($oldIDs,
+                array_filter(ArrayHelper::map($modelsContatos, 'id', 'id')));
 
-            $oldIDstab = ArrayHelper::map($modelsTabelas, 'id', 'id');
-            $modelsTabelas = Model::createMultiple(Tabelas::classname(), $modelsTabelas);
+            $oldIDstab     = ArrayHelper::map($modelsTabelas, 'id', 'id');
+            $modelsTabelas = Model::createMultiple(Tabelas::classname(),
+                    $modelsTabelas);
             Model::loadMultiple($modelsTabelas, Yii::$app->request->post());
-            $deletedIDstab = array_diff($oldIDstab, array_filter(ArrayHelper::map($modelsTabelas, 'id', 'id')));
+            $deletedIDstab = array_diff($oldIDstab,
+                array_filter(ArrayHelper::map($modelsTabelas, 'id', 'id')));
 
             // validate all models
             $valid = $model->validate();
@@ -215,7 +226,7 @@ class DefaultController extends Controller
 
                         foreach ($modelsContatos as $modelContatos) {
                             $modelContatos->clientes_id = $model->id;
-                            if (! ($flag = $modelContatos->save(false))) {
+                            if (!($flag                       = $modelContatos->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
@@ -223,25 +234,21 @@ class DefaultController extends Controller
 
                         foreach ($modelsTabelas as $modelTabelas) {
                             $modelTabelas->cliente_id = $model->id;
-                            if (! ($flag2 = $modelTabelas->save(false))) {
+                            if (!($flag2                    = $modelTabelas->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
                         }
-
                     }
 
                     if ($flag && $flag2) {
 
                         $transaction->commit();
                         return $this->redirect(['view', 'id' => $model->id]);
-
                     }
-
                 } catch (Exception $e) {
 
                     $transaction->rollBack();
-
                 }
             }
         }
@@ -255,7 +262,6 @@ class DefaultController extends Controller
                 'modelsTabelas' => (empty($modelsTabelas)) ? [new Tabelas] : $modelsTabelas,
                 'data' => $data
         ]);
-        
     }
 
     /**

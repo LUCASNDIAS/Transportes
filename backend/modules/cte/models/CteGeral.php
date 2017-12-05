@@ -7,7 +7,7 @@ use backend\modules\clientes\models\Clientes;
 use backend\modules\cte\models\CteProtocolo;
 use NFePHP\CTe\Make;
 use NFePHP\CTe\Tools;
-use NFePHP\DA\CTe\Dacte;
+use NFePHP\DA\CTe\DacteV3 as Dacte;
 use backend\models\Municipios;
 use Yii;
 
@@ -33,10 +33,11 @@ class CteGeral
         $invalidos = array("(", ")", "-", ".");
 
         $dhEmi = str_replace(' ', 'T', $model->dtemissao);
+        $dhEmi .= date('P');
 
         $chave = $model->chave;
 
-        $resp   = $cte->infCteTag($chave, $versao = '2.00');
+        $resp   = $cte->infCteTag($chave, $versao = '3.00');
 
         $cDV = substr($chave, -1);      //Digito Verificador
 
@@ -45,8 +46,8 @@ class CteGeral
             $cCT        = '09835783', // Codigo numerico que compoe a chave de acesso (Codigo aleatorio do emitente, para evitar acessos indevidos ao documento)
             $CFOP       = $model->cfop, // Codigo fiscal de operacoes e prestacoes
             $natOp      = substr($model->natop, 0, 60), // Natureza da operacao
-            $forPag     = $model->forpag, // 0-Pago; 1-A pagar; 2-Outros
             $mod        = $model->modelo, // Modelo do documento fiscal: 57 para identificação do CT-e
+            //$forPag     = $model->forpag, // 0-Pago; 1-A pagar; 2-Outros
             $serie      = $model->serie, // Serie do CTe
             $nCT        = $model->numero, // Numero do CTe
             $dhEmi, // Data e hora de emissão do CT-e: Formato AAAA-MM-DDTHH:MM:DD
@@ -61,7 +62,8 @@ class CteGeral
             //          3- emissão CT-e pelo contribuinte com aplicativo fornecido pelo Fisco.
             $procEmi    = '0', // Descricao no comentario acima
             $verProc    = '2.0', // versao do aplicativo emissor
-            $refCTE     = $model->refcte, // Chave de acesso do CT-e referenciado
+            //$refCTE     = $model->refcte, // Chave de acesso do CT-e referenciado
+            $indGlobalizado = '',
             $cMunEnv    = $model->cmunenv, // Utilizar a tabela do IBGE. Informar 9999999 para as operações com o exterior.
             $xMunEnv    = $model->xmunenv, // Informar PAIS/Municipio para as operações com o exterior.
             $UFEnv      = $model->ufenv, // Informar 'EX' para operações com o exterior.
@@ -75,6 +77,7 @@ class CteGeral
             $UFFim      = $model->uffim, // Informar 'EX' para operações com o exterior.
             $retira     = $model->retira, // Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino? 0-sim; 1-não
             $xDetRetira = ($model->retira == '1') ? '' : $model->xdetretira, // Detalhes do retira
+            $indIEToma = '1',
             $dhCont     = ($model->tpemis != '5') ? '' : str_replace(' ', 'T',
                 $model->dhcont), // Data e Hora da entrada em contingência; no formato AAAAMM-DDTHH:MM:SS
             $xJust      = ($model->tpemis != '5') ? '' : $model->xjust // Justificativa da entrada em contingência
@@ -113,7 +116,7 @@ class CteGeral
             // Endereço do Tomador
             $resp    = $cte->enderTomaTag(
                 $xLgr    = $tomador->endrua, // Logradouro
-                $nro     = $tomador->endnro, // Numero
+                $nro     = '0'.$tomador->endnro, // Numero
                 $xCpl    = '', // COmplemento
                 $xBairro = $tomador->endbairro, // Bairro
                 $cMun    = $muntomador->codigo, // Codigo do municipio do IBEGE Informar 9999999 para operações com o exterior.
@@ -125,10 +128,13 @@ class CteGeral
             );
         } else {
             // Tomador do serviço diferente de outros
-            $resp = $cte->toma03Tag(
+            $resp = $cte->toma3Tag(
                 $toma = $model->toma                 // Indica o "papel" do tomador: 0-Remetente; 1-Expedidor; 2-Recebedor; 3-Destinatário
             );
         }
+
+        // Informações complementares
+        $resp = $cte->complTag($model->xcaracad, $model->xcaracser, '', '', '', $model->xobs);
 
         // Informações do EMITENTE
         // Endereço do Emitente
@@ -146,13 +152,14 @@ class CteGeral
         $resp  = $cte->emitTag(
             $CNPJ  = $cteTools->aConfig['cnpj'], // CNPJ do emitente
             $IE    = $emitente->ie, // Inscricao estadual
+            $IEST  = '',
             $xNome = $cteTools->aConfig['razaosocial'], // Razao social
             $xFant = $cteTools->aConfig['nomefantasia'] // Nome fantasia
         );
 
         $resp    = $cte->enderEmitTag(
             $xLgr    = $emitente->endrua, // Logradouro
-            $nro     = $emitente->endnro, // Numero
+            $nro     = '0'.$emitente->endnro, // Numero
             $xCpl    = '', // Complemento
             $xBairro = $emitente->endbairro, // Bairro
             $cMun    = $munemitente->codigo, // Código do município (utilizar a tabela do IBGE)
@@ -407,14 +414,14 @@ class CteGeral
             }
         }
 
-        $resp    = $cte->segTag(
-            $respSeg = $model->respseg, // Responsavel pelo seguro (0-Remetente; 1-Expedidor; 2-Recebedor; 3-Destinatário; 4-Emitente do CT-e; 5-Tomador de Serviço)
-            $xSeg    = $model->xseg, // Nomeda da Seguradora
-            $nApol   = $model->napol  // Numero da Apolice
-        );
-
         // Informações do Modal
-        $resp        = $cte->infModalTag($versaoModal = '2.00');
+        $resp        = $cte->infModalTag($versaoModal = '3.00');
+
+//        $resp    = $cte->segTag(
+//            $respSeg = $model->respseg, // Responsavel pelo seguro (0-Remetente; 1-Expedidor; 2-Recebedor; 3-Destinatário; 4-Emitente do CT-e; 5-Tomador de Serviço)
+//            $xSeg    = $model->xseg, // Nomeda da Seguradora
+//            $nApol   = $model->napol  // Numero da Apolice
+//        );
 
         // Modal Rodoviário
         $resp  = $cte->rodoTag(
@@ -654,7 +661,9 @@ class CteGeral
         $validado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/validadas/'.$model->chave.'-cte.xml';
 
         // Protocolo
-        $protocolo = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/temporarias/'.date('Y').date('m').'/'.$recibo.'-retConsReciCTe.xml';
+        $protocolo = Yii::getAlias('@cte/').$pamb.'/temporarias/'.date('Y').date('m').'/'.$recibo.'-retConsReciCTe.xml';
+
+        //return $protocolo;
 
         // Autorizado
         $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
@@ -662,11 +671,11 @@ class CteGeral
         if (!is_file($protocolo)) {
             $retorno = [
                 'status' => false,
-                'filename' => '',
+                'filename' => $protocolo,
                 'erros' => ['Protocolo não localizado.']
             ];
         } else {
-            $salvar = $cteTools->addProtocolo($validado, $protocolo);
+            $salvar = $cteTools->addProtocolo($validado, $protocolo, true);
             file_put_contents($autorizado, $salvar);
 
             $retorno = [
@@ -775,8 +784,8 @@ class CteGeral
 //        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
 //            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
 
-        $cancela = $cteTools->sefazCancela('31171009204054000143570010000015391051809182', '1',
-            $motivo, '131170226888289', $aRetorno);
+        $cancela = $cteTools->sefazCancela('31171109204054000143570010000017061282008464', '1',
+            'solicitado pelo cliente', '131170237201932', $aRetorno);
 
         // Verifica se foi cancelado e vinculado
         if ($aRetorno['cStat'] == '135') {

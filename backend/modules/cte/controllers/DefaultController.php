@@ -236,8 +236,8 @@ class DefaultController extends Controller
                     if ($flag && $flag2 && $flag3 && $flag4) {
                         $transaction->commit();
                         //return var_dump('salvo');
-                        //return $this->redirect(['index']);
-                        return $this->redirect(['view', 'id' => $model->id]);
+                        return $this->redirect(['index']);
+//                        return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } catch (Exception $e) {
 
@@ -621,8 +621,8 @@ class DefaultController extends Controller
         // Verifica se é homologação ou produção
         $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
-        $url1 = str_replace('web', '', Yii::getAlias('@web'));
-
+        $url1 = str_replace('Transportes/backend/web', '', Yii::getAlias('@web'));
+        //$url1 = 'http://geradorfiscal.com.br/';
 
         $url = $url1.'sped/cte'.DIRECTORY_SEPARATOR.Yii::$app->user->identity['cnpj'].
             DIRECTORY_SEPARATOR.$pamb.DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.

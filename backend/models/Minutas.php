@@ -291,7 +291,8 @@ class Minutas extends \yii\db\ActiveRecord {
                 ->one();
 
         if ($cliente !== null) {
-            return $cliente->nome;
+            $retorno = explode(' ', $cliente->nome);
+            return $retorno[0];
         } else {
             return 'Erro na consulta';
         }

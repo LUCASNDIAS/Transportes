@@ -22,12 +22,12 @@ $cte = new Make();
 
 $cteTools = new Tools(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$dhEmi = $model->dtemissao;
+$dhEmi = $model->dtemissao.'-02:00';
 $numeroCTE = $model->numero; //rand();
 //
 $chave = $model->chave;
 
-$resp = $cte->taginfMDFe($chave, $versao = '1.00');
+$resp = $cte->taginfMDFe($chave, $versao = '3.00');
 
 $cDV = substr($chave, -1);
 
@@ -115,7 +115,7 @@ $resp = $cte->taginfAdic(
         $infCpl = (empty($model->infcontribuinte)) ? '' : $model->infcontribuinte
     );
 
-$resp = $cte->tagInfModal($versaoModal = '1.00');
+$resp = $cte->tagInfModal($versaoModal = '3.00');
 
 $resp = $cte->tagRodo(
         $rntrc = $model->rntrc,
@@ -143,7 +143,7 @@ $resp = $cte->tagVeicTracao(
 
 $resp = $cte->montaMDFe();
 
-$filename = "D:\ambiente_desenvolvedor_php\www\Transportes\backend\sped\mdfe\\{$chave}-mdfe.xml";
+$filename = "/var/www/html/Transportes/backend/sped/mdfe/producao/assinadas/{$chave}-mdfe.xml";
 
 if ($resp) {
     //header('Content-type: text/xml; charset=UTF-8');

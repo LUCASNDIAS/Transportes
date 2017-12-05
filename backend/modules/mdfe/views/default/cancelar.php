@@ -4,15 +4,15 @@
 
 use NFePHP\MDFe\Tools;
 
-$cteTools = new Tools('D:\ambiente_desenvolvedor_php\www\Transportes\backend\config\config.json');
+$cteTools = new Tools('/var/www/html/Transportes/backend/sped/config/09204054000143.json');
 
 $aRetorno = array();
 
 $resp = $cteTools->sefazCancela(
-        $chave = '31170609204054000143580010000000031000000104',
-        $tpAmb = '2',
+        $chave = '31171109204054000143580010000000991098357834',
+        $tpAmb = '1',
         $nSeqEvento = '1',
-        $nProt = '931170000012288',
+        $nProt = '931170012279280',
         $xJust = 'Cancelado pelo cliente.',
         $aRetorno
     );

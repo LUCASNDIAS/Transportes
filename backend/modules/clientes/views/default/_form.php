@@ -207,7 +207,7 @@ DynamicFormWidget::begin([
     'widgetBody' => '.container-items-tab', // required: css class selector
     'widgetItem' => '.item-tab', // required: css class
     'limit' => 99, // the maximum times, an element can be cloned (default 999)
-    'min' => 1, // 0 or 1 (default 1)
+    'min' => 0, // 0 or 1 (default 1)
     'insertButton' => '.add-item-tab', // css class
     'deleteButton' => '.remove-item-tab', // css class
     'model' => $modelsTabelas[0],

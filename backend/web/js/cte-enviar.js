@@ -307,6 +307,8 @@ $(document).ready(function () {
                 gerarPdf(id);
 
             } else {
+                
+                console.log(data);
                 // Mostra que houve erro na Barra
                 erroBarra(etapa);
 
