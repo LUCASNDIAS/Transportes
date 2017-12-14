@@ -75,6 +75,7 @@ use backend\modules\clientes\models\Clientes;
  * @property double $desconto
  * @property double $notasvalor
  * @property int $notasvolumes
+ * @property int $indietoma
  * @property string $status
  *
  * @property CteComponentes[] $cteComponentes
@@ -108,11 +109,11 @@ class Cte extends \yii\db\ActiveRecord
                 'tomador', 'remetente', 'vtprest', 'vrec', 'dprev', 'prodpred',
                 //'cst', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret',
                 //'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'respseg',
-                'vcarga', 'rntrc', 'lota', 'tabela_id', 'status'], 'required'],
+                'vcarga', 'rntrc', 'lota', 'tabela_id', 'indietoma', 'status'], 'required'],
             [['cridt', 'dtemissao', 'dhcont', 'dprev'], 'safe'],
             [['ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma',
                 'numero',
-                'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes'], 'integer'],
+                'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes', 'indietoma'], 'integer'],
             [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret',
                 'picmsret', 'vcred', 'vtottrib', 'vcarga', 'pesoreal', 'pesocubado',
                 'taxaextra', 'desconto', 'notasvalor'], 'number'],
@@ -215,6 +216,7 @@ class Cte extends \yii\db\ActiveRecord
             'notasvalor' => Yii::t('app', 'R$ Notas'),
             'notasvolumes' => Yii::t('app', 'Volumes'),
             'status' => Yii::t('app', 'Status'),
+            'indietoma' => Yii::t('app', 'Indicador IE - Tomador'),
             'notaChave' => Yii::t('app', 'Nota fiscal'),
         ];
     }

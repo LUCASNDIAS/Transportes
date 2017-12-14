@@ -20,7 +20,7 @@ $cte = new Make();
 
 //return var_dump(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$cteTools = new Tools(Yii::getAlias('@backend/sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
+$cteTools = new Tools(Yii::getAlias('@sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
 $dhEmi = $model->dtemissao.'-02:00';
 $numeroCTE = $model->numero; //rand();

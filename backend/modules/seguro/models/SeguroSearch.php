@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\modules\fatura\models;
+namespace backend\modules\seguro\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\fatura\models\Fatura;
+use backend\modules\seguro\models\Seguro;
 
 /**
- * FaturaSearch represents the model behind the search form about `backend\modules\fatura\models\Fatura`.
+ * SeguroSearch represents the model behind the search form about `backend\modules\seguro\models\Seguro`.
  */
-class FaturaSearch extends Fatura
+class SeguroSearch extends Seguro
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class FaturaSearch extends Fatura
     public function rules()
     {
         return [
-            [['id', 'numero'], 'integer'],
-            [['criusu', 'cridt', 'dono', 'tipo', 'emissao', 'vencimento', 'observacoes', 'sacado', 'pagamento', 'status'], 'safe'],
+            [['id'], 'integer'],
+            [['dono', 'cridt', 'criusu', 'xseg', 'cnpj', 'napol', 'naver'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class FaturaSearch extends Fatura
      */
     public function search($params)
     {
-        $query = Fatura::find();
+        $query = Seguro::find();
 
         // add conditions that should always apply here
 
@@ -61,21 +61,15 @@ class FaturaSearch extends Fatura
         $query->andFilterWhere([
             'id' => $this->id,
             'cridt' => $this->cridt,
-            'numero' => $this->numero,
-            'emissao' => $this->emissao,
-            'vencimento' => $this->vencimento,
-            'pagamento' => $this->pagamento,
         ]);
 
-        $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']])
+        $query->andFilterWhere(['like', 'dono', Yii::$app->user->identity['cnpj']])
             ->andFilterWhere(['like', 'criusu', $this->criusu])
-            ->andFilterWhere(['like', 'dono', $this->dono])
-            ->andFilterWhere(['like', 'tipo', $this->tipo])
-            ->andFilterWhere(['like', 'observacoes', $this->observacoes])
-            ->andFilterWhere(['like', 'sacado', $this->sacado])
-            ->andFilterWhere(['like', 'status', $this->status]);
-
-        $query->orderBy('numero desc');
+            ->andFilterWhere(['like', 'criusu', $this->criusu])
+            ->andFilterWhere(['like', 'xseg', $this->xseg])
+            ->andFilterWhere(['like', 'cnpj', $this->cnpj])
+            ->andFilterWhere(['like', 'napol', $this->napol])
+            ->andFilterWhere(['like', 'naver', $this->naver]);
 
         return $dataProvider;
     }

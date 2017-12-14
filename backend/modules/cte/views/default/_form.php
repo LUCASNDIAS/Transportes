@@ -180,6 +180,17 @@ CteAsset::register($this);
         </div>
         <div class="panel-body">
             <div class="row">
+                <div class="col-sm-12">
+                    <?=
+                    $form->field($model, 'indietoma')->dropDownList([
+                        '1' => 'Contribuinte ICMS',
+                        '2' => 'Contribuinte isento de inscrição',
+                        '9' => 'Não contribuinte'
+                        ])
+                    ?>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label" for="remetente-nome">Remetente pesq.</label>
@@ -428,16 +439,16 @@ CteAsset::register($this);
             </div>
 
             <div class="row">
-                <div class="col-sm-4"><?=
+                <div class="col-sm-6"><?=
                     $form->field($model, 'rntrc')->textInput([
                         'maxlength' => true,
                         'value' => ($model->isNewRecord) ? Yii::$app->user->identity['rntrc'] : $model->rntrc]);
                     ?></div>
-                <div class="col-sm-4"><?=
+                <div class="col-sm-6"><?=
                     $form->field($model, 'dprev')->textInput([
                         'class' => 'form-control data'])
                     ?></div>
-                <div class="col-sm-4"><?=
+                <div class="col-sm-4 hide"><?=
                     $form->field($model, 'lota')->dropDownList([
                         '0' => 'Não',
                         '1' => 'Sim'

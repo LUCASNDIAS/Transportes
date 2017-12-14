@@ -25,6 +25,7 @@ use yii\db\Expression;
  * @property string $valorminimo
  * @property string $pesominimo
  * @property string $excedente
+ * @property string $imposto
  */
 class Tabelas extends \yii\db\ActiveRecord {
 
@@ -45,6 +46,7 @@ class Tabelas extends \yii\db\ActiveRecord {
             [['criusu'], 'string', 'max' => 30],
             [['dono', 'fretevalor', 'despacho', 'seccat', 'itr', 'gris', 'pedagio', 'outros', 'valorminimo', 'pesominimo', 'excedente'], 'string', 'max' => 20],
             [['nome', 'descricao'], 'string', 'max' => 100],
+            [['imposto'], 'integer'],
         ];
     }
 
@@ -69,6 +71,7 @@ class Tabelas extends \yii\db\ActiveRecord {
             'valorminimo' => Yii::t('app', 'Valor mínimo (R$)'),
             'pesominimo' => Yii::t('app', 'Peso mínimo (Kg)'),
             'excedente' => Yii::t('app', 'Excedente (R$)'),
+            'imposto' => Yii::t('app', 'Incluir Imposto?'),
         ];
     }
 

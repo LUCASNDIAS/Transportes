@@ -510,10 +510,12 @@ class Calculos extends \yii\db\ActiveRecord
             +
             $tabela_gris + $tabela_pedagio + $tabela_outros;
 
-        // Calculo de imposto com aliquota de 5.25%
-//        $aliq = 5.25;
-//        $fretetotal = $fretetotal / (100 - $aliq) * 100;
-//        $taxaextra += $fretetotal * $aliq / 100;
+        // Calculo de imposto com aliquota do Simples nacional
+        if ($dadosTabela['imposto']) {
+            $aliq = Yii::$app->user->identity['aliquota'];
+            $fretetotal = $fretetotal / (100 - $aliq) * 100;
+            $taxaextra += $fretetotal * $aliq / 100;
+        }
 
         // Insere as variáveis uteis no array de retorno
         $this->calculo['peso']              = ($peso == '') ? '0.00' : number_format($peso,

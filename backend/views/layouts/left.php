@@ -196,6 +196,16 @@
                         ],
                     ],
                     [
+                        'label' => 'Seguro',
+                        'icon' => 'fa fa-lock',
+                        'url' => '#',
+                        'visible' => Yii::$app->user->can('admin'),
+                        'items' => [
+                            ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/seguro/default/create'], 'visible' => Yii::$app->user->can('addTabelas')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/seguro'],'visible' => Yii::$app->user->can('verTabelas')],
+                        ],
+                    ],
+                    [
                         'label' => 'Relatorios',
                         'icon' => 'fa fa-bar-chart',
                         'url' => ['/relatorio/create'],

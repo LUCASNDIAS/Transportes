@@ -607,7 +607,7 @@ class DefaultController extends Controller
         $model      = $this->findModel($id);
         $tpAmb      = $model->ambiente;
         $modelEnvia = new \backend\modules\mdfe\models\MontaXml();
-        $envia = $modelEnvia->enviaXml($xml, $tpAmb);
+        $envia      = $modelEnvia->enviaXml($xml, $tpAmb);
 
         var_dump($envia);
     }
@@ -616,12 +616,16 @@ class DefaultController extends Controller
     {
         $prepara = $this->actionPrepara($id);
 
-        if($prepara['status'] == 'OK') {
+        if ($prepara['status'] == 'OK') {
             $retorno = $this->actionEnvia($id, $prepara['xml']);
             var_dump($retorno);
         } else {
             var_dump($prepara);
         }
-        
+    }
+
+    public function actionTestamdfe()
+    {
+        return $this->render('testaMakeMdfe');
     }
 }

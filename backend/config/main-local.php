@@ -61,6 +61,9 @@ $config = [
         'fatura' => [
             'class' => 'backend\modules\fatura\Module',
         ],
+        'seguro' => [
+            'class' => 'backend\modules\seguro\Module',
+        ],
     ],
     'components' => [
         'request' => [

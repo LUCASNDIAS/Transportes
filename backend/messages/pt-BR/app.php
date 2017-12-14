@@ -25,6 +25,7 @@ return [
     'Create Veiculos' => 'Adicionar Veículo',
     'Create Tabelas' => 'Adicionar Tabelas',
     'Create Minutas' => 'Emitir Minutas',
+    'Create Seguro' => 'Informar seguro',
     'Create Funcionarios' => 'Adicionar Funcionários',
     'Create Cte' => 'Emitir Conhecimento',
     'Create Mdfe' => 'Emitir Manifesto',

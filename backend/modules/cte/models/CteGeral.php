@@ -77,7 +77,7 @@ class CteGeral
             $UFFim      = $model->uffim, // Informar 'EX' para operações com o exterior.
             $retira     = $model->retira, // Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino? 0-sim; 1-não
             $xDetRetira = ($model->retira == '1') ? '' : $model->xdetretira, // Detalhes do retira
-            $indIEToma = '1',
+            $indIEToma  = $model->indietoma,
             $dhCont     = ($model->tpemis != '5') ? '' : str_replace(' ', 'T',
                 $model->dhcont), // Data e Hora da entrada em contingência; no formato AAAAMM-DDTHH:MM:SS
             $xJust      = ($model->tpemis != '5') ? '' : $model->xjust // Justificativa da entrada em contingência
@@ -103,7 +103,7 @@ class CteGeral
                 $toma  = $model->toma, // 4-Outros, informar os dados cadastrais do tomador quando ele for outros
                 $CNPJ  = (isset($tomador->cnpj[13])) ? $tomador->cnpj : '', // CNPJ
                 $CPF   = (isset($tomador->cnpj[13])) ? '' : $tomador->cnpj, // CPF
-                $IE    = $tomador->ie, // Iscricao estadual
+                $IE    = ($model->indietoma != 9) ? $tomador->ie : null, // Iscricao estadual
                 $xNome = ($model->ambiente == 1) ? substr($tomador->nome, 0, 60)
                     : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
                 $xFant = '', // Nome fantasia
@@ -186,7 +186,7 @@ class CteGeral
         $resp  = $cte->remTag(
             $CNPJ  = (isset($remetente->cnpj[13])) ? $remetente->cnpj : '', // CNPJ
             $CPF   = (isset($remetente->cnpj[13])) ? '' : $remetente->cnpj, // CPF
-            $IE    = $remetente->ie, // Iscricao estadual
+            $IE    = ($model->indietoma == 9 && $model->toma == 0) ? null : $remetente->ie, // Iscricao estadual
             $xNome = ($model->ambiente == 1) ? substr($remetente->nome, 0, 60) : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
             $xFant = '', // Nome fantasia
             $fone  = (isset($remetente->clientesContatos[0]->telefone)) ? str_replace($invalidos,
@@ -225,7 +225,7 @@ class CteGeral
             $resp  = $cte->expedTag(
                 $CNPJ  = (isset($expedidor->cnpj[13])) ? $expedidor->cnpj : '', // CNPJ
                 $CPF   = (isset($expedidor->cnpj[13])) ? '' : $expedidor->cnpj, // CPF
-                $IE    = $expedidor->ie, // Iscricao estadual
+                $IE    = ($model->indietoma == 9 && $model->toma == 1) ? null : $expedidor->ie, // Iscricao estadual
                 $xNome = ($model->ambiente == 1) ? substr($expedidor->nome, 0,
                     60) : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
                 $fone  = (isset($expedidor->clientesContatos[0]->telefone)) ? str_replace($invalidos,
@@ -265,7 +265,7 @@ class CteGeral
             $resp  = $cte->recebTag(
                 $CNPJ  = (isset($recebedor->cnpj[13])) ? $recebedor->cnpj : '', // CNPJ
                 $CPF   = (isset($recebedor->cnpj[13])) ? '' : $recebedor->cnpj, // CPF
-                $IE    = $recebedor->ie, // Iscricao estadual
+                $IE    = ($model->indietoma == 9 && $model->toma == 2) ? null : $recebedor->ie, // Iscricao estadual
                 $xNome = ($model->ambiente == 1) ? substr($recebedor->nome, 0,
                     60) : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
                 $fone  = (isset($recebedor->clientesContatos[0]->telefone)) ? str_replace($invalidos,
@@ -307,7 +307,7 @@ class CteGeral
             $resp  = $cte->destTag(
                 $CNPJ  = (isset($destinatario->cnpj[13])) ? $destinatario->cnpj : '', // CNPJ
                 $CPF   = (isset($destinatario->cnpj[13])) ? '' : $destinatario->cnpj, // CPF
-                $IE    = $destinatario->ie, // Iscricao estadual
+                $IE    = ($model->indietoma == 9 && $model->toma == 3) ? null : $destinatario->ie, // Iscricao estadual
                 $xNome = ($model->ambiente == 1) ? substr($destinatario->nome,
                     0, 60) : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', //CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL     ERONICE GONCALVES CARDOSO
                 $fone  = (isset($destinatario->clientesContatos[0]->telefone)) ? str_replace($invalidos,
@@ -347,7 +347,7 @@ class CteGeral
 
         // ICMS
         $resp       = $cte->icmsTag(
-            $cst        = $model->cst,
+            $cst        = ($model->cst == '90') ? 'SN' : $model->cst,
             $pRedBC     = number_format($model->predbc, 2, '.', ''), // Percentual de redução da BC (3 inteiros e 2 decimais)
             $vBC        = number_format($model->vbc, 2, '.', ''), // Valor da BC do ICMS
             $pICMS      = number_format($model->picms, 2, '.', ''), // Alícota do ICMS
@@ -357,7 +357,15 @@ class CteGeral
             $pICMSSTRet = number_format($model->picmsret, 2, '.', ''), // Alíquota do ICMS
             $vCred      = number_format($model->vcred, 2, '.', ''), // Valor do Crédito Outorgado/Presumido
             $vTotTrib   = number_format($model->vtottrib, 2, '.', ''), // Valor de tributos federais, estaduais e municipais
-            $outraUF    = false    // ICMS devido à UF de origem da prestação, quando diferente da UF do emitente
+            $outraUF    = false,    // ICMS devido à UF de origem da prestação, quando diferente da UF do emitente
+            $vBCUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc, 2, '.', '') : '',
+            $pFCPUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(2, 2, '.', '') : '',
+            $pICMSUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(18, 2, '.', '') : '',
+            $pICMSInter = ($model->indietoma == 9 && $model->toma == 3) ? number_format(7, 2, '.', '') : '',
+            $pICMSInterPart = ($model->indietoma == 9 && $model->toma == 3) ? number_format(60, 2, '.', '') : '',
+            $vFCPUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc*0.02, 2, '.', '') : '',
+            $vICMSUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(($model->vtottrib*0.6)*0.5, 2, '.', '') : 0,
+            $vICMSUFIni = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vtottrib - (($model->vtottrib*0.6)*0.5), 2, '.', '') : 0
         );
 
         // Grupo de informações do CT-e Normal e Substituto
@@ -781,11 +789,11 @@ class CteGeral
         // Retorno do cancelamento
         $aRetorno = array();
 
-//        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
-//            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
+        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
+            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
 
-        $cancela = $cteTools->sefazCancela('31171109204054000143570010000017061282008464', '1',
-            'solicitado pelo cliente', '131170237201932', $aRetorno);
+//        $cancela = $cteTools->sefazCancela('31171109204054000143570010000017061282008464', '1',
+//            'solicitado pelo cliente', '131170237201932', $aRetorno);
 
         // Verifica se foi cancelado e vinculado
         if ($aRetorno['cStat'] == '135') {

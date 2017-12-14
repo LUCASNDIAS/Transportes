@@ -1,18 +1,18 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\modules\seguro\controllers;
 
 use Yii;
-use backend\models\Tabelas;
-use backend\models\TabelasSearch;
+use backend\modules\seguro\models\Seguro;
+use backend\modules\seguro\models\SeguroSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TabelasController implements the CRUD actions for Tabelas model.
+ * DefaultController implements the CRUD actions for Seguro model.
  */
-class TabelasController extends Controller
+class DefaultController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class TabelasController extends Controller
     }
 
     /**
-     * Lists all Tabelas models.
+     * Lists all Seguro models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TabelasSearch();
+        $searchModel = new SeguroSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class TabelasController extends Controller
     }
 
     /**
-     * Displays a single Tabelas model.
+     * Displays a single Seguro model.
      * @param integer $id
      * @return mixed
      */
@@ -57,15 +57,13 @@ class TabelasController extends Controller
     }
 
     /**
-     * Creates a new Tabelas model.
+     * Creates a new Seguro model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tabelas();
-
-        $model->imposto = 1;
+        $model = new Seguro();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +75,7 @@ class TabelasController extends Controller
     }
 
     /**
-     * Updates an existing Tabelas model.
+     * Updates an existing Seguro model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,8 +83,6 @@ class TabelasController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        $model->imposto = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -98,7 +94,7 @@ class TabelasController extends Controller
     }
 
     /**
-     * Deletes an existing Tabelas model.
+     * Deletes an existing Seguro model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +107,15 @@ class TabelasController extends Controller
     }
 
     /**
-     * Finds the Tabelas model based on its primary key value.
+     * Finds the Seguro model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Tabelas the loaded model
+     * @return Seguro the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tabelas::findOne($id)) !== null) {
+        if (($model = Seguro::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

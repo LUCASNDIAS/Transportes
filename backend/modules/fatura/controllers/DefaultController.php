@@ -159,6 +159,7 @@ class DefaultController extends Controller
         $model        = new Fatura();
         $searchModel  = new CteSearch();
         $dataProvider = $searchModel->searchCte(Yii::$app->request->queryParams);
+        $basicos      = new Basicos();
 
         if ($model->load(Yii::$app->request->post())) {
 
