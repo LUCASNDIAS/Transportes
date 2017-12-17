@@ -514,7 +514,7 @@ class Calculos extends \yii\db\ActiveRecord
         if ($dadosTabela['imposto']) {
             $aliq = Yii::$app->user->identity['aliquota'];
             $fretetotal = $fretetotal / (100 - $aliq) * 100;
-            $taxaextra += $fretetotal * $aliq / 100;
+            //$taxaextra += $fretetotal * $aliq / 100;
         }
 
         // Insere as variáveis uteis no array de retorno

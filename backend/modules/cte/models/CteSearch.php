@@ -190,6 +190,9 @@ class CteSearch extends Cte
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 100,
+            ],
         ]);
 
 //        $dataProvider->setSort([

@@ -92,7 +92,7 @@ $(document).on('pjax:complete', function () {
     }
 
     $('input[name*="tomador"]').prop('readonly', true);
-    $('input[name="selection_all"]').hide();
+//    $('input[name="selection_all"]').hide();
     var sacado = $('#fatura-sacado').val();
     if (sacado == '') {
         $('input[name^="selection"]').hide();
@@ -100,6 +100,10 @@ $(document).on('pjax:complete', function () {
         $('input[name*="tomador"]').prop('readonly', true);
         $('.grid-view').yiiGridView('applyFilter');
     }
+    
+    $('input[name^="selection_all"]').on('click', function () {
+        $('input[name^="selection[]"]').trigger( "click" );
+    });
 
     $('input[name^="selection"]').on('click', function () {
         getCheck();

@@ -131,16 +131,17 @@ $(document).ready(function () {
                 var dados = '';
 
                 //Consulta o webservice viacep.com.br/
-                //$.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-                $.getJSON("//appservidor.com.br/webservice/cep?CEP=" + cep + "&saida=JSON&CALLBACK=alimenta_combobox", function (dados) {
+                urlCep = "//viacep.com.br/ws/"+ cep +"/json/?callback=?";
+                //urlCep = "http://appservidor.com.br/webservice/cep?CEP=" + cep + "&saida=JSON&CALLBACK=alimenta_combobox";
+                $.getJSON(urlCep, function (dados) {
 
                     if (!("erro" in dados)) {
 
                         //Atualiza os campos com os valores da consulta.
-                        $("#clientes-endrua").val(dados.logradouro_completo);
+                        $("#clientes-endrua").val(dados.logradouro);
                         $("#clientes-endbairro").val(dados.bairro);
-                        $("#clientes-endcid").val(dados.cidade);
-                        $("#clientes-enduf").val(dados.uf_sigla);
+                        $("#clientes-endcid").val(dados.localidade);
+                        $("#clientes-enduf").val(dados.uf);
                         $("#clientes-endnro").focus();
                         //$("#ibge").val(dados.ibge);
 
