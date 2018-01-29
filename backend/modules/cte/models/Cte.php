@@ -76,6 +76,7 @@ use backend\modules\clientes\models\Clientes;
  * @property double $notasvalor
  * @property int $notasvolumes
  * @property int $indietoma
+ * @property int $globalizado
  * @property string $status
  *
  * @property CteComponentes[] $cteComponentes
@@ -109,11 +110,12 @@ class Cte extends \yii\db\ActiveRecord
                 'tomador', 'remetente', 'vtprest', 'vrec', 'dprev', 'prodpred',
                 //'cst', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret',
                 //'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'respseg',
-                'vcarga', 'rntrc', 'lota', 'tabela_id', 'indietoma', 'status'], 'required'],
+                'vcarga', 'rntrc', 'lota', 'tabela_id', 'indietoma','globalizado', 'status'], 'required'],
             [['cridt', 'dtemissao', 'dhcont', 'dprev'], 'safe'],
             [['ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma',
-                'numero',
-                'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes', 'indietoma'], 'integer'],
+                'numero', 'globalizado',
+                'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes', 'indietoma'],
+                'integer'],
             [['vtprest', 'vrec', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret', 'vicmsret',
                 'picmsret', 'vcred', 'vtottrib', 'vcarga', 'pesoreal', 'pesocubado',
                 'taxaextra', 'desconto', 'notasvalor'], 'number'],
@@ -217,6 +219,7 @@ class Cte extends \yii\db\ActiveRecord
             'notasvolumes' => Yii::t('app', 'Volumes'),
             'status' => Yii::t('app', 'Status'),
             'indietoma' => Yii::t('app', 'Indicador IE - Tomador'),
+            'globalizado' => Yii::t('app', 'Globalizado'),
             'notaChave' => Yii::t('app', 'Nota fiscal'),
         ];
     }
@@ -249,7 +252,7 @@ class Cte extends \yii\db\ActiveRecord
 
                 if ($i != 0) {
                     $retorno .= '/';
-                } 
+                }
 
                 if (isset($nf->chave[43])) {
                     $retorno .= substr($nf->chave, 25, 9).'';
@@ -331,6 +334,30 @@ class Cte extends \yii\db\ActiveRecord
             ->one();
 
         return (is_null($last)) ? 1 : $last['numero'] + 1;
+    }
+
+    public function autocomplete($term = '1')
+    {
+        $data = self::find()
+            ->select([new \yii\db\Expression("chave as value, CONCAT( `numero`,' | ',`ufini`,'/',`uffim`) as label")])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andWhere(['LIKE', 'numero', $term])
+            ->orderBy('numero')
+            ->asArray()
+            ->all();
+
+        return $data;
+    }
+
+    public function getContratante($chave)
+    {
+        $data = self::find()
+            ->select('tomador')
+            ->where(['chave' => $chave])
+            ->asArray()
+            ->all();
+        
+        return $data;
     }
 
     /**

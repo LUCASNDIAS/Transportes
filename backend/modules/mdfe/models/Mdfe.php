@@ -35,6 +35,7 @@ use Yii;
  * @property double $pesomercadoria
  * @property string $inffisco
  * @property string $infcontribuinte
+ * @property string $contratante
  * @property string $status
  *
  * @property MdfeCarregamento[] $mdfeCarregamentos
@@ -62,12 +63,12 @@ class Mdfe extends \yii\db\ActiveRecord
         return [
             [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'dtemissao', 'ambiente',
                 'uf', 'tipoemitente', 'modalidade', 'formaemissao', 'ufcarga', 'ufdescarga',
-                'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria'],
+                'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria','contratante'],
                 'required'],
             [['cridt', 'dtemissao', 'dtinicio'], 'safe'],
             [['qtdecte', 'qtdenfe', 'qtdenf', 'numero'], 'integer'],
             [['valormercadoria', 'pesomercadoria'], 'number'],
-            [['dono', 'criusu'], 'string', 'max' => 14],
+            [['dono', 'criusu','contratante'], 'string', 'max' => 14],
             [['chave'], 'string', 'max' => 44],
             [['modelo', 'uf', 'ufcarga', 'ufdescarga'], 'string', 'max' => 2],
             [['serie', 'unidademedida'], 'string', 'max' => 3],
@@ -113,6 +114,7 @@ class Mdfe extends \yii\db\ActiveRecord
             'pesomercadoria' => Yii::t('app', 'Peso'),
             'inffisco' => Yii::t('app', 'Informações ao Fisco'),
             'infcontribuinte' => Yii::t('app', 'Informações do Contribuinte'),
+            'contratante' => Yii::t('app', 'Contratante'),
             'status' => Yii::t('app', 'Status'),
             'protocolo' => Yii::t('app', 'Protocolo'),
         ];

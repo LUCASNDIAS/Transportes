@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\clientes\models\ClientesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Clientes');
+$this->title                   = Yii::t('app', 'Clientes');
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="clientes-index">
 
@@ -18,20 +18,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Clientes'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Clientes'), ['create'],
+            ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
+            //['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
             //'id',
             //'cridt',
             //'criusu',
             //'dono',
-            'nome',
+            [
+                'label' => 'Nome',
+                'format' => 'ntext',
+                'attribute' => 'nome',
+                'value' => function($model) {
+//                    $nome = explode(' ', $model->nome);
+                    $nome = substr($model->nome, 0, 25);
+                    return $nome;
+                }
+            ],
+//            'nome',
             'cnpj',
 //            [
 //                'label' => 'Nomes',
@@ -50,11 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'endbairro',
             'endcid',
             'enduf',
-            // 'endcep',
-            // 'status',
-
-            ['class' => 'yii\grid\ActionColumn'],
+        // 'endcep',
+        // 'status',
         ],
-    ]); ?>
-    <?php Pjax::end(); ?>
+    ]);
+    ?>
+<?php Pjax::end(); ?>
 </div>

@@ -19,12 +19,12 @@ use NFePHP\MDFe\Tools;
 $mdfe = new Make();
 $mdfeTools = new Tools(Yii::getAlias('@sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$dhEmi = '2017-12-13T11:00:00-02:00';
-$numeroMDFe = 101; //rand(0,3345678);
+$dhEmi = '2018-01-15T18:20:00-02:00';
+$numeroMDFe = 108; //rand(0,3345678);
 
 $cUF = '31';
-$ano = '17';
-$mes = '12';
+$ano = '18';
+$mes = '01';
 $cnpj = '09204054000143';
 $mod = '58';
 $serie = '1';
@@ -53,18 +53,19 @@ $resp = $mdfe->tagide(
         $tpEmis,
         $procEmi = '0',
         $verProc = '2.0',
-        $ufIni = 'MG',
-        $ufFim = 'MG',
-        $dhIniViagem = '2017-12-13T18:24:00-02:00'
+        $ufIni = 'SP',
+        $ufFim = 'RJ',
+        $dhIniViagem = ''
     );
 
 $resp = $mdfe->tagInfMunCarrega(
-    $cMunCarrega = '3171303',
-    $xMunCarrega = 'VICOSA'
+    $cMunCarrega = '3550308',
+    $xMunCarrega = 'SAO PAULO'
 );
 
-
-//$resp = $mdfe->tagInfPercurso($ufPer = 'GO');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'SP');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'PR');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'SC');
 
 
 $resp = $mdfe->tagemit(
@@ -89,13 +90,13 @@ $resp = $mdfe->tagenderEmit(
 
 $resp = $mdfe->tagInfMunDescarga(
         $nItem = 0,
-        $cMunDescarga = '3144805',
-        $xMunDescarga = 'NOVA LIMA'
+        $cMunDescarga = '3304557',
+        $xMunDescarga = 'RIO DE JANEIRO'
     );
 
 $resp = $mdfe->tagInfCTe(
         $nItem = 0,
-        $chCTe = '31171209204054000143570010000018461098357839',
+        $chCTe = '31180109204054000143570010000021311098357838',
         $segCodBarra = ''
     );
 
@@ -135,9 +136,9 @@ $resp = $mdfe->tagTot(
         $qCTe = '1',
         $qNFe = '',
         $qMDFe = '',
-        $vCarga = '33047.32',
+        $vCarga = '1000.00',
         $cUnid = '01',
-        $qCarga = '249.9200'
+        $qCarga = '830.0000'
     );
 
 $resp = $mdfe->tagautXML(
@@ -157,18 +158,18 @@ $resp = $mdfe->tagRodo(
     );
 
 $resp = $mdfe->tagInfContratante(
-        $CPF = '',
-        $CNPJ = '19570803000100'
+        $CPF = '29274983859',
+        $CNPJ = ''
     );
 
 $resp = $mdfe->tagCondutor(
-        $xNome = 'HUMBERTO DINELLI DE ASSIS',
-        $cpf = '70250022672'
+        $xNome = 'JOAO ALBERTO SANTOS GUILGER',
+        $cpf = '22118291809'
     );
 
 $resp = $mdfe->tagVeicTracao(
         $cInt = '', // Código Interno do Veículo
-        $placa = 'OMB0333', // Placa do veículo
+        $placa = 'PZE7777', // Placa do veículo
         $tara = '10000',
         $capKG = '500',
         $capM3 = '60',
@@ -243,4 +244,3 @@ echo '<pre>';
 var_dump($aRetorno);
 var_dump($chave);
 echo '</pre>';
-

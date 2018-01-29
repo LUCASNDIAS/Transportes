@@ -11,6 +11,7 @@ use backend\modules\mdfe\models\MdfeCondutor as Condutor;
 use backend\modules\mdfe\models\MdfeDescarregamento as Descarregamento;
 use backend\modules\mdfe\models\MdfeDocumentos as Documentos;
 use backend\modules\mdfe\models\MdfePercurso as Percurso;
+use backend\modules\cte\models\Cte;
 use backend\models\Municipios;
 use backend\models\Funcionarios;
 use backend\modules\clientes\models\Clientes;
@@ -92,6 +93,8 @@ class DefaultController extends Controller
         $modelPCondutores = new Funcionarios();
         $condutores       = $modelPCondutores->autoComplete();
 
+//        $modelCte = new Cte();
+//        $ctes = $modelCte->autocomplete();
 
         if (\Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())
             && Yii::$app->request->post('salvar') === null) {
@@ -210,6 +213,7 @@ class DefaultController extends Controller
                 'municipios' => $municipios,
                 'ufs' => $ufs,
                 'condutores' => $condutores,
+//                'ctes' => $ctes
         ]);
     }
 
@@ -622,6 +626,13 @@ class DefaultController extends Controller
         } else {
             var_dump($prepara);
         }
+    }
+
+    public function actionXml($id)
+    {
+        $gerar = new \backend\modules\mdfe\models\MdfeGeral();
+        echo '<pre>';
+        var_dump($gerar->gerarXml($id));
     }
 
     public function actionTestamdfe()

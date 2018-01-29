@@ -901,6 +901,81 @@ $(document).ready(function () {
         
     }
     
+    $("#aguarde").hide();
+    
+    // Envia Email
+    $("#enviar-email").on('click', function () {
+
+        $("#aguarde").show();
+        var formulario = $('form[name="form-envio"]');
+        var remetente = $('#remetente').val();
+        var destinatario = $('#destinatario').val();
+        var consignatario = $('#consignatario').val();
+        var outros = $('#outros').val();
+
+        if (remetente == '' && destinatario == '' && consignatario == '' && outros == '') {
+            alert('Informe pelo menos um endereço de email para o envio');
+            $("#aguarde").hide();
+        } else {
+
+            var emails = '';
+
+            if (remetente != '') {
+                emails += remetente;
+            }
+
+            if (destinatario != '') {
+
+                if (emails == '') {
+                    emails += destinatario;
+                } else {
+                    emails += ',' + destinatario;
+                }
+            }
+
+            if (consignatario != '') {
+
+                if (emails == '') {
+                    emails += consignatario;
+                } else {
+                    emails += ',' + consignatario;
+                }
+            }
+
+            if (outros != '') {
+
+                if (emails == '') {
+                    emails += outros;
+                } else {
+                    emails += ',' + outros;
+                }
+            }
+
+            $.ajax({
+                url: "/Transportes/backend/web/cte/default/email/?id=" + formulario.attr('id'),
+                data: {
+                    'emails': emails
+                },
+                dataType: "json",
+                type: "GET"
+            }).done(function (data) {
+                $("#aguarde").hide();
+                // status msg class icone
+                $("#retornoEnvio").addClass(data.class);
+                $("#retornoEnvio i").addClass(data.icone);
+                $("#retornoEnvio h4").append(data.msg);
+            }).fail(function (jqXHR, textStatus) {
+                $("#aguarde").hide();
+                $("#retornoEnvio").addClass('alert alert-danger');
+                $("#retornoEnvio i").addClass('icon fa fa-warning');
+                $("#retornoEnvio h4").append('Houve um erro. Tente novamente mais tarde');
+            });
+            ;
+
+
+        }
+    });
+    
     // Submit
     /*
      $("#submitCreate, #submitUpdate").click(function(e){

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{download}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
+                'template' => '{update}&nbsp;&nbsp;{email}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{download}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
                 'buttons' => [
                     'print' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-print"></span>',
@@ -77,6 +77,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $url,
                                 [
                                 'title' => Yii::t('app', 'Cancelar Manifesto'),
+                        ]);
+                    },
+                    'email' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-envelope"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'Enviar por email'),
+                                'target' => '_blank',
+                                'data-pjax' => '0'
                         ]);
                     },
                 ]
@@ -115,17 +124,44 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'xjust',
             // 'toma',
             [
-                'attribute' => 'Remetente',
-                'value' => 'cteRemetente.nome',
+                'label' => 'Remetente',
+                'format' => 'ntext',
+                'attribute'=>'cteRemetente',
+                'value' => function($model) {
+                    $rem = explode(' ', $model->cteRemetente['nome']);
+                    return $rem[0];
+                }
             ],
             [
-                'attribute' => 'Destinatario',
-                'value' => 'cteDestinatario.nome',
+                'label' => 'Destinatário',
+                'format' => 'ntext',
+                'attribute'=>'cteDestinatario',
+                'value' => function($model) {
+                    $dest = explode(' ', $model->cteDestinatario['nome']);
+                    return $dest[0];
+                }
             ],
             [
-                'attribute' => 'Tomador',
-                'value' => 'cteTomador.nome',
+                'label' => 'Tomador',
+                'format' => 'ntext',
+                'attribute'=>'cteTomador',
+                'value' => function($model) {
+                    $toma = explode(' ', $model->cteTomador['nome']);
+                    return $toma[0];
+                }
             ],
+//            [
+//                'attribute' => 'Remetente',
+//                'value' => 'cteRemetente.nome',
+//            ],
+//            [
+//                'attribute' => 'Destinatario',
+//                'value' => 'cteDestinatario.nome',
+//            ],
+//            [
+//                'attribute' => 'Tomador',
+//                'value' => 'cteTomador.nome',
+//            ],
             // 'recebedor',
             // 'expedidor',
             'notaChave',

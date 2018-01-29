@@ -303,6 +303,26 @@ class AjaxController extends Controller
         return $data;
     }
 
+    public function actionSelecionaCte($term = '')
+    {
+        $modelCte = new Cte();
+        $data     = $modelCte->autocomplete($term);
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        return $data;
+    }
+
+    public function actionSelecionaContratante($chave)
+    {
+        $modelCte = new Cte();
+        $data     = $modelCte->getContratante($chave);
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        return $data;
+    }
+
     public function actionGetDocumentos($sacado, $tipo)
     {
 

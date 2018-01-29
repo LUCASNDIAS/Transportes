@@ -242,8 +242,8 @@ $(document).ready(function () {
                         ShemaXML(xml);
                     }, 500);
 
-                } else if (data.aProt.cStat == '204') {
-                    // Erro (não autorizado)
+                } else if (data.aProt.cStat == '204' || data.aProt.cStat == '218') {
+                    // Erro => Cte já autorizado
                     erroBarra(etapa);
 
                     var txterro = data.aProt.cStat + ' - ' + data.aProt.xMotivo;
@@ -251,8 +251,10 @@ $(document).ready(function () {
                     $('#motivo-erro').html('Tentando gerar PDF do CT-e.');
                     $('#resultado-protocolo').html('Protocolo já adicionado.');
 
+                    novoProtocolo(id);
+                    
                     // Gerar PDF
-                    gerarPdf(id);
+                    //gerarPdf(id);
 
                 } else {
                     // Erro (não autorizado)
@@ -263,6 +265,46 @@ $(document).ready(function () {
                     // Mostra o motivo da não autorização
                     mudaTexto(etapa, txterro);
                 }
+            }
+        });
+    }
+    
+    function novoProtocolo(id) {
+        var etapa = 'protocolo';
+        var url = '/Transportes/backend/web/cte/default/consulta-chave/?id=' + id;
+        
+        // Ativa a animação da barra
+        ativaBarra(etapa);
+
+        // Texto informativo
+        var texto = 'Adicionando protocolo.';
+        
+        // Muda o texto de resultados
+        mudaTexto(etapa, texto);
+        
+        // Solicita protocolo do xml
+        $.get(url, function (data) {
+
+            if (data.status === true) {
+                // Sucesso
+                sucessoBarra(etapa);
+
+                var sucesso = 'Retorno protocolado<br />Arquivo: ' + data.filename;
+                mudaTexto(etapa, sucesso);
+
+                // Gerar PDF
+                gerarPdf(id);
+
+            } else {
+                
+                console.log(data);
+                // Mostra que houve erro na Barra
+                erroBarra(etapa);
+
+                // Mostra os erros para o cliente
+                $.each(data.erros, function (key, value) {
+                    erroTexto(etapa, value);
+                });
             }
         });
     }

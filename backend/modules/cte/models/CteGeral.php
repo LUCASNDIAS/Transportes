@@ -9,6 +9,8 @@ use NFePHP\CTe\Make;
 use NFePHP\CTe\Tools;
 use NFePHP\DA\CTe\DacteV3 as Dacte;
 use backend\models\Municipios;
+use NFePHP\Mail\Mail;
+use stdClass;
 use Yii;
 
 class CteGeral
@@ -41,46 +43,46 @@ class CteGeral
 
         $cDV = substr($chave, -1);      //Digito Verificador
 
-        $resp       = $cte->ideTag(
-            $cUF        = $cteTools->aConfig['cUF'], // Codigo da UF da tabela do IBGE
-            $cCT        = '09835783', // Codigo numerico que compoe a chave de acesso (Codigo aleatorio do emitente, para evitar acessos indevidos ao documento)
-            $CFOP       = $model->cfop, // Codigo fiscal de operacoes e prestacoes
-            $natOp      = substr($model->natop, 0, 60), // Natureza da operacao
-            $mod        = $model->modelo, // Modelo do documento fiscal: 57 para identificação do CT-e
+        $resp           = $cte->ideTag(
+            $cUF            = $cteTools->aConfig['cUF'], // Codigo da UF da tabela do IBGE
+            $cCT            = '09835783', // Codigo numerico que compoe a chave de acesso (Codigo aleatorio do emitente, para evitar acessos indevidos ao documento)
+            $CFOP           = $model->cfop, // Codigo fiscal de operacoes e prestacoes
+            $natOp          = substr($model->natop, 0, 60), // Natureza da operacao
+            $mod            = $model->modelo, // Modelo do documento fiscal: 57 para identificação do CT-e
             //$forPag     = $model->forpag, // 0-Pago; 1-A pagar; 2-Outros
-            $serie      = $model->serie, // Serie do CTe
-            $nCT        = $model->numero, // Numero do CTe
+            $serie          = $model->serie, // Serie do CTe
+            $nCT            = $model->numero, // Numero do CTe
             $dhEmi, // Data e hora de emissão do CT-e: Formato AAAA-MM-DDTHH:MM:DD
-            $tpImp      = '1', // Formato de impressao do DACTE: 1-Retrato; 2-Paisagem.
-            $tpEmis     = $model->tpemis, // Forma de emissao do CTe: 1-Normal; 4-EPEC pela SVC; 5-Contingência
+            $tpImp          = '1', // Formato de impressao do DACTE: 1-Retrato; 2-Paisagem.
+            $tpEmis         = $model->tpemis, // Forma de emissao do CTe: 1-Normal; 4-EPEC pela SVC; 5-Contingência
             $cDV, // Codigo verificador
-            $tpAmb      = $model->ambiente, // 1- Producao, 2-homologacao
-            $tpCTe      = $model->tpcte, // 0- CT-e Normal; 1 - CT-e de Complemento de Valores; 2 -CT-e de Anulação; 3 - CT-e Substituto
+            $tpAmb          = $model->ambiente, // 1- Producao, 2-homologacao
+            $tpCTe          = $model->tpcte, // 0- CT-e Normal; 1 - CT-e de Complemento de Valores; 2 -CT-e de Anulação; 3 - CT-e Substituto
             //$procEmi: 0- emissão de CT-e com aplicativo do contribuinte;
             //          1- emissão de CT-e avulsa pelo Fisco;
             //          2- emissão de CT-e avulsa, pelo contribuinte com seu certificado digital, através do site do Fisco;
             //          3- emissão CT-e pelo contribuinte com aplicativo fornecido pelo Fisco.
-            $procEmi    = '0', // Descricao no comentario acima
-            $verProc    = '2.0', // versao do aplicativo emissor
+            $procEmi        = '0', // Descricao no comentario acima
+            $verProc        = '2.0', // versao do aplicativo emissor
             //$refCTE     = $model->refcte, // Chave de acesso do CT-e referenciado
-            $indGlobalizado = '',
-            $cMunEnv    = $model->cmunenv, // Utilizar a tabela do IBGE. Informar 9999999 para as operações com o exterior.
-            $xMunEnv    = $model->xmunenv, // Informar PAIS/Municipio para as operações com o exterior.
-            $UFEnv      = $model->ufenv, // Informar 'EX' para operações com o exterior.
-            $modal      = $model->modal, // Preencher com:01-Rodoviário; 02-Aéreo; 03-Aquaviário;04-
-            $tpServ     = $model->tpserv, // 0- Normal; 1- Subcontratação; 2- Redespacho; 3- Redespacho Intermediário; 4- Serviço Vinculado a Multimodal
-            $cMunIni    = $model->cmunini, // Utilizar a tabela do IBGE. Informar 9999999 para as operações com o exterior.
-            $xMunIni    = $model->xmunini, // Informar 'EXTERIOR' para operações com o exterior.
-            $UFIni      = $model->ufini, // Informar 'EX' para operações com o exterior.
-            $cMunFim    = $model->cmunfim, // Utilizar a tabela do IBGE. Informar 9999999 para operações com o exterior.
-            $xMunFim    = $model->xmunfim, // Informar 'EXTERIOR' para operações com o exterior.
-            $UFFim      = $model->uffim, // Informar 'EX' para operações com o exterior.
-            $retira     = $model->retira, // Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino? 0-sim; 1-não
-            $xDetRetira = ($model->retira == '1') ? '' : $model->xdetretira, // Detalhes do retira
-            $indIEToma  = $model->indietoma,
-            $dhCont     = ($model->tpemis != '5') ? '' : str_replace(' ', 'T',
-                $model->dhcont), // Data e Hora da entrada em contingência; no formato AAAAMM-DDTHH:MM:SS
-            $xJust      = ($model->tpemis != '5') ? '' : $model->xjust // Justificativa da entrada em contingência
+            $indGlobalizado = ($model->globalizado == 1) ? $model->globalizado : '',
+            $cMunEnv        = $model->cmunenv, // Utilizar a tabela do IBGE. Informar 9999999 para as operações com o exterior.
+            $xMunEnv        = $model->xmunenv, // Informar PAIS/Municipio para as operações com o exterior.
+            $UFEnv          = $model->ufenv, // Informar 'EX' para operações com o exterior.
+            $modal          = $model->modal, // Preencher com:01-Rodoviário; 02-Aéreo; 03-Aquaviário;04-
+            $tpServ         = $model->tpserv, // 0- Normal; 1- Subcontratação; 2- Redespacho; 3- Redespacho Intermediário; 4- Serviço Vinculado a Multimodal
+            $cMunIni        = $model->cmunini, // Utilizar a tabela do IBGE. Informar 9999999 para as operações com o exterior.
+            $xMunIni        = $model->xmunini, // Informar 'EXTERIOR' para operações com o exterior.
+            $UFIni          = $model->ufini, // Informar 'EX' para operações com o exterior.
+            $cMunFim        = $model->cmunfim, // Utilizar a tabela do IBGE. Informar 9999999 para operações com o exterior.
+            $xMunFim        = $model->xmunfim, // Informar 'EXTERIOR' para operações com o exterior.
+            $UFFim          = $model->uffim, // Informar 'EX' para operações com o exterior.
+            $retira         = $model->retira, // Indicador se o Recebedor retira no Aeroporto, Filial, Porto ou Estação de Destino? 0-sim; 1-não
+            $xDetRetira     = ($model->retira == '1') ? '' : $model->xdetretira, // Detalhes do retira
+            $indIEToma      = $model->indietoma,
+            $dhCont         = ($model->tpemis != '5') ? '' : str_replace(' ',
+                'T', $model->dhcont), // Data e Hora da entrada em contingência; no formato AAAAMM-DDTHH:MM:SS
+            $xJust          = ($model->tpemis != '5') ? '' : $model->xjust // Justificativa da entrada em contingência
         );
 
         if ($model->toma == '4') {
@@ -134,7 +136,8 @@ class CteGeral
         }
 
         // Informações complementares
-        $resp = $cte->complTag($model->xcaracad, $model->xcaracser, '', '', '', $model->xobs);
+        $resp = $cte->complTag($model->xcaracad, $model->xcaracser, '', '', '',
+            $model->xobs);
 
         // Informações do EMITENTE
         // Endereço do Emitente
@@ -183,11 +186,17 @@ class CteGeral
             ->andWhere(['uf' => $remetente->enduf])
             ->one();
 
+        // Cte Globalizado - TOMA = 3 (Destinatario)
+        $xNomeRem = ($model->toma == '3' && $model->globalizado == '1') ? 'DIVERSOS'
+                : substr($remetente->nome, 0, 60);
+        $CNPJRem  = ($model->toma == '3' && $model->globalizado == '1') ? $cteTools->aConfig['cnpj']
+                : $remetente->cnpj;
+
         $resp  = $cte->remTag(
-            $CNPJ  = (isset($remetente->cnpj[13])) ? $remetente->cnpj : '', // CNPJ
-            $CPF   = (isset($remetente->cnpj[13])) ? '' : $remetente->cnpj, // CPF
+            $CNPJ  = (isset($remetente->cnpj[13])) ? $CNPJRem : '', // CNPJ
+            $CPF   = (isset($remetente->cnpj[13])) ? '' : $CNPJRem, // CPF
             $IE    = ($model->indietoma == 9 && $model->toma == 0) ? null : $remetente->ie, // Iscricao estadual
-            $xNome = ($model->ambiente == 1) ? substr($remetente->nome, 0, 60) : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
+            $xNome = ($model->ambiente == 1) ? $xNomeRem : 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', // Razao social ou Nome
             $xFant = '', // Nome fantasia
             $fone  = (isset($remetente->clientesContatos[0]->telefone)) ? str_replace($invalidos,
                 '', $remetente->clientesContatos[0]->telefone) : '', // Telefone
@@ -346,26 +355,34 @@ class CteGeral
         }
 
         // ICMS
-        $resp       = $cte->icmsTag(
-            $cst        = ($model->cst == '90') ? 'SN' : $model->cst,
-            $pRedBC     = number_format($model->predbc, 2, '.', ''), // Percentual de redução da BC (3 inteiros e 2 decimais)
-            $vBC        = number_format($model->vbc, 2, '.', ''), // Valor da BC do ICMS
-            $pICMS      = number_format($model->picms, 2, '.', ''), // Alícota do ICMS
-            $vICMS      = number_format($model->vicms, 2, '.', ''), // Valor do ICMS
-            $vBCSTRet   = number_format($model->vbcstret, 2, '.', ''), // Valor da BC do ICMS ST retido
-            $vICMSSTRet = number_format($model->vicmsret, 2, '.', ''), // Valor do ICMS ST retido
-            $pICMSSTRet = number_format($model->picmsret, 2, '.', ''), // Alíquota do ICMS
-            $vCred      = number_format($model->vcred, 2, '.', ''), // Valor do Crédito Outorgado/Presumido
-            $vTotTrib   = number_format($model->vtottrib, 2, '.', ''), // Valor de tributos federais, estaduais e municipais
-            $outraUF    = false,    // ICMS devido à UF de origem da prestação, quando diferente da UF do emitente
-            $vBCUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc, 2, '.', '') : '',
-            $pFCPUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(2, 2, '.', '') : '',
-            $pICMSUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(18, 2, '.', '') : '',
-            $pICMSInter = ($model->indietoma == 9 && $model->toma == 3) ? number_format(7, 2, '.', '') : '',
-            $pICMSInterPart = ($model->indietoma == 9 && $model->toma == 3) ? number_format(60, 2, '.', '') : '',
-            $vFCPUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc*0.02, 2, '.', '') : '',
-            $vICMSUFFim = ($model->indietoma == 9 && $model->toma == 3) ? number_format(($model->vtottrib*0.6)*0.5, 2, '.', '') : 0,
-            $vICMSUFIni = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vtottrib - (($model->vtottrib*0.6)*0.5), 2, '.', '') : 0
+        $resp           = $cte->icmsTag(
+            $cst            = ($model->cst == '90') ? 'SN' : $model->cst,
+            $pRedBC         = number_format($model->predbc, 2, '.', ''), // Percentual de redução da BC (3 inteiros e 2 decimais)
+            $vBC            = number_format($model->vbc, 2, '.', ''), // Valor da BC do ICMS
+            $pICMS          = number_format($model->picms, 2, '.', ''), // Alícota do ICMS
+            $vICMS          = number_format($model->vicms, 2, '.', ''), // Valor do ICMS
+            $vBCSTRet       = number_format($model->vbcstret, 2, '.', ''), // Valor da BC do ICMS ST retido
+            $vICMSSTRet     = number_format($model->vicmsret, 2, '.', ''), // Valor do ICMS ST retido
+            $pICMSSTRet     = number_format($model->picmsret, 2, '.', ''), // Alíquota do ICMS
+            $vCred          = number_format($model->vcred, 2, '.', ''), // Valor do Crédito Outorgado/Presumido
+            $vTotTrib       = number_format($model->vtottrib, 2, '.', ''), // Valor de tributos federais, estaduais e municipais
+            $outraUF        = false, // ICMS devido à UF de origem da prestação, quando diferente da UF do emitente
+            $vBCUFFim       = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc,
+                2, '.', '') : '',
+            $pFCPUFFim      = ($model->indietoma == 9 && $model->toma == 3) ? number_format(2,
+                2, '.', '') : '',
+            $pICMSUFFim     = ($model->indietoma == 9 && $model->toma == 3) ? number_format(18,
+                2, '.', '') : '',
+            $pICMSInter     = ($model->indietoma == 9 && $model->toma == 3) ? number_format(7,
+                2, '.', '') : '',
+            $pICMSInterPart = ($model->indietoma == 9 && $model->toma == 3) ? number_format(60,
+                2, '.', '') : '',
+            $vFCPUFFim      = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vbc
+                * 0.02, 2, '.', '') : '',
+            $vICMSUFFim     = ($model->indietoma == 9 && $model->toma == 3) ? number_format(($model->vtottrib
+                * 0.6) * 0.5, 2, '.', '') : 0,
+            $vICMSUFIni     = ($model->indietoma == 9 && $model->toma == 3) ? number_format($model->vtottrib
+                - (($model->vtottrib * 0.6) * 0.5), 2, '.', '') : 0
         );
 
         // Grupo de informações do CT-e Normal e Substituto
@@ -407,7 +424,7 @@ class CteGeral
                     $nDoc  = $notas->chave, $dEmi  = $notas->demi,
                     $vBC   = $notas->vbc, $vICMS = $notas->vicms,
                     $vBCST = $notas->vbcst, $vST   = $notas->vst,
-                    $vProd = number_format($notas->vnf, 2, '.', ''), 
+                    $vProd = number_format($notas->vnf, 2, '.', ''),
                     $vNF   = number_format($notas->vnf, 2, '.', ''),
                     $nCFOP = $notas->ncfop,
                     $nPeso = number_format($notas->peso, 3, '.', ''),
@@ -430,7 +447,6 @@ class CteGeral
 //            $xSeg    = $model->xseg, // Nomeda da Seguradora
 //            $nApol   = $model->napol  // Numero da Apolice
 //        );
-
         // Modal Rodoviário
         $resp  = $cte->rodoTag(
             $RNTRC = $model->rntrc, // Registro Nacional de Transportadores Rodoviários de Carga
@@ -475,7 +491,7 @@ class CteGeral
         if ($resp) {
             $xml = $cte->getXML();
             file_put_contents($filename, $xml);
-            chmod($filename, 0777);
+//            chmod($filename, 0777);
 
             $retorno = [
                 'status' => true,
@@ -518,7 +534,7 @@ class CteGeral
         // Assina o documento
         $xml = $cteTools->assina($xml);
         file_put_contents($assinado, $xml);
-        chmod($assinado, 0777);
+//        chmod($assinado, 0777);
 
         $retorno = [
             'status' => true,
@@ -672,7 +688,6 @@ class CteGeral
         $protocolo = Yii::getAlias('@cte/').$pamb.'/temporarias/'.date('Y').date('m').'/'.$recibo.'-retConsReciCTe.xml';
 
         //return $protocolo;
-
         // Autorizado
         $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
 
@@ -719,7 +734,7 @@ class CteGeral
         } else {
             // Assina o arquivo e cria outro na pasta assinadas
             $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/assinadas/'.$model->chave.'-cte.xml';
-            
+
             if (!is_file($autorizado)) {
                 $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/geradas/'.$model->chave.'-cte.xml';
             }
@@ -768,6 +783,72 @@ class CteGeral
         return $retorno;
     }
 
+    public function consultaChave($id)
+    {
+        $model = $this->findModel($id);
+
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $aRetorno = array();
+
+        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+
+        // Retorno
+        $protocolo = Yii::getAlias('@cte').'/'.$pamb.'/temporarias/'.date('Y').date('m').'/'.$model->chave.'-retConsSitCTe.xml';
+
+        // Assinadas
+        $assinado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/assinadas/'.$model->chave.'-cte.xml';
+
+        // Autorizado
+        $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+
+        // Cancelado
+        $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
+
+        // Verifica o status pela Chave
+        $verifica = $cteTools->sefazConsultaChave($model->chave,
+            $model->ambiente, $aRetorno);
+
+        if (!empty($aRetorno)) {
+            // Cancelado
+            if ($aRetorno['cStat'] == '101') {
+
+                // Adiciona evento de Cancelamento
+                $salvar = $cteTools->addCancelamento($autorizado, $protocolo,
+                    true);
+                //chmod($cancelado, 0777);
+                file_put_contents($cancelado, $salvar);
+
+                $retorno       = [
+                    'status' => true,
+                    'filename' => $cancelado,
+                    'erros' => []
+                ];
+                $model->status = 'CANCELADO';
+                $model->save(false);
+            }
+
+            // Autorizado
+            if ($aRetorno['cStat'] == '100') {
+                $salvar = $cteTools->addProtocolo($assinado, $protocolo, true);
+                //chmod($autorizado, 0777);
+                file_put_contents($autorizado, $salvar);
+
+                $retorno = [
+                    'status' => true,
+                    'filename' => $autorizado,
+                    'erros' => []
+                ];
+
+                $model->status = 'AUTORIZADO';
+                $model->save(false);
+            }
+        }
+
+        return (isset($retorno)) ? $retorno : ['Não houve retorno'];
+    }
+
     public function sefazCancela($id, $motivo)
     {
         $model = $this->findModel($id);
@@ -781,7 +862,7 @@ class CteGeral
         $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
 
         // ProtCancel
-        $protocolo = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/temporarias/'.date('Y').date('m').'/'.$model->chave.'-CancCTe-retEnvEvento.xml';
+        $protocolo = Yii::getAlias('@cte').'/'.$pamb.'/temporarias/'.date('Y').date('m').'/'.$model->chave.'-CancCTe-retEnvEvento.xml';
 
         // Cancelado
         $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
@@ -791,9 +872,6 @@ class CteGeral
 
         $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
             $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
-
-//        $cancela = $cteTools->sefazCancela('31171109204054000143570010000017061282008464', '1',
-//            'solicitado pelo cliente', '131170237201932', $aRetorno);
 
         // Verifica se foi cancelado e vinculado
         if ($aRetorno['cStat'] == '135') {
@@ -805,6 +883,50 @@ class CteGeral
         }
 
         return $aRetorno;
+    }
+
+    public function enviaEmail($id)
+    {
+        $model = $this->findModel($id);
+
+        ini_set('error_reporting', E_STRICT);
+
+        $chave = $model->chave;
+
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $status = $model->status;
+
+        // Arquivo Autorizado
+        $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+
+        // Arquivo Cancelado
+        $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
+
+        $xml = (is_file($cancelado)) ? $cancelado : $autorizado;
+
+        $pdf = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/pdf/'.$model->chave.'-cte.pdf';
+
+//        $config                  = new \stdClass();
+        $config->mail->host      = 'smtp.gmail.com';
+        $config->mail->user      = 'lndsistemas.mail@gmail.com';
+        $config->mail->password  = 'TligWww15*=';
+        $config->mail->secure    = 'tls';
+        $config->mail->port      = 587;
+        $config->mail->from      = 'lndsistemas.mail@gmail.com';
+        $config->mail->fantasy   = 'Gerador Fiscal - CTe';
+        $config->mail->replyTo   = 'lndsistemas.mail@gmail.com';
+        $config->mail->replyName = 'Gerador Fiscal';
+
+        $mail = new Mail($config);
+        $htmlTemplate = 'Teste';
+        $mail->loadTemplate($htmlTemplate);
+        $mail->loadDocuments($xml, $pdf);
+        $addresses = ['diasnlucas@gmail.com'];
+        $mail->send($addresses);
+
+        return $mail;
     }
 
     /**

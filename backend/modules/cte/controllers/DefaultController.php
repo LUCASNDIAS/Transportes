@@ -25,6 +25,7 @@ use backend\modules\cte\models\CteComponentes as Componentes;
 use backend\modules\cte\models\CteGeral;
 use NFePHP\CTe\Make;
 use NFePHP\CTe\Tools;
+use backend\models\EnviaEmail;
 
 /**
  * DefaultController implements the CRUD actions for Cte model.
@@ -641,7 +642,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         $chave = $model->chave;
-        
+
         // Verifica se é homologação ou produção
         $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
@@ -658,12 +659,10 @@ class DefaultController extends Controller
         if (is_file($xml)) {
 
             return \Yii::$app->response->sendFile($xml);
-
         } else {
             echo 'nao';
             var_dump($xml);
         }
-
     }
 
     public function actionSend($id)
@@ -671,11 +670,10 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         // Não acessa caso esteja cancelado
-        if ($model->status === 'CANCELADO') {
-            $msg = 'Não é possível transmitir CT-e já cancelado.';
-            return $this->redirect(['index', 'msg' => $msg]);
-        }
-
+//        if ($model->status === 'CANCELADO') {
+//            $msg = 'Não é possível transmitir CT-e já cancelado.';
+//            return $this->redirect(['index', 'msg' => $msg]);
+//        }
         // Verifica se é homologação ou produção
         $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
@@ -733,6 +731,76 @@ class DefaultController extends Controller
                 'retorno' => (isset($retorno)) ? $retorno : [],
                 'formulario' => $formulario
         ]);
+    }
+
+    public function actionConsultaChave($id)
+    {
+        $cteGeral = new CteGeral();
+
+        $retorno = $cteGeral->consultaChave($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionEmail($id)
+    {
+
+        // Modelo do CTe
+        $model = $this->findModel($id);
+
+        if (!\Yii::$app->request->isAjax) {
+
+            // Email dos envolvidos
+            $envolvidos    = new Clientes();
+            $remetente     = $envolvidos->getEmail($model->remetente);
+            $destinatario  = $envolvidos->getEmail($model->destinatario);
+            $consignatario = $envolvidos->getEmail($model->tomador);
+
+            return $this->render('email',
+                    [
+                    'model' => $model,
+                    'remetente' => $remetente,
+                    'destinatario' => $destinatario,
+                    'consignatario' => $consignatario
+            ]);
+        } else {
+
+            // Verifica se é homologação ou produção
+            $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+            // Anexos
+            $pdf = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/pdf/'.$model->chave.'-cte.pdf';
+
+            $pasta = ($model->status == 'AUTORIZADO') ? '/enviadas/aprovadas/' : '/canceladas/';
+
+            $xml = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.$pasta.$model->chave.'-cte.xml';
+
+            // Verifica se o arquivo existe
+            if (!is_file($pdf)) {
+                return 'Anexo não encontrado!';
+            } else {
+
+                // Parametros passados por POST (ajax)
+                $EmailDestinatario = explode(',',
+                    Yii::$app->request->get('emails'));
+
+                // Título do Email
+                $titulo = 'LND Sistemas | '.\Yii::$app->user->identity['empresa'].' - CTe '.$model->numero;
+
+                $dados['remetente']     = $model->remetente;
+                $dados['destinatario']  = $model->destinatario;
+                $dados['consignatario'] = $model->tomador;
+                $dados['numero']        = $model->numero;
+
+                $EnviaEmail = new EnviaEmail();
+                $Envia      = $EnviaEmail->enviarCte($EmailDestinatario, $titulo,
+                    $pdf, $xml, $dados);
+
+                return $Envia;
+            }
+        }
     }
 
     protected function montaChave($numero, $tpEmis)

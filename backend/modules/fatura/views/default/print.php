@@ -61,7 +61,7 @@ $basicos     = new Basicos();
             <td><div align="center" id="posvenc" style="color:#FF0000"><?= $basicos->formataData('print',
                         $model->vencimento);
                     ?></div></td>
-            <td><div align="center" id="posvalor"><?= $docs['total']['frete']; ?></div></td>
+            <td><div align="center" id="posvalor"><?= number_format($docs['total']['frete'], 2, ',', '.'); ?></div></td>
         </tr>
     </table>
 </div>
@@ -146,10 +146,10 @@ $basicos     = new Basicos();
                     <td><?= $embarque['destinatario']; ?></td>
                     <td><?= $embarque['emissao']; ?></td>
                     <td><?= $embarque['notasnumero']; ?></td>
-                    <td><?= $embarque['notasvalor']; ?></td>
-                    <td><?= $embarque['peso']; ?></td>
+                    <td><?= number_format($embarque['notasvalor'], 2, ',', '.'); ?></td>
+                    <td><?= number_format($embarque['peso'], 2, ',', '.'); ?></td>
                     <td><?= $embarque['notasvolumes']; ?></td>
-                    <td><?= $embarque['fretetotal']; ?></td>
+                    <td><?= number_format($embarque['fretetotal'], 2, ',', '.'); ?></td>
                 </tr>
                 <?php
             }
@@ -161,10 +161,10 @@ $basicos     = new Basicos();
         <tr>
             <td>TOTAIS ==></td>
             <td>Embarques: <?= $docs['total']['embarques']; ?></td>
-            <td>R$ Notas: <?= $docs['total']['notasvalor']; ?></td>
+            <td>R$ Notas: <?= number_format($docs['total']['notasvalor'], 2, ',', '.'); ?></td>
             <td>Volumes: <?= $docs['total']['notasvolumes']; ?></td>
-            <td>Peso (Kg): <?= $docs['total']['peso']; ?></td>
-            <td>R$ Frete: <?= $docs['total']['frete']; ?></td>
+            <td>Peso (Kg): <?= number_format($docs['total']['peso'], 2, ',', '.'); ?></td>
+            <td>R$ Frete: <?= number_format($docs['total']['frete'], 2, ',', '.'); ?></td>
         </tr>
     </table>
 </div>

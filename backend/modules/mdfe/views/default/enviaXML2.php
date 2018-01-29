@@ -23,7 +23,7 @@ $cte = new Make();
 
 $cteTools = new Tools(Yii::getAlias('@sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$chave = '31171209204054000143580010000001011098357838';
+$chave = '31180109204054000143580010000001081098357834';
 
 $filename = "/var/www/html/{$chave}-mdfe.xml";
 //
@@ -81,7 +81,8 @@ $filename = "/var/www/html/{$chave}-mdfe.xml";
         $xmlfile = file_get_contents($filename);
 
         // PDF
-        $pdf = Yii::getAlias('@cte/').$chave.'-mdfe.pdf';
+//        $pdf = Yii::getAlias('@cte/').$chave.'-mdfe.pdf';
+        $pdf = '/var/www/html/'.$chave.'-mdfe.pdf';
 
         $configFile = Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json';
         $configData = file_get_contents($configFile);

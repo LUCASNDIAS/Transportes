@@ -17,6 +17,8 @@ use Yii;
  * @property string $pin
  * @property string $serie
  * @property double $valor
+ * @property double $peso
+ * @property double $contratante
  * @property double $tipo
  *
  * @property Mdfe $mdfe
@@ -41,9 +43,9 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
             [['mdfe_id'], 'integer'],
             [['tipo'], 'string', 'max' => 3],
             [['dtemissao'], 'safe'],
-            [['valor'], 'number'],
+            [['valor', 'peso'], 'number'],
             [['chave'], 'string', 'max' => 44],
-            [['emitente'], 'string', 'max' => 14],
+            [['emitente', 'contratante'], 'string', 'max' => 14],
             [['numero'], 'string', 'max' => 9],
             [['uf'], 'string', 'max' => 2],
             [['pin'], 'string', 'max' => 20],
@@ -68,7 +70,9 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
             'uf' => Yii::t('app', 'UF'),
             'pin' => Yii::t('app', 'PIN'),
             'serie' => Yii::t('app', 'Série'),
-            'valor' => Yii::t('app', 'Valor'),
+            'valor' => Yii::t('app', 'R$ Mercadorias'),
+            'peso' => Yii::t('app', 'Peso'),
+            'contratante' => Yii::t('app', 'Contratante'),
         ];
     }
 

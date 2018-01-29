@@ -494,10 +494,17 @@ CteAsset::register($this);
             </div>
 
             <div class="row">
-                <div class="col-sm-12"><?=
+                <div class="col-sm-6"><?=
                     $form->field($model, 'xobs')->textInput([
                         'maxlength' => true])
                     ?></div>
+                <div class="col-sm-6"><?=
+                    $form->field($model, 'globalizado')->dropDownList([
+                            '0' => 'Não',
+                            '1' => 'Sim'
+                        ])
+                    ?></div>
+                
             </div>
 
         </div>

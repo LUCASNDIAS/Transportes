@@ -277,7 +277,7 @@ class DefaultController extends Controller
 
             // Set up PDF headers
             header('Content-type: application/pdf');
-            header('Content-Disposition: inline; filename="'.'/LNDSistemas-M'.$model->numero.'.pdf'.'"');
+            header('Content-Disposition: inline; filename="'.'/LNDSistemas-F'.$model->numero.'.pdf'.'"');
             header('Content-Transfer-Encoding: binary');
             header('Content-Length: '.filesize($path));
             header('Accept-Ranges: bytes');
