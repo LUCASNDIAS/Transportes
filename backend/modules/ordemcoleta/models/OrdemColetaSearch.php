@@ -72,7 +72,8 @@ class OrdemColetaSearch extends OrdemColeta
             'pagamentodata' => $this->pagamentodata,
         ]);
 
-        $query->andFilterWhere(['like', 'criusu', $this->criusu])
+        $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andFilterWhere(['like', 'criusu', $this->criusu])
             ->andFilterWhere(['like', 'dono', $this->dono])
             ->andFilterWhere(['like', 'tipofrete', $this->tipofrete])
             ->andFilterWhere(['like', 'entregalocal', $this->entregalocal])

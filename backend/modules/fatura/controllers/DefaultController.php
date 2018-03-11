@@ -128,11 +128,12 @@ class DefaultController extends Controller
                 $financeiro->observacoes = $model->observacoes;
                 $hoje                    = date('Y-m-d');
 
-                $financeiro->status = ($hoje <= $financeiro->vencimento) ? 'A VENCER' : 'VENCIDO';
+                $financeiro->status = ($hoje <= $financeiro->vencimento) ? 'A VENCER'
+                        : 'VENCIDO';
 
                 $cpl = $this->getDocs($last_id);
 
-                $financeiro->valor = $cpl['total']['frete'];
+                $financeiro->valor  = $cpl['total']['frete'];
                 $financeiro->sacado = $model->sacado;
                 $financeiro->fatura = $last_id;
                 $financeiro->save(false);
@@ -202,7 +203,10 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model        = $this->findModel($id);
+        $searchModel  = new MinutasSearch();
+        $dataProvider = $searchModel->searchMinutas(Yii::$app->request->queryParams);
+        $basicos      = new Basicos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -210,6 +214,8 @@ class DefaultController extends Controller
             return $this->render('update',
                     [
                     'model' => $model,
+                    'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
             ]);
         }
     }
@@ -223,7 +229,7 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         $fatura = $this->findModel($id);
-        
+
         // Deleta documentos (minutas ou ctes)
         $docs = $this->findModelDocs($id);
         foreach ($docs as $doc) {

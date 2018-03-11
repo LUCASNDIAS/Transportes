@@ -64,6 +64,12 @@ $config = [
         'seguro' => [
             'class' => 'backend\modules\seguro\Module',
         ],
+        'mensagens' => [
+            'class' => 'backend\modules\mensagens\Module',
+        ],
+        'relatorios' => [
+            'class' => 'backend\modules\relatorios\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -113,10 +119,10 @@ $config = [
 // Tirei o debug da parte de Testes pra impressao pdf
 if (!YII_ENV_TEST) {
     // configuration adjustments for 'dev' environment
-    //$config['bootstrap'][] = 'debug';
-    //$config['modules']['debug'] = [
-    //    'class' => 'yii\debug\Module',
-    //];
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+    ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [

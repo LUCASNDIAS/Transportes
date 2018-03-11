@@ -17,6 +17,8 @@ use backend\models\Municipios;
 use backend\models\Funcionarios;
 use backend\modules\veiculos\models\Veiculos;
 use backend\modules\cte\models\Cte;
+use backend\modules\fatura\models\Fatura;
+use backend\modules\financeiro\models\Financeiro;
 
 class AjaxController extends Controller
 {
@@ -356,4 +358,89 @@ class AjaxController extends Controller
 
         return $data;
     }
+
+    public function actionCountFaturas()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = Fatura::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->count();
+
+        return $data;
+    }
+
+    public function actionCountCte()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = Cte::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->count();
+
+        return $data;
+    }
+
+    public function actionCountMinutas()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = Minutas::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->count();
+
+        return $data;
+    }
+
+    public function actionCountFrota()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = Veiculos::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->count();
+
+        return $data;
+    }
+    
+    public function actionSumFinanceiro($tipo, $sum = true)
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = Financeiro::find()
+            ->where([
+                'dono' => Yii::$app->user->identity['cnpj'],
+                'tipo' => $tipo
+                ])
+            ->andWhere(['!=', 'status', 'PAGO'])
+            ->sum('valor');
+
+        return ($sum) ? number_format($data , 2, ',', '.') : $data;
+    }
+
+    public function actionGetBalanco()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $receber = Financeiro::find()
+            ->where([
+                'dono' => Yii::$app->user->identity['cnpj'],
+                'tipo' => 'R'
+                ])
+            ->andWhere(['=', 'status', 'PAGO'])
+            ->sum('valor');
+
+        $pagar = Financeiro::find()
+            ->where([
+                'dono' => Yii::$app->user->identity['cnpj'],
+                'tipo' => 'D'
+                ])
+            ->andWhere(['=', 'status', 'PAGO'])
+            ->sum('valor');
+
+        $data = $receber - $pagar;
+
+        return number_format($data , 2, ',', '.');
+    }
+
 }

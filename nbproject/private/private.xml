@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/Transportes/backend/models/Municipios.php</file>
-            <file>file:/var/www/html/Transportes/backend/web/js/mdfe.js</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/models/MdfeGeral.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/fatura/controllers/DefaultController.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/enviaXML2.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/_form.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/models/MdfeDocumentos.php</file>
             <file>file:/var/www/html/Transportes/backend/modules/mdfe/views/default/testaMakeMdfe.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/models/Mdfe.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/mdfe/controllers/DefaultController.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/cte/models/CteGeral.php</file>
-            <file>file:/var/www/html/Transportes/backend/modules/fatura/views/default/print.php</file>
         </group>
     </open-files>
 </project-private>

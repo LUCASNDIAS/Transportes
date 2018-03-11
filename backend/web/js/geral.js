@@ -33,7 +33,7 @@ $(document).ready(function () {
         $.get("/Transportes/backend/web/ajax/mensagens", function (data) {
             $.each(data, function (key, value) {
 
-                var lista = '<li><a href="/Transportes/backend/web/site/mensagens?id=' + value.id + '"><div class="pull-left"><img src="/Transportes/backend/web/img/sistema/avatar.png" class="img-circle" alt="User Image" /></div><h4>LND Sistemas<small><i class="fa fa-clock-o"></i>' + value.data + '</small></h4><p>' + value.titulo + '</p></a></li>';
+                var lista = '<li><a href="/Transportes/backend/web/mensagens/default/view?id=' + value.id + '"><div class="pull-left"><img src="/Transportes/backend/web/img/sistema/avatar.png" class="img-circle" alt="User Image" /></div><h4>LND Sistemas<small><i class="fa fa-clock-o"></i>' + value.data + '</small></h4><p>' + value.titulo + '</p></a></li>';
 
                 $("#menuTopo").append(lista);
 

@@ -45,7 +45,7 @@
                             ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],'visible' => Yii::$app->user->can('admLND')],
                         	['label' => 'Update', 'icon' => 'fa fa-recycle', 'url' => ['/update/index'],'visible' => Yii::$app->user->can('admLND')],
                         	['label' => 'Mensagens', 'icon' => 'fa fa-envelope-o', 'url' => '#', 'visible' => Yii::$app->user->can('admLND'), 'items' => [
-                        			['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/mensagens/create'], 'visible' => Yii::$app->user->can('admLND')],
+                        			['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/mensagens/default/create'], 'visible' => Yii::$app->user->can('admLND')],
                         			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mensagens'], 'visible' => Yii::$app->user->can('admLND')],
                         		],
                         	],
@@ -208,7 +208,7 @@
                     [
                         'label' => 'Relatorios',
                         'icon' => 'fa fa-bar-chart',
-                        'url' => ['/relatorio/create'],
+                        'url' => ['/relatorios'],
                         'visible' => Yii::$app->user->can('verRelatorios'),
                     ],
                 ],

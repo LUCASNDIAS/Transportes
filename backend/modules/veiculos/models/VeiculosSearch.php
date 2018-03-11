@@ -65,7 +65,8 @@ class VeiculosSearch extends Veiculos
             'tpcar_id' => $this->tpcar_id,
         ]);
 
-        $query->andFilterWhere(['like', 'marca', $this->marca])
+        $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']])
+            ->andFilterWhere(['like', 'marca', $this->marca])
             ->andFilterWhere(['like', 'modelo', $this->modelo])
             ->andFilterWhere(['like', 'cint', $this->cint])
             ->andFilterWhere(['like', 'renavam', $this->renavam])

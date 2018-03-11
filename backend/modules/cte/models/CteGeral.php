@@ -882,7 +882,8 @@ class CteGeral
             file_put_contents($cancelado, $add);
         }
 
-        return $aRetorno;
+        //return $aRetorno;
+        return htmlspecialchars($cteTools->soapDebug);
     }
 
     public function enviaEmail($id)
