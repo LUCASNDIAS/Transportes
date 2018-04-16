@@ -182,9 +182,11 @@ class CteSearch extends Cte
 //                    'm.pagadorcnpj' => '09835783624', //$sacado,
             'c.dono' => Yii::$app->user->identity['cnpj'],
             'c.ambiente' => '1',
-            'c.status' => 'AUTORIZADO',
+//            'c.status' => 'AUTORIZADO',
             'd.cte_id' => null
-        ]);
+        ])
+            ->andWhere(['in', 'c.status', ['AUTORIZADO', 'ENTREGUE']]);
+//            ->orWhere(['c.status' => 'ENTREGUE']);
 
         // add conditions that should always apply here
 

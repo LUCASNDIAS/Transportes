@@ -1,27 +1,108 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 'On');
 
-use NFePHP\MDFe\Tools;
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
+use yii\jui\AutoComplete;
+use yii\web\JsExpression;
 
-$cteTools = new Tools('D:\ambiente_desenvolvedor_php\www\Transportes\backend\config\config.json');
+/* @var $this yii\web\View */
+/* @var $searchModel backend\modules\cte\models\CteSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-$aRetorno = array();
+$od = $model->ufcarga . ' => ' . $model->ufdescarga;
 
-$resp = $cteTools->sefazEncerra(
-        $chave = '31170609204054000143580010000000021000000107',
-        $tpAmb = '2',
-        $nSeqEvento = '1',
-        $nProt = '931170000012286',
-        $cUF = '31',
-        $cMun = '3106200',
-        $aRetorno
-    );
+$this->title                   = Yii::t('app', 'Encerrar MDF-e (' . $od . ')');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="mdfe-encerrar">
+    <?php
+    $form                          = ActiveForm::begin([
+            'id' => 'encerrar-form'
+    ]);
+    ?>
 
-echo '<pre>';
-var_dump($resp);
-echo '</pre>';
+    <div class="col-sm-6">
+        Chave: <?=
+        Html::input('text', 'chave', $model->chave,
+            ['class' => 'form-control', 'readonly' => true]);
+        ?>
+    </div>
 
-echo '<pre>';
-var_dump($aRetorno);
-echo '</pre>';
+    <div class="col-sm-6">
+        Protocolo: <?php
+        echo Html::input('text', 'protocolo', $model->mdfeProtocolos[0]->nprot,
+            ['class' => 'form-control', 'readonly' => true]);
+        ?>
+    </div>
+
+    <div class="col-sm-2">
+        UF: <?php
+        echo Html::dropDownList('cUF', NULL, $ufs,
+            [
+            'class' => 'form-control',
+            'prompt' => '-- Selecione --'
+        ]);
+        ?>
+    </div>
+
+    <div class="col-sm-5">
+        <div class="form-group">
+            <label class="control-label" for="tabela-nome">Pesquisa Município</label>
+            <?=
+            AutoComplete::widget([
+                'id' => "xmun-nome",
+                'name' => "xmun-nome",
+                'clientOptions' => [
+                    'source' => $municipios,
+                    'autoFill' => true,
+                    'minLength' => 2,
+                    'select' => new JsExpression("function( event, ui ) {
+                                    $('#cmun').val(ui.item.id); // Campo real do cMun
+                                    $('#cmun').focus();
+                               }")
+                ],
+                'options' => [
+                    'class' => 'form-control ui-autocomplete-input',
+                    'autocomplete' => 'off'
+                ],
+            ]);
+            ?>
+            <p class="help-block help-block-error"></p>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        Município: <?php
+        echo Html::input('text', 'cMun', '',
+            ['class' => 'form-control', 'id' => 'cmun']);
+        ?>
+    </div>
+
+    <div class="col-sm-2">
+        <br /><?= Html::submitButton('Encerrar MDF-e',
+            ['class' => 'btn btn-success'])
+        ?>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <br><br>
+            <p>
+                <?php
+                if (!empty($retorno)) {
+                    if ($retorno['cStat'] != '135') {
+                        echo $retorno['cStat'].' - '.$retorno['xMotivo'];
+                    } else {
+                        echo 'Manifesto encerrado com sucesso.';
+                    }
+                }
+                ?>
+            </p>
+        </div>
+    </div>
+
+<?php ActiveForm::end(); ?>
+
+</div>

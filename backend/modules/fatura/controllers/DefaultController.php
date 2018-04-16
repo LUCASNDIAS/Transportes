@@ -16,6 +16,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use kartik\mpdf\Pdf;
 
 /**
  * DefaultController implements the CRUD actions for Fatura model.
@@ -183,6 +184,28 @@ class DefaultController extends Controller
                     unset($documento);
                 }
 
+                $financeiro              = new \backend\modules\financeiro\models\Financeiro();
+                $financeiro->nome        = 'FATURA '.$model->numero;
+                $financeiro->descricao   = 'FATURA DE '.$model->tipo;
+                $financeiro->tipo        = 'R';
+                $financeiro->emissao     = $model->emissao;
+                $financeiro->vencimento  = $model->vencimento;
+                $financeiro->dono        = $model->dono;
+                $financeiro->cridt       = $model->cridt;
+                $financeiro->criusu      = $model->criusu;
+                $financeiro->observacoes = $model->observacoes;
+                $hoje                    = date('Y-m-d');
+
+                $financeiro->status = ($hoje <= $financeiro->vencimento) ? 'A VENCER'
+                        : 'VENCIDO';
+
+                $cpl = $this->getDocs($last_id);
+
+                $financeiro->valor  = $cpl['total']['frete'];
+                $financeiro->sacado = $model->sacado;
+                $financeiro->fatura = $last_id;
+                $financeiro->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -296,6 +319,64 @@ class DefaultController extends Controller
         }
 
         return $this->render('print',
+                [
+                'model' => $model,
+        ]);
+    }
+
+    public function actionPrint2($id, $retorno = true)
+    {
+
+        $model = $this->findModel($id);
+
+        // Modelo de dados dos Clientes
+        // Usado para Empresa, Remetente, Destinatario e Consignatario
+        $cnpj         = Yii::$app->user->identity['cnpj'];
+        $modelCliente = new Clientes();
+        $empresa      = $modelCliente->retornaCliente($cnpj);
+        $sacado       = $modelCliente->retornaCliente($model->sacado);
+        $docs         = $this->getDocs($id);
+
+        $this->layout = 'fatura-print';
+
+        $conteudoPDF = $this->render('print2',
+            [
+            'model' => $model,
+            'empresa' => $empresa,
+            'sacado' => $sacado,
+            'docs' => $docs,
+        ]);
+
+//        return $conteudoPDF;
+
+        // Local para se salvar as Minutas em PDF
+        $path = 'pdfs/faturas/'.\Yii::$app->user->identity['cnpj'].'/LNDSistemas-F'.$model->numero.'.pdf';
+
+        Yii::$app->html2pdf
+            ->convert($conteudoPDF)
+            ->saveAs($path);
+
+        if (!$retorno) {
+            return $path;
+        }
+
+        if (is_file($path)) {
+
+            // Set up PDF headers
+            header('Content-type: application/pdf');
+            header('Content-Disposition: inline; filename="'.'/LNDSistemas-F'.$model->numero.'.pdf'.'"');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Length: '.filesize($path));
+            header('Accept-Ranges: bytes');
+
+            // Retorna arquivo PDF
+            return readfile($path);
+        } else {
+            // Retorna arquivo PHP
+            return $conteudoPDF;
+        }
+
+        return $this->render('print2',
                 [
                 'model' => $model,
         ]);

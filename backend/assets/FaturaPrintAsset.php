@@ -12,7 +12,11 @@ class FaturaPrintAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-    		'css/fatura.css'
+                'css/bootstrap.css',
+                'css/fontawesome',
+                'css/ionicons.css',
+    		'css/AdminLTE.css',
+                'css/print.css',
     ];
     public $js = [
     ];

@@ -11,7 +11,7 @@ use yii\helpers\Html;
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="login-page">
+<body>
 
 <?php $this->beginBody() ?>
 

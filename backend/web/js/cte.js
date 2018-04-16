@@ -976,6 +976,21 @@ $(document).ready(function () {
         }
     });
     
+    function docant() {
+        var tpserv = $("#cte-tpserv").val();
+        if (tpserv == '0') {
+            $("#docant").hide("slow");
+        } else {
+            $("#docant").show("slow");
+        }
+    }
+    
+    $("#cte-tpserv").on("change", function() {
+        docant();
+    });
+    
+    docant();   
+    
     // Submit
     /*
      $("#submitCreate, #submitUpdate").click(function(e){

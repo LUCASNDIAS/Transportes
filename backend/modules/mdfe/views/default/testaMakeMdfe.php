@@ -19,8 +19,8 @@ use NFePHP\MDFe\Tools;
 $mdfe = new Make();
 $mdfeTools = new Tools(Yii::getAlias('@sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$dhEmi = '2018-03-06T17:50:00-02:00';
-$numeroMDFe = 114; //rand(0,3345678);
+$dhEmi = '2018-03-28T19:02:00-02:00';
+$numeroMDFe = 120; //rand(0,3345678);
 
 $cUF = '31';
 $ano = '18';
@@ -53,19 +53,19 @@ $resp = $mdfe->tagide(
         $tpEmis,
         $procEmi = '0',
         $verProc = '2.0',
-        $ufIni = 'MG',
-        $ufFim = 'PE',
+        $ufIni = 'SP',
+        $ufFim = 'RJ',
         $dhIniViagem = ''
     );
 
 $resp = $mdfe->tagInfMunCarrega(
-    $cMunCarrega = '3144805',
-    $xMunCarrega = 'NOVA LIMA'
+    $cMunCarrega = '3509205',
+    $xMunCarrega = 'CAJAMAR'
 );
 
-$resp = $mdfe->tagInfPercurso($ufPer = 'BA');
-$resp = $mdfe->tagInfPercurso($ufPer = 'SE');
-$resp = $mdfe->tagInfPercurso($ufPer = 'AL');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'SP');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'SE');
+//$resp = $mdfe->tagInfPercurso($ufPer = 'AL');
 
 
 $resp = $mdfe->tagemit(
@@ -88,23 +88,29 @@ $resp = $mdfe->tagenderEmit(
         $email = 'loggica@hotmail.com'
     );
 
+//$resp = $mdfe->tagInfMunDescarga(
+//        $nItem = 0,
+//        $cMunDescarga = '3170107',
+//        $xMunDescarga = 'UBERABA'
+//    );
+
 $resp = $mdfe->tagInfMunDescarga(
         $nItem = 0,
-        $cMunDescarga = '2611606',
-        $xMunDescarga = 'RECIFE'
-    );
-
-$resp = $mdfe->tagInfCTe(
-        $nItem = 0,
-        $chCTe = '31180309204054000143570010000024211098357835',
-        $segCodBarra = ''
+        $cMunDescarga = '3304557',
+        $xMunDescarga = 'RIO DE JANEIRO'
     );
 
 //$resp = $mdfe->tagInfCTe(
 //        $nItem = 0,
-//        $chCTe = '31180109204054000143570010000022281098357838',
+//        $chCTe = '31180309204054000143570010000026091098357831',
 //        $segCodBarra = ''
 //    );
+
+$resp = $mdfe->tagInfCTe(
+        $nItem = 0,
+        $chCTe = '31180309204054000143570010000026241098357838',
+        $segCodBarra = ''
+    );
 
 $resp = $mdfe->tagSeg(
         $nApol = '5400005280',
@@ -142,9 +148,9 @@ $resp = $mdfe->tagTot(
         $qCTe = '1',
         $qNFe = '',
         $qMDFe = '',
-        $vCarga = '300000.00',
+        $vCarga = '396000.00',
         $cUnid = '01',
-        $qCarga = '440.0000'
+        $qCarga = '500.0000'
     );
 
 $resp = $mdfe->tagautXML(
@@ -153,7 +159,7 @@ $resp = $mdfe->tagautXML(
     );
 
 $resp = $mdfe->taginfAdic(
-        $infAdFisco = 'Entrega em Patos de Minas',
+        $infAdFisco = 'Sem detalhes',
         $infCpl = 'Sem detalhes'
     );
 
@@ -165,19 +171,19 @@ $resp = $mdfe->tagRodo(
 
 $resp = $mdfe->tagInfContratante(
         $CPF = '',
-        $CNPJ = '71256283000185'
+        $CNPJ = '06028137000211'
     );
 
 $resp = $mdfe->tagCondutor(
-        $xNome = 'EDER JOÃO ALVES DE SIQUEIRA',
-        $cpf = '98005782691'
+        $xNome = 'RALF SANTOS GUILGER',
+        $cpf = '33317660899'
     );
 
 $resp = $mdfe->tagVeicTracao(
         $cInt = '', // Código Interno do Veículo
-        $placa = 'OWZ7777', // Placa do veículo
+        $placa = 'PZE7777', // Placa do veículo
         $tara = '10000',
-        $capKG = '500',
+        $capKG = '1500',
         $capM3 = '60',
         $tpRod = '06',
         $tpCar = '02',

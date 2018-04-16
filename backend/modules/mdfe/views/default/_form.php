@@ -618,7 +618,7 @@ MdfeAsset::register($this);
                                 <?=
                                 $form->field($modelDocumentos, "[{$index}]tipo")->dropDownList([
                                     'CTE' => 'Conhecimento de Transporte (CTe)',
-                                    'NFE' => 'Nota Fiscal Eletrônica (NFe)',
+                                    //'NFE' => 'Nota Fiscal Eletrônica (NFe)',
                                     //'NF' => 'Nota Fiscal (NF mod 1 e A1)'
                                 ])
                                 ?>
@@ -643,13 +643,18 @@ MdfeAsset::register($this);
                             </div>
                             -->
 
-                            <div class="col-sm-8">
+                            <div class="col-sm-6">
                                 <?=
                                 $form->field($modelDocumentos, "[{$index}]chave")->textInput([
                                     'maxlength' => true,
                                     'readonly' => false,
                                 ])
                                 ?>
+                            </div>
+
+                            <div class="col-sm-2">
+                                    <?= Html::a('<i class="fa fa-search"></i> Buscar',
+        '#!', ['class' => 'btn btn-app buscar', 'id' => "buscar"]); ?>
                             </div>
 
                             <div class="col-sm-4">
@@ -670,6 +675,7 @@ MdfeAsset::register($this);
     <?=
     $form->field($modelDocumentos, "[{$index}]contratante")->textInput([
         'readonly' => true,
+        'class' => 'form-control contratante',
     ])
     ?>
                             </div>

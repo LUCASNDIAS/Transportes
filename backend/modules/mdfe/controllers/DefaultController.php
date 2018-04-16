@@ -21,6 +21,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use backend\modules\mdfe\models\MdfeGeral;
+use yii\web\Response;
 
 /**
  * DefaultController implements the CRUD actions for Mdfe model.
@@ -131,6 +133,7 @@ class DefaultController extends Controller
 //            $valid = Model::validateMultiple($modelsContatos) && $valid;
 //            $valid = Model::validateMultiple($modelsTabelas) && $valid;
 //
+//            return var_dump($model->errors);
             if ($valid) {
 
                 $transaction = \Yii::$app->db->beginTransaction();
@@ -405,104 +408,52 @@ class DefaultController extends Controller
 
     public function actionSend($id)
     {
-        $model       = $this->findModel($id);
-        $emitente    = Clientes::findOne(['cnpj' => Yii::$app->user->identity['cnpj']]);
-        $condutores  = Condutor::findAll(['mdfe_id' => $id]);
-        $munCarga    = Carregamento::findAll(['mdfe_id' => $id]);
-        $munDescarga = Descarregamento::findAll(['mdfe_id' => $id]);
-        $documentos  = Documentos::findAll(['mdfe_id' => $id]);
-        $munPercurso = Percurso::findAll(['mdfe_id' => $id]);
+        $model = $this->findModel($id);
 
-        return $this->render('enviaXML',
+        // Não acessa caso esteja cancelado
+//        if ($model->status === 'CANCELADO') {
+//            $msg = 'Não é possível transmitir CT-e já cancelado.';
+//            return $this->redirect(['index', 'msg' => $msg]);
+//        }
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+
+        // Arquivo Validado
+        $validado = Yii::getAlias('@mdfe/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/validadas/'.$model->chave.'-mdfe.xml';
+
+        return $this->render('send',
                 [
-                'model' => $model,
-                'munCarga' => $munCarga,
-                'munDescarga' => $munDescarga,
-                'munPercurso' => $munPercurso,
-                'condutores' => $condutores,
-                'documentos' => $documentos,
-                'emitente' => $emitente
+                'model' => $model
         ]);
     }
 
-    public function actionSenda()
+    public function actionCancel($id)
     {
-        return $this->render('enviaXML2');
-    }
+        $model = $this->findModel($id);
 
-    public function actionCte()
-    {
-        return $this->render('cte');
-    }
+//        // Somente acessa se estiver autorizado
+//        if ($model->status !== 'AUTORIZADO') {
+//            $msg = 'Não é possível cancelar CT-e com status "' . $model->status . '".';
+//            return $this->redirect(['index', 'msg' => $msg]);
+//        }
 
-    public function actionCteprot()
-    {
-        return $this->render('cteprot');
-    }
+        $formulario = Yii::$app->request->post();
 
-    /**
-     * Cria o arquivo PDF do MDFe
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionPrint($id, $retorno = true)
-    {
-        // Modelo do Manifesto
-        $model      = $this->findModel($id);
-        $condutores = Condutor::findAll(['mdfe_id' => $id]);
-
-        // Verifica se o Usuario atual eh dono do Manifesto
-        if ($model->dono != \Yii::$app->user->identity['cnpj']) {
-            $exception = 'Permissão negada.';
-            return $this->redirect('site/error');
+        if (!empty($formulario)) {
+            if ($formulario['motivo'] != '') {
+                $mdfeGeral = new MdfeGeral();
+                $retorno  = $mdfeGeral->sefazCancela($id, $formulario['motivo']);
+            }
         }
 
-        $this->layout = '@backend/views/layouts/print';
-
-        return $this->render('print',
+        return $this->render('cancel',
                 [
                 'model' => $model,
-                'condutores' => $condutores,
+                'retorno' => (isset($retorno)) ? $retorno : [],
+                'formulario' => $formulario
         ]);
-
-//        // Define o layout para impressão
-//        $this->layout = 'minutas-print';
-////
-//        $conteudoPDF = $this->render('print');
-////            'model' => $model,
-////            'empresa' => $empresa,
-////            'remetente' => $remetente,
-////            'destinatario' => $destinatario,
-////            'consignatario' => $consignatario,
-////            'tabela' => $tabela,
-////        ]);
-////
-//        // Local para se salvar as Minutas em PDF
-//        $path = 'pdfs/LNDSistemas-Mdfe' . $model->numero . '.pdf';
-////
-//        Yii::$app->html2pdf
-//                ->convert($conteudoPDF)
-//                ->saveAs($path);
-//
-//        if (!$retorno) {
-//            return $path;
-//        }
-//
-//        if (is_file($path)) {
-//
-//            // Set up PDF headers
-//            header('Content-type: application/pdf');
-//            header('Content-Disposition: inline; filename="' . '/LNDSistemas-M' . $model->numero . '.pdf' . '"');
-//            header('Content-Transfer-Encoding: binary');
-//            header('Content-Length: ' . filesize($path));
-//            header('Accept-Ranges: bytes');
-//
-//            // Retorna arquivo PDF
-//            return readfile($path);
-//        } else {
-//            // Retorna arquivo PHP
-//            return $conteudoPDF;
-//        }
     }
 
     /**
@@ -554,83 +505,9 @@ class DefaultController extends Controller
         return $last;
     }
 
-    public function actionStatus()
-    {
-        return $this->render('status');
-    }
-
-    public function actionValida()
-    {
-        return $this->render('valida');
-    }
-
-    public function actionCriarxml()
-    {
-        return $this->render('criarxml');
-    }
-
-    public function actionEncerrar()
-    {
-        return $this->render('encerrar');
-    }
-
-    public function actionConsultachave()
-    {
-        return $this->render('consultachave');
-    }
-
-    public function actionCancel()
-    {
-        return $this->render('cancelar');
-    }
-
-    public function actionPrepara($id)
-    {
-        $model     = $this->findModel($id);
-        $modelXml  = new \backend\modules\mdfe\models\MontaXml;
-        $assinado  = $modelXml->montarXml($id);
-        $xAmbiente = ($model->ambiente == 1) ? 'producao' : 'homologacao';
-        $novo      = \Yii::getAlias('@mdfe').'/'.$xAmbiente.'/validadas/'.$model->chave.'-mdfe.xml';
-
-        if (is_file($assinado)) {
-            $valida = $modelXml->validaXml($assinado);
-            if (!is_array($valida)) {
-                rename($assinado, $novo);
-                return [
-                    'status' => 'OK',
-                    'xml' => $novo
-                ];
-            } else {
-                return ['status' => 'ERRO', 'ERROS' => $valida];
-            }
-        }
-    }
-
-    public function actionEnvia($id, $xml)
-    {
-        $model      = $this->findModel($id);
-        $tpAmb      = $model->ambiente;
-        $modelEnvia = new \backend\modules\mdfe\models\MontaXml();
-        $envia      = $modelEnvia->enviaXml($xml, $tpAmb);
-
-        var_dump($envia);
-    }
-
-    public function actionVai($id)
-    {
-        $prepara = $this->actionPrepara($id);
-
-        if ($prepara['status'] == 'OK') {
-            $retorno = $this->actionEnvia($id, $prepara['xml']);
-            var_dump($retorno);
-        } else {
-            var_dump($prepara);
-        }
-    }
-
     public function actionXml($id)
     {
-        $gerar = new \backend\modules\mdfe\models\MdfeGeral();
+        $gerar = new MdfeGeral();
         echo '<pre>';
         var_dump($gerar->gerarXml($id));
     }
@@ -638,5 +515,153 @@ class DefaultController extends Controller
     public function actionTestamdfe()
     {
         return $this->render('testaMakeMdfe');
+    }
+
+    public function actionEncerrar($id)
+    {
+        $model = $this->findModel($id);
+
+        $modelMunicipios = new Municipios();
+        $municipios      = $modelMunicipios->autoComplete();
+        $ufs             = $modelMunicipios->listarUFCod();
+
+        $formulario = Yii::$app->request->post();
+
+        if (!empty($formulario)) {
+            if ($formulario['cMun'] != '' && $formulario['cUF'] != '') {
+                $mdfeGeral = new MdfeGeral();
+                $retorno  = $mdfeGeral->sefazEncerra($id, $formulario['cUF'], $formulario['cMun']);
+            }
+        }
+
+        return $this->render('encerrar',
+                [
+                'model' => $model,
+                'retorno' => (isset($retorno)) ? $retorno : [],
+                'formulario' => $formulario,
+                'ufs' => $ufs,
+                'municipios' => $municipios
+        ]);
+
+    }
+
+    public function actionConsultaEncerrados()
+    {
+        $mdfeTools = new Tools(Yii::getAlias('@sped/').'config/'.Yii::$app->user->identity['cnpj'].'.json');
+        $aRetorno = array();
+        $encerra = $mdfeTools->sefazConsultaNaoEncerrados('2', Yii::$app->user->identity['cnpj'], $aRetorno);
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $aRetorno;
+
+    }
+
+    public function actionGerarXml($id)
+    {
+        $model    = $this->findModel($id);
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->gerarXml($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionAssinarXml($id)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->assinarXml($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionValidarXml($id)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->validarXml($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionEnviarXml($id)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->enviarXml($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionReciboXml($id, $recibo)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->reciboXml($id, $recibo);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionProtocoloXml($id, $recibo)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->protocoloXml($id, $recibo);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionGerarPdf($id)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->gerarPdf($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    public function actionPrint($id)
+    {
+        $this->actionGerarPdf($id);
+
+        $model = $this->findModel($id);
+
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $url1 = str_replace('Transportes/backend/web', '', Yii::getAlias('@web'));
+        //$url1 = 'http://geradorfiscal.com.br/';
+
+        $url = $url1.'sped/mdfe'.DIRECTORY_SEPARATOR.Yii::$app->user->identity['cnpj'].
+            DIRECTORY_SEPARATOR.$pamb.DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.
+            $model->chave.'-mdfe.pdf';
+
+//        return var_dump($url);
+
+        return $this->redirect($url);
+    }
+
+    public function actionConsultaChave($id)
+    {
+        $mdfeGeral = new MdfeGeral();
+
+        $retorno = $mdfeGeral->consultaChave($id);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
     }
 }

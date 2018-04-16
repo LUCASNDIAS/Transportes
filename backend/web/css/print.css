@@ -1,0 +1,23 @@
+/* CSS Document */
+
+.celular{padding: 10px 10px 10px 60px;position:relative}
+.celular:before {
+    background: url(../img/celular-normal.svg) no-repeat;
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin: 0 0 0 -50px;
+}
+.celular.ci:after {
+    background: url(../img/i.svg) 1px -235px no-repeat rgba(232, 32, 23, 0.5);
+    content: "";
+    width: 22px;
+    height: 30px;
+    position: absolute;
+    top: 13px;
+    left: 19px;
+}
+.celular.ci dt {
+    color:#e82017;
+}

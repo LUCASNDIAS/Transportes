@@ -95,6 +95,9 @@ class MdfeSearch extends Mdfe
             ->andFilterWhere(['like', 'infcontribuinte', $this->infcontribuinte])
             ->andFilterWhere(['like', 'status', $this->status]);
 
+        $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']]);
+        $query->andFilterWhere(['!=', 'status', 'DELETADO']);
+
         $query->orderBy('numero DESC');
 
         return $dataProvider;

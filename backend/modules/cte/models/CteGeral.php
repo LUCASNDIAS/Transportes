@@ -7,7 +7,8 @@ use backend\modules\clientes\models\Clientes;
 use backend\modules\cte\models\CteProtocolo;
 use NFePHP\CTe\Make;
 use NFePHP\CTe\Tools;
-use NFePHP\DA\CTe\DacteV3 as Dacte;
+//use NFePHP\DA\CTe\DacteV3 as Dacte;
+use backend\modules\cte\models\Dacte;
 use backend\models\Municipios;
 use NFePHP\Mail\Mail;
 use stdClass;
@@ -439,6 +440,19 @@ class CteGeral
             }
         }
 
+        if ($model->tpserv != '0') {
+            // Grupo de informações do Documento anterior
+            $resp = $cte->docAntTag();
+
+            $resp = $cte->emiDocAntTag($model->cteDocants[0]->cnpj, '', $model->cteDocants[0]->cnpj0->ie, $model->cteDocants[0]->cnpj0->enduf, $model->cteDocants[0]->cnpj0->nome);
+//            $resp = $cte->emiDocAntTag('', '09835783624', 'ISENTO', 'MG', 'LUCAS DIAS');
+
+            $resp = $cte->idDocAntTag();
+
+            $resp = $cte->idDocAntEleTag($model->cteDocants[0]->chave);
+            
+        }
+
         // Informações do Modal
         $resp        = $cte->infModalTag($versaoModal = '3.00');
 
@@ -762,7 +776,7 @@ class CteGeral
         $config     = json_decode($configData, true);
         $logo       = $config['aDocFormat']['pathLogoFile'];
 
-        $dacte = new Dacte($xmlfile, 'P', 'A4', $logo);
+        $dacte = new Dacte($xmlfile, 'P', 'A4', $logo, $id);
         $id    = $dacte->montaDACTE();
         $salva = $dacte->printDACTE($pdf, 'F');
 
@@ -882,8 +896,8 @@ class CteGeral
             file_put_contents($cancelado, $add);
         }
 
-        //return $aRetorno;
-        return htmlspecialchars($cteTools->soapDebug);
+        return $aRetorno;
+        //return htmlspecialchars($cteTools->soapDebug);
     }
 
     public function enviaEmail($id)

@@ -23,6 +23,7 @@ use backend\modules\cte\models\CteMotorista;
 use backend\modules\cte\models\CteQtag;
 use backend\modules\cte\models\CteComponentes as Componentes;
 use backend\modules\cte\models\CteGeral;
+use backend\modules\cte\models\CteDocant;
 use NFePHP\CTe\Make;
 use NFePHP\CTe\Tools;
 use backend\models\EnviaEmail;
@@ -112,6 +113,7 @@ class DefaultController extends Controller
         $modelCteVeiculo   = new CteVeiculo();
         $modelFuncionarios = new Funcionarios();
         $modelCteMotorista = new CteMotorista();
+        $modelCteDocant    = new CteDocant();
 
         $basico = new Basicos();
 
@@ -129,6 +131,7 @@ class DefaultController extends Controller
 
             $modelCteMotorista->load(Yii::$app->request->post());
             $modelCteVeiculo->load(Yii::$app->request->post());
+            $modelCteDocant->load(Yii::$app->request->post());
 
             $modelsDocumentos = Model::createMultiple(Documentos::classname());
             Model::loadMultiple($modelsDocumentos, Yii::$app->request->post());
@@ -174,6 +177,12 @@ class DefaultController extends Controller
                         $modelCteVeiculo->cte_id = $last_id;
                         if ($modelCteVeiculo->placa != '') {
                             $modelCteVeiculo->save(false);
+                        }
+
+                        // Verifica se é redespacho ou subcontratado
+                        $modelCteDocant->cte_id = $last_id;
+                        if ($model->tpserv != '0') {
+                            $modelCteDocant->save(false);
                         }
 
                         $qcarga = [
@@ -261,6 +270,7 @@ class DefaultController extends Controller
                     : $modelsComponentes,
                 'veiculos' => $veiculos,
                 'motoristas' => $motoristas,
+                'modelCteDocant' => $modelCteDocant
         ]);
     }
 
@@ -305,6 +315,8 @@ class DefaultController extends Controller
         $modelFuncionarios = new Funcionarios();
         $modelCteMotorista = (!empty($model->cteMotoristas)) ? $model->cteMotoristas
                 : new CteMotorista();
+        $modelCteDocant = (!empty($model->cteDocants)) ? $model->cteDocants[0]
+                : new CteDocant();
 
         $autocomplete = new Clientes;
         $data         = $autocomplete->autoComplete();
@@ -357,9 +369,11 @@ class DefaultController extends Controller
 
             $modelCteMotorista = new CteMotorista();
             $modelCteVeiculo   = new CteVeiculo();
+//            $modelCteDocant   = new CteDocant();
 
             $modelCteMotorista->load(Yii::$app->request->post());
             $modelCteVeiculo->load(Yii::$app->request->post());
+            $modelCteDocant->load(Yii::$app->request->post());
 //
 //            $modelsDocumentos = Model::createMultiple(Documentos::classname());
 //            Model::loadMultiple($modelsDocumentos, Yii::$app->request->post());
@@ -418,6 +432,12 @@ class DefaultController extends Controller
                         $modelCteVeiculo->cte_id = $last_id;
                         if ($modelCteVeiculo->placa != '') {
                             $modelCteVeiculo->save(false);
+                        }
+
+                        // Verifica se é redespacho ou subcontratado
+                        $modelCteDocant->cte_id = $last_id;
+                        if ($model->tpserv != '0') {
+                            $modelCteDocant->save(false);
                         }
 
                         $qcarga = [
@@ -507,6 +527,7 @@ class DefaultController extends Controller
                     : $modelsComponentes,
                 'veiculos' => $veiculos,
                 'motoristas' => $motoristas,
+                'modelCteDocant' => $modelCteDocant,
         ]);
     }
 
@@ -724,7 +745,6 @@ class DefaultController extends Controller
             }
         }
 
-
         return $this->render('cancel',
                 [
                 'model' => $model,
@@ -773,7 +793,7 @@ class DefaultController extends Controller
             // Anexos
             $pdf = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/pdf/'.$model->chave.'-cte.pdf';
 
-            $pasta = ($model->status == 'AUTORIZADO') ? '/enviadas/aprovadas/' : '/canceladas/';
+            $pasta = ($model->status == 'AUTORIZADO' || $model->status == 'ENTREGUE') ? '/enviadas/aprovadas/' : '/canceladas/';
 
             $xml = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.$pasta.$model->chave.'-cte.xml';
 
@@ -795,12 +815,35 @@ class DefaultController extends Controller
                 $dados['numero']        = $model->numero;
 
                 $EnviaEmail = new EnviaEmail();
-                $Envia      = $EnviaEmail->enviarCte($EmailDestinatario, $titulo,
-                    $pdf, $xml, $dados);
+                $Envia      = $EnviaEmail->enviarCte($EmailDestinatario,
+                    $titulo, $pdf, $xml, $dados);
 
                 return $Envia;
             }
         }
+    }
+
+    public function actionBaixar($id)
+    {
+        $model = $this->findModel($id);
+        $basico = new Basicos();
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->status   = ($model->ent_data == '') ? $model->status : 'ENTREGUE';
+            $model->ent_data = $basico->formataData('db', $model->ent_data);
+
+            $model->save();
+
+            $this->redirect('index');
+        } else {
+            $model->ent_data = $basico->formataData('form', $model->ent_data);
+        }
+
+        return $this->render('baixar',
+                [
+                'model' => $model,
+        ]);
     }
 
     protected function montaChave($numero, $tpEmis)

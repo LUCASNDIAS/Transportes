@@ -5,21 +5,36 @@
 
 $(document).ready(function () {
 
-    function getContratante(chave)
+    function getContratante(chave, i)
     {
         // Cria o select com os municipios do cliente
         $.get("/Transportes/backend/web/ajax/seleciona-contratante", {chave: chave})
                 .done(function (data) {
-                    
-                    console.log(data);
 
                     $.each(data, function (key, value) {
 
-                        var valor = value.tomador;
+                        var contratante = '#mdfedocumentos-' + i + '-contratante';
+                        var peso = '#mdfedocumentos-' + i + '-peso';
+                        var valor = '#mdfedocumentos-' + i + '-valor';
+                        var chave = '#mdfedocumentos-' + i + '-chave';
 
-                        $("#mdfe-contratante").val(valor);
+                        var pesoreal = value.pesoreal;
+                        var pesocubado = value.pesocubado;
+
+                        var maior = (pesoreal > pesocubado) ? pesoreal : pesocubado;
+
+                        $(contratante).val(value.contratante);
+                        $(chave).val(value.chave);
+                        $(peso).val(maior);
+                        $(valor).val(value.valor);
+
+                        if (value.erro == 1) {
+                            alert("CT-e não localizado. Confira o número / chave de acesso.");
+                        }
 
                     });
+                    
+                    calculoGeral();
 
                 });
     }
@@ -87,6 +102,14 @@ $(document).ready(function () {
             jQuery(this).html("Documento: " + (index + 1));
             var novoValor = index + 1;
             $("#mdfe-qtdecte").val(novoValor);
+            $('a[id^="buscar"').on('click', function () {
+                var atual = $(this).attr("id");
+                var i = atual.replace("buscar", "");
+                i = (i == "") ? '0' : i;
+                var chave = $("#mdfedocumentos-" + i + "-chave").val();
+                getContratante(chave, i);
+            });
+            calculoGeral();
 //            var np = $('#mdfedocumentos-' + index + '-chave').val();
 //            $.get("/Transportes/backend/web/ajax/seleciona-cte", function (data) {
 //                var cte = $.parseJSON(data);
@@ -98,12 +121,15 @@ $(document).ready(function () {
 //            });
         });
     });
-    
-    $('#mdfedocumentos-0-chave').on('blur', function(){
-        var chave = $(this).val();
-        getContratante(chave);
+
+    $('a[id^="buscar"').on('click', function () {
+        var atual = $(this).attr("id");
+        var i = atual.replace("buscar", "");
+        i = (i == "") ? '0' : i;
+        var chave = $("#mdfedocumentos-" + i + "-chave").val();
+        getContratante(chave, i);
     });
-    
+
     $("#mdfe-ufcarga").on('change', function () {
         var filtro = $(this).val();
         $.get("/Transportes/backend/web/ajax/municipios?filtro=" + filtro, function (data) {
@@ -178,6 +204,36 @@ $(document).ready(function () {
         precision: 2,
         allowZero: false
     });
+
+    // Função peso cubado
+    function calculoGeral() {
+
+        // Campos Reais
+        var realValor = 0;
+        var pesoreal = 0;
+
+        $(".contratante").each(function (i) {
+
+            // Variável com valor da Mercadoria
+            var valor = $("input[id='mdfedocumentos-" + i + "-valor']").val().replace(/[R$ ]/g, '');
+
+            // Variável de peso
+            var peso = $("input[id='mdfedocumentos-" + i + "-peso']").val();
+
+            // Soma do peso real
+            pesoreal += peso * 1;
+
+            // Valor da nota fiscal
+            realValor += valor * 1;
+
+        });
+
+//        alert('Real: ' + pesoreal + ' | Cubado: ' + cubado);
+
+        // Preenchimento dos campos reais
+        $("#mdfe-pesomercadoria").val(pesoreal.toFixed(2));
+        $("#mdfe-valormercadoria").val(realValor.toFixed(2));
+    }
 
 //    // Não precisa pois não faço validação no servidor
 //    // Submit

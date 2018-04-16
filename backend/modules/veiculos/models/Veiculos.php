@@ -43,7 +43,7 @@ class Veiculos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['marca', 'modelo', 'renavam', 'placa', 'tara', 'capkg', 'capm3', 'tpprop', 'tpveic_id', 'tprod_id', 'tpcar_id', 'uf'], 'required'],
+            [['marca', 'modelo', 'placa', 'tara', 'capkg', 'capm3', 'tpprop', 'tpveic_id', 'tprod_id', 'tpcar_id', 'uf'], 'required'],
             [['tpveic_id', 'tprod_id', 'tpcar_id'], 'integer'],
             [['marca'], 'string', 'max' => 20],
             [['modelo'], 'string', 'max' => 60],

@@ -131,6 +131,48 @@ CteAsset::register($this);
                     ?> <!-- Deixar como 2 (Outros) -->
                 </div>                
             </div>
+            <div class="row" id="docant">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="docant-nome">Emissor pesq.</label>
+                        <?=
+                        AutoComplete::widget([
+                            'name' => 'docant-nome',
+                            'id' => 'docant-nome',
+                            'clientOptions' => [
+                                'source' => Url::to(['/ajax/retorna-clientes']),
+                                'autoFill' => true,
+                                'minLength' => 4,
+                                'select' => new JsExpression("function( event, ui ) {
+                                                                         $('#ctedocant-cnpj').val(ui.item.cnpj); // Campo real do remetente
+                                                                         $('#ctedocant-cnpj').focus();
+                                                                         $('#ctedocant-cnpj').trigger('change');
+                                                                         $('#ctedocant-cnpj').focus();
+                                                                                }")
+                            ],
+                            'options' => [
+                                'class' => 'form-control'
+                            ],
+                        ]);
+                        ?>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <?=
+                    $form->field($modelCteDocant, 'cnpj')->textInput([
+                        'maxlength' => true,
+                        'readonly' => true])
+                    ?>
+                </div>
+                <div class="col-sm-5">
+                    <?=
+                    $form->field($modelCteDocant, 'chave')->textInput([
+                        'maxlength' => true
+                        ])
+                    ?>
+                </div>
+            </div>
             <div class="row" id="tpcte">
                 <div class="col-sm-12">
                     <?=

@@ -63,7 +63,7 @@ class MdfeDocumentos extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'mdfe_id' => Yii::t('app', 'Mdfe ID'),
             'tipo' => Yii::t('app', 'Tipo de Documento'),
-            'chave' => Yii::t('app', 'Chave de acesso'),
+            'chave' => Yii::t('app', 'Chave de acesso / Número do CT-e'),
             'emitente' => Yii::t('app', 'Emitente'),
             'numero' => Yii::t('app', 'Número'),
             'dtemissao' => Yii::t('app', 'Data Emissão'),

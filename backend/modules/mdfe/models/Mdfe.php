@@ -63,7 +63,7 @@ class Mdfe extends \yii\db\ActiveRecord
         return [
             [['dono', 'cridt', 'criusu', 'chave', 'modelo', 'serie', 'dtemissao', 'ambiente',
                 'uf', 'tipoemitente', 'modalidade', 'formaemissao', 'ufcarga', 'ufdescarga',
-                'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria','contratante'],
+                'placa', 'qtdecte', 'valormercadoria', 'unidademedida', 'pesomercadoria'],
                 'required'],
             [['cridt', 'dtemissao', 'dtinicio'], 'safe'],
             [['qtdecte', 'qtdenfe', 'qtdenf', 'numero'], 'integer'],
@@ -159,6 +159,14 @@ class Mdfe extends \yii\db\ActiveRecord
     public function getMdfePercursos()
     {
         return $this->hasMany(MdfePercurso::className(), ['mdfe_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMdfeProtocolos()
+    {
+        return $this->hasMany(MdfeProtocolo::className(), ['mdfe_id' => 'id']);
     }
 
     public function getLastId($tpAmb)

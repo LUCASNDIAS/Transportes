@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;&nbsp;{email}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{download}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
+                'template' => '{update}&nbsp;&nbsp;{baixar}&nbsp;&nbsp;{email}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{download}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
                 'buttons' => [
                     'print' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-print"></span>',
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a('<span class="glyphicon glyphicon-remove-circle"></span>',
                                 $url,
                                 [
-                                'title' => Yii::t('app', 'Cancelar Manifesto'),
+                                'title' => Yii::t('app', 'Cancelar CT-e'),
                         ]);
                     },
                     'email' => function ($url, $model) {
@@ -84,6 +84,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $url,
                                 [
                                 'title' => Yii::t('app', 'Enviar por email'),
+                                'target' => '_blank',
+                                'data-pjax' => '0'
+                        ]);
+                    },
+                    'baixar' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-ok-circle"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'Baixar CT-e'),
                                 'target' => '_blank',
                                 'data-pjax' => '0'
                         ]);

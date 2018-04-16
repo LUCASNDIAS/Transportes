@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
+                'template' => '{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{encerrar}&nbsp;&nbsp;{cancel}&nbsp;&nbsp;{delete}',
                 'buttons' => [
                     'print' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-print"></span>',
@@ -42,6 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $url,
                                 [
                                 'title' => Yii::t('app', 'Transmitir para SEFAZ'),
+                        ]);
+                    },
+                    'encerrar' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-saved"></span>',
+                                $url,
+                                [
+                                'title' => Yii::t('app', 'Encerrar Manifesto'),
                         ]);
                     },
                     'cancel' => function ($url, $model) {
@@ -80,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'pesomercadoria',
             // 'inffisco',
             // 'infcontribuinte',
-            // 'status',
+            'status',
 
             //['class' => 'yii\grid\ActionColumn'],
         ],

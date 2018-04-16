@@ -103,6 +103,23 @@ class Municipios extends \yii\db\ActiveRecord
         return \yii\helpers\ArrayHelper::map($data, 'id', 'uf');
     }
 
+    public function listarUFCod()
+    {
+
+        $exp = new \yii\db\Expression("SUBSTRING(codigo, 1, 2)");
+
+        $data = self::find()
+            ->select([
+                'id' => $exp,
+                'uf' => 'uf'])
+            ->distinct()
+            ->orderBy('uf')
+            ->asArray()
+            ->all();
+
+        return \yii\helpers\ArrayHelper::map($data, 'id', 'uf');
+    }
+
     /**
      * @inheritdoc
      * @return MunicipiosQuery the active query used by this AR class.

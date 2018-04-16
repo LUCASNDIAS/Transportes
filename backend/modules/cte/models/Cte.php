@@ -77,6 +77,10 @@ use backend\modules\clientes\models\Clientes;
  * @property int $notasvolumes
  * @property int $indietoma
  * @property int $globalizado
+ * @property int $ent_nome
+ * @property int $ent_rg
+ * @property int $ent_data
+ * @property int $ent_hora
  * @property string $status
  *
  * @property CteComponentes[] $cteComponentes
@@ -84,7 +88,8 @@ use backend\modules\clientes\models\Clientes;
  * @property CteProtocolo[] $cteProtocolos
  * @property CteQtag[] $cteQtags
  * @property CteVeiculo[] $cteVeiculos
- * @property CteVeiculo[] $cteMotoristas
+ * @property CteMotoristas[] $cteMotoristas
+ * @property CteDocants[] $cteDocants
  */
 class Cte extends \yii\db\ActiveRecord
 {
@@ -111,7 +116,7 @@ class Cte extends \yii\db\ActiveRecord
                 //'cst', 'predbc', 'vbc', 'picms', 'vicms', 'vbcstret',
                 //'vicmsret', 'picmsret', 'vcred', 'vtottrib', 'respseg',
                 'vcarga', 'rntrc', 'lota', 'tabela_id', 'indietoma','globalizado', 'status'], 'required'],
-            [['cridt', 'dtemissao', 'dhcont', 'dprev'], 'safe'],
+            [['cridt', 'dtemissao', 'dhcont', 'dprev', 'ent_data'], 'safe'],
             [['ambiente', 'forpag', 'tpemis', 'tpcte', 'tpserv', 'retira', 'toma',
                 'numero', 'globalizado',
                 'outrauf', 'respseg', 'lota', 'tabela_id', 'notasvolumes', 'indietoma'],
@@ -126,13 +131,14 @@ class Cte extends \yii\db\ActiveRecord
             [['serie'], 'string', 'max' => 3],
             [['cct'], 'string', 'max' => 8],
             [['cfop'], 'string', 'max' => 4],
+            [['ent_hora'], 'string', 'max' => 5],
             [['natop', 'xmunenv', 'xmunini', 'xmunfim', 'xdetretira', 'xjust', 'prodpred',
                 'xoutcat', 'xseg'], 'string', 'max' => 60],
             [['cmunenv', 'cmunini', 'cmunfim'], 'string', 'max' => 7],
             [['napol'], 'string', 'max' => 20],
             [['rntrc'], 'string', 'max' => 10],
-            [['status'], 'string', 'max' => 50],
-            [['xcaracad'], 'string', 'max' => 15],
+            [['status', 'ent_nome'], 'string', 'max' => 50],
+            [['xcaracad', 'ent_rg'], 'string', 'max' => 15],
             [['xcaracser'], 'string', 'max' => 30],
             [['xobs'], 'string', 'max' => 800],
             [['dprev'], 'match', 'pattern' => '/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})|([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]))$/'],
@@ -220,6 +226,10 @@ class Cte extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'indietoma' => Yii::t('app', 'Indicador IE - Tomador'),
             'globalizado' => Yii::t('app', 'Globalizado'),
+            'ent_nome' => Yii::t('app', 'Recebedor'),
+            'ent_rg' => Yii::t('app', 'RG'),
+            'ent_data' => Yii::t('app', 'Data'),
+            'ent_hora' => Yii::t('app', 'Hora'),
             'notaChave' => Yii::t('app', 'Nota fiscal'),
         ];
     }
@@ -322,6 +332,14 @@ class Cte extends \yii\db\ActiveRecord
         return $this->hasMany(CteMotorista::className(), ['cte_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCteDocants()
+    {
+        return $this->hasMany(CteDocant::className(), ['cte_id' => 'id']);
+    }
+
     public function getLastId($tpAmb)
     {
         $last = self::find()
@@ -352,12 +370,26 @@ class Cte extends \yii\db\ActiveRecord
     public function getContratante($chave)
     {
         $data = self::find()
-            ->select('tomador')
-            ->where(['chave' => $chave])
+            ->select([
+                'contratante' => 'tomador',
+                'valor' => 'vcarga',
+                'pesoreal' => 'pesoreal',
+                'pesocubado' => 'pesocubado',
+                'chave' => 'chave'
+                ])
+            ->where(['numero' => $chave])
+            ->andWhere([
+                'dono' => \Yii::$app->user->identity['cnpj'],
+                'status' => 'AUTORIZADO',
+                'ambiente' => 1
+                ])
+            ->orWhere(['chave' => $chave])
             ->asArray()
             ->all();
+
+        $erro = [['erro' => '1']];
         
-        return $data;
+        return (empty($data)) ? $erro : $data;
     }
 
     /**

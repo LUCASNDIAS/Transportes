@@ -6,40 +6,41 @@ body{
 }
 #pos_topo{
     display:block;
-    position:absolute;
+    position:fixed;
     top:5px;
     left:5px;
-    width:720px;
+    width:100%;
     height:80px;
     border:1px solid #000000;
 }
 #pos_lateral{
     background-image: url("../img/sistema/fundo.png");
-    position:absolute;
+    position:fixed;
     display:block;
     top:90px;
     left:5px;
-    width:150px;
+    width:120px;
     height:383px;
     border:1px solid #000;
     font-size:11px;
     font-weight:bold;
     text-align:center;
+    float: left;
 }
 #pos_img_logo{
-    position:absolute;
+    position:fixed;
     top: 5px;
     width:200;
 }
 #pos_dados_tdc{
-    position:absolute;
+    position:fixed;
     top:6px;
     left:180px;
     text-align:left;
 }
 #pos_num_minuta{
     display:block;
-    position:absolute;
+    position:fixed;
     right:-1px;
     top:-1px;
     width:140px;
@@ -47,8 +48,8 @@ body{
     border:1px solid #000000;
     text-align:center;
 }
-#pos_dados_gerais{
-    position:absolute;
+/*#pos_dados_gerais{
+    position:fixed;
     top:90px;
     left:159px;
     display:block;
@@ -57,9 +58,9 @@ body{
     border:1px solid #000;
     font-size:10px;
     font-weight:bold;
-}
-#pos_dados_comentario{
-    position:absolute;
+}*/
+/*#pos_dados_comentario{
+    position:fixed;
     top:135px;
     left:159px;
     display:block;
@@ -68,10 +69,10 @@ body{
     border:1px solid #000;
     font-size:10px;
     font-weight:bold;
-}
-#pos_banco{
-    position:absolute;
-    top:90px;
+}*/
+/*#pos_banco{
+    position:fixed;
+    top:30px;
     left:588px;
     display:block;
     border:1px solid #000;
@@ -80,9 +81,10 @@ body{
     width:137px;
     height:85px;
     text-align:center;
-}
+    float: right;
+}*/
 #pos_dados_sacado{
-    position:absolute;
+    position:fixed;
     display:block;
     top:180px;
     left:159px;
@@ -93,7 +95,7 @@ body{
     font-weight:bold;
 }
 #pos_valor_ext{
-    position:absolute;
+    position:fixed;
     display:inline-block;
     top:333px;
     left:159px;
@@ -105,7 +107,7 @@ body{
 }
 #pos_valor_ext_tit{
     background-color:#000000;
-    position:absolute;
+    position:fixed;
     float: left;
     display:block;
     top:333px;
@@ -119,7 +121,7 @@ body{
     color:#ffffff;
 }
 #pos_valor_ext_val{
-    position: absolute;
+    position: fixed;
     display:block;
     top:333px;
     left:261px;
@@ -131,7 +133,7 @@ body{
     text-align:left;
 }
 #pos_orientacao{
-    position:absolute;
+    position:fixed;
     display:block;
     top:379px;
     left:159px;
@@ -142,7 +144,7 @@ body{
     font-weight:bold;
 }
 #pos_assinatura{
-    position:absolute;
+    position:fixed;
     display:block;
     top:428px;
     left:159px;
@@ -153,7 +155,7 @@ body{
     font-weight:bold;
 }
 #pos_assinatura_data{
-    position:absolute;
+    position:fixed;
     display:block;
     top:428px;
     left:159px;
@@ -165,7 +167,7 @@ body{
     text-align:center;
 }
 #pos_assinatura_ass{
-    position:absolute;
+    position:fixed;
     display:block;
     top:428px;
     left:360px;
@@ -179,7 +181,7 @@ body{
 
 #pos_mot{
     display:block;
-    position:absolute;
+    position:fixed;
     top:600px;
     left:5px;
     width:720px;
@@ -190,7 +192,7 @@ body{
 
 #pos_tit{
     display:block;
-    position:absolute;
+    position:fixed;
     top:477px;
     left:5px;
     width:720px;
@@ -200,7 +202,7 @@ body{
 }
 #pos_dados{
     display:block;
-    position:absolute;
+    position:fixed;
     top:503px;
     left:5px;
     width:720px;

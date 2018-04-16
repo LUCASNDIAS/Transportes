@@ -23,7 +23,7 @@ $cte = new Make();
 
 $cteTools = new Tools(Yii::getAlias('@sped/') . 'config/' . Yii::$app->user->identity['cnpj'] . '.json');
 
-$chave = '31180309204054000143580010000001141098357839';
+$chave = '31180309204054000143580010000001201098357836';
 
 $filename = "/var/www/html/{$chave}-mdfe.xml";
 //

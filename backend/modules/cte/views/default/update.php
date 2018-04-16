@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'modelsComponentes' => $modelsComponentes,
         'veiculos' => $veiculos,
         'motoristas' => $motoristas,
+        'modelCteDocant' => $modelCteDocant
     ])
     ?>
 

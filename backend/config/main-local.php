@@ -107,6 +107,7 @@ $config = [
             'viewPath' => '@app/views',
             'converter' => [
                 'class' => 'yii2tech\html2pdf\converters\Mpdf',
+//                'class' => 'yii2tech\html2pdf\converters\Wkhtmltopdf',
                 'defaultOptions' => [
                     'pageSize' => 'A4'
                 ],
