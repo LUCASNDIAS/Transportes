@@ -6,9 +6,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=lndsi581_geral',
+            'dsn' => 'mysql:host=db;dbname=lndsi581_geral',
             'username' => 'root',
-            'password' => 'Cts@48bpm**',
+            'password' => 'tligwww15',
             'charset' => 'utf8',
         ],
         'i18n' => [
@@ -30,8 +30,8 @@ return [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => '',
-                'password' => '', //'llqyulcgidhezbgo*=',
+                'username' => 'lndsistemas.mail@gmail.com',
+                'password' => 'TligWww15*=', //'llqyulcgidhezbgo*=',
                 'port' => '587',
                 'encryption' => 'tls',
             ],

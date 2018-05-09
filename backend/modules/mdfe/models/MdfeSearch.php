@@ -97,6 +97,7 @@ class MdfeSearch extends Mdfe
 
         $query->andFilterWhere(['dono' => Yii::$app->user->identity['cnpj']]);
         $query->andFilterWhere(['!=', 'status', 'DELETADO']);
+        $query->andFilterWhere(['ambiente' => '1']);
 
         $query->orderBy('numero DESC');
 
