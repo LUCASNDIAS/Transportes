@@ -42,7 +42,7 @@ RelatoriosFormAsset::register($this);
             <div class="row">
                 <div class="col-sm-12">
                     <input type="radio" name='status' value='TODOS' checked="checked"> Todos
-                    <input type="radio" name='status' value='A VENDER'> A vencer
+                    <input type="radio" name='status' value='VENCER'> A vencer
                     <input type="radio" name='status' value='VENCIDO'> Vencido
                     <input type="radio" name='status' value='PAGO'> Pago/recebido
                 </div>
@@ -90,22 +90,22 @@ RelatoriosFormAsset::register($this);
                     </tr>
                 </thead>
                 <tbody id="resultados">
-                    <tr>
-                        <td><a href="pages/examples/invoice.html">Nome</a></td>
-                        <td>Descrição</td>
-                        <td>Vencimento</td>
-                        <td>Valor</td>
-                        <td><span class="label label-success">Status</span></td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td><a href="pages/examples/invoice.html">Nome</a></td>-->
+<!--                        <td>Descrição</td>-->
+<!--                        <td>Vencimento</td>-->
+<!--                        <td>Valor</td>-->
+<!--                        <td><span class="label label-success">Status</span></td>-->
+<!--                    </tr>-->
                 </tbody>
             </table>
         </div>
         <!-- /.table-responsive -->
     </div>
     <!-- /.box-body -->
-    <div class="box-footer clearfix" style="">
-        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-    </div>
+<!--    <div class="box-footer clearfix" style="">-->
+<!--        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>-->
+<!--        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>-->
+<!--    </div>-->
     <!-- /.box-footer -->
 </div>

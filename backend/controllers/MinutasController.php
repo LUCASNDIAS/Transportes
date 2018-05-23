@@ -194,7 +194,7 @@ class MinutasController extends Controller {
         ]);
 
         // Local para se salvar as Minutas em PDF
-        $path = 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $model->numero . '.pdf';
+        $path = Yii::getAlias('@webroot/') . 'pdfs/minutas/' . \Yii::$app->user->identity['cnpj'] . '/LNDSistemas-M' . $model->numero . '.pdf';
 
         Yii::$app->html2pdf
                 ->convert($conteudoPDF)

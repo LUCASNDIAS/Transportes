@@ -26,6 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         echo Html::a(Yii::t('app', 'Create Cte'), ['create'],
             ['class' => 'btn btn-success'])
         ?>
+        <?php
+        echo Html::a(Yii::t('app', 'Download XML'), ['downloads'],
+            ['class' => 'btn btn-primary'])
+        ?>
         <?=
         Html::a('<i class="fa fa-search"></i> Pesquisar', '#!',
             ['class' => 'btn btn-app', 'id' => 'btn-pesquisar']);

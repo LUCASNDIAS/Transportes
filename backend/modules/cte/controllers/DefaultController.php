@@ -2,6 +2,7 @@
 
 namespace backend\modules\cte\controllers;
 
+use backend\models\Downloads;
 use Yii;
 use backend\modules\cte\models\Cte;
 use backend\modules\cte\models\CteSearch;
@@ -71,18 +72,18 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel  = new CteSearch();
+        $searchModel = new CteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $autocomplete = new Clientes;
-        $data         = $autocomplete->autoComplete2();
+        $data = $autocomplete->autoComplete2();
 
         return $this->render('index',
-                [
+            [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
                 'data' => $data
-        ]);
+            ]);
     }
 
     /**
@@ -93,9 +94,9 @@ class DefaultController extends Controller
     public function actionView($id)
     {
         return $this->render('view',
-                [
+            [
                 'model' => $this->findModel($id),
-        ]);
+            ]);
     }
 
     /**
@@ -105,20 +106,20 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $model             = new Cte();
-        $modelsDocumentos  = [new Documentos];
+        $model = new Cte();
+        $modelsDocumentos = [new Documentos];
         $modelsComponentes = [new Componentes];
-        $modelsDimensoes   = [[new Dimensoes]];
-        $modelVeiculos     = new Veiculos();
-        $modelCteVeiculo   = new CteVeiculo();
+        $modelsDimensoes = [[new Dimensoes]];
+        $modelVeiculos = new Veiculos();
+        $modelCteVeiculo = new CteVeiculo();
         $modelFuncionarios = new Funcionarios();
         $modelCteMotorista = new CteMotorista();
-        $modelCteDocant    = new CteDocant();
+        $modelCteDocant = new CteDocant();
 
         $basico = new Basicos();
 
         $autocomplete = new Clientes;
-        $data         = $autocomplete->autoComplete();
+        $data = $autocomplete->autoComplete();
 
         $veiculos = $modelVeiculos->getVeiculos();
         $veiculos = \yii\helpers\ArrayHelper::map($veiculos, 'placa', 'modelo');
@@ -139,18 +140,18 @@ class DefaultController extends Controller
             $modelsComponentes = Model::createMultiple(Componentes::classname());
             Model::loadMultiple($modelsComponentes, Yii::$app->request->post());
 
-            $model->numero       = (empty($model->numero)) ? $this->getNumero($model->ambiente)
-                    : $model->numero;
-            $model->chave        = $this->montaChave($model->numero,
+            $model->numero = (empty($model->numero)) ? $this->getNumero($model->ambiente)
+                : $model->numero;
+            $model->chave = $this->montaChave($model->numero,
                 $model->tpemis);
-            $model->status       = 'SALVO';
-            $model->dhcont       = date("Y-m-d H:i:s");
-            $model->taxaextra    = ($model->taxaextra == '') ? 0.00 : $model->taxaextra;
-            $model->desconto     = ($model->desconto == '') ? 0.00 : $model->desconto;
-            $model->dprev        = $basico->formataData('db', $model->dprev);
+            $model->status = 'SALVO';
+            $model->dhcont = date("Y-m-d H:i:s");
+            $model->taxaextra = ($model->taxaextra == '') ? 0.00 : $model->taxaextra;
+            $model->desconto = ($model->desconto == '') ? 0.00 : $model->desconto;
+            $model->dprev = $basico->formataData('db', $model->dprev);
             $model->destinatario = ($model->destinatario == '') ? NULL : $model->destinatario;
-            $model->expedidor    = ($model->expedidor == '') ? NULL : $model->expedidor;
-            $model->recebedor    = ($model->recebedor == '') ? NULL : $model->recebedor;
+            $model->expedidor = ($model->expedidor == '') ? NULL : $model->expedidor;
+            $model->recebedor = ($model->recebedor == '') ? NULL : $model->recebedor;
 
             // validate all models
             $valid = $model->validate();
@@ -194,8 +195,8 @@ class DefaultController extends Controller
                             $modelCteQtag = new CteQtag();
 
                             $modelCteQtag->cte_id = $last_id;
-                            $modelCteQtag->cunid  = ($q == 'VOLUMES') ? '03' : '01';
-                            $modelCteQtag->tpmed  = $q;
+                            $modelCteQtag->cunid = ($q == 'VOLUMES') ? '03' : '01';
+                            $modelCteQtag->tpmed = $q;
                             $modelCteQtag->qcarga = $v;
 
                             $modelCteQtag->save(false);
@@ -203,7 +204,7 @@ class DefaultController extends Controller
 
                         foreach ($modelsDocumentos as $indexDocumentos => $modelDocumentos) {
                             $modelDocumentos->cte_id = $last_id;
-                            $modelDocumentos->demi   = date('Y-m-d');
+                            $modelDocumentos->demi = date('Y-m-d');
 
                             if (!($flag2 = $modelDocumentos->save(false))) {
                                 $transaction->rollBack();
@@ -217,11 +218,11 @@ class DefaultController extends Controller
                                 //$modelDimensoes->load($dataDim);
 
                                 $modelDimensoes->documento_id = $modelDocumentos->id;
-                                $modelDimensoes->altura       = $dimensoes['altura'];
-                                $modelDimensoes->largura      = $dimensoes['largura'];
-                                $modelDimensoes->comprimento  = $dimensoes['comprimento'];
-                                $modelDimensoes->volumes      = $dimensoes['volumes'];
-                                if (!($flag3                        = $modelDimensoes->save(false))) {
+                                $modelDimensoes->altura = $dimensoes['altura'];
+                                $modelDimensoes->largura = $dimensoes['largura'];
+                                $modelDimensoes->comprimento = $dimensoes['comprimento'];
+                                $modelDimensoes->volumes = $dimensoes['volumes'];
+                                if (!($flag3 = $modelDimensoes->save(false))) {
                                     $transaction->rollBack();
                                     break;
                                 }
@@ -257,7 +258,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('create',
-                [
+            [
                 'model' => $model,
                 'modelCteVeiculo' => $modelCteVeiculo,
                 'modelCteMotorista' => $modelCteMotorista,
@@ -271,7 +272,7 @@ class DefaultController extends Controller
                 'veiculos' => $veiculos,
                 'motoristas' => $motoristas,
                 'modelCteDocant' => $modelCteDocant
-        ]);
+            ]);
     }
 
     /**
@@ -286,40 +287,40 @@ class DefaultController extends Controller
 
         // Somente autoriza a edição se não estiver enviado
         if ($model->status !== 'SALVO') {
-            $msg = 'Não é possível editar CT-e com status "'.$model->status.'".';
+            $msg = 'Não é possível editar CT-e com status "' . $model->status . '".';
             return $this->redirect(['index', 'msg' => $msg]);
         }
 
-        $basico       = new Basicos();
+        $basico = new Basicos();
         $model->dprev = $basico->formataData('form', $model->dprev);
 
         $modelsDocumentos = $model->cteDocumentos;
-        $modelsDimensoes  = [];
-        $oldDimensoes     = [];
+        $modelsDimensoes = [];
+        $oldDimensoes = [];
 
         if (!empty($modelsDocumentos)) {
             foreach ($modelsDocumentos as $indexDocumentos => $modelDocumentos) {
-                $dimensoes                         = $modelDocumentos->cteDimensoes;
+                $dimensoes = $modelDocumentos->cteDimensoes;
                 $modelsDimensoes[$indexDocumentos] = $dimensoes;
-                $oldDimensoes                      = ArrayHelper::merge(ArrayHelper::index($dimensoes,
-                            'id'), $oldDimensoes);
-                $modelDocumentos->demi             = $basico->formataData('form',
+                $oldDimensoes = ArrayHelper::merge(ArrayHelper::index($dimensoes,
+                    'id'), $oldDimensoes);
+                $modelDocumentos->demi = $basico->formataData('form',
                     $modelDocumentos->demi);
             }
         }
 
         $modelsComponentes = $model->cteComponentes;
-        $modelVeiculos     = new Veiculos();
-        $modelCteVeiculo   = (!empty($model->cteVeiculos)) ? $model->cteVeiculos
-                : new CteVeiculo();
+        $modelVeiculos = new Veiculos();
+        $modelCteVeiculo = (!empty($model->cteVeiculos)) ? $model->cteVeiculos
+            : new CteVeiculo();
         $modelFuncionarios = new Funcionarios();
         $modelCteMotorista = (!empty($model->cteMotoristas)) ? $model->cteMotoristas
-                : new CteMotorista();
+            : new CteMotorista();
         $modelCteDocant = (!empty($model->cteDocants)) ? $model->cteDocants[0]
-                : new CteDocant();
+            : new CteDocant();
 
         $autocomplete = new Clientes;
-        $data         = $autocomplete->autoComplete();
+        $data = $autocomplete->autoComplete();
 
         $veiculos = $modelVeiculos->getVeiculos();
         $veiculos = \yii\helpers\ArrayHelper::map($veiculos, 'placa', 'modelo');
@@ -330,18 +331,18 @@ class DefaultController extends Controller
         // Parte que salva
         if ($model->load(Yii::$app->request->post())) {
 
-            $oldIDs            = ArrayHelper::map($modelsComponentes, 'id', 'id');
+            $oldIDs = ArrayHelper::map($modelsComponentes, 'id', 'id');
             $modelsComponentes = Model::createMultiple(Componentes::classname(),
-                    $modelsComponentes);
+                $modelsComponentes);
             Model::loadMultiple($modelsComponentes, Yii::$app->request->post());
-            $deletedIDs        = array_diff($oldIDs,
+            $deletedIDs = array_diff($oldIDs,
                 array_filter(ArrayHelper::map($modelsComponentes, 'id', 'id')));
 
-            $oldIDsdoc        = ArrayHelper::map($modelsDocumentos, 'id', 'id');
+            $oldIDsdoc = ArrayHelper::map($modelsDocumentos, 'id', 'id');
             $modelsDocumentos = Model::createMultiple(Documentos::classname(),
-                    $modelsDocumentos);
+                $modelsDocumentos);
             Model::loadMultiple($modelsDocumentos, Yii::$app->request->post());
-            $deletedIDsdoc    = array_diff($oldIDsdoc,
+            $deletedIDsdoc = array_diff($oldIDsdoc,
                 array_filter(ArrayHelper::map($modelsDocumentos, 'id', 'id')));
 
             $dimensoesIDs = [];
@@ -349,12 +350,12 @@ class DefaultController extends Controller
             if (isset($_POST['CteDimensoes'][0][0])) {
                 foreach ($_POST['CteDimensoes'] as $indexDocumentos => $dimensoes) {
                     $dimensoesIDs = ArrayHelper::merge($dimensoesIDs,
-                            array_filter(ArrayHelper::getColumn($dimensoes, 'id')));
+                        array_filter(ArrayHelper::getColumn($dimensoes, 'id')));
                     foreach ($dimensoes as $indexDimensao => $dimensao) {
-                        $data['CteDimensoes']                              = $dimensao;
-                        $modelDimensao                                     = (isset($dimensao['id'])
+                        $data['CteDimensoes'] = $dimensao;
+                        $modelDimensao = (isset($dimensao['id'])
                             && isset($oldDimensoes[$dimensao['id']])) ? $oldDimensoes[$dimensao['id']]
-                                : new Dimensoes;
+                            : new Dimensoes;
                         $modelDimensao->load($data);
                         $modelsDimensoes[$indexDocumentos][$indexDimensao] = $modelDimensao;
 //                        $valid = $modelDimensao->validate();
@@ -362,13 +363,13 @@ class DefaultController extends Controller
                 }
             }
 
-            $oldDimensoesIDs     = ArrayHelper::getColumn($oldDimensoes, 'id');
+            $oldDimensoesIDs = ArrayHelper::getColumn($oldDimensoes, 'id');
             $deletedDimensoesIDs = array_diff($oldDimensoesIDs, $dimensoesIDs);
 
             // Parte antiga de salvar quando se em create
 
             $modelCteMotorista = new CteMotorista();
-            $modelCteVeiculo   = new CteVeiculo();
+            $modelCteVeiculo = new CteVeiculo();
 //            $modelCteDocant   = new CteDocant();
 
             $modelCteMotorista->load(Yii::$app->request->post());
@@ -381,18 +382,18 @@ class DefaultController extends Controller
 //            $modelsComponentes = Model::createMultiple(Componentes::classname());
 //            Model::loadMultiple($modelsComponentes, Yii::$app->request->post());
 
-            $model->numero       = (empty($model->numero)) ? $this->getNumero($model->ambiente)
-                    : $model->numero;
-            $model->chave        = $this->montaChave($model->numero,
+            $model->numero = (empty($model->numero)) ? $this->getNumero($model->ambiente)
+                : $model->numero;
+            $model->chave = $this->montaChave($model->numero,
                 $model->tpemis);
-            $model->status       = 'SALVO';
+            $model->status = 'SALVO';
             //$model->dhcont    = date("Y-m-d H:i:s");
-            $model->taxaextra    = ($model->taxaextra == '') ? 0.00 : $model->taxaextra;
-            $model->desconto     = ($model->desconto == '') ? 0.00 : $model->desconto;
-            $model->dprev        = $basico->formataData('db', $model->dprev);
+            $model->taxaextra = ($model->taxaextra == '') ? 0.00 : $model->taxaextra;
+            $model->desconto = ($model->desconto == '') ? 0.00 : $model->desconto;
+            $model->dprev = $basico->formataData('db', $model->dprev);
             $model->destinatario = ($model->destinatario == '') ? NULL : $model->destinatario;
-            $model->expedidor    = ($model->expedidor == '') ? NULL : $model->expedidor;
-            $model->recebedor    = ($model->recebedor == '') ? NULL : $model->recebedor;
+            $model->expedidor = ($model->expedidor == '') ? NULL : $model->expedidor;
+            $model->recebedor = ($model->recebedor == '') ? NULL : $model->recebedor;
 
             // validate all models
             $valid = $model->validate();
@@ -449,8 +450,8 @@ class DefaultController extends Controller
                             $modelCteQtag = new CteQtag();
 
                             $modelCteQtag->cte_id = $last_id;
-                            $modelCteQtag->cunid  = ($q == 'VOLUMES') ? '03' : '01';
-                            $modelCteQtag->tpmed  = $q;
+                            $modelCteQtag->cunid = ($q == 'VOLUMES') ? '03' : '01';
+                            $modelCteQtag->tpmed = $q;
                             $modelCteQtag->qcarga = $v;
 
                             $modelCteQtag->save(false);
@@ -458,7 +459,7 @@ class DefaultController extends Controller
 
                         foreach ($modelsDocumentos as $indexDocumentos => $modelDocumentos) {
                             $modelDocumentos->cte_id = $last_id;
-                            $modelDocumentos->demi   = date('Y-m-d');
+                            $modelDocumentos->demi = date('Y-m-d');
 
                             if (!($flag2 = $modelDocumentos->save(false))) {
                                 $transaction->rollBack();
@@ -472,11 +473,11 @@ class DefaultController extends Controller
                                 //$modelDimensoes->load($dataDim);
 
                                 $modelDimensoes->documento_id = $modelDocumentos->id;
-                                $modelDimensoes->altura       = $dimensoes['altura'];
-                                $modelDimensoes->largura      = $dimensoes['largura'];
-                                $modelDimensoes->comprimento  = $dimensoes['comprimento'];
-                                $modelDimensoes->volumes      = $dimensoes['volumes'];
-                                if (!($flag3                        = $modelDimensoes->save(false))) {
+                                $modelDimensoes->altura = $dimensoes['altura'];
+                                $modelDimensoes->largura = $dimensoes['largura'];
+                                $modelDimensoes->comprimento = $dimensoes['comprimento'];
+                                $modelDimensoes->volumes = $dimensoes['volumes'];
+                                if (!($flag3 = $modelDimensoes->save(false))) {
                                     $transaction->rollBack();
                                     break;
                                 }
@@ -512,7 +513,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('update',
-                [
+            [
                 'model' => $model,
                 'modelCteVeiculo' => (empty($modelCteVeiculo)) ? $modelCteVeiculo
                     : new CteVeiculo(),
@@ -528,7 +529,7 @@ class DefaultController extends Controller
                 'veiculos' => $veiculos,
                 'motoristas' => $motoristas,
                 'modelCteDocant' => $modelCteDocant,
-        ]);
+            ]);
     }
 
     public function actionValidador()
@@ -547,7 +548,7 @@ class DefaultController extends Controller
         //$this->findModel($id)->delete();
         $model = $this->findModel($id);
 
-        $msg = "Registro com status \"".$model->status."\" não pode ser deletado.";
+        $msg = "Registro com status \"" . $model->status . "\" não pode ser deletado.";
 
         if ($model->status == 'SALVO') {
             $model->status = 'DELETADO';
@@ -561,7 +562,7 @@ class DefaultController extends Controller
 
     public function actionGerarXml($id)
     {
-        $model    = $this->findModel($id);
+        $model = $this->findModel($id);
         $cteGeral = new CteGeral();
 
         $retorno = $cteGeral->gerarXml($id);
@@ -649,9 +650,9 @@ class DefaultController extends Controller
         $url1 = str_replace('Transportes/backend/web', '', Yii::getAlias('@web'));
         //$url1 = 'http://geradorfiscal.com.br/';
 
-        $url = $url1.'sped/cte'.DIRECTORY_SEPARATOR.Yii::$app->user->identity['cnpj'].
-            DIRECTORY_SEPARATOR.$pamb.DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.
-            $model->chave.'-cte.pdf';
+        $url = $url1 . 'sped/cte' . DIRECTORY_SEPARATOR . Yii::$app->user->identity['cnpj'] .
+            DIRECTORY_SEPARATOR . $pamb . DIRECTORY_SEPARATOR . 'pdf' . DIRECTORY_SEPARATOR .
+            $model->chave . '-cte.pdf';
 
 //        return var_dump($url);
 
@@ -670,10 +671,10 @@ class DefaultController extends Controller
         $status = $model->status;
 
         // Arquivo Autorizado
-        $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+        $autorizado = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . '/enviadas/aprovadas/' . $model->chave . '-cte.xml';
 
         // Arquivo Cancelado
-        $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
+        $cancelado = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . '/canceladas/' . $model->chave . '-cte.xml';
 
         $xml = (is_file($cancelado)) ? $cancelado : $autorizado;
 
@@ -698,15 +699,15 @@ class DefaultController extends Controller
         // Verifica se é homologação ou produção
         $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
-        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+        $cteTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
 
         // Arquivo Validado
-        $validado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/validadas/'.$model->chave.'-cte.xml';
+        $validado = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . '/validadas/' . $model->chave . '-cte.xml';
 
         return $this->render('send',
-                [
+            [
                 'model' => $model
-        ]);
+            ]);
     }
 
     public function actionGetXml($id)
@@ -717,7 +718,7 @@ class DefaultController extends Controller
         $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
         // Arquivo Validado
-        $validado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/validadas/'.$model->chave.'-cte.xml';
+        $validado = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . '/validadas/' . $model->chave . '-cte.xml';
 
         $texto = file_get_contents($validado);
 
@@ -741,16 +742,16 @@ class DefaultController extends Controller
         if (!empty($formulario)) {
             if ($formulario['motivo'] != '') {
                 $cteGeral = new CteGeral();
-                $retorno  = $cteGeral->sefazCancela($id, $formulario['motivo']);
+                $retorno = $cteGeral->sefazCancela($id, $formulario['motivo']);
             }
         }
 
         return $this->render('cancel',
-                [
+            [
                 'model' => $model,
                 'retorno' => (isset($retorno)) ? $retorno : [],
                 'formulario' => $formulario
-        ]);
+            ]);
     }
 
     public function actionConsultaChave($id)
@@ -773,29 +774,29 @@ class DefaultController extends Controller
         if (!\Yii::$app->request->isAjax) {
 
             // Email dos envolvidos
-            $envolvidos    = new Clientes();
-            $remetente     = $envolvidos->getEmail($model->remetente);
-            $destinatario  = $envolvidos->getEmail($model->destinatario);
+            $envolvidos = new Clientes();
+            $remetente = $envolvidos->getEmail($model->remetente);
+            $destinatario = $envolvidos->getEmail($model->destinatario);
             $consignatario = $envolvidos->getEmail($model->tomador);
 
             return $this->render('email',
-                    [
+                [
                     'model' => $model,
                     'remetente' => $remetente,
                     'destinatario' => $destinatario,
                     'consignatario' => $consignatario
-            ]);
+                ]);
         } else {
 
             // Verifica se é homologação ou produção
             $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
 
             // Anexos
-            $pdf = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/pdf/'.$model->chave.'-cte.pdf';
+            $pdf = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . '/pdf/' . $model->chave . '-cte.pdf';
 
             $pasta = ($model->status == 'AUTORIZADO' || $model->status == 'ENTREGUE') ? '/enviadas/aprovadas/' : '/canceladas/';
 
-            $xml = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.$pasta.$model->chave.'-cte.xml';
+            $xml = Yii::getAlias('@cte/') . Yii::$app->user->identity['cnpj'] . '/' . $pamb . $pasta . $model->chave . '-cte.xml';
 
             // Verifica se o arquivo existe
             if (!is_file($pdf)) {
@@ -807,15 +808,15 @@ class DefaultController extends Controller
                     Yii::$app->request->get('emails'));
 
                 // Título do Email
-                $titulo = 'LND Sistemas | '.\Yii::$app->user->identity['empresa'].' - CTe '.$model->numero;
+                $titulo = 'LND Sistemas | ' . \Yii::$app->user->identity['empresa'] . ' - CTe ' . $model->numero;
 
-                $dados['remetente']     = $model->remetente;
-                $dados['destinatario']  = $model->destinatario;
+                $dados['remetente'] = $model->remetente;
+                $dados['destinatario'] = $model->destinatario;
                 $dados['consignatario'] = $model->tomador;
-                $dados['numero']        = $model->numero;
+                $dados['numero'] = $model->numero;
 
                 $EnviaEmail = new EnviaEmail();
-                $Envia      = $EnviaEmail->enviarCte($EmailDestinatario,
+                $Envia = $EnviaEmail->enviarCte($EmailDestinatario,
                     $titulo, $pdf, $xml, $dados);
 
                 return $Envia;
@@ -830,7 +831,7 @@ class DefaultController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            $model->status   = ($model->ent_data == '') ? $model->status : 'ENTREGUE';
+            $model->status = ($model->ent_data == '') ? $model->status : 'ENTREGUE';
             $model->ent_data = $basico->formataData('db', $model->ent_data);
 
             $model->save();
@@ -841,15 +842,44 @@ class DefaultController extends Controller
         }
 
         return $this->render('baixar',
-                [
+            [
                 'model' => $model,
+            ]);
+    }
+
+    public function actionDownloads()
+    {
+        if (!empty(Yii::$app->request->post())) {
+
+            $modelDownloads = new Downloads();
+
+            // Dados do formulário
+            $formulario = Yii::$app->request->post();
+
+            $files = $modelDownloads->aplicaFiltro($formulario);
+
+            $retorno = $modelDownloads->criarZip($files);
+
+            if (isset($retorno['erro'])) {
+                return $this->render('downloads', [
+                    'msg' => 'Nenhum CTe encontrado com os filtros selecionados.'
+                ]);
+            } else {
+                return \Yii::$app->response->sendFile($retorno);
+            }
+        }
+
+        return $this->render('downloads', [
+            'msg' => ''
         ]);
+
+        return $retorno;
     }
 
     protected function montaChave($numero, $tpEmis)
     {
         //$mdfeTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
-        $cte   = new Make();
+        $cte = new Make();
         $chave = $cte->montaChave('31', date('y'), date('m'),
             Yii::$app->user->identity['cnpj'], '57', '1', $numero, $tpEmis,
             '09835783');
@@ -859,7 +889,7 @@ class DefaultController extends Controller
     protected function getNumero($tpAmb)
     {
         $model = new Cte();
-        $last  = $model->getLastId($tpAmb);
+        $last = $model->getLastId($tpAmb);
 
         return $last;
     }
