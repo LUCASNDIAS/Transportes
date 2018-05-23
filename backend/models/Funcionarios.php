@@ -92,9 +92,9 @@ class Funcionarios extends \yii\db\ActiveRecord
         $basicos = new Basicos();
 
         if (parent::beforeSave($insert)) {
-            $this->datanascimento = $basicos->formataData('db',
+            $this->datanascimento = ($this->datanascimento == '') ? null : $basicos->formataData('db',
                 $this->datanascimento);
-            $this->cnhval         = $basicos->formataData('db', $this->cnhval);
+            $this->cnhval         = ($this->cnhval == '') ? null : $basicos->formataData('db', $this->cnhval);
             $this->email          = strtolower($this->email);
             return true;
         } else {

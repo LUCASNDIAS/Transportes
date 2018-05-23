@@ -8,12 +8,11 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\modules\clientes\models\ClientesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title                   = Yii::t('app', 'Clientes');
+$this->title = Yii::t('app', 'Clientes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="clientes-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -37,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Nome',
                 'format' => 'ntext',
                 'attribute' => 'nome',
-                'value' => function($model) {
+                'value' => function ($model) {
 //                    $nome = explode(' ', $model->nome);
                     $nome = substr($model->nome, 0, 25);
                     return $nome;
@@ -62,10 +61,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'endbairro',
             'endcid',
             'enduf',
-        // 'endcep',
-        // 'status',
+            // 'endcep',
+            // 'status',
         ],
     ]);
     ?>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>

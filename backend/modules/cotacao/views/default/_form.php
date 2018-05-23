@@ -50,12 +50,12 @@ $data = Clientes::find()
     <?php $form = ActiveForm::begin(['id' => 'cotacao-form']); ?>
 
 
-    <table class="table table-hover">
+    <table class="table table-hover hide">
         <tr>
             <td>Controle Interno</td>
         </tr>
     </table>
-    <table class="table table-hover">
+    <table class="table table-hover hide">
         <tr>
             <td><?= $form->field($model, 'cridt')->textInput(['readonly' => true, 'value' => ($model->isNewRecord) ? date('Y-m-d') : $model['cridt']]); ?></td>
             <td><?= $form->field($model, 'criusu')->textInput(['maxlength' => true, 'readonly' => true, 'value' => ($model->isNewRecord) ? Yii::$app->user->identity['apelido'] : $model['criusu']]); ?></td>

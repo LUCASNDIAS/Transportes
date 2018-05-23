@@ -24,7 +24,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-    	<?= Html::a('<b>LND</b> Sistemas',
+    	<?= Html::a('<b>Gerador</b> Fiscal',
                     Yii::$app->urlManagerFrontend->createUrl('site/index')) ?>
     </div>
     <!-- /.login-logo -->
@@ -63,15 +63,15 @@ $fieldOptions2 = [
             <div class="col-xs-6">
                 <?= Html::a(
                     'Esqueci a senha',
-                    ['/contato/senha'],
-                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                    Yii::$app->urlManagerFrontend->createUrl('/portal#contact'),
+                    ['data-method' => 'get', 'class' => 'btn btn-default btn-flat']
                 ) ?>
             </div>
             <div class="col-xs-6" style="text-align: right;">
                 <?= Html::a(
                     'Solicitar acesso',
-                    Yii::$app->urlManagerFrontend->createUrl('site/planos'),
-                    ['data-method' => 'post', 'class' => 'btn btn-success btn-flat']
+                    Yii::$app->urlManagerFrontend->createUrl('/portal#contact'),
+                    ['data-method' => 'get', 'class' => 'btn btn-success btn-flat']
                 ) ?>
             </div>
         </div>

@@ -1,23 +1,28 @@
 <?php
 
 $config = [
+    'modules' => [
+        'portal' => [
+            'class' => 'frontend\modules\portal\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'whXQGxklZstE8A7qpNbahbeZ9lPOAGPS',
         ],
-    		'urlManager' => [
-    				'class' => 'yii\web\UrlManager',
-    				'baseUrl' => '/Transportes/frontend/web',
-    				'enablePrettyUrl' => true,
-    				'showScriptName' => false,
-    		],
-    		'urlManagerBackend' => [
-    				'class' => 'yii\web\UrlManager',
-    				'baseUrl' => '/Transportes/backend/web',
-    				'enablePrettyUrl' => true,
-    				'showScriptName' => false,
-    		],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '/Transportes/frontend/web',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '/Transportes/backend/web',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
     ],
 ];
 

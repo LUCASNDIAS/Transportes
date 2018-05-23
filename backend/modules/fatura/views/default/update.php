@@ -16,8 +16,6 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="fatura-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?=
     $this->render('_form',
         [

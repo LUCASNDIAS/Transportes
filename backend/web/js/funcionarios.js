@@ -91,16 +91,16 @@ $(document).ready(function(){
             	var dados = '';
 
                 //Consulta o webservice viacep.com.br/
-            	//$.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-            	$.getJSON("//appservidor.com.br/webservice/cep?CEP="+ cep +"&saida=JSON&CALLBACK=alimenta_combobox", function(dados) {
+            	$.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+            	// $.getJSON("//appservidor.com.br/webservice/cep?CEP="+ cep +"&saida=JSON&CALLBACK=alimenta_combobox", function(dados) {
                 	
                     if (!("erro" in dados)) {
                     	
                         //Atualiza os campos com os valores da consulta.
-                        $("#funcionarios-endrua").val(dados.logradouro_completo);
+                        $("#funcionarios-endrua").val(dados.logradouro);
                         $("#funcionarios-endbairro").val(dados.bairro);
-                        $("#funcionarios-endcid").val(dados.cidade);
-                        $("#funcionarios-enduf").val(dados.uf_sigla);
+                        $("#funcionarios-endcid").val(dados.localidade);
+                        $("#funcionarios-enduf").val(dados.uf);
                         $("#funcionarios-endnro").focus();
                         //$("#ibge").val(dados.ibge);
                         

@@ -7708,3 +7708,2129 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1527033348.288
     'REQUEST_TIME' => 1527033348
 ]
+2018-05-23 01:06:59 [127.0.0.1][-][keqvfo81o02de6nlk34hai2bn3][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('view', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('gii/default/vie...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:06:59 [127.0.0.1][-][keqvfo81o02de6nlk34hai2bn3][info][application] $_GET = [
+    'id' => 'module'
+]
+
+$_POST = [
+    '_csrf' => 'N2ZBSGo1VXl.PyQXHWolAWckOzsgRgJUZTYAMFINF011DxYsPk8ePg=='
+    'Generator' => [
+        'moduleClass' => 'frontend\\modules\\portal\\Module'
+        'moduleID' => 'portal'
+        'template' => 'default'
+    ]
+    'preview' => ''
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'keqvfo81o02de6nlk34hai2bn3'
+    '_csrf' => '7ea675440c430cff20cb6dbd2d333996d85a0dc9106d4f16e1190489b58c0ff0a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ppNrcCdDgZqqiotaMy0C1AlEWWXjQ8_8\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'frmubic'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'lndsistemas.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://lndsistemas.com/Transportes/frontend/web/gii/module'
+    'HTTP_COOKIE' => 'PHPSESSID=keqvfo81o02de6nlk34hai2bn3; _csrf=7ea675440c430cff20cb6dbd2d333996d85a0dc9106d4f16e1190489b58c0ff0a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ppNrcCdDgZqqiotaMy0C1AlEWWXjQ8_8%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '202'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.com Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.com'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '52654'
+    'REDIRECT_URL' => '/Transportes/frontend/web/gii/module'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/gii/module'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527037619.603
+    'REQUEST_TIME' => 1527037619
+]
+2018-05-23 01:09:41 [127.0.0.1][-][keqvfo81o02de6nlk34hai2bn3][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('view', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('gii/default/vie...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:09:41 [127.0.0.1][-][keqvfo81o02de6nlk34hai2bn3][info][application] $_GET = [
+    'id' => 'module'
+]
+
+$_POST = [
+    '_csrf' => 'N2ZBSGo1VXl.PyQXHWolAWckOzsgRgJUZTYAMFINF011DxYsPk8ePg=='
+    'Generator' => [
+        'moduleClass' => 'frontend\\modules\\portal\\Module'
+        'moduleID' => 'portal'
+        'template' => 'default'
+    ]
+    'preview' => ''
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'keqvfo81o02de6nlk34hai2bn3'
+    '_csrf' => 'fb0eebd6c50d654dc2f023b41b639a6495b67d69dbb57c44361f13cde070c16ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"VAOfa146t9S9VcjoxGY6XWdx9XIRzBN4\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'frmubic'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'lndsistemas.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://lndsistemas.com/Transportes/frontend/web/gii/module'
+    'HTTP_COOKIE' => 'PHPSESSID=keqvfo81o02de6nlk34hai2bn3; _csrf=fb0eebd6c50d654dc2f023b41b639a6495b67d69dbb57c44361f13cde070c16ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22VAOfa146t9S9VcjoxGY6XWdx9XIRzBN4%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '202'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at lndsistemas.com Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'lndsistemas.com'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '52694'
+    'REDIRECT_URL' => '/Transportes/frontend/web/gii/module'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/gii/module'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527037781.71
+    'REQUEST_TIME' => 1527037781
+]
+2018-05-23 01:34:59 [127.0.0.1][-][-][error][ReflectionException] ReflectionException: Class vendor/jquery/jquery.min.js does not exist in /var/www/html/Transportes/vendor/yiisoft/yii2/di/Container.php:424
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/di/Container.php(424): ReflectionClass->__construct('vendor/jquery/j...')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/di/Container.php(364): yii\di\Container->getDependencies('vendor/jquery/j...')
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('vendor/jquery/j...', Array, Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('vendor/jquery/j...', Array, Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/web/AssetManager.php(266): yii\BaseYii::createObject(Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/web/AssetManager.php(239): yii\web\AssetManager->loadBundle('vendor/jquery/j...', Array, true)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/web/View.php(286): yii\web\AssetManager->getBundle('vendor/jquery/j...')
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/web/View.php(291): yii\web\View->registerAssetBundle('vendor/jquery/j...', NULL)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/web/AssetBundle.php(125): yii\web\View->registerAssetBundle('frontend\\assets...')
+#9 /var/www/html/Transportes/frontend/modules/portal/views/layouts/main.php(10): yii\web\AssetBundle::register(Object(yii\web\View))
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php(328): require('/var/www/html/T...')
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/var/www/html/T...', Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('/var/www/html/T...', Array, Object(frontend\modules\portal\controllers\DefaultController))
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<!-- Navigation...')
+#14 /var/www/html/Transportes/frontend/modules/portal/controllers/DefaultController.php(19): yii\base\Controller->render('index')
+#15 [internal function]: frontend\modules\portal\controllers\DefaultController->actionIndex()
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#18 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#19 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal', Array)
+#20 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#22 {main}
+2018-05-23 01:34:58 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'cd47dc10ebd83bb1c2ce6c9230601ec49c62f4b2fd993f1627e5e484b5f8d800a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_HsZlV9qOavVavS2xIorvEbZ0Z8BjMF4\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=cd47dc10ebd83bb1c2ce6c9230601ec49c62f4b2fd993f1627e5e484b5f8d800a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_HsZlV9qOavVavS2xIorvEbZ0Z8BjMF4%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '52996'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039298.994
+    'REQUEST_TIME' => 1527039298
+]
+2018-05-23 01:44:30 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/index". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/index', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:44:30 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'Smd0LWd2VGIYNEBVOE8tKRoyEGIxBzonKwI1WA4sJDoDBjhiFCwMEg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '2c33da1a937afb19cce2c4774f1dd8b4a0470f695ae0691ad1a2571098f61548a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RS4x_9yKPUdOVqnEaeAuiZpXIaLOsZXp\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=2c33da1a937afb19cce2c4774f1dd8b4a0470f695ae0691ad1a2571098f61548a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22RS4x_9yKPUdOVqnEaeAuiZpXIaLOsZXp%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53196'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/index'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039870.768
+    'REQUEST_TIME' => 1527039870
+]
+2018-05-23 01:44:42 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:44:42 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'SmxHRGNQZ1ogABIpMgEiFzwacz4XHCxpDw8MNhAKBWISHAssJxoUbw=='
+]
+
+$_COOKIE = [
+    '_csrf' => '7a7576476696fa792a3ed2dfb16556bba630c57d274f604841f2b8c75246d97ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"jlUmQQEMvv4ztLK3EcKrsZb8XpLhDJs5\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=7a7576476696fa792a3ed2dfb16556bba630c57d274f604841f2b8c75246d97ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22jlUmQQEMvv4ztLK3EcKrsZb8XpLhDJs5%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53198'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039882.607
+    'REQUEST_TIME' => 1527039882
+]
+2018-05-23 01:44:57 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:44:57 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'T0VoWUlXcTIQNV4sAgIpaA4HPAsjbwZXJDIOKyoDA0MscAAWe249Rg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '18cdaf1966f88c3470ca56451b2349e9bc1d7caf070f6d74f56a93875a8413bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_p6uKUXZABTRj8wekwfrcTrqc5hO29Lt\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=18cdaf1966f88c3470ca56451b2349e9bc1d7caf070f6d74f56a93875a8413bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_p6uKUXZABTRj8wekwfrcTrqc5hO29Lt%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53222'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/index'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039897.419
+    'REQUEST_TIME' => 1527039897
+]
+2018-05-23 01:45:15 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:45:14 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'NE05NFNGWDRFeWljHAwwf2IvUQVnADJXchpBeQMQKXtVNQF5A3NpcQ=='
+]
+
+$_COOKIE = [
+    '_csrf' => '0b5cf44f1fcc47f5f7e89cd8d2164da944db6afccef79b4ffc8ef09889d9ebc5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"q4PWOJhKVbh14FjcFWxMPVqOax8MP51E\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=0b5cf44f1fcc47f5f7e89cd8d2164da944db6afccef79b4ffc8ef09889d9ebc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22q4PWOJhKVbh14FjcFWxMPVqOax8MP51E%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53252'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039914.997
+    'REQUEST_TIME' => 1527039914
+]
+2018-05-23 01:45:40 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:45:40 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'YVlIUDBucEsGb38caF8zJCceIGlYHT85BhN/aGFaEQo3Bg4VSSUTOg=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'e5e5bda5f302be1ff91998e0602d1a94900327115868796f6ceaab4a35a98f7ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"g67LX1CoFGh9hsOrgJ78Q4aAV_FEyKcq\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=e5e5bda5f302be1ff91998e0602d1a94900327115868796f6ceaab4a35a98f7ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22g67LX1CoFGh9hsOrgJ78Q4aAV_FEyKcq%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '68'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53268'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527039940.212
+    'REQUEST_TIME' => 1527039940
+]
+2018-05-23 01:46:43 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:46:43 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'QU9odVFCbHR2HzsBMhQpJHJ7DxMrAQhAFAMxHGJzIxExCSQ6NgclAg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '1f6a1fcaf5dfbddf7eb529c9280934d7f67930c25155d793e61c71a56af27829a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7PStcVEP34gfzCd4ULYi31OepFLOgEIv\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=1f6a1fcaf5dfbddf7eb529c9280934d7f67930c25155d793e61c71a56af27829a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227PStcVEP34gfzCd4ULYi31OepFLOgEIv%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53300'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/index'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040003.745
+    'REQUEST_TIME' => 1527040003
+]
+2018-05-23 01:46:51 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:46:51 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'QU9odVFCbHR2HzsBMhQpJHJ7DxMrAQhAFAMxHGJzIxExCSQ6NgclAg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53312'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/index'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040011.544
+    'REQUEST_TIME' => 1527040011
+]
+2018-05-23 01:46:54 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Não foi possível verificar a sua submissão de dados. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Controller.php:166
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#5 {main}
+2018-05-23 01:46:54 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_POST = [
+    '_csrf' => 'QU9odVFCbHR2HzsBMhQpJHJ7DxMrAQhAFAMxHGJzIxExCSQ6NgclAg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/backend/web/site/login'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '66'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53314'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/index'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040014.308
+    'REQUEST_TIME' => 1527040014
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_inicial.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53320'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.208
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_funcionario.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53316'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.212
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cotacao.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53324'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.209
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_relatorio.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53326'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.231
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cte.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53322'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.219
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_mdfe.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:46:56 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53318'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040016.228
+    'REQUEST_TIME' => 1527040016
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_inicial.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53338'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.205
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cte.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53342'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.21
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_funcionario.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53334'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.211
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_mdfe.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53340'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.214
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cotacao.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53336'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.207
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_relatorio.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:10 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => '6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=6f25fbf46bc286f335e3b8e5281e817a9affdc904fce8ffbf29931b22bee6d19a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ceXSyBLCZPqxvK6Zl80BHLzL6mWddBRd%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53344'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040030.225
+    'REQUEST_TIME' => 1527040030
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_inicial.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53338'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.868
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_funcionario.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53340'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.874
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cotacao.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53342'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.869
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cte.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53336'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.88
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_mdfe.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53334'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.888
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_relatorio.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:13 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53338'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040033.89
+    'REQUEST_TIME' => 1527040033
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cotacao.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53350'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cotacao.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.841
+    'REQUEST_TIME' => 1527040040
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_inicial.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53352'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_inicial.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.841
+    'REQUEST_TIME' => 1527040040
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_funcionario.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53354'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_funcionario.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.853
+    'REQUEST_TIME' => 1527040040
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_relatorio.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53356'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_relatorio.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.86
+    'REQUEST_TIME' => 1527040040
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_mdfe.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53358'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_mdfe.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.86
+    'REQUEST_TIME' => 1527040040
+]
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "portal/default/img/portfolio/thumbnails/sistema_cte.png". in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('portal/default/...', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página não encontrada. in /var/www/html/Transportes/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/Transportes/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2018-05-23 01:47:20 [127.0.0.1][-][gucmmhbc9jfobvqft8i7ilk6r4][info][application] $_COOKIE = [
+    '_csrf' => 'a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"UQZsC216SxJzx9q5617996s0HGUyJ69I\";}'
+    'PHPSESSID' => 'gucmmhbc9jfobvqft8i7ilk6r4'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/Transportes/backend/web/site/index'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/Transportes/frontend/web/portal/default/index'
+    'HTTP_COOKIE' => '_csrf=a59283609220fd18c023a4538290bc2db29917f3a7c1890c101b8da28d36ae17a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22UQZsC216SxJzx9q5617996s0HGUyJ69I%22%3B%7D; PHPSESSID=gucmmhbc9jfobvqft8i7ilk6r4'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '53350'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal/default/img/portfolio/thumbnails/sistema_cte.png'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1527040040.86
+    'REQUEST_TIME' => 1527040040
+]

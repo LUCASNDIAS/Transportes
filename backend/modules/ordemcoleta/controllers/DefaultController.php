@@ -103,7 +103,7 @@ class DefaultController extends Controller
             // var_dump($model->getErrors());
             return $this->render('update', [
                         'model' => $model,
-                        'tabela' => $tab
+                        'tab' => $tab
             ]);
         }
     }

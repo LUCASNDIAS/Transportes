@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -96,7 +97,7 @@ class AjaxController extends Controller
 
     public function actionTabelas()
     {
-        $tabelas  = new Tabelas();
+        $tabelas = new Tabelas();
         $listagem = $tabelas->listarNomes();
 
         return Json::encode($listagem);
@@ -104,7 +105,7 @@ class AjaxController extends Controller
 
     public function actionTabelascomp()
     {
-        $tabelas  = new Tabelas();
+        $tabelas = new Tabelas();
         $listagem = $tabelas->autoComplete();
 
         return Json::encode($listagem);
@@ -113,7 +114,7 @@ class AjaxController extends Controller
     public function actionMunicipios($filtro = '')
     {
         $municipios = new Municipios();
-        $listagem   = $municipios->autoComplete($filtro);
+        $listagem = $municipios->autoComplete($filtro);
 
         return Json::encode($listagem);
     }
@@ -121,7 +122,7 @@ class AjaxController extends Controller
     public function actionMotoristas()
     {
         $modelPCondutores = new Funcionarios();
-        $listagem         = $modelPCondutores->autoComplete();
+        $listagem = $modelPCondutores->autoComplete();
 
         return Json::encode($listagem);
     }
@@ -130,15 +131,15 @@ class AjaxController extends Controller
     {
 
         Yii::$app->response->format = 'json';
-        $cliente                    = new Clientes();
-        $idcliente                  = $cliente->getIdClientes($cnpj);
+        $cliente = new Clientes();
+        $idcliente = $cliente->getIdClientes($cnpj);
 
         $tbcli = new \backend\models\TabelasClientes();
         $idtab = $tbcli->getTabelasClientes($idcliente);
-        $ids   = ArrayHelper::getColumn($idtab, 'tabela_id');
+        $ids = ArrayHelper::getColumn($idtab, 'tabela_id');
 
         $tabelas = new Tabelas();
-        $tab     = $tabelas->listarTabelas($ids);
+        $tab = $tabelas->listarTabelas($ids);
 
         return $tab;
     }
@@ -150,9 +151,9 @@ class AjaxController extends Controller
         $clientes = preg_split('/,/', $envolvidos, -1, PREG_SPLIT_NO_EMPTY);
 
         $cliente = new Clientes();
-        $munCli  = $cliente->getCidades($clientes);
+        $munCli = $cliente->getCidades($clientes);
 
-        $ibge      = new \backend\models\Municipios;
+        $ibge = new \backend\models\Municipios;
         $municipio = $ibge->listarNomes($munCli);
 
         return $municipio;
@@ -161,7 +162,7 @@ class AjaxController extends Controller
     public function actionVeiculos()
     {
         $veiculos = new Veiculos();
-        $dados    = $veiculos->getVeiculos();
+        $dados = $veiculos->getVeiculos();
 
         return Json::encode($dados);
     }
@@ -169,7 +170,7 @@ class AjaxController extends Controller
     public function actionCfop($interestadual)
     {
 
-        $cfop  = new \backend\models\Cfop;
+        $cfop = new \backend\models\Cfop;
         $lista = $cfop->listarNomes($interestadual);
 
         return $lista;
@@ -193,9 +194,9 @@ class AjaxController extends Controller
     {
         //$dados = explode('&', $_POST['test']);
         $dados = $_POST['test'];
-        $tipo  = $_POST['tipo'];
+        $tipo = $_POST['tipo'];
 
-        $calculos     = new Calculos();
+        $calculos = new Calculos();
         // Tem que enviar o array com as variaveis
         $calculaFrete = $calculos->calculaFrete($tipo, $dados);
         //return Json::encode($calculaFrete);
@@ -213,9 +214,9 @@ class AjaxController extends Controller
     {
         //$dados = explode('&', $_POST['test']);
         $dados = $_POST['test'];
-        $tipo  = $_POST['tipo'];
+        $tipo = $_POST['tipo'];
 
-        $calculos     = new Calculos();
+        $calculos = new Calculos();
         // Tem que enviar o array com as variaveis
         $calculaFrete = $calculos->calculaFretecot($tipo, $dados);
 
@@ -226,9 +227,9 @@ class AjaxController extends Controller
     {
         //$dados = explode('&', $_POST['test']);
         $dados = $_POST['test'];
-        $tipo  = $_POST['tipo'];
+        $tipo = $_POST['tipo'];
 
-        $calculos     = new Calculos();
+        $calculos = new Calculos();
         // Tem que enviar o array com as variaveis
         $calculaFrete = $calculos->calculaFreteoc($tipo, $dados);
 
@@ -239,9 +240,9 @@ class AjaxController extends Controller
     {
         //$dados = explode('&', $_POST['test']);
         $dados = $_GET;
-        $tipo  = $_GET['tipo'];
+        $tipo = $_GET['tipo'];
 
-        $calculos     = new Calculos();
+        $calculos = new Calculos();
         // Tem que enviar o array com as variaveis
         $calculaFrete = $calculos->calculaFretecte($tipo, $dados);
         //return Json::encode($calculaFrete);
@@ -308,7 +309,7 @@ class AjaxController extends Controller
     public function actionSelecionaCte($term = '')
     {
         $modelCte = new Cte();
-        $data     = $modelCte->autocomplete($term);
+        $data = $modelCte->autocomplete($term);
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -318,7 +319,7 @@ class AjaxController extends Controller
     public function actionSelecionaContratante($chave)
     {
         $modelCte = new Cte();
-        $data     = $modelCte->getContratante($chave);
+        $data = $modelCte->getContratante($chave);
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -351,7 +352,7 @@ class AjaxController extends Controller
                 ->asArray()
                 ->all();
         } else {
-            
+
         }
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -402,7 +403,7 @@ class AjaxController extends Controller
 
         return $data;
     }
-    
+
     public function actionSumFinanceiro($tipo, $sum = true)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -411,11 +412,11 @@ class AjaxController extends Controller
             ->where([
                 'dono' => Yii::$app->user->identity['cnpj'],
                 'tipo' => $tipo
-                ])
+            ])
             ->andWhere(['!=', 'status', 'PAGO'])
             ->sum('valor');
 
-        return ($sum) ? number_format($data , 2, ',', '.') : $data;
+        return ($sum) ? number_format($data, 2, ',', '.') : $data;
     }
 
     public function actionGetBalanco()
@@ -426,7 +427,7 @@ class AjaxController extends Controller
             ->where([
                 'dono' => Yii::$app->user->identity['cnpj'],
                 'tipo' => 'R'
-                ])
+            ])
             ->andWhere(['=', 'status', 'PAGO'])
             ->sum('valor');
 
@@ -434,13 +435,69 @@ class AjaxController extends Controller
             ->where([
                 'dono' => Yii::$app->user->identity['cnpj'],
                 'tipo' => 'D'
-                ])
+            ])
             ->andWhere(['=', 'status', 'PAGO'])
             ->sum('valor');
 
         $data = $receber - $pagar;
 
-        return number_format($data , 2, ',', '.');
+        return number_format($data, 2, ',', '.');
+    }
+
+    public function actionChartBalanco()
+    {
+        $di = date('Y-01-01');
+        $mes = date('m') - 1;
+        $df = date('Y') . '-' . str_pad($mes, 2, '0', STR_PAD_LEFT) . '-31';
+        $query = (new Query())
+            ->select([
+                'tipo' => 'tipo',
+                'mes' => 'MONTHNAME(vencimento)',
+                'total' => 'SUM(valor)'
+            ])
+            ->from('financeiro')
+            ->where([
+                'tipo' => 'R',
+                'status' => 'PAGO',
+                'dono' => Yii::$app->user->identity['cnpj']
+            ])
+            ->andWhere(['between', 'vencimento', $di, $df])
+            ->groupBy('MONTH(vencimento)')
+            ->orderBy('MONTH(vencimento) ASC');
+
+        $query2 = (new Query())
+            ->select([
+                'tipo' => 'tipo',
+                'mes' => 'MONTHNAME(vencimento)',
+                'total' => 'SUM(valor)'
+            ])
+            ->from('financeiro')
+            ->where([
+                'tipo' => 'D',
+                'status' => 'PAGO',
+                'dono' => Yii::$app->user->identity['cnpj']
+            ])
+            ->andWhere(['between', 'vencimento', $di, $df])
+            ->groupBy('MONTH(vencimento)')
+            ->orderBy('MONTH(vencimento) ASC');
+
+        $unionQuery = (new \yii\db\Query())
+            ->from(['Q' => $query->union($query2)]);
+
+        $resultado = $unionQuery->all();
+        $map = ArrayHelper::index($resultado, null, 'tipo');
+        $mes = array_unique(ArrayHelper::getColumn($resultado,'mes'));
+        $receita = empty($mes) ? [] : ArrayHelper::getColumn($map['R'],'total');
+        $despesa = empty($mes) ? [] : ArrayHelper::getColumn($map['D'],'total');
+
+        $retorno = [
+            'mes' => $mes,
+            'receita' => $receita,
+            'despesa' => $despesa
+        ];
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $retorno;
     }
 
 }

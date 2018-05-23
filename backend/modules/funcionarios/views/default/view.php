@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
    		$fotos = new Request();
    		$arquivo = $fotos->baseUrl ."/img/funcionarios/" . $model->cpf . ".jpg";
    		echo Html::img($arquivo,['width'=> '180px']);
-       ?> <?= Html::encode($this->title) ?></h1>
+       ?></h1>
 	
        <br/>
     <p>

@@ -151,7 +151,7 @@
                 		'url' => '#',
                 		'visible' => Yii::$app->user->can('addFuncionarios'),
                 		'items' => [
-                			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/funcionarios/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
+                			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/funcionarios/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
                 			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/funcionarios'],'visible' => Yii::$app->user->can('verFuncionarios')],
                 		]
                    	],

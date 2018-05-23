@@ -1,6 +1,6 @@
 <?php
 return [
-		'sistemaNome' => 'LND Sistemas',
+		'sistemaNome' => 'Gerador Fiscal',
 		'sistemaSite' => 'https://geradorfiscal.com.br/',
 		'sistemaVersao' => '3.0',
 		'supportEmail' => 'diasnlucas@gmail.com',

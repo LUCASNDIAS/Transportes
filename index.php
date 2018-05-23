@@ -1,2 +1,2 @@
 <?php
-header('Location: frontend/web');
+header('Location: frontend/web/portal');
