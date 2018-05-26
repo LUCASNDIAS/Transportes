@@ -2,7 +2,7 @@
 
 return [
     'language' => 'pt-br',
-    //'timezone' => 'America/Sao_Paulo',
+    'timezone' => 'America/Sao_Paulo',
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
@@ -23,6 +23,12 @@ return [
                 //],
                 ],
             ],
+        ],
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => '/Transportes/backend/web',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

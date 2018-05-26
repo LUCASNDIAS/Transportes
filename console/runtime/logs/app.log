@@ -4056,3 +4056,1534 @@ Stack trace:
     ]
     'argc' => 4
 ]
+2018-05-23 13:42:08 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request: financeiro/ in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php:127
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#5 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#6 {main}
+
+Next yii\console\UnknownCommandException: Unknown command "financeiro". in /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php:183
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#3 {main}
+2018-05-23 13:42:08 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '7'
+    'SSH_AGENT_PID' => '2097'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527009356.997923-965181211'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '79691782'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/1984,unix/lucas-note2:/tmp/.ICE-unix/1984'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-zebyM0w2nA,guid=b4ac4326542fe893adf1cedf5b04504d'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '7'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527082928.3572
+    'REQUEST_TIME' => 1527082928
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro'
+    ]
+    'argc' => 2
+]
+2018-05-23 13:43:37 [-][-][-][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adminLND-1' for key 'PRIMARY' in /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php:846
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php(846): PDOStatement->execute()
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/rbac/DbManager.php(832): yii\db\Command->execute()
+#2 /var/www/html/Transportes/console/controllers/RbacController.php(151): yii\rbac\DbManager->assign(Object(yii\rbac\Role), 1)
+#3 [internal function]: console\controllers\RbacController->actionAssign(Object(yii\rbac\Role), 'ELIAS')
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#12 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adminLND-1' for key 'PRIMARY'
+The SQL being executed was: INSERT INTO `auth_assignment` (`user_id`, `item_name`, `created_at`) VALUES ('1', 'adminLND', 1527083017) in /var/www/html/Transportes/vendor/yiisoft/yii2/db/Schema.php:636
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php(856): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `au...')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/rbac/DbManager.php(832): yii\db\Command->execute()
+#2 /var/www/html/Transportes/console/controllers/RbacController.php(151): yii\rbac\DbManager->assign(Object(yii\rbac\Role), 1)
+#3 [internal function]: console\controllers\RbacController->actionAssign(Object(yii\rbac\Role), 'ELIAS')
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#12 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry 'adminLND-1' for key 'PRIMARY'
+)
+
+2018-05-23 13:43:36 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527083016.6849
+    'REQUEST_TIME' => 1527083016
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/assign'
+        2 => 'AdminLND'
+        3 => 'ELIAS'
+    ]
+    'argc' => 4
+]
+2018-05-23 13:43:57 [-][-][-][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Nenhum usuario com o apelido: "AdminLND". in /var/www/html/Transportes/console/controllers/RbacController.php:142
+Stack trace:
+#0 [internal function]: console\controllers\RbacController->actionAssign('ELIAS', 'AdminLND')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#9 {main}
+2018-05-23 13:43:57 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527083037.3959
+    'REQUEST_TIME' => 1527083037
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/assign'
+        2 => 'ELIAS'
+        3 => 'AdminLND'
+    ]
+    'argc' => 4
+]
+2018-05-23 13:44:23 [-][-][-][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Nenhum usuario com o apelido: "AdmLND". in /var/www/html/Transportes/console/controllers/RbacController.php:142
+Stack trace:
+#0 [internal function]: console\controllers\RbacController->actionAssign('ELIAS', 'AdmLND')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#9 {main}
+2018-05-23 13:44:23 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527083063.7671
+    'REQUEST_TIME' => 1527083063
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/assign'
+        2 => 'ELIAS'
+        3 => 'AdmLND'
+    ]
+    'argc' => 4
+]
+2018-05-23 13:44:41 [-][-][-][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adminLND-1' for key 'PRIMARY' in /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php:846
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php(846): PDOStatement->execute()
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/rbac/DbManager.php(832): yii\db\Command->execute()
+#2 /var/www/html/Transportes/console/controllers/RbacController.php(151): yii\rbac\DbManager->assign(Object(yii\rbac\Role), 1)
+#3 [internal function]: console\controllers\RbacController->actionAssign(Object(yii\rbac\Role), 'ELIAS')
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#12 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'adminLND-1' for key 'PRIMARY'
+The SQL being executed was: INSERT INTO `auth_assignment` (`user_id`, `item_name`, `created_at`) VALUES ('1', 'adminLND', 1527083081) in /var/www/html/Transportes/vendor/yiisoft/yii2/db/Schema.php:636
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/db/Command.php(856): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `au...')
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/rbac/DbManager.php(832): yii\db\Command->execute()
+#2 /var/www/html/Transportes/console/controllers/RbacController.php(151): yii\rbac\DbManager->assign(Object(yii\rbac\Role), 1)
+#3 [internal function]: console\controllers\RbacController->actionAssign(Object(yii\rbac\Role), 'ELIAS')
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('assign', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('assign', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('rbac/assign', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('rbac/assign', Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#12 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry 'adminLND-1' for key 'PRIMARY'
+)
+
+2018-05-23 13:44:41 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527083081.2286
+    'REQUEST_TIME' => 1527083081
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/assign'
+        2 => 'AdminLND'
+        3 => 'ELIAS'
+    ]
+    'argc' => 4
+]
+2018-05-23 13:46:31 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Missing argument 1 for yii\db\BaseActiveRecord::findAll(), called in /var/www/html/Transportes/console/models/ConsoleFinanceiro.php on line 23 and defined in /var/www/html/Transportes/vendor/yiisoft/yii2/db/BaseActiveRecord.php:114
+Stack trace:
+#0 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(17): console\models\ConsoleFinanceiro->getContas()
+#1 /var/www/html/Transportes/console/controllers/FinanceiroController.php(20): console\models\ConsoleFinanceiro->atualizaStatus()
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): console\controllers\FinanceiroController->actionAtualiza()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): ::call_user_func_array:{/var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php:57}()
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams()
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction()
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction()
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction()
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction()
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest()
+#10 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#11 {main}
+2018-05-23 13:46:31 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '7'
+    'SSH_AGENT_PID' => '2097'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527009356.997923-965181211'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '79691782'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/1984,unix/lucas-note2:/tmp/.ICE-unix/1984'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-zebyM0w2nA,guid=b4ac4326542fe893adf1cedf5b04504d'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '7'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527083191.0004
+    'REQUEST_TIME' => 1527083191
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/atualiza'
+    ]
+    'argc' => 2
+]
+2018-05-23 15:06:08 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request: financeiro/ in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php:127
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('', Array)
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro', Array)
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro', Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#5 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#6 {main}
+
+Next yii\console\UnknownCommandException: Unknown command "financeiro". in /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php:183
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro', Array)
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#3 {main}
+2018-05-23 15:06:08 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '7'
+    'SSH_AGENT_PID' => '2097'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527009356.997923-965181211'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '79691782'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/1984,unix/lucas-note2:/tmp/.ICE-unix/1984'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-zebyM0w2nA,guid=b4ac4326542fe893adf1cedf5b04504d'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '7'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527087968.2863
+    'REQUEST_TIME' => 1527087968
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro'
+    ]
+    'argc' => 2
+]
+2018-05-23 16:06:29 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: strtoupper() expects parameter 1 to be string, array given in /var/www/html/Transportes/vendor/yiisoft/yii2/db/QueryBuilder.php:1050
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/db/QueryBuilder.php(1109): yii\db\QueryBuilder->buildCondition()
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/db/QueryBuilder.php(1057): yii\db\QueryBuilder->buildAndCondition()
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/db/QueryBuilder.php(861): yii\db\QueryBuilder->buildCondition()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/db/QueryBuilder.php(100): yii\db\QueryBuilder->buildWhere()
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/db/ActiveQuery.php(319): yii\db\QueryBuilder->build()
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/db/Query.php(213): yii\db\ActiveQuery->createCommand()
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/db/ActiveQuery.php(133): yii\db\Query->all()
+#7 /var/www/html/Transportes/backend/modules/financeiro/models/FinanceiroQuery.php(23): yii\db\ActiveQuery->all()
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(56): backend\modules\financeiro\models\FinanceiroQuery->all()
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): ::call_user_func_array:{/var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php:57}()
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams()
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction()
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction()
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction()
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction()
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest()
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-23 16:06:29 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527091589.2623
+    'REQUEST_TIME' => 1527091589
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-23 16:21:51 [-][-][-][error][Error] Error: Class 'console\models\Yii' not found in /var/www/html/Transportes/console/models/ConsoleFinanceiro.php:73
+Stack trace:
+#0 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(45): console\models\ConsoleFinanceiro->getNotifica('11095658000140')
+#1 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#2 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#11 {main}
+2018-05-23 16:21:51 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527092511.371
+    'REQUEST_TIME' => 1527092511
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-23 22:18:37 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Array to string conversion in /var/www/html/Transportes/console/models/Email.php:20
+Stack trace:
+#0 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): console\controllers\FinanceiroController->actionNotifica()
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): ::call_user_func_array:{/var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php:57}()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams()
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction()
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction()
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction()
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction()
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest()
+#9 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#10 {main}
+2018-05-23 22:18:36 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527113916.9888
+    'REQUEST_TIME' => 1527113916
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 02:41:55 [-][-][-][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: /var/www/html/Transportes/common/mail/relatorio.php in /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php:229
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/var/www/html/T...', Array, Object(yii\swiftmailer\Mailer))
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(301): yii\base\View->render('relatorio', Array, Object(yii\swiftmailer\Mailer))
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(194): yii\mail\BaseMailer->render('relatorio', Array, 'layouts/html')
+#3 /var/www/html/Transportes/console/models/Email.php(29): yii\mail\BaseMailer->compose('relatorio')
+#4 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#5 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#6 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#7 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#15 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#16 {main}
+2018-05-24 02:41:55 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527129715.1417
+    'REQUEST_TIME' => 1527129715
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 06:12:14 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection timed out #110] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(34): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-24 06:11:43 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527142303.4876
+    'REQUEST_TIME' => 1527142303
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 06:13:24 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection timed out #110] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(34): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-24 06:12:53 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527142373.9315
+    'REQUEST_TIME' => 1527142373
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 06:15:08 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection timed out #110] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(34): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-24 06:14:37 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527142477.8901
+    'REQUEST_TIME' => 1527142477
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 06:17:14 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection timed out #110] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(34): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-24 06:16:44 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527142604.3342
+    'REQUEST_TIME' => 1527142604
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 06:19:17 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [Connection timed out #110] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(34): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(48): console\models\Email->criaEmail(Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-24 06:18:46 [-][-][-][info][application] $_SERVER = [
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527080894.119501-2106549046'
+    'USER' => 'root'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'SUDO_USER' => 'lucas'
+    'SUDO_UID' => '1000'
+    'USERNAME' => 'root'
+    'MAIL' => '/var/mail/root'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'SHLVL' => '1'
+    'SUDO_COMMAND' => '/bin/su'
+    'HOME' => '/root'
+    'LANGUAGE' => 'pt_BR:pt:en'
+    'LOGNAME' => 'root'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'SUDO_GID' => '1000'
+    'DISPLAY' => ':0'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => '/var/www/html/Transportes/yii'
+    'SCRIPT_NAME' => '/var/www/html/Transportes/yii'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/yii'
+    'PATH_TRANSLATED' => '/var/www/html/Transportes/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527142726.2395
+    'REQUEST_TIME' => 1527142726
+    'argv' => [
+        0 => '/var/www/html/Transportes/yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 23:08:45 [-][-][-][error][yii\base\UnknownMethodException] yii\base\UnknownMethodException: Calling unknown method: yii\swiftmailer\Message::AddReplyTo() in /var/www/html/Transportes/vendor/yiisoft/yii2/base/Object.php:220
+Stack trace:
+#0 /var/www/html/Transportes/console/models/Email.php(31): yii\base\Object->__call('AddReplyTo', Array)
+#1 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#2 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(50): console\models\Email->criaEmail(Array)
+#3 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#4 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#12 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#13 {main}
+2018-05-24 23:08:45 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '77594630'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527214125.5557
+    'REQUEST_TIME' => 1527214125
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-24 23:14:29 [-][-][-][error][Swift_TransportException] Swift_TransportException: Expected response code 250 but got code "535", with message "535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials w70-v6sm20025621qkg.13 - gsmtp
+" in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php:383
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(281): Swift_Transport_AbstractSmtpTransport->_assertResponseCode('535-5.7.8 Usern...', Array)
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php(270): Swift_Transport_AbstractSmtpTransport->executeCommand('RSET\r\n', Array, Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/XOAuth2Authenticator.php(55): Swift_Transport_EsmtpTransport->executeCommand('RSET\r\n', Array)
+#3 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/AuthHandler.php(176): Swift_Transport_Esmtp_Auth_XOAuth2Authenticator->authenticate(Object(Swift_SmtpTransport), 'slndsistemas.ma...', 'TligWww15*=')
+#4 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php(334): Swift_Transport_Esmtp_AuthHandler->afterEhlo(Object(Swift_SmtpTransport))
+#5 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(118): Swift_Transport_EsmtpTransport->_doHeloCommand()
+#6 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#10 /var/www/html/Transportes/console/models/Email.php(36): yii\mail\BaseMessage->send()
+#11 /var/www/html/Transportes/console/models/Email.php(23): console\models\Email->enviarEmail('')
+#12 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(50): console\models\Email->criaEmail(Array)
+#13 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#14 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#18 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#19 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#20 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#21 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#23 {main}
+2018-05-24 23:14:26 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '77594630'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527214466.1422
+    'REQUEST_TIME' => 1527214466
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-25 00:00:44 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: D in /var/www/html/Transportes/console/models/Email.php:29
+Stack trace:
+#0 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(53): console\models\Email->criaEmail()
+#1 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): console\controllers\FinanceiroController->actionNotifica()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): ::call_user_func_array:{/var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php:57}()
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams()
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction()
+#6 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction()
+#7 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction()
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction()
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest()
+#10 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#11 {main}
+2018-05-25 00:00:40 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '77594630'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527217240.9191
+    'REQUEST_TIME' => 1527217240
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-25 00:03:22 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection to tcp://smtp.gmail.com:587 Timed Out in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php:404
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(289): Swift_Transport_AbstractSmtpTransport->_getFullResponse(0)
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(117): Swift_Transport_AbstractSmtpTransport->_readGreeting()
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(37): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(21): console\models\Email->enviarEmail(Array, Array)
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(53): console\models\Email->criaEmail(Array, Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-25 00:02:52 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '77594630'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527217372.3923
+    'REQUEST_TIME' => 1527217372
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-25 00:42:40 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: sacacado in /var/www/html/Transportes/common/mail/relatorio.php:106
+Stack trace:
+#0 /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile()
+#1 /var/www/html/Transportes/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile()
+#2 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(301): yii\base\View->render()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(194): yii\mail\BaseMailer->render()
+#4 /var/www/html/Transportes/console/models/Email.php(30): yii\mail\BaseMailer->compose()
+#5 /var/www/html/Transportes/console/models/Email.php(21): console\models\Email->enviarEmail()
+#6 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(53): console\models\Email->criaEmail()
+#7 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#8 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): console\controllers\FinanceiroController->actionNotifica()
+#9 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): ::call_user_func_array:{/var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php:57}()
+#10 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction()
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction()
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction()
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction()
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest()
+#16 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#17 {main}
+2018-05-25 00:42:40 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'GJS_DEBUG_OUTPUT' => 'stderr'
+    'WINDOWID' => '77594630'
+    'OLDPWD' => '/home/lucas'
+    'GJS_DEBUG_TOPICS' => 'JS ERROR;JS LOG'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'CINNAMON_VERSION' => '3.2.6'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527219760.1483
+    'REQUEST_TIME' => 1527219760
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
+2018-05-25 22:07:00 [-][-][-][error][Swift_TransportException] Swift_TransportException: Connection could not be established with host smtp.gmail.com [php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution #0] in /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /var/www/html/Transportes/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 /var/www/html/Transportes/vendor/yiisoft/yii2-swiftmailer/Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMailer.php(262): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 /var/www/html/Transportes/vendor/yiisoft/yii2/mail/BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 /var/www/html/Transportes/console/models/Email.php(39): yii\mail\BaseMessage->send()
+#7 /var/www/html/Transportes/console/models/Email.php(21): console\models\Email->enviarEmail(Array, Array)
+#8 /var/www/html/Transportes/console/models/ConsoleFinanceiro.php(53): console\models\Email->criaEmail(Array, Array)
+#9 /var/www/html/Transportes/console/controllers/FinanceiroController.php(30): console\models\ConsoleFinanceiro->notificaStatus()
+#10 [internal function]: console\controllers\FinanceiroController->actionNotifica()
+#11 /var/www/html/Transportes/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Controller.php(128): yii\base\Controller->runAction('notifica', Array)
+#14 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Module.php(523): yii\console\Controller->runAction('notifica', Array)
+#15 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('financeiro/noti...', Array)
+#16 /var/www/html/Transportes/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('financeiro/noti...', Array)
+#17 /var/www/html/Transportes/vendor/yiisoft/yii2/base/Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#18 /var/www/html/Transportes/yii(27): yii\base\Application->run()
+#19 {main}
+2018-05-25 22:06:58 [-][-][-][info][application] $_SERVER = [
+    'XDG_VTNR' => '8'
+    'SSH_AGENT_PID' => '2162'
+    'XDG_SESSION_ID' => 'c1'
+    'QT_STYLE_OVERRIDE' => 'gtk'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '4205'
+    'XDG_SESSION_COOKIE' => '5ab3c275b7304ed3b8aeef9ffcc37eb4-1527177644.268287-728232999'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'WINDOWID' => '77597424'
+    'OLDPWD' => '/home/lucas'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'USER' => 'lucas'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'QT_ACCESSIBILITY' => '1'
+    'DESKTOP_AUTOSTART_ID' => '10fdff9d5fe82d96dd152717764570851300000020260001'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'SESSION_MANAGER' => 'local/lucas-note2:@/tmp/.ICE-unix/2026,unix/lucas-note2:/tmp/.ICE-unix/2026'
+    'USERNAME' => 'lucas'
+    'DEFAULTS_PATH' => '/usr/share/gconf/cinnamon.default.path'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-cinnamon:/etc/xdg'
+    'PATH' => '/home/lucas/bin:/home/lucas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    'DESKTOP_SESSION' => 'cinnamon'
+    'QT_QPA_PLATFORMTHEME' => 'qgnomeplatform'
+    'GDM_XSERVER_LOCATION' => 'local'
+    'PWD' => '/var/www/html/Transportes'
+    'LANG' => 'pt_BR.UTF-8'
+    'MANDATORY_PATH' => '/usr/share/gconf/cinnamon.mandatory.path'
+    'MDM_XSERVER_LOCATION' => 'local'
+    'GDMSESSION' => 'cinnamon'
+    'SHLVL' => '1'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/lucas'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'GTK_OVERLAY_SCROLLING' => '1'
+    'PYTHONPATH' => '/home/lucas/PYLIB:'
+    'XDG_SESSION_DESKTOP' => 'cinnamon'
+    'LOGNAME' => 'lucas'
+    'XDG_DATA_DIRS' => '/usr/share/cinnamon:/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/mdm/'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-yPMlMKpl7f,guid=8c55b74201249e918cfdcb905b06e1ad'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'MDMSESSION' => 'cinnamon'
+    'WINDOWPATH' => '8'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'DISPLAY' => ':0'
+    'MDM_LANG' => 'pt_BR.UTF-8'
+    'XDG_CURRENT_DESKTOP' => 'X-Cinnamon'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/lucas/.Xauthority'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1527296818.2883
+    'REQUEST_TIME' => 1527296818
+    'argv' => [
+        0 => 'yii'
+        1 => 'financeiro/notifica'
+    ]
+    'argc' => 2
+]
