@@ -68,7 +68,7 @@ $this->title = ''; //Yii::$app->params['sistemaNome'];
                             <h3>Faturas</h3>
                             <span>
                                 <?= Html::a('Minuta', '@web/fatura/default/create', array('class' => 'btn btn-success')); ?>
-                                <?= Html::a('CT-e', '@web/minuta/default/create-cte', array('class' => 'btn btn-success')); ?>
+                                <?= Html::a('CT-e', '@web/fatura/default/create-cte', array('class' => 'btn btn-success')); ?>
                             </span>
                         </div>
                         <!-- /.description-block -->

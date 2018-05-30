@@ -37,7 +37,7 @@ $basicos = new Basicos();
                     Cep: <?= $empresa->endcep; ?> - <?= ucwords(strtolower($empresa->endcid)); ?>
                     <?php // echo str_replace('|', ' / ', $empresa->telefones); ?>
                     <?php // echo str_replace('|', '', $empresa->emails);          ?><br/>
-                    Insc. Estadual: <?= $empresa->ie; ?><br/> CNPJ: <?= $empresa->cnpj; ?>
+                    Insc. Estadual: <?= $empresa->ie; ?><br/> CNPJ: <?= $basicos->formataCNPJ($empresa->cnpj); ?>
                 </td>
                 <td width="15%" style="text-align:center">
                     <span class="fontminuta" style="color: #FF0000;font-weight: bold;">FATURA</span><br/>
@@ -103,7 +103,7 @@ $basicos = new Basicos();
     <div id="pos_dados_sacado"
          style="position:fixed;display:block;top:180px;left:159px;width:710px;height:150px;border:1px solid #000;font-size:12px;font-weight:bold;">
         &nbsp;&nbsp;<span>Nome do Sacado:</span> <?= $sacado->nome; ?><br>
-        &nbsp;&nbsp;CNPJ / CPF: <?= $sacado->cnpj; ?>&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;CNPJ / CPF: <?= $basicos->formataCNPJ($sacado->cnpj); ?>&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I.E: <?= $sacado->ie; ?>
         <p>&nbsp;&nbsp;<span>Enderço:</span> <?= $sacado->endrua . ', ' . $sacado->endnro; ?></p>

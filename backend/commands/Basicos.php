@@ -26,7 +26,7 @@ class Basicos
      * @final
      */
     public function check_permissions(
-    $required = 'any', $user_permissions = array('any')
+        $required = 'any', $user_permissions = array('any')
     )
     {
         if (!is_array($user_permissions)) {
@@ -52,14 +52,14 @@ class Basicos
         if ($data !== null) {
             if ($para == 'db') {
                 $sep_antes = '/';
-                $sep_novo  = '-';
+                $sep_novo = '-';
             } else {
                 $sep_antes = '-';
-                $sep_novo  = '/';
+                $sep_novo = '/';
             }
 
-            $exp       = explode($sep_antes, $data);
-            $nova_data = $exp[2].$sep_novo.$exp[1].$sep_novo.$exp[0];
+            $exp = explode($sep_antes, $data);
+            $nova_data = $exp[2] . $sep_novo . $exp[1] . $sep_novo . $exp[0];
             return $nova_data;
         } else {
             return null;
@@ -79,49 +79,49 @@ class Basicos
             $value = str_replace(",", ".", $value);
         }
         $singular = ["centavo", "real", "mil", "milhão", "bilhão", "trilhão", "quatrilhão"];
-        $plural   = ["centavos", "reais", "mil", "milhões", "bilhões", "trilhões",
+        $plural = ["centavos", "reais", "mil", "milhões", "bilhões", "trilhões",
             "quatrilhões"];
 
-        $c   = ["", "cem", "duzentos", "trezentos", "quatrocentos", "quinhentos",
+        $c = ["", "cem", "duzentos", "trezentos", "quatrocentos", "quinhentos",
             "seiscentos", "setecentos", "oitocentos", "novecentos"];
-        $d   = ["", "dez", "vinte", "trinta", "quarenta", "cinquenta", "sessenta",
+        $d = ["", "dez", "vinte", "trinta", "quarenta", "cinquenta", "sessenta",
             "setenta", "oitenta", "noventa"];
         $d10 = ["dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis",
             "dezesete", "dezoito", "dezenove"];
-        $u   = ["", "um", "dois", "tres", "quatro", "cinco", "seis", "sete", "oito",
+        $u = ["", "um", "dois", "tres", "quatro", "cinco", "seis", "sete", "oito",
             "nove"];
 
         $z = 0;
 
-        $value       = number_format($value, 2, ".", ".");
-        $integer     = explode(".", $value);
-        $cont        = count($integer);
+        $value = number_format($value, 2, ".", ".");
+        $integer = explode(".", $value);
+        $cont = count($integer);
         for ($i = 0; $i < $cont; $i++)
             for ($ii = strlen($integer[$i]); $ii < 3; $ii++)
-                $integer[$i] = "0".$integer[$i];
+                $integer[$i] = "0" . $integer[$i];
 
         $fim = $cont - ($integer[$cont - 1] > 0 ? 1 : 2);
-        $rt  = '';
+        $rt = '';
         for ($i = 0; $i < $cont; $i++) {
             $value = $integer[$i];
-            $rc    = (($value > 100) && ($value < 200)) ? "cento" : $c[$value[0]];
-            $rd    = ($value[1] < 2) ? "" : $d[$value[1]];
-            $ru    = ($value > 0) ? (($value[1] == 1) ? $d10[$value[2]] : $u[$value[2]])
-                    : "";
+            $rc = (($value > 100) && ($value < 200)) ? "cento" : $c[$value[0]];
+            $rd = ($value[1] < 2) ? "" : $d[$value[1]];
+            $ru = ($value > 0) ? (($value[1] == 1) ? $d10[$value[2]] : $u[$value[2]])
+                : "";
 
-            $r  = $rc.(($rc && ($rd || $ru)) ? " e " : "").$rd.(($rd &&
-                $ru) ? " e " : "").$ru;
-            $t  = $cont - 1 - $i;
-            $r  .= $r ? " ".($value > 1 ? $plural[$t] : $singular[$t]) : "";
+            $r = $rc . (($rc && ($rd || $ru)) ? " e " : "") . $rd . (($rd &&
+                    $ru) ? " e " : "") . $ru;
+            $t = $cont - 1 - $i;
+            $r .= $r ? " " . ($value > 1 ? $plural[$t] : $singular[$t]) : "";
             if ($value == "000"
             ) $z++;
             elseif ($z > 0) $z--;
             if (($t == 1) && ($z > 0) && ($integer[0] > 0))
-                    $r  .= ( ($z > 1) ? " de " : "").$plural[$t];
+                $r .= (($z > 1) ? " de " : "") . $plural[$t];
             if ($r)
-                    $rt = $rt.((($i > 0) && ($i <= $fim) &&
-                    ($integer[0] > 0) && ($z < 1)) ? ( ($i < $fim) ? ", " : " e ")
-                        : " ").$r;
+                $rt = $rt . ((($i > 0) && ($i <= $fim) &&
+                        ($integer[0] > 0) && ($z < 1)) ? (($i < $fim) ? ", " : " e ")
+                        : " ") . $r;
         }
 
         if (!$uppercase) {
@@ -131,5 +131,14 @@ class Basicos
         } else {
             return trim(ucwords($rt) ? ucwords($rt) : "Zero");
         }
+    }
+
+    public function formataCNPJ($cnpj)
+    {
+        $tipo = strlen($cnpj);
+
+        $formato = ($tipo == 11) ? "%s%s%s.%s%s%s.%s%s%s-%s%s" : "%s%s.%s%s%s.%s%s%s/%s%s%s%s-%s%s";
+
+        return vsprintf($formato, str_split($cnpj));
     }
 }
