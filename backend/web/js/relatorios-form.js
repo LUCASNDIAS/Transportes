@@ -44,8 +44,14 @@ $(document).ready(function () {
             label = '<span class="label label-warning">' + data.status + '</span>';
         }
 
+        var corlinha = '<tr style="color: #F00">';
+
+        if(data.tipo == 'R') {
+            corlinha = '<tr style="color: #00F">';
+        }
+
         var nl = '';
-        nl = '<tr>';
+        nl = corlinha;
         nl += '<td>' + data.nome + '</td>';
         nl += '<td>' + data.descricao + '</td>';
         nl += '<td>' + data.vencimento + '</td>';

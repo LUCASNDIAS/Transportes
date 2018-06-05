@@ -6,7 +6,9 @@ use Yii;
 use backend\modules\financeiro\models\Financeiro;
 use backend\modules\financeiro\models\FinanceiroSearch;
 use backend\commands\Basicos;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -21,6 +23,23 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

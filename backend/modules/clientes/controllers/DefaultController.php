@@ -10,6 +10,7 @@ use backend\modules\clientes\models\ClientesContatos as Contatos;
 use backend\modules\clientes\models\TabelasClientes as Tabelas;
 use backend\models\Tabelas as Tab;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -24,7 +25,9 @@ class DefaultController extends Controller
 {
 
     /**
-     * @inheritdoc
+     * behaviors()
+     * Controle de acesso
+     * @return array
      */
     public function behaviors()
     {
@@ -36,6 +39,9 @@ class DefaultController extends Controller
                     [
                         'allow' => false,
                         'actions' => ['index', 'create', 'update', 'delete', 'view'],
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
                         'roles' => ['bloqueado'],
                     ],
                     [

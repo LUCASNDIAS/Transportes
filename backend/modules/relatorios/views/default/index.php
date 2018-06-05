@@ -20,8 +20,8 @@ RelatoriosAsset::register($this);
             <div class="icon">
                 <i class="fa fa-money"></i>
             </div>
-            <?= Html::a('Gerar relatório <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('relatorios/default/faturas'), ['class' => 'small-box-footer'])
+            <?= Html::a('Gerar fatura<i class="fa fa-arrow-circle-right"></i>',
+                Url::to('fatura'), ['class' => 'small-box-footer'])
             ?>
         </div>
     </div>
@@ -37,8 +37,8 @@ RelatoriosAsset::register($this);
             <div class="icon">
                 <i class="fa fa-file-code-o"></i>
             </div>
-            <?= Html::a('Gerar relatório <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('relatorios/default/cte'), ['class' => 'small-box-footer'])
+            <?= Html::a('Emitir CT-e <i class="fa fa-arrow-circle-right"></i>',
+                Url::to('cte/default/create'), ['class' => 'small-box-footer'])
             ?>            
         </div>
     </div>
@@ -54,8 +54,8 @@ RelatoriosAsset::register($this);
             <div class="icon">
                 <i class="fa fa-newspaper-o"></i>
             </div>
-            <?= Html::a('Gerar relatório <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('relatorios/default/minutas'), ['class' => 'small-box-footer'])
+            <?= Html::a('Emitir Mintuta <i class="fa fa-arrow-circle-right"></i>',
+                Url::to('minutas/create'), ['class' => 'small-box-footer'])
             ?>
         </div>
     </div>
@@ -71,8 +71,8 @@ RelatoriosAsset::register($this);
             <div class="icon">
                 <i class="fa fa-truck"></i>
             </div>
-            <?= Html::a('Gerar relatório <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('relatorios/default/frota'), ['class' => 'small-box-footer'])
+            <?= Html::a('Adicionar veículo <i class="fa fa-arrow-circle-right"></i>',
+                Url::to('veiculos/default/create'), ['class' => 'small-box-footer'])
             ?>
         </div>
     </div>
@@ -106,7 +106,7 @@ RelatoriosAsset::register($this);
                 <i class="fa fa-bar-chart"></i>
             </div>
             <?= Html::a('Gerar relatório <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('relatorios/default/financeiro'), ['class' => 'small-box-footer'])
+                Url::to('relatorios/default/balanco'), ['class' => 'small-box-footer'])
             ?>
         </div>
     </div>

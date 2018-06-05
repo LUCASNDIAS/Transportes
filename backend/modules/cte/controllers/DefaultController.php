@@ -7,6 +7,7 @@ use Yii;
 use backend\modules\cte\models\Cte;
 use backend\modules\cte\models\CteSearch;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -36,23 +37,25 @@ class DefaultController extends Controller
 {
 
     /**
-     * @inheritdoc
+     * behaviors()
+     * Controle de acesso
+     * @return array
      */
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'create', 'update', 'delete', 'view'],
                 'rules' => [
                     [
                         'allow' => false,
-                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
                         'roles' => ['bloqueado'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
                         'roles' => ['acessoBasico'],
                     ],
                 ],
@@ -532,6 +535,11 @@ class DefaultController extends Controller
             ]);
     }
 
+    /**
+     * Validador
+     * CrossOrigin para validar CT-e na Sefaz RS
+     * @return string
+     */
     public function actionValidador()
     {
         return $this->renderPartial('validador');
@@ -560,6 +568,13 @@ class DefaultController extends Controller
         return $this->redirect(['index', 'msg' => $msg]);
     }
 
+    /**
+     * GerarXml()
+     * Gera xml  de um determinado CTe
+     * @param $id
+     * @return array
+     * @throws NotFoundHttpException
+     */
     public function actionGerarXml($id)
     {
         $model = $this->findModel($id);
@@ -572,6 +587,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * AssinarXml()
+     * Assina um XML gerado
+     * @param $id
+     * @return array
+     */
     public function actionAssinarXml($id)
     {
         $cteGeral = new CteGeral();
@@ -583,6 +604,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * Validar()
+     * Valida um XML assinado
+     * @param $id
+     * @return array
+     */
     public function actionValidarXml($id)
     {
         $cteGeral = new CteGeral();
@@ -594,6 +621,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * EnviarXml()
+     * Transmite um XML para a sefaz
+     * @param $id
+     * @return array|string
+     */
     public function actionEnviarXml($id)
     {
         $cteGeral = new CteGeral();
@@ -605,6 +638,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * ReciboXml()
+     * Consulta e salva recibo (retorno) da Sefaz
+     * @param $id
+     * @param $recibo
+     * @return array
+     */
     public function actionReciboXml($id, $recibo)
     {
         $cteGeral = new CteGeral();
@@ -616,6 +656,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * ProtocoloXml()
+     * Salva protocolo de autorização
+     * @param $id
+     * @param $recibo
+     * @return array
+     */
     public function actionProtocoloXml($id, $recibo)
     {
         $cteGeral = new CteGeral();
@@ -627,6 +674,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * GerarPdf
+     * gera pdf para impressão ou envio
+     * @param $id
+     * @return array
+     */
     public function actionGerarPdf($id)
     {
         $cteGeral = new CteGeral();
@@ -638,6 +691,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * Print()
+     * Gera arquivo para impressão
+     * @param $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
     public function actionPrint($id)
     {
         $this->actionGerarPdf($id);
@@ -659,6 +719,13 @@ class DefaultController extends Controller
         return $this->redirect($url);
     }
 
+    /**
+     * Download()
+     * Faz download dos XMLs
+     * @param $id
+     * @return \yii\console\Response|Response
+     * @throws NotFoundHttpException
+     */
     public function actionDownload($id)
     {
         $model = $this->findModel($id);
@@ -687,6 +754,13 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Send()
+     * Envia XML
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionSend($id)
     {
         $model = $this->findModel($id);
@@ -710,6 +784,13 @@ class DefaultController extends Controller
             ]);
     }
 
+    /**
+     * GetXml()
+     * Retorna conteúdo de um XML
+     * @param $id
+     * @return bool|string
+     * @throws NotFoundHttpException
+     */
     public function actionGetXml($id)
     {
         $model = $this->findModel($id);
@@ -727,6 +808,13 @@ class DefaultController extends Controller
         return $texto;
     }
 
+    /**
+     * Cancel()
+     * Cancelar CTe
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionCancel($id)
     {
         $model = $this->findModel($id);
@@ -754,6 +842,12 @@ class DefaultController extends Controller
             ]);
     }
 
+    /**
+     * ConsultaChave()
+     * Consulta CTe pela chave
+     * @param $id
+     * @return array
+     */
     public function actionConsultaChave($id)
     {
         $cteGeral = new CteGeral();
@@ -765,6 +859,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * Email()
+     * Envia PDF e XML para cliente por email
+     * @param $id
+     * @return mixed|string
+     * @throws NotFoundHttpException
+     */
     public function actionEmail($id)
     {
 
@@ -824,6 +925,13 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Baixar()
+     * Baixar entrega de um CTe
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionBaixar($id)
     {
         $model = $this->findModel($id);
@@ -847,6 +955,11 @@ class DefaultController extends Controller
             ]);
     }
 
+    /**
+     * Downloads()
+     * Baixar arquivos XML do emissor
+     * @return string|\yii\console\Response|Response|\ZipArchive
+     */
     public function actionDownloads()
     {
         if (!empty(Yii::$app->request->post())) {
@@ -876,6 +989,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * montaChave()
+     * Cria chave para o CTe
+     * @param $numero
+     * @param $tpEmis
+     * @return string
+     */
     protected function montaChave($numero, $tpEmis)
     {
         //$mdfeTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
@@ -886,6 +1006,12 @@ class DefaultController extends Controller
         return $chave;
     }
 
+    /**
+     * getNumero()
+     * Verifica o número do último CTe do ambiente
+     * @param $tpAmb
+     * @return int|mixed
+     */
     protected function getNumero($tpAmb)
     {
         $model = new Cte();

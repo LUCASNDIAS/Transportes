@@ -8,18 +8,18 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use backend\models\LoginForm;
 use backend\models\ContactForm;
-use backend\models\Usuarios;
-use yii\data\Pagination;
-use yii\db\Command;
-use yii\db\Query;
-use yii\web\User;
-use backend\commands\Basicos;
-use yii\db\Expression;
-use backend\models\Mensagens;
+use yii\web\HttpException;
 
-class SiteController extends Controller {
+class SiteController extends Controller
+{
 
-    public function behaviors() {
+    /**
+     * bejaviors()
+     * Controle de acesso
+     * @return array
+     */
+    public function behaviors()
+    {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -40,11 +40,24 @@ class SiteController extends Controller {
                         'actions' => [
                             'index'
                         ],
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => [
+                            'bloqueado'
+                        ]
+                    ],
+                    [
+                        'actions' => [
+                            'index'
+                        ],
                         'allow' => true,
                         'roles' => [
                             '@', 'acessoBasico'
                         ]
                     ]
+
                 ]
             ],
             'verbs' => [
@@ -59,7 +72,8 @@ class SiteController extends Controller {
         ];
     }
 
-    public function actions() {
+    public function actions()
+    {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction'
@@ -71,89 +85,62 @@ class SiteController extends Controller {
         ];
     }
 
-    public function actionIndex() {
-
+    /**
+     * Página principal do sistema
+     * Dados do usuário, gráfico financeiro e atalhos para funcionalidades
+     * @return string
+     */
+    public function actionIndex()
+    {
         // Carrega a View
         return $this->render('index');
     }
 
-    public function actionUsuarios() {
-        $query = Usuarios::find();
-        $pagination = new Pagination([
-            'defaultPageSize' => 3,
-            'totalCount' => $query->count()
-        ]);
-
-        $usuarios = $query->orderBy('nome')->offset($pagination->offset)->limit($pagination->limit)->all();
-
-        $command = (new Query ())->select('nome,cnpj,senha')->from('usuarios')->where(array(
-                    'or',
-                    'id=7',
-                    'id=4',
-                    'id=8'
-                ))->all();
-
-        $Usuario3 = new Usuarios ();
-        $teste3 = $Usuario3->find()->select('nome,cnpj,senha')->from('usuarios')->where(array(
-                    'or',
-                    'id=7',
-                    'id=4',
-                    'id=8'
-                ))->one();
-
-        $Usuario2 = new Usuarios ();
-        $cmd = $Usuario2->testeQuery();
-
-        echo '<pre>';
-        print_r($teste3);
-        echo '</pre>';
-        // echo $command->sql;
-
-        $this->view->params ['DadosUsuario'] = Yii::$app->session;
-        return $this->render('usuarios', [
-                    'usuarios' => $usuarios,
-                    'pagination' => $pagination
-        ]);
-    }
-
-    public function actionLogin() {
+    /**
+     * Login()
+     * render formulário para login
+     * @return string|\yii\web\Response
+     */
+    public function actionLogin()
+    {
+        // Verifica se está logado
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
+        // Model de login
         $model = new LoginForm ();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
 
+        // Formulário de login
         return $this->render('login', [
-                    'model' => $model
+            'model' => $model
         ]);
     }
 
-    public function actionLogout() {
+    /**
+     * Logout
+     * Encerra sessão do usuário e redireciona para o login.
+     * @return \yii\web\Response
+     */
+    public function actionLogout()
+    {
+        // Encerra sessão
         Yii::$app->user->logout();
 
+        // Redireciona para o login
         return $this->goHome();
     }
 
-    public function actionContact() {
-        $model = new ContactForm ();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params ['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-                    'model' => $model
-        ]);
-    }
-
-    public function actionAbout() {
-        return $this->render('about');
-    }
-
-    public function actionNaoautorizado() {
+    /**
+     * NaoAutorizado()
+     * Ação do usuário não autorizada
+     * @return string|\yii\web\Response
+     */
+    public function actionNaoautorizado()
+    {
         // Verifica se a pessoa está logada
         if (\Yii::$app->user->isGuest) {
             return $this->redirect('@web/site/login');
@@ -163,41 +150,6 @@ class SiteController extends Controller {
         $this->view->params ['DadosUsuario'] = $_SESSION;
 
         return $this->render('naoautorizado');
-    }
-
-    public function actionTeste() {
-        // Passa os parametros da sessão para a view
-        $this->view->params ['DadosUsuario'] = Yii::$app->session;
-
-        $Telefone = new Expression('CONCAT("(",TEL.tel_ddd,") ",TEL.tel_nr)');
-
-        $subTelefone = (new Query())
-                ->select($Telefone)
-                ->from(['TEL' => 'telefones'])
-                ->where(new Expression('c.id=TEL.cli_id'))
-                ->limit(1);
-
-        $subCid = (new Query())
-                ->select('cidade')
-                ->from(['CID' => 'cidade'])
-                ->where(new Expression('CID.cod=c.cid'))
-                ->limit(1);
-
-        $teste = new Query ();
-        $query = $teste
-                        ->select([
-                            'c.id', 'c.nome', 'c.cpf', 'c.cid', 'Cidade' => $subCid, 'Telefone' => $subTelefone
-                        ])
-                        ->from(['c' => 'cli'])
-                        //->join('INNER JOIN','cidade CID','CID.cod = c.cid')
-                        //->join('INNER JOIN', 'telefones TEL', 'c.id = TEL.cli_id')
-                        ->orderBy('nome')->all();
-
-        // var_dump($query);
-
-        return $this->render('teste', [
-                    'query' => $query
-        ]);
     }
 
 }

@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 //$name = "Not Found (#404)" ? "Não encontrado (#404)" : $name;
 
-//$erro = ($message == "You are not allowed to perform this action.") ? "Permissão negada." : $message;
+$erro = ($message == "You are not allowed to perform this action.") ? "Permissão negada." : $message;
 
 $this->title = $name;
 ?>

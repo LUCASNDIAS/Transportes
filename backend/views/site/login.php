@@ -21,11 +21,15 @@ $fieldOptions2 = [
 //echo password_hash('loggica',PASSWORD_BCRYPT);
 
 ?>
+<!--<video autoplay loop poster="polina.jpg" class="bg_video">-->
+<!--    <source src="/Transportes/web/videos/bg.webm" type="video/webm">-->
+<!--    <source src="/Transportes/backend/web/videos/hero_ambient.mp4" type="video/mp4">-->
+<!--</video>-->
 
 <div class="login-box">
     <div class="login-logo">
     	<?= Html::a('<b>Gerador</b> Fiscal',
-                    Yii::$app->urlManagerFrontend->createUrl('site/index')) ?>
+                    Yii::$app->urlManagerFrontend->createUrl('portal/')) ?>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

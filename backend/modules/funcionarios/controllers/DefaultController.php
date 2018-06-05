@@ -5,7 +5,9 @@ namespace backend\modules\funcionarios\controllers;
 use Yii;
 use backend\models\Funcionarios;
 use backend\models\FuncionariosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -22,6 +24,22 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

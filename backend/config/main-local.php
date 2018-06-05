@@ -72,6 +72,9 @@ $config = [
         ],
     ],
     'components' => [
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'G7Ktn_okvAGQh9aSNgQTmBoHMRaqFiBN',

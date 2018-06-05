@@ -17,7 +17,9 @@ use backend\models\Funcionarios;
 use backend\modules\clientes\models\Clientes;
 use NFePHP\MDFe\Make;
 use NFePHP\MDFe\Tools;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -36,6 +38,22 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -406,6 +424,12 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * Transmite para a sefaz
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionSend($id)
     {
         $model = $this->findModel($id);
@@ -429,6 +453,13 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * Cacel()
+     * Cancela um Manifesto (até 24 horas)
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionCancel($id)
     {
         $model = $this->findModel($id);
@@ -487,24 +518,11 @@ class DefaultController extends Controller
         }
     }
 
-    protected function montaChave($numero, $tpEmis)
-    {
-        //$mdfeTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
-        $mdfe  = new Make();
-        $chave = $mdfe->montaChave('31', date('y'), date('m'),
-            Yii::$app->user->identity['cnpj'], '58', '1', $numero, $tpEmis,
-            '09835783');
-        return $chave;
-    }
-
-    protected function getNumero($tpAmb)
-    {
-        $model = new Mdfe();
-        $last  = $model->getLastId($tpAmb);
-
-        return $last;
-    }
-
+    /**
+     * xml()
+     * Gera xml do manifesto
+     * @param $id
+     */
     public function actionXml($id)
     {
         $gerar = new MdfeGeral();
@@ -512,11 +530,22 @@ class DefaultController extends Controller
         var_dump($gerar->gerarXml($id));
     }
 
+    /**
+     * Método para testar Manifesto manualmente
+     * @return string
+     */
     public function actionTestamdfe()
     {
         return $this->render('testaMakeMdfe');
     }
 
+    /**
+     * encerrar()
+     * Encerra uma manifesto
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionEncerrar($id)
     {
         $model = $this->findModel($id);
@@ -535,16 +564,21 @@ class DefaultController extends Controller
         }
 
         return $this->render('encerrar',
-                [
+            [
                 'model' => $model,
                 'retorno' => (isset($retorno)) ? $retorno : [],
                 'formulario' => $formulario,
                 'ufs' => $ufs,
                 'municipios' => $municipios
-        ]);
+            ]);
 
     }
 
+    /**
+     * consultaEncerrados()
+     * Consulta Manifestos não encerrados
+     * @return array
+     */
     public function actionConsultaEncerrados()
     {
         $mdfeTools = new Tools(Yii::getAlias('@sped/').'config/'.Yii::$app->user->identity['cnpj'].'.json');
@@ -555,6 +589,13 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * gerarXml()
+     * Gera xml de um manifesto
+     * @param $id
+     * @return array
+     * @throws NotFoundHttpException
+     */
     public function actionGerarXml($id)
     {
         $model    = $this->findModel($id);
@@ -567,6 +608,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * assinarXml()
+     * Assina o xml com certificado digital do emitente
+     * @param $id
+     * @return array
+     */
     public function actionAssinarXml($id)
     {
         $mdfeGeral = new MdfeGeral();
@@ -578,6 +625,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * ValidarXml()
+     * Valida schema do xml antes do envio
+     * @param $id
+     * @return array
+     */
     public function actionValidarXml($id)
     {
         $mdfeGeral = new MdfeGeral();
@@ -589,6 +642,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * enviarXml()
+     * Envia xml
+     * @param $id
+     * @return array|string
+     */
     public function actionEnviarXml($id)
     {
         $mdfeGeral = new MdfeGeral();
@@ -600,6 +659,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * ReciboXml()
+     * Consulta recibo de uma manifesto
+     * @param $id
+     * @param $recibo
+     * @return array
+     */
     public function actionReciboXml($id, $recibo)
     {
         $mdfeGeral = new MdfeGeral();
@@ -611,6 +677,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * protocoloXml()
+     * Protocolo de autorização do manifesto
+     * @param $id
+     * @param $recibo
+     * @return array
+     */
     public function actionProtocoloXml($id, $recibo)
     {
         $mdfeGeral = new MdfeGeral();
@@ -622,6 +695,12 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * GerarPdf()
+     * Gera PDF do manifesto
+     * @param $id
+     * @return array
+     */
     public function actionGerarPdf($id)
     {
         $mdfeGeral = new MdfeGeral();
@@ -633,6 +712,13 @@ class DefaultController extends Controller
         return $retorno;
     }
 
+    /**
+     * Print()
+     * Mostra na tela o PDF gerado
+     * @param $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
     public function actionPrint($id)
     {
         $this->actionGerarPdf($id);
@@ -654,6 +740,12 @@ class DefaultController extends Controller
         return $this->redirect($url);
     }
 
+    /**
+     * consultaChave()
+     * Consulta Manifesto pela chave
+     * @param $id
+     * @return array
+     */
     public function actionConsultaChave($id)
     {
         $mdfeGeral = new MdfeGeral();
@@ -663,5 +755,36 @@ class DefaultController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $retorno;
+    }
+
+    /**
+     * montaChave()
+     * Cria a chave para o manifesto
+     * @param $numero
+     * @param $tpEmis
+     * @return string
+     */
+    protected function montaChave($numero, $tpEmis)
+    {
+        //$mdfeTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
+        $mdfe  = new Make();
+        $chave = $mdfe->montaChave('31', date('y'), date('m'),
+            Yii::$app->user->identity['cnpj'], '58', '1', $numero, $tpEmis,
+            '09835783');
+        return $chave;
+    }
+
+    /**
+     * getNumero()
+     * retorna o número do último manifesto
+     * @param $tpAmb
+     * @return int|mixed
+     */
+    protected function getNumero($tpAmb)
+    {
+        $model = new Mdfe();
+        $last  = $model->getLastId($tpAmb);
+
+        return $last;
     }
 }

@@ -8,7 +8,7 @@ use backend\modules\financeiro\models\Financeiro;
 
 class Relatorios extends \yii\db\ActiveRecord
 {
-    public function getReceitas($di, $df, $tipo, $status)
+    public function getFinanceiro($di, $df, $tipo, $status)
     {
 
         $basico = new Basicos();
@@ -20,8 +20,12 @@ class Relatorios extends \yii\db\ActiveRecord
         $model = new Financeiro();
         $query = $model->find()
             ->where(['BETWEEN', 'vencimento', $di, $df])
-            ->andWhere(['tipo' => $tipo])
             ->andWhere(['dono' => Yii::$app->user->identity['cnpj']]);
+
+        if($tipo != 'T') {
+            $query->andWhere(['tipo' => $tipo]);
+        }
+
 
         if ($status == 'VENCER') {
             $query->andWhere(['>', 'vencimento', $hj]);

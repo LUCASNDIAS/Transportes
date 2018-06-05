@@ -8,7 +8,9 @@ use backend\modules\cotacao\models\CotacaoSearch;
 use backend\modules\clientes\models\Clientes;
 use backend\models\Tabelas;
 use backend\models\EnviaEmail;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -23,6 +25,24 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'create', 'update', 'delete', 'view', 'print', 'send'],
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'create', 'update', 'delete', 'view', 'print', 'send'],
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -189,6 +209,12 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Envia cotação por email
+     * @param $id
+     * @return mixed|string
+     * @throws NotFoundHttpException
+     */
     public function actionSend($id) {
 
         // Modelo da Cotação

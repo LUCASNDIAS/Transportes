@@ -8,7 +8,9 @@ use backend\modules\ordemcoleta\models\OrdemColetaSearch;
 use backend\modules\clientes\models\Clientes;
 use backend\models\Tabelas;
 use backend\models\EnviaEmail;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -23,6 +25,22 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -189,6 +207,13 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * send()
+     * Envia ordem de coleta por email
+     * @param $id
+     * @return mixed|string
+     * @throws NotFoundHttpException
+     */
     public function actionSend($id) {
 
         // Modelo da Cotação

@@ -13,10 +13,10 @@ use backend\modules\financeiro\models\Financeiro;
 use backend\models\EnviaEmail;
 use backend\commands\Basicos;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use kartik\mpdf\Pdf;
 
 /**
  * DefaultController implements the CRUD actions for Fatura model.
@@ -32,16 +32,16 @@ class DefaultController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'create', 'update', 'delete', 'view'],
                 'rules' => [
                     [
                         'allow' => false,
-                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
                         'roles' => ['bloqueado'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
                         'roles' => ['acessoBasico'],
                     ],
                 ],
@@ -324,6 +324,14 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * Print2()
+     * Gera PDF da fatura
+     * @param $id
+     * @param bool $retorno
+     * @return false|int|string
+     * @throws NotFoundHttpException
+     */
     public function actionPrint2($id, $retorno = true)
     {
 
@@ -382,113 +390,13 @@ class DefaultController extends Controller
         ]);
     }
 
-    protected function getDocs($id)
-    {
-        $fatura = $this->findModel($id);
-        if ($fatura->tipo == 'MINUTA') {
-            return $this->getMinutas($id);
-        } else {
-            return $this->getCtes($id);
-        }
-    }
-
-    protected function getMinutas($id)
-    {
-        $fatura       = $this->findModel($id);
-        $modelCliente = new Clientes();
-        $minutas      = $this->findModelDocs($id);
-        $basicos      = new Basicos();
-
-        $retorno = [];
-
-        $i = 0;
-
-        foreach ($minutas as $minuta) {
-
-            $remetente           = $modelCliente->retornaCliente($minuta->minuta->remetente);
-            $destinatario        = $modelCliente->retornaCliente($minuta->minuta->destinatario);
-            $valornf             = explode('|', $minuta->minuta->notasvalor);
-            $volumesnf           = explode('|', $minuta->minuta->notasvolumes);
-            $notasvalor          = array_sum($valornf);
-            $notasvolumes        = array_sum($volumesnf);
-            $peso                = ($minuta->minuta->pesoreal > $minuta->minuta->pesocubado)
-                    ? $minuta->minuta->pesoreal : $minuta->minuta->pesocubado;
-            $totalpeso[]         = $peso;
-            $totalnotasvalor[]   = $notasvalor;
-            $totalnotasvolumes[] = $notasvolumes;
-            $totalfrete[]        = $minuta->minuta->fretetotal;
-
-            $retorno['embarques'][$i]['numero']       = $minuta->minuta->numero;
-            $retorno['embarques'][$i]['remetente']    = $remetente->nome;
-            $retorno['embarques'][$i]['destinatario'] = $destinatario->nome;
-            $retorno['embarques'][$i]['emissao']      = $basicos->formataData('print',
-                $minuta->minuta->cridt);
-            $retorno['embarques'][$i]['notasnumero']  = $minuta->minuta->notasnumero;
-            $retorno['embarques'][$i]['notasvalor']   = $notasvalor;
-            $retorno['embarques'][$i]['peso']         = $peso;
-            $retorno['embarques'][$i]['notasvolumes'] = $notasvolumes;
-            $retorno['embarques'][$i]['fretetotal']   = $minuta->minuta->fretetotal;
-
-            $i++;
-        }
-
-        $retorno['total']['embarques']    = $i;
-        $retorno['total']['peso']         = array_sum($totalpeso);
-        $retorno['total']['notasvalor']   = array_sum($totalnotasvalor);
-        $retorno['total']['notasvolumes'] = array_sum($totalnotasvolumes);
-        $retorno['total']['frete']        = array_sum($totalfrete);
-
-//        Yii::$app->response->format = 'json';
-//        echo '<pre>';
-        return $retorno;
-    }
-
-    protected function getCtes($id)
-    {
-        $fatura       = $this->findModel($id);
-        $modelCliente = new Clientes();
-        $ctes         = $this->findModelDocs($id);
-        $basicos      = new Basicos();
-
-        $retorno = [];
-
-        $i = 0;
-
-        foreach ($ctes as $cte) {
-
-            $peso = ($cte->cte->pesoreal > $cte->cte->pesocubado) ? $cte->cte->pesoreal
-                    : $cte->cte->pesocubado;
-
-            $totalpeso[]         = $peso;
-            $totalnotasvalor[]   = $cte->cte->notasvalor;
-            $totalnotasvolumes[] = $cte->cte->notasvolumes;
-            $totalfrete[]        = $cte->cte->vtprest;
-
-            $retorno['embarques'][$i]['numero']       = $cte->cte->numero;
-            $retorno['embarques'][$i]['remetente']    = $cte->cte->cteRemetente->nome;
-            $retorno['embarques'][$i]['destinatario'] = $cte->cte->cteDestinatario->nome;
-            $retorno['embarques'][$i]['emissao']      = $basicos->formataData('print',
-                $cte->cte->cridt);
-            $retorno['embarques'][$i]['notasnumero']  = $cte->cte->notaChave;
-            $retorno['embarques'][$i]['notasvalor']   = $cte->cte->notasvalor;
-            $retorno['embarques'][$i]['peso']         = $peso;
-            $retorno['embarques'][$i]['notasvolumes'] = $cte->cte->notasvolumes;
-            $retorno['embarques'][$i]['fretetotal']   = $cte->cte->vtprest;
-
-            $i++;
-        }
-
-        $retorno['total']['embarques']    = $i;
-        $retorno['total']['peso']         = array_sum($totalpeso);
-        $retorno['total']['notasvalor']   = array_sum($totalnotasvalor);
-        $retorno['total']['notasvolumes'] = array_sum($totalnotasvolumes);
-        $retorno['total']['frete']        = array_sum($totalfrete);
-
-//        Yii::$app->response->format = 'json';
-//        echo '<pre>';
-        return $retorno;
-    }
-
+    /**
+     * Send()
+     * Envia fatura por email
+     * @param $id
+     * @return mixed|string
+     * @throws NotFoundHttpException
+     */
     public function actionSend($id)
     {
 
@@ -535,6 +443,11 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Grid()
+     * Grid de minutas
+     * @return string
+     */
     public function actionGrid()
     {
         $searchModel  = new MinutasSearch();
@@ -547,6 +460,139 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * getDocs()
+     * retorna notas das minutas ou cte
+     * @param $id
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    protected function getDocs($id)
+    {
+        $fatura = $this->findModel($id);
+        if ($fatura->tipo == 'MINUTA') {
+            return $this->getMinutas($id);
+        } else {
+            return $this->getCtes($id);
+        }
+    }
+
+    /**
+     * getMinutas()
+     * Retorna as minutas de uma fatura
+     * @param $id
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    protected function getMinutas($id)
+    {
+        $fatura       = $this->findModel($id);
+        $modelCliente = new Clientes();
+        $minutas      = $this->findModelDocs($id);
+        $basicos      = new Basicos();
+
+        $retorno = [];
+
+        $i = 0;
+
+        foreach ($minutas as $minuta) {
+
+            $remetente           = $modelCliente->retornaCliente($minuta->minuta->remetente);
+            $destinatario        = $modelCliente->retornaCliente($minuta->minuta->destinatario);
+            $valornf             = explode('|', $minuta->minuta->notasvalor);
+            $volumesnf           = explode('|', $minuta->minuta->notasvolumes);
+            $notasvalor          = array_sum($valornf);
+            $notasvolumes        = array_sum($volumesnf);
+            $peso                = ($minuta->minuta->pesoreal > $minuta->minuta->pesocubado)
+                ? $minuta->minuta->pesoreal : $minuta->minuta->pesocubado;
+            $totalpeso[]         = $peso;
+            $totalnotasvalor[]   = $notasvalor;
+            $totalnotasvolumes[] = $notasvolumes;
+            $totalfrete[]        = $minuta->minuta->fretetotal;
+
+            $retorno['embarques'][$i]['numero']       = $minuta->minuta->numero;
+            $retorno['embarques'][$i]['remetente']    = $remetente->nome;
+            $retorno['embarques'][$i]['destinatario'] = $destinatario->nome;
+            $retorno['embarques'][$i]['emissao']      = $basicos->formataData('print',
+                $minuta->minuta->cridt);
+            $retorno['embarques'][$i]['notasnumero']  = $minuta->minuta->notasnumero;
+            $retorno['embarques'][$i]['notasvalor']   = $notasvalor;
+            $retorno['embarques'][$i]['peso']         = $peso;
+            $retorno['embarques'][$i]['notasvolumes'] = $notasvolumes;
+            $retorno['embarques'][$i]['fretetotal']   = $minuta->minuta->fretetotal;
+
+            $i++;
+        }
+
+        $retorno['total']['embarques']    = $i;
+        $retorno['total']['peso']         = array_sum($totalpeso);
+        $retorno['total']['notasvalor']   = array_sum($totalnotasvalor);
+        $retorno['total']['notasvolumes'] = array_sum($totalnotasvolumes);
+        $retorno['total']['frete']        = array_sum($totalfrete);
+
+//        Yii::$app->response->format = 'json';
+//        echo '<pre>';
+        return $retorno;
+    }
+
+    /**
+     * getCtes()
+     * retorna os ctes de uma fatura
+     * @param $id
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    protected function getCtes($id)
+    {
+        $fatura       = $this->findModel($id);
+        $modelCliente = new Clientes();
+        $ctes         = $this->findModelDocs($id);
+        $basicos      = new Basicos();
+
+        $retorno = [];
+
+        $i = 0;
+
+        foreach ($ctes as $cte) {
+
+            $peso = ($cte->cte->pesoreal > $cte->cte->pesocubado) ? $cte->cte->pesoreal
+                : $cte->cte->pesocubado;
+
+            $totalpeso[]         = $peso;
+            $totalnotasvalor[]   = $cte->cte->notasvalor;
+            $totalnotasvolumes[] = $cte->cte->notasvolumes;
+            $totalfrete[]        = $cte->cte->vtprest;
+
+            $retorno['embarques'][$i]['numero']       = $cte->cte->numero;
+            $retorno['embarques'][$i]['remetente']    = $cte->cte->cteRemetente->nome;
+            $retorno['embarques'][$i]['destinatario'] = $cte->cte->cteDestinatario->nome;
+            $retorno['embarques'][$i]['emissao']      = $basicos->formataData('print',
+                $cte->cte->cridt);
+            $retorno['embarques'][$i]['notasnumero']  = $cte->cte->notaChave;
+            $retorno['embarques'][$i]['notasvalor']   = $cte->cte->notasvalor;
+            $retorno['embarques'][$i]['peso']         = $peso;
+            $retorno['embarques'][$i]['notasvolumes'] = $cte->cte->notasvolumes;
+            $retorno['embarques'][$i]['fretetotal']   = $cte->cte->vtprest;
+
+            $i++;
+        }
+
+        $retorno['total']['embarques']    = $i;
+        $retorno['total']['peso']         = array_sum($totalpeso);
+        $retorno['total']['notasvalor']   = array_sum($totalnotasvalor);
+        $retorno['total']['notasvolumes'] = array_sum($totalnotasvolumes);
+        $retorno['total']['frete']        = array_sum($totalfrete);
+
+//        Yii::$app->response->format = 'json';
+//        echo '<pre>';
+        return $retorno;
+    }
+
+    /**
+     * getNumero()
+     * Retorna o número da última fatura
+     * @return int|mixed
+     */
     protected function getNumero()
     {
         $model = new Fatura();
@@ -571,6 +617,12 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Model de documentos
+     * @param $id
+     * @return Documentos[]
+     * @throws NotFoundHttpException
+     */
     protected function findModelDocs($id)
     {
         if (($modelDocs = Documentos::findAll(['fatura_id' => $id])) !== null) {
@@ -580,6 +632,12 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * Model financeiro (receita)
+     * @param $id
+     * @return Financeiro
+     * @throws NotFoundHttpException
+     */
     protected function findModelFinanceiro($id)
     {
         if (($modelFinanceiro = Financeiro::findOne(['fatura' => $id])) !== null) {

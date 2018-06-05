@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use backend\models\Minutas;
 use backend\models\MinutasSearch;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\modules\clientes\models\Clientes;
@@ -27,20 +28,19 @@ class MinutasController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'index'
-                ],
                 'rules' => [
                     [
-                        'actions' => [
-                            'index', 'create', 'update'
-                        ],
+                        'allow' => false,
+                        'matchCallback' => function ($rule, $action) {
+                            throw new HttpException(403, 'Usuário bloqueado! Entre em contato para solucionar este erro.');
+                        },
+                        'roles' => ['bloqueado'],
+                    ],
+                    [
                         'allow' => true,
-                        'roles' => [
-                            '@', 'acessoBasico'
-                        ]
-                    ]
-                ]
+                        'roles' => ['acessoBasico'],
+                    ],
+                ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
