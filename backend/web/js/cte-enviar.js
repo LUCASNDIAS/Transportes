@@ -5,6 +5,9 @@
 
 $(document).ready(function () {
 
+    // Consulta Status
+    statusSefaz();
+
     // Inicia as ações pelo click
     $("#btn-enviar").on('click', function () {
 
@@ -19,6 +22,42 @@ $(document).ready(function () {
         var id = $(this).attr('n');
         gerarXml(id);
     });
+
+    $("#btn-status").on('click', function() {
+        statusSefaz();
+    });
+
+    function statusSefaz() {
+        var etapa = 'status';
+        var url = '/Transportes/backend/web/ajax/status-sefaz';
+
+        // Ativa Animação da barra
+        ativaBarra(etapa);
+
+        // Texto informativo
+        var texto = 'Aguardando resposta da SEFAZ';
+        mudaTexto(etapa, texto);
+
+        // Ajax de status
+        $.get(url, function (data) {
+
+            if (data.cStat == '107') {
+                // Serviço em operação
+                sucessoBarra(etapa);
+
+                var sucesso = 'Serviço em Operação: ' + data.dhRecbto;
+                mudaTexto(etapa, sucesso);
+
+            } else {
+                // Mostra que houve erro na Barra
+                erroBarra(etapa);
+
+                // Msg de erro
+                erroTexto(etapa, 'Sefaz indisponível.');
+            }
+
+        });
+    }
 
     // Função que atualiza a geraçao do XML
     function gerarXml(id) {
@@ -219,7 +258,7 @@ $(document).ready(function () {
                     sucessoBarra(etapa);
 
                     var txtsucesso = data.aProt.xMotivo + '<br />Chave: ' +
-                            data.aProt.chCTe + '<br />Protocolo: ' + data.aProt.nProt;
+                        data.aProt.chCTe + '<br />Protocolo: ' + data.aProt.nProt;
 
                     // Mostra o texto com os dados da autorização
                     mudaTexto(etapa, txtsucesso);
@@ -252,7 +291,7 @@ $(document).ready(function () {
                     $('#resultado-protocolo').html('Protocolo já adicionado.');
 
                     novoProtocolo(id);
-                    
+
                     // Gerar PDF
                     //gerarPdf(id);
 
@@ -268,20 +307,20 @@ $(document).ready(function () {
             }
         });
     }
-    
+
     function novoProtocolo(id) {
         var etapa = 'protocolo';
         var url = '/Transportes/backend/web/cte/default/consulta-chave/?id=' + id;
-        
+
         // Ativa a animação da barra
         ativaBarra(etapa);
 
         // Texto informativo
         var texto = 'Adicionando protocolo.';
-        
+
         // Muda o texto de resultados
         mudaTexto(etapa, texto);
-        
+
         // Solicita protocolo do xml
         $.get(url, function (data) {
 
@@ -296,7 +335,7 @@ $(document).ready(function () {
                 gerarPdf(id);
 
             } else {
-                
+
                 console.log(data);
                 // Mostra que houve erro na Barra
                 erroBarra(etapa);
@@ -349,7 +388,7 @@ $(document).ready(function () {
                 gerarPdf(id);
 
             } else {
-                
+
                 console.log(data);
                 // Mostra que houve erro na Barra
                 erroBarra(etapa);
@@ -384,10 +423,10 @@ $(document).ready(function () {
 
                 var sucesso = 'Arquivo gerado com suceso.<br />Arquivo: ' + data.filename;
                 mudaTexto(etapa, sucesso);
-                
+
                 $('#motivo-erro').html('CT-e já enviado. <br>Arquivo PDF gerado com sucesso');
                 $('#motivo-erro').removeClass('text-red').addClass('text-green');
-                                
+
                 abrePDF(data.filename);
 
             } else {
@@ -397,7 +436,7 @@ $(document).ready(function () {
                 $.each(data.erros, function (key, value) {
                     erroTexto(etapa, value);
                 });
-                
+
                 $('#motivo-erro').html('Erro ao gerar PDF.');
             }
         });
@@ -432,10 +471,10 @@ $(document).ready(function () {
         var resultado = $("#oculto").find('.tdVal:last').html();
         $("#motivo-erro").html(resultado);
     }
-    
+
     function abrePDF(url) {
         var local = url.replace('/var/www/html', '');
-        window.open(local,'LND Sistemas - CT-e');
+        window.open(local, 'LND Sistemas - CT-e');
     }
 
     function desativaBarra(etapa) {

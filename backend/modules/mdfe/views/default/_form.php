@@ -551,7 +551,8 @@ MdfeAsset::register($this);
                     ?></div>
                 <div class="col-sm-4"><?=
                     $form->field($model, 'placa')->textInput([
-                        'maxlength' => true])
+                        'maxlength' => true,
+                        'class' => 'form-control placa'])
                     ?></div>
             </div>
         </div>

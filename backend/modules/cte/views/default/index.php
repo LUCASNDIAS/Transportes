@@ -27,6 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'btn btn-success'])
         ?>
         <?php
+        echo Html::a(Yii::t('app', 'Relatório'), ['/relatorios/default/cte'],
+            ['class' => 'btn btn-warning'])
+        ?>
+        <?php
         echo Html::a(Yii::t('app', 'Download XML'), ['downloads'],
             ['class' => 'btn btn-primary'])
         ?>

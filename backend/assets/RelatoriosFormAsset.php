@@ -18,6 +18,7 @@ class RelatoriosFormAsset extends AssetBundle
     	'assets/df01b1b/src/jquery.maskMoney.js',
     	'js/formularios.js',
     	'js/relatorios-form.js',
+        'js/printThis.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

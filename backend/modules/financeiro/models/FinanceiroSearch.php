@@ -80,6 +80,8 @@ class FinanceiroSearch extends Financeiro
             ->andFilterWhere(['like', 'sacado', $this->sacado])
             ->andFilterWhere(['like', 'status', $this->status]);
 
+        $query->orderBy('vencimento DESC');
+
         return $dataProvider;
     }
 }

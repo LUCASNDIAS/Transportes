@@ -7,14 +7,14 @@ use backend\modules\clientes\models\Clientes;
 
 class EnviaEmail extends \yii\db\ActiveRecord {
 
-    public $from = 'lndsistemas@lndsistemas.com.br';
+    public $from = 'geradorfiscal@gmail.com';
 
     public function Enviar($para, $assunto, $anexo, $dados, $tipo = 'minuta') {
 
         $clientes = new Clientes();
 
         $mensagemEmail = "Senhor Cliente,<br/><br/>Segue resumo da ". $tipo ." nº ";
-        $mensagemEmail .= $dados['numero'] . " emitida através da plataforma <a href='http://www.lndsistemas.com.br' target='_blank'>LND Sistemas</a>:";
+        $mensagemEmail .= $dados['numero'] . " emitida através da plataforma <a href='https://www.geradorfiscal.com.br' target='_blank'>Gerador Fiscal</a>:";
         $mensagemEmail .= "<p>";
         $mensagemEmail .= "<br /><b>Envolvidos</b><br />Remetente: " . $dados['remetente'] . " - " . $clientes->getNome($dados['remetente']);
         $mensagemEmail .= "<br />Destinatário: " . $dados['destinatario'] . " - " . $clientes->getNome($dados['destinatario']);
@@ -53,7 +53,7 @@ class EnviaEmail extends \yii\db\ActiveRecord {
         $clientes = new Clientes();
 
         $mensagemEmail = "Senhor Cliente,<br/><br/>Segue fatura nº ";
-        $mensagemEmail .= $dados['numero'] . " emitida através da plataforma <a href='http://www.lndsistemas.com.br' target='_blank'>LND Sistemas</a>:";
+        $mensagemEmail .= $dados['numero'] . " emitida através da plataforma <a href='https://www.geradorfiscal.com.br' target='_blank'>Gerador Fiscal</a>:";
         $mensagemEmail .= "<p>";
         $mensagemEmail .= "<br /><b>Sacado</b><br />" . $dados['sacado'] . " - " . $clientes->getNome($dados['sacado']);
         $mensagemEmail .= "<br /><p>Segue arquivo PDF para conferência.</p>";

@@ -36,8 +36,8 @@ return [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'lndsistemas.mail@gmail.com',
-                'password' => 'TligWww15*=', //'llqyulcgidhezbgo*=',
+                'username' => 'geradorfiscal@gmail.com',
+                'password' => 'Tlimp15*=', //'llqyulcgidhezbgo*=',
                 'port' => '587',
                 'encryption' => 'tls',
             ],

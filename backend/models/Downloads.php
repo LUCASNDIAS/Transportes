@@ -53,8 +53,9 @@ class Downloads
             ->where([
                 'dono' => Yii::$app->user->identity['cnpj'],
                 'ambiente' => 1,
-                'status' => $formulario['status']
-            ]);
+            ])
+            ->andWhere(['or', 'status="' . $formulario['status'] . '"', 'status="ENTREGUE"']);
+
 
         if ($formulario['di'] != '' && $formulario['df'] != '') {
             $di = $basico->formataData('db', $formulario['di']);
@@ -80,7 +81,7 @@ class Downloads
         $ambiente = 'producao';
 
         foreach ($query as $arquivo) {
-            $interno = ($arquivo['status'] == 'AUTORIZADO') ? '/enviadas/aprovadas/' : '/canceladas/';
+            $interno = ($arquivo['status'] == 'AUTORIZADO' || $arquivo['status'] == 'ENTREGUE') ? '/enviadas/aprovadas/' : '/canceladas/';
             $file[] = $dirCte . $usuario . '/' . $ambiente . $interno . $arquivo['chave'] . '-cte.xml';
         }
 

@@ -3,12 +3,16 @@
 namespace backend\modules\veiculos\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "veiculos".
  *
  * @property int $id
  * @property string $marca
+ * @property string $cridt
+ * @property string $criusu
+ * @property string $dono
  * @property string $modelo
  * @property string $cint
  * @property string $renavam
@@ -45,9 +49,11 @@ class Veiculos extends \yii\db\ActiveRecord
         return [
             [['marca', 'modelo', 'placa', 'tara', 'capkg', 'capm3', 'tpprop', 'tpveic_id', 'tprod_id', 'tpcar_id', 'uf'], 'required'],
             [['tpveic_id', 'tprod_id', 'tpcar_id'], 'integer'],
-            [['marca'], 'string', 'max' => 20],
+            [['marca', 'dono'], 'string', 'max' => 20],
             [['modelo'], 'string', 'max' => 60],
+            [['criusu'], 'string', 'max' => 60],
             [['cint', 'placa'], 'string', 'max' => 10],
+            [['cridt'], 'safe'],
             [['renavam'], 'string', 'max' => 11],
             [['tara', 'capkg', 'capm3'], 'string', 'max' => 6],
             [['tpprop'], 'string', 'max' => 1],
@@ -65,6 +71,9 @@ class Veiculos extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'cridt' => Yii::t('app', 'Data Criação'),
+            'criusu' => Yii::t('app', 'Usuário'),
+            'dono' => Yii::t('app', 'dono'),
             'marca' => Yii::t('app', 'Marca'),
             'modelo' => Yii::t('app', 'Modelo'),
             'cint' => Yii::t('app', 'Código Interno'),
@@ -113,13 +122,26 @@ class Veiculos extends \yii\db\ActiveRecord
         return $this->hasOne(VeiculosTpveic::className(), ['id' => 'tpveic_id']);
     }
 
-    public function getVeiculos() {
+    public function getVeiculos()
+    {
 
         $data = self::find()
-                ->select('placa,modelo')
-                ->where(['dono' => Yii::$app->user->identity['cnpj']])
-                ->asArray()
-                ->all();
+            ->select('placa,modelo')
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->asArray()
+            ->all();
+
+        return $data;
+    }
+
+    public function autoComplete()
+    {
+
+        $data = self::find()
+            ->select([new Expression("placa as value, CONCAT( `placa`,' | ',`marca`, ' ', `modelo`) as label, id")])
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->asArray()
+            ->all();
 
         return $data;
     }

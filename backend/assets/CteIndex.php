@@ -14,7 +14,7 @@ class CteIndex extends AssetBundle
     public $css = [
     ];
     public $js = [
-        'js/jquery1.8.js',
+//        'js/jquery1.8.js',
     	'js/cte-index.js',
     ];
     public $depends = [

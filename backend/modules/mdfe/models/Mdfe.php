@@ -74,7 +74,7 @@ class Mdfe extends \yii\db\ActiveRecord
             [['serie', 'unidademedida'], 'string', 'max' => 3],
             [['tipoemitente'], 'string', 'max' => 50],
             [['modalidade', 'formaemissao', 'rntrc', 'ciot', 'protocolo'], 'string', 'max' => 20],
-            [['placa'], 'string', 'max' => 8],
+            [['placa'], 'string', 'max' => 7],
             [['inffisco', 'infcontribuinte'], 'string', 'max' => 100],
             [['status'], 'string', 'max' => 30],
         ];

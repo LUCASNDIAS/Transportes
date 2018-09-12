@@ -8,6 +8,7 @@ CteAsset::register($this);
 
 $this->title = Yii::t('app', 'Enviar CTe ') . str_pad($model->numero, 6, 0, STR_PAD_LEFT);
 $basicos = new Basicos();
+
 ?>
 
 <?= Html::beginForm(['cte/default/email', 'id' => $model->id], 'post', ['enctype' => 'multipart/form-data', 'name' => 'form-envio', 'id' => $model->id]) ?>
@@ -36,7 +37,7 @@ $basicos = new Basicos();
         <td>
             <div class="form-group">
                 <label class="control-label" for="consignatario">Tomador: </label>
-                <?= Html::input('text', 'email[]', isset($tomador['email']) ? strtolower($tomador['email']) : '', ['id' => 'consignatario', 'class' => 'form-control']); ?>
+                <?= Html::input('text', 'email[]', isset($consignatario['email']) ? strtolower($consignatario['email']) : '', ['id' => 'consignatario', 'class' => 'form-control']); ?>
                 <p class="help-block help-block-error"></p>
             </div>
         </td>

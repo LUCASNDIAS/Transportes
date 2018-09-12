@@ -900,6 +900,34 @@ class CteGeral
         //return htmlspecialchars($cteTools->soapDebug);
     }
 
+    public function cancelEnviarXml($id, $motivo)
+    {
+        $model = $this->findModel($id);
+
+        // Verifica se é homologação ou produção
+        $pamb = ($model->ambiente == 1) ? 'producao' : 'homologacao';
+
+        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+
+        // Autorizado
+        $autorizado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/enviadas/aprovadas/'.$model->chave.'-cte.xml';
+
+        // ProtCancel
+        $protocolo = Yii::getAlias('@cte').'/'.$pamb.'/temporarias/'.date('Y').date('m').'/'.$model->chave.'-CancCTe-retEnvEvento.xml';
+
+        // Cancelado
+        $cancelado = Yii::getAlias('@cte/').Yii::$app->user->identity['cnpj'].'/'.$pamb.'/canceladas/'.$model->chave.'-cte.xml';
+
+        // Retorno do cancelamento
+        $aRetorno = array();
+
+        $cancela = $cteTools->sefazCancela($model->chave, $model->ambiente,
+            $motivo, $model->cteProtocolos[0]->nprot, $aRetorno);
+
+        return $aRetorno;
+        //return htmlspecialchars($cteTools->soapDebug);
+    }
+
     public function enviaEmail($id)
     {
         $model = $this->findModel($id);

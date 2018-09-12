@@ -37,8 +37,8 @@ RelatoriosAsset::register($this);
             <div class="icon">
                 <i class="fa fa-file-code-o"></i>
             </div>
-            <?= Html::a('Emitir CT-e <i class="fa fa-arrow-circle-right"></i>',
-                Url::to('cte/default/create'), ['class' => 'small-box-footer'])
+            <?= Html::a('Gerar Relatório <i class="fa fa-arrow-circle-right"></i>',
+                Url::to('relatorios/default/cte'), ['class' => 'small-box-footer'])
             ?>            
         </div>
     </div>

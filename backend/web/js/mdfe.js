@@ -175,6 +175,7 @@ $(document).ready(function () {
             };
     $('.telefone').mask(SPMaskBehavior, spOptions);
     $('.cep').mask('00000-000');
+    $('.placa').mask('SSS0000');
 
     // Passa todos os valores de input para maiusculo removendo acentos
     $('input, select, textarea').on('blur', function () {

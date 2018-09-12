@@ -14,7 +14,7 @@ class CteEnviarAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
-        'js/jquery1.8.js',
+//        'js/jquery1.8.js',
     	'js/cte-enviar.js',
     ];
     public $depends = [

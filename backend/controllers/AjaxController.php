@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use NFePHP\CTe\Tools;
 use Yii;
 use yii\db\Query;
 use yii\filters\AccessControl;
@@ -486,9 +487,9 @@ class AjaxController extends Controller
 
         $resultado = $unionQuery->all();
         $map = ArrayHelper::index($resultado, null, 'tipo');
-        $mes = array_unique(ArrayHelper::getColumn($resultado,'mes'));
-        $receita = empty($mes) ? [] : ArrayHelper::getColumn($map['R'],'total');
-        $despesa = empty($mes) ? [] : ArrayHelper::getColumn($map['D'],'total');
+        $mes = array_unique(ArrayHelper::getColumn($resultado, 'mes'));
+        $receita = empty($mes) ? [] : ArrayHelper::getColumn($map['R'], 'total');
+        $despesa = empty($mes) ? [] : ArrayHelper::getColumn($map['D'], 'total');
 
         $retorno = [
             'mes' => $mes,
@@ -498,6 +499,27 @@ class AjaxController extends Controller
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return $retorno;
+    }
+
+    public function actionUltimoKm($veiculo)
+    {
+        $query = (new Query())
+            ->select(['odometro' => 'max(odometro)'])
+            ->from('veiculos_abastecimento')
+            ->where(['veiculo' => $veiculo])
+            ->one();
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $query;
+    }
+
+    public function actionStatusSefaz()
+    {
+        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+        $retorno = $cteTools->sefazStatus('', '1', $resposta);
+
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $resposta;
     }
 
 }

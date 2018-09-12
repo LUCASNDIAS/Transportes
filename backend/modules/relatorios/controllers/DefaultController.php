@@ -76,6 +76,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * Cte()
+     * Relatório de CT-e
+     * @return string
+     */
+    public function actionCte()
+    {
+        return $this->render('cte');
+    }
+
+    /**
      * Balanço()
      * Relatório de contas a pagar
      * @return string
@@ -99,7 +109,17 @@ class DefaultController extends Controller
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = new Relatorios();
-        $rel   = $model->getFinanceiro($di, $df, $tipo, $status);
+        $rel = $model->getFinanceiro($di, $df, $tipo, $status);
+
+        return $rel;
+    }
+
+    public function actionGetCte($di, $df, $status)
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $model = new Relatorios();
+        $rel = $model->getCte($di, $df, $status);
 
         return $rel;
     }

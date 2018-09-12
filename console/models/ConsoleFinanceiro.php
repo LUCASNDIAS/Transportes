@@ -79,7 +79,7 @@ class ConsoleFinanceiro
         $intervalo = date('Y-m-d', strtotime('+3 days'));
 
         $sql = "SELECT f.vencimento, f.descricao, c.nome as sacado, f.valor, f.status, f.tipo FROM financeiro f
-                INNER JOIN clientes c on f.sacado = c.cnpj
+                LEFT JOIN clientes c on f.sacado = c.cnpj
                 WHERE f.dono = $dono
                 AND (f.status = 'VENCIDO' OR
                 (f.status != 'PAGO' AND vencimento BETWEEN $hoje AND $intervalo))";

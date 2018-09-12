@@ -9953,3 +9953,80 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1528078530.475
     'REQUEST_TIME' => 1528078530
 ]
+2018-06-10 13:13:30 [192.168.11.4][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.11.4
+    in /var/www/html/Transportes/frontend/modules/portal/views/layouts/main.php:29
+    in /var/www/html/Transportes/frontend/modules/portal/controllers/DefaultController.php:19
+2018-06-10 13:13:30 [192.168.11.4][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.11.4
+2018-06-10 13:13:30 [192.168.11.4][-][-][info][application] $_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => '192.168.11.9'
+    'HTTP_USER_AGENT' => 'avast! Antivirus'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_ENCODING' => 'deflate, gzip'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at 192.168.11.9 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => '192.168.11.9'
+    'SERVER_ADDR' => '192.168.11.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.11.4'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '57533'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1528647210.05
+    'REQUEST_TIME' => 1528647210
+]
+2018-06-27 10:08:24 [10.100.122.181][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.181
+    in /var/www/html/Transportes/frontend/modules/portal/views/layouts/main.php:29
+    in /var/www/html/Transportes/frontend/modules/portal/controllers/DefaultController.php:19
+2018-06-27 10:08:24 [10.100.122.181][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.100.122.181
+2018-06-27 10:08:24 [10.100.122.181][-][-][info][application] $_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => '10.20.235.9'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_X_FORWARDED_FOR' => '10.20.235.9'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_VIA' => '1.1 10.100.122.181 (McAfee Web Gateway 7.6.2.5.0.22222)'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.18 (Ubuntu) Server at 10.20.235.9 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Ubuntu)'
+    'SERVER_NAME' => '10.20.235.9'
+    'SERVER_ADDR' => '10.20.235.9'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.100.122.181'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/Transportes/frontend/web/index.php'
+    'REMOTE_PORT' => '41741'
+    'REDIRECT_URL' => '/Transportes/frontend/web/portal'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Transportes/frontend/web/portal'
+    'SCRIPT_NAME' => '/Transportes/frontend/web/index.php'
+    'PHP_SELF' => '/Transportes/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1530104904.595
+    'REQUEST_TIME' => 1530104904
+]

@@ -569,6 +569,23 @@ class DefaultController extends Controller
     }
 
     /**
+     * CancelEnviarXml()
+     * Solicita cancelamento de CTe
+     * @param $id
+     * @return array|string
+     */
+    public function actionCancelEnviarXml($id, $motivo)
+    {
+        $cteGeral = new CteGeral();
+
+        $retorno = $cteGeral->cancelEnviarXml($id, $motivo);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return $retorno;
+    }
+
+    /**
      * GerarXml()
      * Gera xml  de um determinado CTe
      * @param $id
@@ -825,21 +842,25 @@ class DefaultController extends Controller
 //            return $this->redirect(['index', 'msg' => $msg]);
 //        }
 
-        $formulario = Yii::$app->request->post();
-
-        if (!empty($formulario)) {
-            if ($formulario['motivo'] != '') {
-                $cteGeral = new CteGeral();
-                $retorno = $cteGeral->sefazCancela($id, $formulario['motivo']);
-            }
-        }
-
         return $this->render('cancel',
             [
                 'model' => $model,
-                'retorno' => (isset($retorno)) ? $retorno : [],
-                'formulario' => $formulario
+                'retorno' => (isset($retorno)) ? $retorno : []
             ]);
+    }
+
+    public function actionCancelamento($id, $motivo)
+    {
+        $model = $this->findModel($id);
+
+        if ($motivo != '') {
+            $cteGeral = new CteGeral();
+            $retorno = $cteGeral->sefazCancela($id, $motivo);
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $retorno;
+
     }
 
     /**
@@ -909,7 +930,7 @@ class DefaultController extends Controller
                     Yii::$app->request->get('emails'));
 
                 // Título do Email
-                $titulo = 'LND Sistemas | ' . \Yii::$app->user->identity['empresa'] . ' - CTe ' . $model->numero;
+                $titulo = 'Gerador Fiscal | ' . \Yii::$app->user->identity['empresa'] . ' - CTe ' . $model->numero;
 
                 $dados['remetente'] = $model->remetente;
                 $dados['destinatario'] = $model->destinatario;

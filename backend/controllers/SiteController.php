@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Certificado;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -150,6 +151,14 @@ class SiteController extends Controller
         $this->view->params ['DadosUsuario'] = $_SESSION;
 
         return $this->render('naoautorizado');
+    }
+
+    public function actionCertificado()
+    {
+        $model = new Certificado();
+        $verifica = $model->certCheck(Yii::$app->user->identity['cnpj']);
+
+        var_dump($verifica);
     }
 
 }

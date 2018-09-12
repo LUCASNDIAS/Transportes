@@ -150,6 +150,10 @@ class MdfeGeral
             $cnpj = '', $cpf  = '09835783624'
         );
 
+        $resp = $mdfe->tagautXML(
+            $cnpj = '65156655000107', $cpf  = ''
+        );
+
         $resp       = $mdfe->taginfAdic(
             $infAdFisco = $model->inffisco, $infCpl     = $model->infcontribuinte
         );

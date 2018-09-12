@@ -1,4 +1,4 @@
-<?php use yii\helpers\Html;?>
+<?php use yii\helpers\Html; ?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -6,7 +6,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-            	<?php echo Html::img(Yii::$app->user->identity['foto'], ['class'=>'img-circle']);?>
+                <?php echo Html::img(Yii::$app->user->identity['foto'], ['class' => 'img-circle']); ?>
             </div>
             <div class="pull-left info">
                 <p><?= Yii::$app->user->identity['nome']; ?></p>
@@ -19,7 +19,7 @@
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Busca..."/>
-              <span class="input-group-btn">
+                <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
@@ -42,13 +42,13 @@
                         'visible' => Yii::$app->user->can('admLND'),
                         'items' => [
                             ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'], 'visible' => Yii::$app->user->can('admLND')],
-                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],'visible' => Yii::$app->user->can('admLND')],
-                        	['label' => 'Update', 'icon' => 'fa fa-recycle', 'url' => ['/update/index'],'visible' => Yii::$app->user->can('admLND')],
-                        	['label' => 'Mensagens', 'icon' => 'fa fa-envelope-o', 'url' => '#', 'visible' => Yii::$app->user->can('admLND'), 'items' => [
-                        			['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/mensagens/default/create'], 'visible' => Yii::$app->user->can('admLND')],
-                        			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mensagens'], 'visible' => Yii::$app->user->can('admLND')],
-                        		],
-                        	],
+                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'], 'visible' => Yii::$app->user->can('admLND')],
+                            ['label' => 'Update', 'icon' => 'fa fa-recycle', 'url' => ['/update/index'], 'visible' => Yii::$app->user->can('admLND')],
+                            ['label' => 'Mensagens', 'icon' => 'fa fa-envelope-o', 'url' => '#', 'visible' => Yii::$app->user->can('admLND'), 'items' => [
+                                ['label' => 'Adcionar', 'icon' => 'fa fa-plus-square-o', 'url' => ['/mensagens/default/create'], 'visible' => Yii::$app->user->can('admLND')],
+                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mensagens'], 'visible' => Yii::$app->user->can('admLND')],
+                            ],
+                            ],
                         ],
                     ],
                     [
@@ -58,7 +58,7 @@
                         'visible' => Yii::$app->user->can('verClientes'),
                         'items' => [
                             ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/clientes/default/create'], 'visible' => Yii::$app->user->can('addClientes')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/clientes'],'visible' => Yii::$app->user->can('verClientes')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/clientes'], 'visible' => Yii::$app->user->can('verClientes')],
                         ],
                     ],
                     [
@@ -68,7 +68,7 @@
                         'visible' => Yii::$app->user->can('verCotacao'),
                         'items' => [
                             ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/cotacao/default/create'], 'visible' => Yii::$app->user->can('addCotacao')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cotacao'],'visible' => Yii::$app->user->can('verCotacao')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cotacao'], 'visible' => Yii::$app->user->can('verCotacao')],
                         ],
                     ],
                     [
@@ -78,7 +78,7 @@
                         'visible' => Yii::$app->user->can('verCte'),
                         'items' => [
                             ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/cte/default/create'], 'visible' => Yii::$app->user->can('addCte')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cte'],'visible' => Yii::$app->user->can('verCte')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/cte'], 'visible' => Yii::$app->user->can('verCte')],
                         ],
                     ],
 //                    [
@@ -136,25 +136,34 @@
 //                        ],
 //                    ],
                     [
-                		'label' => 'Frota',
-                		'icon' => 'fa fa-truck',
-                		'url' => '#',
-                		'visible' => Yii::$app->user->can('verFrota'),
-                		'items' => [
-                			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/veiculos/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
-                			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/veiculos'],'visible' => Yii::$app->user->can('verFuncionarios')],
-                		]
-                   	],
-                	[
-                		'label' => 'Funcionários',
-                		'icon' => 'fa fa-user',
-                		'url' => '#',
-                		'visible' => Yii::$app->user->can('addFuncionarios'),
-                		'items' => [
-                			['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/funcionarios/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
-                			['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/funcionarios'],'visible' => Yii::$app->user->can('verFuncionarios')],
-                		]
-                   	],
+                        'label' => 'Frota',
+                        'icon' => 'fa fa-truck',
+                        'url' => '#',
+                        'visible' => Yii::$app->user->can('verFrota'),
+                        'items' => [
+                            ['label' => 'Veiculos', 'icon' => 'fa fa-car', 'url' => '#', 'visible' => true, 'items' => [
+                                ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/veiculos/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
+                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/veiculos'], 'visible' => Yii::$app->user->can('verFuncionarios')],
+                            ],
+                            ],
+                            ['label' => 'Abastecimento', 'icon' => 'fa fa-plug', 'url' => '#', 'visible' => true, 'items' => [
+                                ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/veiculos/abastecimento/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
+                                ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/veiculos/abastecimento'], 'visible' => Yii::$app->user->can('verFuncionarios')],
+                            ],
+                            ],
+                            ['label' => 'Manutenção', 'icon' => 'fa fa-wrench', 'url' => ['/veiculos/servico'], 'visible' => Yii::$app->user->can('verFrota'),],
+                        ],
+                    ],
+                    [
+                        'label' => 'Funcionários',
+                        'icon' => 'fa fa-user',
+                        'url' => '#',
+                        'visible' => Yii::$app->user->can('addFuncionarios'),
+                        'items' => [
+                            ['label' => 'Adcionar', 'icon' => 'fa fa-user-plus', 'url' => ['/funcionarios/default/create'], 'visible' => Yii::$app->user->can('addFuncionarios')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/funcionarios'], 'visible' => Yii::$app->user->can('verFuncionarios')],
+                        ]
+                    ],
                     [
                         'label' => 'Manifesto',
                         'icon' => 'fa fa-files-o',
@@ -162,7 +171,7 @@
                         'visible' => Yii::$app->user->can('verMdfe'),
                         'items' => [
                             ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/mdfe/default/create'], 'visible' => Yii::$app->user->can('addMdfe')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mdfe'],'visible' => Yii::$app->user->can('verMdfe')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/mdfe'], 'visible' => Yii::$app->user->can('verMdfe')],
                         ],
                     ],
                     [
@@ -172,7 +181,7 @@
                         'visible' => Yii::$app->user->can('verMinutas'),
                         'items' => [
                             ['label' => 'Emitir', 'icon' => 'fa fa-plus', 'url' => ['/minutas/create'], 'visible' => Yii::$app->user->can('addMinutas')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/minutas'],'visible' => Yii::$app->user->can('verMinutas')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/minutas'], 'visible' => Yii::$app->user->can('verMinutas')],
                         ],
                     ],
                     [
@@ -182,7 +191,7 @@
                         'visible' => Yii::$app->user->can('verOC'),
                         'items' => [
                             ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/ordemcoleta/default/create'], 'visible' => Yii::$app->user->can('addOC')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/ordemcoleta'],'visible' => Yii::$app->user->can('verOC')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/ordemcoleta'], 'visible' => Yii::$app->user->can('verOC')],
                         ],
                     ],
                     [
@@ -192,7 +201,7 @@
                         'visible' => Yii::$app->user->can('verTabelas'),
                         'items' => [
                             ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/tabelas/create'], 'visible' => Yii::$app->user->can('addTabelas')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/tabelas'],'visible' => Yii::$app->user->can('verTabelas')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/tabelas'], 'visible' => Yii::$app->user->can('verTabelas')],
                         ],
                     ],
                     [
@@ -202,7 +211,7 @@
                         'visible' => Yii::$app->user->can('admin'),
                         'items' => [
                             ['label' => 'Adicionar', 'icon' => 'fa fa-plus', 'url' => ['/seguro/default/create'], 'visible' => Yii::$app->user->can('addTabelas')],
-                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/seguro'],'visible' => Yii::$app->user->can('verTabelas')],
+                            ['label' => 'Buscar', 'icon' => 'fa fa-search', 'url' => ['/seguro'], 'visible' => Yii::$app->user->can('verTabelas')],
                         ],
                     ],
                     [
