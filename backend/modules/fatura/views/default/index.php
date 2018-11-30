@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{print}&nbsp;&nbsp;{send}&nbsp;&nbsp;{delete}',
+                'template' => '{print}&nbsp;&nbsp;{boleto}&nbsp;&nbsp;{send}&nbsp;&nbsp;{delete}',
                 'buttons' => [
                     'print' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-print"></span>',
@@ -46,6 +46,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 [
                                 'title' => Yii::t('app', 'Enviar por e-mail'),
                         ]);
+                    },
+                    'boleto' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-barcode"></span>',
+                            $url,
+                            [
+                                'title' => Yii::t('app', 'Gerar Boleto'),
+                                'target' => '_blank',
+                                'data-pjax' => '0'
+                            ]);
                     },
                 ]
             ],

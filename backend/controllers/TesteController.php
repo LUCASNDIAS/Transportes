@@ -2,10 +2,13 @@
 
 namespace backend\controllers;
 
-use yii\rest\ActiveController;
+use yii\web\Controller;
 
-class TesteController extends ActiveController {
+class TesteController extends Controller {
 
-   public $modelClass = 'backend\models\Usuarios';    
+   public function actionNfe()
+   {
+       return $this->render('nfe');
+   }
 
 }

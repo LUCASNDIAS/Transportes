@@ -1,16 +1,30 @@
 <?php
+
 use yii\helpers\Html;
 use dmstr\helpers\AdminLteHelper;
+use backend\modules\clientes\models\Clientes;
+
+$adminlte = new \backend\assets\AdminLteAssetUser();
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+if (!Yii::$app->user->isGuest) {
+    $cliente = Clientes::find()
+        ->where([
+            'cnpj' => \Yii::$app->user->identity->cnpj,
+            'dono' => \Yii::$app->user->identity->cnpj,
+        ])
+        ->one();
 
-if (Yii::$app->controller->action->id === 'login') { 
-/**
- * Do not use this code in your template. Remove it. 
- * Instead, use the code  $this->layout = '//main-login'; in your controller.
- */
+    $skinatual = ($cliente->clientesPrefs === null) ? 'skin-purple' : $cliente->clientesPrefs->tema;
+}
+
+if (Yii::$app->controller->action->id === 'login') {
+    /**
+     * Do not use this code in your template. Remove it.
+     * Instead, use the code  $this->layout = '//main-login'; in your controller.
+     */
     echo $this->render(
         'main-login',
         ['content' => $content]
@@ -23,8 +37,8 @@ if (Yii::$app->controller->action->id === 'login') {
         app\assets\AppAsset::register($this);
     }
 
-    dmstr\web\AdminLteAsset::register($this);
-
+//    dmstr\web\AdminLteAsset::register($this);
+    \backend\assets\AdminLteAssetUser::register($this);
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
     <?php $this->beginPage() ?>
@@ -37,7 +51,7 @@ if (Yii::$app->controller->action->id === 'login') {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="hold-transition <?=AdminLteHelper::skinClass();?> sidebar-mini">
+    <body class="hold-transition <?= $skinatual; ?> sidebar-mini">
     <?php $this->beginBody() ?>
     <div class="wrapper">
 

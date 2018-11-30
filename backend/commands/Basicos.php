@@ -53,6 +53,9 @@ class Basicos
             if ($para == 'db') {
                 $sep_antes = '/';
                 $sep_novo = '-';
+            } else if ($para == 'boleto') {
+                $sep_antes = '-';
+                $sep_novo = '.';
             } else {
                 $sep_antes = '-';
                 $sep_novo = '/';
@@ -140,5 +143,29 @@ class Basicos
         $formato = ($tipo == 11) ? "%s%s%s.%s%s%s.%s%s%s-%s%s" : "%s%s.%s%s%s.%s%s%s/%s%s%s%s-%s%s";
 
         return vsprintf($formato, str_split($cnpj));
+    }
+
+    public function boletoValor($valor)
+    {
+        if ($valor != 0) {
+            $vl = number_format($valor, 2, '.', '');
+            $junto = str_replace('.', '', $vl);
+            return $junto;
+        } else {
+            return '0';
+        }
+    }
+
+    public function boletoPercentual($valor)
+    {
+        if ($valor != 0) {
+            $vl = explode('.', $valor);
+            $inteiro = str_pad($vl[0],3,'0',STR_PAD_LEFT);
+            $decimal = str_pad($vl[1],5,'0',STR_PAD_RIGHT);
+            $junto = "$inteiro" . "$decimal";
+            return $junto;
+        } else {
+            return '0';
+        }
     }
 }

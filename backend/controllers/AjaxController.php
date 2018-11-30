@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Certificado;
+use backend\modules\clientes\models\ClientesPrefs;
 use NFePHP\CTe\Tools;
 use Yii;
 use yii\db\Query;
@@ -21,6 +23,7 @@ use backend\modules\veiculos\models\Veiculos;
 use backend\modules\cte\models\Cte;
 use backend\modules\fatura\models\Fatura;
 use backend\modules\financeiro\models\Financeiro;
+use yii\web\Response;
 
 class AjaxController extends Controller
 {
@@ -285,7 +288,7 @@ class AjaxController extends Controller
             ->asArray()
             ->all();
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $data;
     }
@@ -302,7 +305,7 @@ class AjaxController extends Controller
             ->asArray()
             ->all();
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $data;
     }
@@ -312,7 +315,7 @@ class AjaxController extends Controller
         $modelCte = new Cte();
         $data = $modelCte->autocomplete($term);
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $data;
     }
@@ -322,7 +325,7 @@ class AjaxController extends Controller
         $modelCte = new Cte();
         $data = $modelCte->getContratante($chave);
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $data;
     }
@@ -356,14 +359,14 @@ class AjaxController extends Controller
 
         }
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         return $data;
     }
 
     public function actionCountFaturas()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Fatura::find()
             ->where(['dono' => Yii::$app->user->identity['cnpj']])
@@ -372,9 +375,51 @@ class AjaxController extends Controller
         return $data;
     }
 
+    public function actionCountClientes()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Clientes::find()
+            ->where(['dono' => Yii::$app->user->identity['cnpj']])
+            ->count();
+
+        return $data;
+    }
+
+    public function actionSavePrefs($tema, $financeiro, $veiculos, $pref_id, $cliente)
+    {
+        $model = ($pref_id == '0') ? new ClientesPrefs() : $this->findPrefs($pref_id);
+
+        $model->tema = $tema;
+        $model->financeiro = $financeiro;
+        $model->veiculos = $veiculos;
+        $model->cliente = $cliente;
+
+        $retorno = ($model->save()) ? 'Preferências atualizadas' : 'Erro ao atualizar';
+
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        return $retorno;
+    }
+
+    /**
+     * Finds the ClientesPrefs model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return ClientesPrefs the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findPrefs($id)
+    {
+        if (($model = ClientesPrefs::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
     public function actionCountCte()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Cte::find()
             ->where(['dono' => Yii::$app->user->identity['cnpj']])
@@ -385,7 +430,7 @@ class AjaxController extends Controller
 
     public function actionCountMinutas()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Minutas::find()
             ->where(['dono' => Yii::$app->user->identity['cnpj']])
@@ -396,7 +441,7 @@ class AjaxController extends Controller
 
     public function actionCountFrota()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Veiculos::find()
             ->where(['dono' => Yii::$app->user->identity['cnpj']])
@@ -407,7 +452,7 @@ class AjaxController extends Controller
 
     public function actionSumFinanceiro($tipo, $sum = true)
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Financeiro::find()
             ->where([
@@ -422,7 +467,7 @@ class AjaxController extends Controller
 
     public function actionGetBalanco()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
 
         $receber = Financeiro::find()
             ->where([
@@ -497,7 +542,7 @@ class AjaxController extends Controller
             'despesa' => $despesa
         ];
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         return $retorno;
     }
 
@@ -509,16 +554,25 @@ class AjaxController extends Controller
             ->where(['veiculo' => $veiculo])
             ->one();
 
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         return $query;
     }
 
     public function actionStatusSefaz()
     {
-        $cteTools = new Tools(Yii::getAlias('@sped/config/').Yii::$app->user->identity['cnpj'].'.json');
+        $cteTools = new Tools(Yii::getAlias('@sped/config/') . Yii::$app->user->identity['cnpj'] . '.json');
         $retorno = $cteTools->sefazStatus('', '1', $resposta);
 
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $resposta;
+    }
+
+    public function actionCertificado()
+    {
+        $certificado = new Certificado();
+        $resposta = $certificado->validCerts();
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
         return $resposta;
     }
 

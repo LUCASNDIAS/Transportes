@@ -22,6 +22,7 @@ use backend\modules\clientes\models\Clientes;
  * @property string $status
  *
  * @property Clientes $sacado0
+ * @property FaturaBoleto $faturaBoleto
  * @property FaturaDocumentos[] $faturaDocumentos
  * @property Financeiro[] $financeiros
  */
@@ -79,6 +80,14 @@ class Fatura extends \yii\db\ActiveRecord
     public function getSacado0()
     {
         return $this->hasOne(Clientes::className(), ['cnpj' => 'sacado']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFaturaBoleto()
+    {
+        return $this->hasOne(FaturaBoleto::className(), ['fatura_id' => 'id']);
     }
 
     /**

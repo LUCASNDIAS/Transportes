@@ -93,16 +93,16 @@ use yii\helpers\Html;
 						<li class="user-footer">
 							<div class="pull-left">
 								<?= Html::a(
-										'Dados',
-										'@web/clientes/listar?cnpj='.Yii::$app->user->identity['cnpj'],
-										['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+										'Minha conta',
+										'@web/usuarios/',
+										['class' => 'btn btn-primary btn-flat']
 										)?>
 							</div>
 							<div class="pull-right">
                                 <?= Html::a(
                                     'Sair',
                                     ['/site/logout'],
-                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                    ['data-method' => 'post', 'class' => 'btn btn-danger btn-flat']
                                 ) ?>
                             </div>
 						</li>

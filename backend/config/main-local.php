@@ -70,6 +70,9 @@ $config = [
         'relatorios' => [
             'class' => 'backend\modules\relatorios\Module',
         ],
+        'usuarios' => [
+            'class' => 'backend\modules\usuarios\Module',
+        ],
     ],
     'components' => [
         'errorHandler' => [
@@ -98,13 +101,13 @@ $config = [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
-        'assetManager' => [
-            'bundles' => [
-                'dmstr\web\AdminLteAsset' => [
-                    'skin' => isset($tema) ? $tema : 'skin-purple',
-                ],
-            ],
-        ],
+//        'assetManager' => [
+//            'bundles' => [
+//                'dmstr\web\AdminLteAsset' => [
+//                    'skin' => isset($tema) ? $tema : 'skin-purple',
+//                ],
+//            ],
+//        ],
         'html2pdf' => [
             'class' => 'yii2tech\html2pdf\Manager',
             'viewPath' => '@app/views',

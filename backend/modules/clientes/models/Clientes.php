@@ -117,6 +117,16 @@ class Clientes extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getClientesPrefs()
+    {
+        return $this->hasOne(ClientesPrefs::className(),
+            ['cliente' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getCtes()
     {
         return $this->hasMany(Cte::className(), ['destinatario' => 'cnpj']);

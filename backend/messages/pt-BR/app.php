@@ -34,6 +34,7 @@ return [
     'Create Veiculos Abastecimento' => 'Novo abastecimento',
     'Create Veiculos Servico Tipo' => 'Novo tipo de serviço',
     'Create Veiculos Servico' => 'Novo serviço/despesa',
+    'Create Fatura Boleto' => 'Novo Boleto',
     'Mdves' => 'Manifestos',
     'Veiculos Abastecimentos' => 'Frota - Abastecimento',
     'Veiculos Servico Tipos' => 'Frota - Tipos de serviço',

@@ -18,7 +18,7 @@ $fieldOptions2 = [
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
 ];
 
-//echo password_hash('loggica',PASSWORD_BCRYPT);
+//echo password_hash('bombeta1460',PASSWORD_BCRYPT);
 
 ?>
 <video autoplay loop poster="polina.jpg" class="bg_video">

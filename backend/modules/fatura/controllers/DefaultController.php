@@ -443,6 +443,31 @@ class DefaultController extends Controller
         }
     }
 
+    public function actionBoleto($id)
+    {
+        $model = $this->findModel($id);
+
+        if (is_null($model->faturaBoleto)) {
+            return $this->redirect([
+                '/fatura/boletos/create',
+                'fatura' => $id
+            ]);
+        } else {
+            if ($model->faturaBoleto->status == 'REGISTRADO') {
+                return $this->redirect([
+                    '/fatura/boletos/imprime',
+                    'id' => $model->faturaBoleto->id
+                ]);
+            } else {
+                return $this->redirect([
+                    '/fatura/boletos/update',
+                    'fatura' => $id,
+                     'id' => $model->faturaBoleto->id
+                ]);
+            }
+        }
+    }
+
     /**
      * Grid()
      * Grid de minutas

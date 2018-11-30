@@ -5,6 +5,12 @@ $config = [
         'portal' => [
             'class' => 'frontend\modules\portal\Module',
         ],
+        'tribuna' => [
+            'class' => 'frontend\modules\tribuna\Module',
+        ],
+        'elias' => [
+            'class' => 'frontend\modules\elias\Module',
+        ],
     ],
     'components' => [
         'request' => [
